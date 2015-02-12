@@ -12,10 +12,6 @@ before_filter :admin_only, :except =>  [:edit ]
   def show
     @user = User.find(params[:id])
 		
-      if @user != current_user
-        redirect_to root_path, :alert => "Access denied."
-      end
-    
   end
   
   def new
@@ -24,9 +20,7 @@ before_filter :admin_only, :except =>  [:edit ]
 
   def edit
 		 @user = User.find(params[:id])
-		if @user != current_user && current_user.userrole!='admin'
-        redirect_to root_path, :alert => "Access denied."
-      end
+		 accesscurrentuserandadmin()
   end
 
   def create
@@ -64,4 +58,11 @@ before_filter :admin_only, :except =>  [:edit ]
     @user.destroy
     redirect_to users_path, :flash => { :success => 'User was successfully deleted.' }
   end
+	def accesscurrentuserandadmin
+		if @user != current_user && current_user.userrole!='admin'
+        redirect_to root_path, :alert => "Access denied."
+		else
+				return  true
+    end
+	end
 end
