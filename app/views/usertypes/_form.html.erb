@@ -1,17 +1,32 @@
+<%= form_for @usertype, :html => {:class => "form-horizontal"} do |f| %>
+	 <% if @usertype.errors.any? %>
+		 <div id="error_explanation">
+		   <h2><%= pluralize(@usertype.errors.count, "error") %> prohibited this post from being saved:</h2>
 
+		   <ul>
+		   <% @usertype.errors.full_messages.each do |message| %>
+		     <li><%= message %></li>
+		   <% end %>
+		   </ul>
+		 </div>
+	 <% end %>
 
-<%= simple_form_for(@usertype) do |f| %>
-  <%= f.error_notification %>
+	<div class="widget-box">
+		<div class="control-group">
+		<label class="control-label">User Role</label>
+			<div class="controls">
+					<%= f.text_field :userrole, class:"span20",placeholder:"Role" %>
+			</div>
+		</div>
+		<div class="control-group">
+		<label class="control-label">Description</label>
+			<div class="controls">
+					<%= f.text_field :description, class:"span20",placeholder:"Description" %>
+			</div>
+	</div>
+	<div class="form-actions">
+		<%= f.submit 'Save', :class => 'btn btn-success btn-xs' %>
+	</div>  
+</div>
 
-  <div class="form-inputs">
-    <%= f.input :userrole %>
-  </div>
-  
-  <div class="form-inputs">
-    <%= f.input :description %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
 <% end %>
