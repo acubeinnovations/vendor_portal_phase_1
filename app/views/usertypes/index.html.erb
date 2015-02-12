@@ -1,7 +1,5 @@
 
-   <h3>Listing Usertypes</h3>
-
-  <div class="container-fluid">
+<div class="container-fluid">
     <div class="row-fluid">
       <div class="span12">
         <div class="widget-box">
@@ -24,7 +22,9 @@
 										<td><%= usertype.userrole %></td>
 										<td><%= usertype.description %></td>
 										<td><%= usertype.created_at %></td>
-										<td><%= link_to 'Show', usertype,class:'btn btn-success' %></td><td><%= link_to 'Edit', edit_usertype_path(usertype),class:'btn btn-info' %></td><td><%= link_to 'Destroy', usertype, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td>
+										<!--<td><%= link_to 'Show', usertype,class:'btn btn-success' %></td>-->
+										<td><%= link_to 'Edit', edit_usertype_path(usertype),class:'btn btn-info' %></td>
+										<td><%= link_to 'Destroy', usertype, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td>
 									</tr>
 									<% @i+=1%>
 								<% end %>	
