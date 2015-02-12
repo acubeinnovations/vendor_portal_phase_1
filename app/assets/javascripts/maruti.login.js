@@ -1,5 +1,4 @@
 
-$(document).ready(function(){
 
 	var login = $('#loginform');
 	var recover = $('#recoverform');
@@ -7,7 +6,7 @@ $(document).ready(function(){
 
 	$('#to-recover').click(function(){
 		
-		$("#loginform").slideUp();
+		$("#loginform").hide();
 		$("#recoverform").fadeIn();
 	});
 	$('#to-login').click(function(){
@@ -20,8 +19,10 @@ $(document).ready(function(){
 	$('#to-login').click(function(){
 	
 	});
+	
+	$('.simple_form').attr("id","loginform");
     
-    if($.browser.msie == true && $.browser.version.slice(0,3) < 10) {
+  /*  if($.browser.msie == true && $.browser.version.slice(0,3) < 10) {
         $('input[placeholder]').each(function(){ 
        
         var input = $(this);       
@@ -43,5 +44,6 @@ $(document).ready(function(){
 
         
         
-    }
-});
+    }*/
+
+
