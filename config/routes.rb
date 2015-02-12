@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :usertypes
+
   resources :users
 
   devise_for :users, :skip => [:registrations, :sessions]

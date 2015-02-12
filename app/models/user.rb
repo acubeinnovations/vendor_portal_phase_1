@@ -4,13 +4,14 @@ class User
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
-
+ 
   ## Database authenticatable
   field :email,              type: String, default: ""
   field :encrypted_password, type: String, default: ""
 	field :firstname,          type: String, default: ""
   field :lastname, 					 type: String, default: ""
-	field :usertype_id, 			 type: String, default: ""
+	field :userrole, 			 type: String, default: ""
+  field :_id, 			 type: String,  default:->{ email.to_s.parameterize}
 
   ## Recoverable
   field :reset_password_token,   type: String

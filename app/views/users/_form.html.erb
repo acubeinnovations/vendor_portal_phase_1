@@ -2,13 +2,14 @@
   <% if @user.errors.any? %>
     <div class="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
+	  
       <ul>
       <% @user.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
+	
   <% end %>
 	
   <div class="field">
@@ -39,12 +40,20 @@
       <%= f.text_field :firstname %>
     </div>
   </div>
+  
 
 	<div class="field">
     <%= f.label :lastname %>
     <div class="controls">
       <%= f.text_field :lastname %>
     </div>
+  </div>
+  
+  <div class="field">
+      <%= f.label :userrole %>
+      <div class="controls">
+        <%= f.collection_select :userrole,Usertype.all,:id,:userrole %>
+      </div>
   </div>
 	
 
