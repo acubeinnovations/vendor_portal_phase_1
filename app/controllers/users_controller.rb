@@ -4,7 +4,7 @@ before_filter :authenticate_user!
 
 #for checking user roles
 before_filter :admin_only, :except =>  [:edit ] 
-
+layout 'vendor_portal'
   def index 
     @users = User.all
  end

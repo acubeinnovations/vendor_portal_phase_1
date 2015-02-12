@@ -1,5 +1,5 @@
 class UsertypesController < ApplicationController
-  
+  layout 'vendor_portal'
   before_action :set_usertype, only: [:show, :edit, :update, :destroy]
   
   # GET /usertypes
