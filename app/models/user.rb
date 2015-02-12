@@ -11,7 +11,7 @@ class User
 	field :firstname,          type: String, default: ""
   field :lastname, 					 type: String, default: ""
 	field :userrole, 			 type: String, default: ""
-  field :_id, 			 type: String,  default:->{ email.to_s.parameterize}
+ # field :_id, 			 type: String,  default:->{ email.to_s.parameterize}
 
   ## Recoverable
   field :reset_password_token,   type: String
@@ -39,6 +39,7 @@ class User
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
 	#has_many :products
+	
 	def self.serialize_from_session(key, salt)
     record = to_adapter.get(key[0]["$oid"])
     record if record && record.authenticatable_salt == salt

@@ -2,7 +2,8 @@
 
 <% if user_signed_in? %>
   <p>Signed in as: <%= current_user.email %></p>
-  <p><%= link_to 'Log Out', destroy_user_session_path, :method => 'delete', :confirm => 'Are you sure?' %></p>
+	<p><%= link_to 'Profile', 'users/'+current_user._id+'/edit'.to_s, :method => 'get' %></p>
+  <p><%= link_to 'Log Out', destroy_user_session_path, :method => 'get', :confirm => 'Are you sure?' %></p>
 <% else %>
   <p><%= link_to 'Log in', new_user_session_path %></p>
 <% end %>

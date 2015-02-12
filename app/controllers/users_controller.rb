@@ -1,32 +1,32 @@
 class UsersController < ApplicationController
-#before_filter :authenticate_user!
-before_filter :admin_only, :except => :show
-  def index
+#for authentication
+before_filter :authenticate_user!
+
+#for checking user roles
+before_filter :admin_only, :except =>  [:edit ] 
+
+  def index 
     @users = User.all
  end
 
   def show
     @user = User.find(params[:id])
+		
+      if @user != current_user
+        redirect_to root_path, :alert => "Access denied."
+      end
+    
   end
   
-
-  
-  
-  #def show
-   #   @user = User.find(params[:id])
-    #  if current_user.userrole.designer?
-     #   unless @user == current_user
-      #    redirect_to :back, :alert => "Access denied."
-       # end
-    #  end
-  #  end
-
   def new
     @user = User.new
   end
 
   def edit
-    @user = User.find(params[:id])
+		 @user = User.find(params[:id])
+		if @user != current_user && current_user.userrole!='admin'
+        redirect_to root_path, :alert => "Access denied."
+      end
   end
 
   def create
@@ -50,11 +50,11 @@ before_filter :admin_only, :except => :show
     end
   end
   
-  def admin_only
-      if current_user.email=="admin@vendor.com"
-        redirect_to :back, :alert => "Access denied."
-      end
+ def admin_only
+    if current_user.userrole!='admin'
+      redirect_to root_path, :alert => "Access denied."
     end
+  end
 	def user_params
       params.require(:user).permit(:username, :email, :password, :password_confirmation,:firstname,:lastname,:userrole)
   end
