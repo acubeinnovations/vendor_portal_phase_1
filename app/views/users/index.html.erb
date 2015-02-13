@@ -8,8 +8,10 @@
                 <tr>
                   <th>Sl</th>
                   <th>Email id</th>
-                  
-                  <th colspan="3">Actions</th>
+								 <th>Role</th>
+                  <th>Created</th>
+                  <th>Last Login</th>
+                  <th colspan="2">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -18,8 +20,10 @@
 					<tr class="gradeX">
 						<td> <%=@i %></td>
 						<td><%= link_to user.email, user %></td>
-						
-						<td><%= link_to 'Show', user, :class => 'btn btn-primary btn-xs' %></td>
+							<td><%= user.userrole %></td>
+						<td><%= user.created_at %></td>
+						<td><%= user.last_sign_in_at %></td>
+					<!--	<td><%= link_to 'Show', user, :class => 'btn btn-primary btn-xs' %></td>-->
 						<td><%= link_to 'Edit', edit_user_path(user), :class => 'btn btn-warning btn-xs' %></td>
 						<td><%= link_to 'Delete', user_path(user), :class => 'btn btn-danger btn-xs', :method => 'delete', :confirm => 'Are you sure?' %> </td>
 					</tr>
