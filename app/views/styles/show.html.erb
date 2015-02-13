@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Stylename:</strong>
+  <%= @style.stylename %>
+</p>
+
+
+
+<p>
+  <strong>Stylecode:</strong>
+  <%= @style.stylecode %>
+</p>
+
+<p>
+  <strong>Users:</strong>
+  <%= @style.users %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @style.image %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_style_path(@style) %> |
+<%= link_to 'Back', styles_path %>
