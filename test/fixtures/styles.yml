@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  stylename: MyString
+  string: MyString
+  stylecode: MyString
+  users: MyString
+  image: MyString
+  mate: MyString
+
+two:
+  stylename: MyString
+  string: MyString
+  stylecode: MyString
+  users: MyString
+  image: MyString
+  mate: MyString
