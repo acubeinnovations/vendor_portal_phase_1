@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  division: MyText
+  brand: MyText
+  season: MyText
+  year: MyText
+  market: MyText
+  customername: MyText
+  customeraccount: MyText
+  project: MyText
+  referncestyle: MyText
+
+two:
+  division: MyText
+  brand: MyText
+  season: MyText
+  year: MyText
+  market: MyText
+  customername: MyText
+  customeraccount: MyText
+  project: MyText
+  referncestyle: MyText
