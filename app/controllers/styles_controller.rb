@@ -1,4 +1,5 @@
 class StylesController < ApplicationController
+	layout 'vendor_portal'
   before_action :set_style, only: [:show, :edit, :update, :destroy]
 
   # GET /styles
@@ -41,6 +42,7 @@ class StylesController < ApplicationController
   # PATCH/PUT /styles/1.json
   def update
     respond_to do |format|
+		
       if @style.update(style_params)
         format.html { redirect_to @style, notice: 'Style was successfully updated.' }
         format.json { render :show, status: :ok, location: @style }
@@ -69,6 +71,6 @@ class StylesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def style_params
-      params.require(:style).permit(:stylename, :string, :stylecode, :users, :image, :mate)
+      params.require(:style).permit(:stylename, :stylecode, :image, users: [])
     end
 end

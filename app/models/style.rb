@@ -4,8 +4,8 @@ class Style
   include Mongoid::Timestamps::Created
   field :stylename, type: String
   field :stylecode, type: String
-  field :users, type: String
-  
+  field :users, type: Array
+   
   
   has_mongoid_attached_file :image,
       :url => "/system/attachments/:id/:style/:basename.:extension", 
