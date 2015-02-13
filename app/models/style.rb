@@ -4,7 +4,7 @@ class Style
   include Mongoid::Timestamps::Created
   field :stylename, type: String
   field :stylecode, type: String
-  field :users, type: Array
+  field :users, type: Array ,default:[ ] 
    
   
   has_mongoid_attached_file :image,

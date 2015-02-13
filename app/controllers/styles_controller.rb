@@ -1,6 +1,11 @@
 class StylesController < ApplicationController
 	layout 'vendor_portal'
   before_action :set_style, only: [:show, :edit, :update, :destroy]
+	#for authentication
+	before_filter :authenticate_user!
+
+	#for checking user roles
+	before_filter :admin_only
 
   # GET /styles
   # GET /styles.json
@@ -20,6 +25,13 @@ class StylesController < ApplicationController
 
   # GET /styles/1/edit
   def edit
+  end
+	
+	#admin only
+	def admin_only
+    if current_user.userrole!='admin'
+      redirect_to root_path, :alert => "Access denied."
+    end
   end
 
   # POST /styles
@@ -42,7 +54,6 @@ class StylesController < ApplicationController
   # PATCH/PUT /styles/1.json
   def update
     respond_to do |format|
-		
       if @style.update(style_params)
         format.html { redirect_to @style, notice: 'Style was successfully updated.' }
         format.json { render :show, status: :ok, location: @style }
@@ -71,6 +82,6 @@ class StylesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def style_params
-      params.require(:style).permit(:stylename, :stylecode, :image, users: [])
+      params.require(:style).permit(:stylename, :string, :stylecode, :image, :mate, users: [])
     end
 end

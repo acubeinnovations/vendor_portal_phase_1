@@ -1,19 +1,17 @@
 
-
-
 	var login = $('#loginform');
 	var recover = $('#recoverform');
 	var speed = 400;
 
 	$('#to-recover').click(function(){
 		
-		$("#loginform").hide();
+		$("#loginform").slideUp();
 		$("#recoverform").fadeIn();
 	});
 	$('#to-login').click(function(){
 		
 		$("#recoverform").hide();
-		$("#loginform").fadeIn();
+		$("#loginform").slideDown();
 	});
 	
 	
@@ -21,7 +19,7 @@
 	
 	});
 	
-	$('.simple_form').attr("id","loginform");
+	$('#loginbox > .simple_form').attr("id","loginform");
     
   /*  if($.browser.msie == true && $.browser.version.slice(0,3) < 10) {
         $('input[placeholder]').each(function(){ 
