@@ -12,12 +12,12 @@
 	 <% end %>
 	
  	<div style="text-align:right" class="form-actions">
- 		<%= f.submit 'Save', :class => 'btn btn-success btn-xs' %>
+ <% if @proce.persisted?  %>		<%= f.submit 'Save', :class => 'btn btn-success btn-xs' %><% end %>
  	</div>
   
 <div class="container-fluid">
             	<div class="row-fluid">
-					<div class="span2">
+					<div class="<% if @proce.persisted?  %>span2<% else %>span12<% end %>">
 						<div class="widget-box">
 							<div class="widget-title">
 								<span class="icon">
@@ -56,11 +56,14 @@
 									</tbody>
 								</table>
 							</div>
+							<div style="text-align:right" class="form-actions">
+ 									<% if @proce.persisted?  %>	<% else %>	<%= f.submit 'Save', :class => 'btn btn-success btn-xs' %><% end %>
+ 							</div>
 						</div>
 					</div>
 
 
-
+<% if @proce.persisted?  %>
 <div class="span8"><!-- -->
 	<div class="widget-box">
 	                            <div class="widget-title">
@@ -329,5 +332,6 @@
 						</div>
 					</div>
 				</div>
+		<% end %>
 </div>			
 <% end %>	

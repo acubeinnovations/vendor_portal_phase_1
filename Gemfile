@@ -62,7 +62,8 @@ group :development, :test do
   
   #For Breadcrumb
   gem "gretel"
-
+	
+	gem "puma"
 	# Newly Added ##
 end
 

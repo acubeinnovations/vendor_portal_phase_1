@@ -16,7 +16,7 @@ class Style
       :path => ":rails_root/public/system/attachments/:id/:style/:basename.:extension", 
       :styles => {
         :original => ['1920x1680>', :jpg],
-        :small    => ['100x100#',   :jpg],
+        :small    => ['100x100>',   :jpg],
         :medium   => ['250x250',    :jpg],
         :large    => ['500x500>',   :jpg]
       },

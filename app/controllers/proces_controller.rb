@@ -1,7 +1,11 @@
 class ProcesController < ApplicationController
   layout 'vendor_portal'
   before_action :set_proce, only: [:show, :edit, :update, :destroy]
+	#for authentication
+	before_filter :authenticate_user!
 
+	#for checking user roles
+	before_filter :admin_only, :except =>  [:edit ] 
   # GET /proces
   # GET /proces.json
   def index
@@ -59,6 +63,11 @@ class ProcesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to proces_url, notice: 'Process was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+	def admin_only
+    if current_user.userrole!='admin'
+      redirect_to root_path, :alert => "Access denied."
     end
   end
 
