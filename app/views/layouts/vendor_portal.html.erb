@@ -81,9 +81,10 @@
 <div id="sidebar"> <a href="#" class="visible-phone"><i class="icon icon-th-list"></i> Tables</a>
   <ul>
     <li class="active"><a href="../.."><i class="icon icon-home"></i> <span>Dashboard</span></a></li>
-    <li> <a href="../users"><i class="icon-folder-close"></i> <span>Users</span></a> </li>
+	<li> <a href="/../usertypes"><i class="icon-list-alt"></i> <span>Usertypes</span></a> </li>
+    <li> <a href="/../users"><i class="icon-user"></i> <span>Users</span></a> </li>
     <!-- <li> <a href="../process"><i class="icon-folder-close"></i> <span>Process</span></a> </li> -->
-    <li> <a href="../styles"><i class="icon-folder-close"></i> <span>Styles</span></a> </li>
+    <li> <a href="/../styles"><i class="icon-cog"></i> <span>Styles</span></a> </li>
     
     
 
@@ -91,9 +92,13 @@
 </div>
 <div id="content">
 <div id="content-header">
-	<%if controller_name=='proces'%>
+	<%if controller_name=='proces' && action_name=='index' %>
 	
-	<% @pagename = 'List  Process' %>
+	<% @pagename = 'List  Process'  %>
+	<% else if controller_name=='proces' && action_name!='index'%>
+	
+	<% @pagename = action_name.titleize+' Process'.to_s %>
+	
 	<% else if action_name=='index' && controller_name!='home'%>
 	
 	<% 
@@ -105,7 +110,7 @@
 	<%else if action_name=='index' && controller_name=='home'%>
 	<%@pagename=''%>
 	
-	<%end%><%end%><%end%><%end%>
+	<%end%><%end%><%end%><%end%><%end%>
 	
 
 	
@@ -132,9 +137,7 @@
 <div class="row-fluid">
   <div id="footer" class="span12"> 2015 &copy; Acube Innovations.<a href="http://acube.co">Acube</a> </div>
 </div>
-
 <%= javascript_include_tag "application" %>
-<div id="loader"><%= image_tag asset_path('ajax-loader.gif')%></div>
 </body>
 
 </html>
