@@ -4,7 +4,9 @@ class Style
   include Mongoid::Timestamps::Created
   field :stylename, type: String
   field :stylecode, type: String
-  field :users, type: Array ,default:[ ] 
+
+	has_and_belongs_to_many :users 
+	accepts_nested_attributes_for :users, allow_destroy: true#, reject_if: :all_blank
    
   
   has_mongoid_attached_file :image,
@@ -20,4 +22,7 @@ class Style
       },
       :convert_options => { :all => '-background white -flatten +matte' }
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+
+
+
 end

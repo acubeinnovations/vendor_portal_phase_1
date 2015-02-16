@@ -28,6 +28,7 @@ class User
   field :current_sign_in_ip, type: String
   field :last_sign_in_ip,    type: String
 	
+	has_and_belongs_to_many :styles
 	#referenced_in:uesertype
   ## Confirmable
   # field :confirmation_token,   type: String

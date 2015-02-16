@@ -53,7 +53,10 @@ class StylesController < ApplicationController
   # PATCH/PUT /styles/1
   # PATCH/PUT /styles/1.json
   def update
+		@style = Style.find(params[:id])
+		@style.users.clear
     respond_to do |format|
+			
       if @style.update(style_params)
         format.html { redirect_to @style, notice: 'Style was successfully updated.' }
         format.json { render :show, status: :ok, location: @style }
@@ -82,6 +85,6 @@ class StylesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def style_params
-      params.require(:style).permit(:stylename, :string, :stylecode, :image, :mate, users: [])
+      params.require(:style).permit(:stylename, :string, :stylecode, :image, :mate, { :user_ids => [] } )
     end
 end
