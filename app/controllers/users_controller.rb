@@ -12,6 +12,7 @@ layout 'vendor_portal'
   def show
     @user = User.find(params[:id])
 		
+		redirect_to users_url
   end
   
   def new
@@ -27,7 +28,7 @@ layout 'vendor_portal'
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to @user, :flash => { :success => 'User was successfully created.' }
+      redirect_to users_url, :flash => { :success => 'User was successfully created.' }
     else
       render :action => 'new'
     end
@@ -38,7 +39,7 @@ layout 'vendor_portal'
 
     if @user.update_attributes(user_params)
       sign_in(@user, :bypass => true) if @user == current_user
-      redirect_to @user, :flash => { :success => 'User was successfully updated.' }
+      redirect_to users_url, :flash => { :success => 'User was successfully updated.' }
     else
       render :action => 'edit'
     end

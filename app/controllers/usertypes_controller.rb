@@ -1,7 +1,11 @@
 class UsertypesController < ApplicationController
   layout 'vendor_portal'
   before_action :set_usertype, only: [:show, :edit, :update, :destroy]
-  
+  #for authentication
+	before_filter :authenticate_user!
+
+	#for checking user roles
+	before_filter :admin_only
   # GET /usertypes
   # GET /usertypes.json
   def index
@@ -61,7 +65,11 @@ class UsertypesController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+	def admin_only
+    if current_user.userrole!='admin'
+      redirect_to root_path, :alert => "Access denied."
+    end
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_usertype
