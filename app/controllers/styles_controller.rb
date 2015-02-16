@@ -41,7 +41,7 @@ class StylesController < ApplicationController
 
     respond_to do |format|
       if @style.save
-        format.html { redirect_to @style, notice: 'Style was successfully created.' }
+        format.html { redirect_to styles_url, notice: 'Style was successfully created.' }
         format.json { render :show, status: :created, location: @style }
       else
         format.html { render :new }
@@ -58,7 +58,7 @@ class StylesController < ApplicationController
     respond_to do |format|
 			
       if @style.update(style_params)
-        format.html { redirect_to @style, notice: 'Style was successfully updated.' }
+        format.html { redirect_to styles_url, notice: 'Style was successfully updated.' }
         format.json { render :show, status: :ok, location: @style }
       else
         format.html { render :edit }

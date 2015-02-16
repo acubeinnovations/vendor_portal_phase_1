@@ -21,7 +21,7 @@
 						<td> <%=@i %></td>
 						<td><%= link_to style.stylename, style %></td>
 							<td><%= style.stylecode %></td>
-						<td><%= style.users %></td>
+						<td><% @k=1 %><% style.users.each do |user| %><%= @k.to_s+'. '+user.email %><br><% @k+=1 %><% end %></td>
 						<td><%= image_tag style.image.url(:small)  %></td>
 						<td><%= link_to 'Edit',  edit_style_path(style) , :class => 'btn btn-warning btn-xs' %></td>
 						<td><%= link_to 'Delete', style_path(style), :class => 'btn btn-danger btn-xs', :method => 'delete', :confirm => 'Are you sure?' %> </td>
