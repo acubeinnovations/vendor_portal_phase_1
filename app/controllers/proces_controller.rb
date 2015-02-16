@@ -70,6 +70,10 @@ class ProcesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def proce_params
-      params.require(:proce).permit(:division, :brand, :season, :year, :market, :customername, :customeraccount, :project, :referncestyle)
+      params.require(:proce).permit(:division, :brand, :season, :year, :market,:images,:factory,:subcontractor, :customername, 
+      :customeraccount, :project, :referncestyle, :xmilldate, :productionleadtime,:salesproceedtosamplerequest, :protoduebackfromvendor,
+      :daftovendordate, :comments, :rtlmu, :mkup, :projectedunits, :targetfob, :targetmu, :targetws, :percolor, :perstyle, :incoterms, :moq,
+      :thousandtofivethousandPCS, :fivethousandtotenthousandPCS, :ldpboat, :ldpair, :startshipdate, :orderduedateviaboat, :orderduedateviaair,
+      :soss, :nmbrofdefsmplneeded, :dafissued, :sampleduedate, :daf2soss, :daf2nmbrofdefsmplneeded, :daf2dafissued, :daf2sampleduedate)
     end
 end
