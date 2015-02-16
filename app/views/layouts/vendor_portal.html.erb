@@ -91,7 +91,10 @@
 </div>
 <div id="content">
 <div id="content-header">
-	<% if action_name=='index' && controller_name!='home'%>
+	<%if controller_name=='proces'%>
+	
+	<% @pagename = 'List  Process' %>
+	<% else if action_name=='index' && controller_name!='home'%>
 	
 	<% 
 	
@@ -101,21 +104,26 @@
 	<%@pagename = action_name.titleize+'  '+controller_name.titleize.to_s%>
 	<%else if action_name=='index' && controller_name=='home'%>
 	<%@pagename=''%>
-	<%end%><%end%><%end%>
+	
+	<%end%><%end%><%end%><%end%>
 	
 
 	
     <div id="breadcrumb"> <a href="../.." title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current"><%= @pagename  %></a> </div>
+	
+   <div id="breadcrumb"><%= breadcrumbs pretext: " ",separator: " " %></div>
+   
+
    
   </div><br>
  <div class="col-md-9">
           <%= bootstrap_flash %>
          
   </div>
-<br>
+
  <div class="widget-title">
-  <span class="icon"><i class="icon-th"></i></span> 
-  <h5><%= @pagename %></h5>
+  <!--<span class="icon"><i class="icon-th"></i></span>--> 
+  <h4><%= @pagename %></h4>
  </div>
 		 <%= yield %>
     </div>

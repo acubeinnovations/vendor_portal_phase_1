@@ -3,7 +3,7 @@ class Proce
   include Mongoid::Timestamps::Created
   
   #fixed values in all process
-  
+ 
   field :division, type: String
   field :brand, type: String
   field :season, type: String
@@ -17,6 +17,9 @@ class Proce
   field :customername, type: String
   field :customeraccount, type: String
   field :project, type: String
+  #
+  #field :_id, type: String,  default:->{ project.to_s.parameterize}
+  #
   field :referncestyle, type: String
   field :xmilldate, type: String
   field :productionleadtime, type: String

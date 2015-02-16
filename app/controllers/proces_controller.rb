@@ -29,7 +29,7 @@ class ProcesController < ApplicationController
 
     respond_to do |format|
       if @proce.save
-        format.html { redirect_to @proce, notice: 'Proce was successfully created.' }
+        format.html { redirect_to @proce, notice: 'Process was successfully created.' }
         format.json { render :show, status: :created, location: @proce }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class ProcesController < ApplicationController
   def update
     respond_to do |format|
       if @proce.update(proce_params)
-        format.html { redirect_to @proce, notice: 'Proce was successfully updated.' }
+        format.html { redirect_to proces_url, notice: 'Process was successfully updated.' }
         format.json { render :show, status: :ok, location: @proce }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class ProcesController < ApplicationController
   def destroy
     @proce.destroy
     respond_to do |format|
-      format.html { redirect_to proces_url, notice: 'Proce was successfully destroyed.' }
+      format.html { redirect_to proces_url, notice: 'Process was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

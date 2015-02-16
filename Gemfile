@@ -61,7 +61,7 @@ group :development, :test do
   gem "mongoid-paperclip", :require => "mongoid_paperclip"
   
   #For Breadcrumb
- 
+  gem "gretel"
 
 	# Newly Added ##
 end

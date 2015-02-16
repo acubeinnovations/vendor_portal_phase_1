@@ -559,9 +559,10 @@ a:hover {
 
 .widget-title, .modal-header, .table th, div.dataTables_wrapper .ui-widget-header {
 	background-color: #efefef;
-	
-    border-bottom: 1px solid #CDCDCD;
-    height: 36px;
+	border-top: 1px solid #CDCDCD;
+	height: 37px;
+	border-bottom: 1px solid #CDCDCD;
+	padding-left: 25px;
 }
 .widget-title .nav-tabs {
     border-bottom: 0 none;

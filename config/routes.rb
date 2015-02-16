@@ -1,13 +1,10 @@
 Rails.application.routes.draw do
   
-  as :proces do
-          get "/process" => "proces#index", :as => :process
-          get "/process/new" => "proces#new", :as => :new
-  end
-  
-   resources :proces
 
-  resources :styles
+  
+  resources :proces, :path => "process" #Url Aliasing from proces ->  process
+  
+   resources :styles
 
   resources :usertypes
 
