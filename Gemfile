@@ -59,6 +59,9 @@ group :development, :test do
   
   #for attaching image for mongo only
   gem "mongoid-paperclip", :require => "mongoid_paperclip"
+  
+  #For Breadcrumb
+ 
 
 	# Newly Added ##
 end
