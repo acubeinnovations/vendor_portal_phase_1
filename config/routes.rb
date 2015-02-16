@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  resources :proces
+  
+  as :proces do
+          get "/process" => "proces#index", :as => :process
+          get "/process/new" => "proces#new", :as => :new
+  end
+  
+   resources :proces
 
   resources :styles
 
@@ -17,5 +23,5 @@ Rails.application.routes.draw do
 		#delete "/logout" => "devise/sessions#destroy", :as => :destroy_user_session
   end
   
-	root :to => 'home#index'
+	root :to => 'proces#index'
 end
