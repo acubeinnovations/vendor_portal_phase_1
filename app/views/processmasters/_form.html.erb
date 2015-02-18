@@ -1,0 +1,132 @@
+<%= form_for @processmaster, :html => { :multipart => true,:class => "form-horizontal" }  do |f| %>
+	 <% if @processmaster.errors.any? %>
+		 <div id="error_explanation">
+		   <h2><%= pluralize(@processmaster.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+		   <ul>
+		   <% @processmaster.errors.full_messages.each do |message| %>
+		     <li><%= message %></li>
+		   <% end %>
+		   </ul>
+		 </div>
+	 <% end %>
+	
+<div class="container-fluid">
+     <div class="row-fluid">
+					<div class="span12">
+						<div class="widget-box">
+							<div class="widget-title">
+								<span class="icon">
+									<i class="icon-info-sign"></i>
+								</span>
+								<h5>Process Master</h5>
+							</div>
+							<div class="widget-content nopadding">
+									<table class="table table-bordered">
+										<tbody>
+											<tr>
+												<td style="<% if !@processmaster.persisted?  %><%= 'width:100%;'.to_s %><% else %><%= 'width:40%;'.to_s %><% end %>">
+													<table class="table table-bordered border-left-0px">
+														<tbody>
+															<tr>
+																<td>Division</td>
+																<td><%= f.text_field :division, class:"span10",placeholder:"Division" %></td>
+															</tr>
+															<tr>
+																<td>Brand</td>
+																<td><%= f.text_field :brand, class:"span10",placeholder:"Brand" %></td>
+															</tr>
+															<tr>
+																<td>Season</td>
+																<td><%= f.text_field :season, class:"span10",placeholder:"Season" %></td>
+															</tr>
+															<tr>
+																<td>Year</td>
+																<td><%= f.text_field :year, class:"span10",placeholder:"Year" %></td>
+															</tr>
+															<tr>
+																<td>Market</td>
+																<td><%= f.text_field :market, class:"span10",placeholder:"Market" %></td>
+															</tr>
+															<tr>
+																<td>Customer Name</td>
+																<td><%= f.text_field :customername, class:"span10",placeholder:"Customer Name" %></td>
+															</tr>
+															<tr>
+																<td>Customer Account</td>
+																<td><%= f.text_field :customeraccount, class:"span10",placeholder:"Customer Account" %></td>
+															</tr>
+															<tr>
+																<td>Project</td>
+																<td><%= f.text_field :project, class:"span10",placeholder:"Project" %></td>
+															</tr>
+															<% if !@processmaster.persisted? %>
+															<tr>
+																<td>Refer Style</td>
+																<td> <%= f.collection_select :referencestyle,Style.all,:id,:stylename %></td>
+															</tr>
+															<%	end	%>
+															<% if !@processmaster.persisted? %><% else %>
+															<tr>
+																<td>Style Name</td>
+																<td><%= f.text_field :stylename, class:"span10" %></td>
+															</tr>
+															<tr>
+																<td>Style Code</td>
+																<td><%= f.text_field :stylecode, class:"span10" %></td>
+															</tr>
+															<tr>
+																<td>Image</td>
+																<td><% if @processmaster.image.url!='/images/original/missing.png' %>
+																		<%= image_tag @processmaster.image.url(:small)  %>
+																		<%	end			 %>
+																		<%= f.file_field :image,class:'styleimage' %></td>
+															</tr>
+															<%	end	%>
+														</tbody>
+													</table>
+												</td>
+												<% if !@processmaster.persisted? %><% else %>
+												<td>
+													<table class="table table-bordered border-left-0px">
+														<tbody>
+															<tr>
+																<td>
+																	<% @UT=Usertype.all() %> 
+																	<% @UT.each do |usertype|  %>
+																	<% if usertype.userrole!='admin'  %>
+																	<% @U=User.all('userrole'=>usertype.userrole) %>
+																	<div class="widget-box">
+														 				 	<div class="widget-title"><span class="icon"><i class="icon-file"></i></span>
+															 				 	<h5><%= usertype.userrole.titleize %></h5>
+																			</div>
+																			<div class="widget-content nopadding">
+																	<% @U.each do |user|  %>
+																		<div></div>
+																				<span class="span3">
+																					<%= check_box_tag("processmaster[user_ids][]", user.id, user.id.in?(@processmaster.users.collect(&:id))) %> <%= user.email %>
+																				</span>
+											
+																		<% end %>
+																	</div>
+																</div><br>
+																<% end %>
+															<% end %>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</td>	
+											<% end %>
+											</tr>
+										</tbody>
+									</table>
+							</div>
+							<div style="text-align:right" class="form-actions">
+ 										<%= f.submit 'Save', :class => 'btn btn-success btn-xs' %>
+ 							</div>
+						</div>
+					</div>
+		</div>
+</div>
+<% end %>

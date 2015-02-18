@@ -1,0 +1,302 @@
+<%= form_for @trackingsheet, :html => {:class => "form-horizontal"} do |f| %>
+	 <% if @trackingsheet.errors.any? %>
+		 <div id="error_explanation">
+		   <h2><%= pluralize(@trackingsheet.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+		   <ul>
+		   <% @trackingsheet.errors.full_messages.each do |message| %>
+		     <li><%= message %></li>
+		   <% end %>
+		   </ul>
+		 </div>
+	 <% end %>
+	
+ 	
+  <% @processmaster=Processmaster.find(@trackingsheet.processmaster_id) %>
+<div class="container-fluid">
+            	<div class="row-fluid">
+					<div class="<% if @trackingsheet.persisted?  %>span2<% else %>span12<% end %>">
+						<div class="widget-box">
+							<div class="widget-title">
+								<span class="icon">
+									<i class="icon-info-sign"></i>
+								</span>
+								<h5>Tracking Sheet</h5>
+							</div>
+							<div class="widget-content nopadding">
+								<table class="table table-bordered">
+									
+									<tbody>
+										<tr>
+											<td>Division</td>
+											<td><%= label_tag 'Division',@processmaster.division.to_s %></td>
+										</tr>
+										<tr>
+											<td>Brand</td>
+											<td><%= label_tag 'brand',@processmaster.brand.to_s %></td>
+										</tr>
+										<tr>
+											<td>Season</td>
+											<td><%= label_tag 'season',@processmaster.season.to_s %></td>
+										</tr>
+										<tr>
+											<td>Year</td>
+											<td><%= label_tag 'year',@processmaster.year.to_s %></td>
+										</tr>
+										<tr>
+											<td>Market</td>
+											<td><%= label_tag 'market',@processmaster.market.to_s %></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+
+
+
+<div class="span8"><!-- -->
+	<div class="widget-box">
+	                            <div class="widget-title">
+	                                <ul class="nav nav-tabs">
+	                                    <li class="active"><a data-toggle="tab" href="#tab1">General</a></li>
+	                                    <li class=""><a data-toggle="tab" href="#tab2">Sales Enters</a></li>
+	                                    <li class=""><a data-toggle="tab" href="#tab3">Minimum MOQ</a></li>
+										<li class=""><a data-toggle="tab" href="#tab4">First Cost Per Style</a></li>
+										<li class=""><a data-toggle="tab" href="#tab5">LDP Load</a></li>
+										<li class=""><a data-toggle="tab" href="#tab6">Customer Delivery</a></li>
+										<li class=""><a data-toggle="tab" href="#tab7">1st DAF/STYLE Sample</a></li>
+										<li class=""><a data-toggle="tab" href="#tab8">2nd DAF/STYLE Sample</a></li>
+	                                </ul>
+	                            </div>
+	                            <div class="widget-content tab-content">
+	                                <div id="tab1" class="tab-pane active">
+										<div class="control-group">
+											<label class="control-label">Images :</label>
+												<div class="controls">
+													<%= f.text_field :images, class:"span6",placeholder:"Images" %>
+												</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">Factory :</label>
+												<div class="controls">
+													<%= f.text_field :factory, class:"span6",placeholder:"Factory" %>
+												</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">Subcontractor :</label>
+												<div class="controls">
+													<%= f.text_field :subcontractor, class:"span6",placeholder:"Subcontractor" %>
+												</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">X Mill Date :</label>
+												<div class="controls">
+													<%= f.text_field :xmilldate, class:"span6",placeholder:"X Mill Date" %>
+												</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">Production Lead Time :</label>
+												<div class="controls">
+													<%= f.text_field :productionleadtime, class:"span6",placeholder:"Production Lead Time" %>
+												</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">Sales Proceed to Sample Request :</label>
+												<div class="controls">
+													<%= f.text_field :salestrackingsheetedtosamplerequest, class:"span6",placeholder:"Sales Proceed to Sample Request" %>
+												</div>
+										</div>
+
+										<div class="control-group">
+											<label class="control-label">Proto Due Back From Vendor :</label>
+												<div class="controls">
+													<%= f.text_field :protoduebackfromvendor, class:"span6",placeholder:"Proto Due Back From Vendor" %>
+												</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">Daf to Vendor Date :</label>
+												<div class="controls">
+													<%= f.text_field :daftovendordate, class:"span6",placeholder:"Daf to Vendor Date" %>
+												</div>
+										</div>
+										
+										<div class="control-group">
+											<label class="control-label">RTL MU :</label>
+												<div class="controls">
+													<%= f.text_field :rtlmu, class:"span6",placeholder:"RTL MU" %>
+												</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">MK-UP :</label>
+												<div class="controls">
+													<%= f.text_field :mkup, class:"span6",placeholder:"MK-UP" %>
+												</div>
+										</div>
+                  					
+	                                </div>
+	                                <div id="tab2" class="tab-pane">
+										<div class="control-group">
+										<label class="control-label">Projected Units :</label>
+											<div class="controls"><%= f.text_field :projectedunits, class:"span6",placeholder:"Projected Units" %></div>
+										</div>
+										<div class="control-group">
+										<label class="control-label">Target FOB :</label>
+											<div class="controls"><%= f.text_field :targetfob, class:"span6",placeholder:"Target FOB" %></div>
+										</div>
+										<div class="control-group">
+										<label class="control-label">Target MU :</label>
+											<div class="controls"><%= f.text_field :targetmu, class:"span6",placeholder:"Target MU" %></div>
+										</div>
+										<div class="control-group">
+										<label class="control-label">Target WS :</label>
+											<div class="controls"><%= f.text_field :targetws, class:"span6",placeholder:"Target WS" %></div>
+										</div>
+									</div>
+	                                <div id="tab3" class="tab-pane">
+										<div class="control-group">
+										<label class="control-label">Per Color :</label>
+											<div class="controls"><%= f.text_field :percolor, class:"span6",placeholder:"Per Color" %></div>
+										</div>
+										<div class="control-group">
+										<label class="control-label">Per Style :</label>
+											<div class="controls"><%= f.text_field :perstyle, class:"span6",placeholder:"Per Style" %></div>
+										</div>
+										<label class="control-label">Inco Terms :</label>
+											<div class="controls"><%= f.text_field :incoterms, class:"span6",placeholder:"Inco Terms" %></div>
+										
+										
+	                                </div>
+	                                <div id="tab4" class="tab-pane">
+										<div class="control-group">
+										<label class="control-label">MOQ :</label>
+											<div class="controls"><%= f.text_field :moq, class:"span6",placeholder:"MOQ" %></div>
+										</div>
+										<div class="control-group">
+										<label class="control-label">1000 - 5000 PCS:</label>
+											<div class="controls"><%= f.text_field :thousandtofivethousandPCS, class:"span6",placeholder:"1000 - 5000 PCS" %></div>
+										</div>
+										<div class="control-group">
+										<label class="control-label">5000 - 10000 PCS :</label>
+											<div class="controls"><%= f.text_field :fivethousandtotenthousandPCS, class:"span6",placeholder:"5000 - 10000 PCS" %></div>
+										</div>
+										
+	                                </div>
+	                                <div id="tab5" class="tab-pane">
+										<div class="control-group">
+										<label class="control-label">LDP Boat :</label>
+											<div class="controls"><%= f.text_field :ldpboat, class:"span6",placeholder:"LDP Boat" %></div>
+										</div>
+										
+										<div class="control-group">
+										<label class="control-label">LDP Air :</label>
+											<div class="controls"><%= f.text_field :ldpair, class:"span6",placeholder:"LDP Air" %></div>
+										</div>
+	                                </div>
+	                                <div id="tab6" class="tab-pane">
+										<div class="control-group">
+										<label class="control-label">Start Ship Date:</label>
+											<div class="controls"><%= f.text_field :startshipdate, class:"span6",placeholder:"Start Ship Date" %></div>
+										</div>
+										<div class="control-group">
+										<label class="control-label">Order Due Date Via Boat :</label>
+											<div class="controls"><%= f.text_field :orderduedateviaboat, class:"span6",placeholder:"Order Due Date Via Boat" %></div>
+										</div>
+										<div class="control-group">
+										<label class="control-label">Order Due Date Via Air :</label>
+											<div class="controls"><%= f.text_field :orderduedateviaair, class:"span6",placeholder:"Order Due Date Via Air" %></div>
+										</div>
+										
+	                                </div>
+	                                <div id="tab7" class="tab-pane">
+										<div class="control-group">
+										<label class="control-label">S/O OR S/S :</label>
+											<div class="controls"><%= f.text_field :soss, class:"span6",placeholder:"S/O OR S/S" %></div>
+										</div>
+										<div class="control-group">
+										<label class="control-label"># of Dev Samples Needed :</label>
+											<div class="controls"><%= f.text_field :nmbrofdefsmplneeded, class:"span6",placeholder:"# OF DEV. Samples Needed" %></div>
+										</div>
+										<div class="control-group">
+										<label class="control-label">DAF Issued :</label>
+											<div class="controls"><%= f.text_field :dafissued, class:"span6",placeholder:"DAF issued" %></div>
+										</div>
+										<div class="control-group">
+										<label class="control-label">Sample Due Date :</label>
+											<div class="controls"><%= f.text_field :sampleduedate, class:"span6",placeholder:"Sample Due Date" %></div>
+										</div>
+										
+	                                </div>
+	                                <div id="tab8" class="tab-pane">
+										<div class="control-group">
+										<label class="control-label">S/O OR S/S :</label>
+											<div class="controls"><%= f.text_field :daf2soss, class:"span6",placeholder:"S/O OR S/S" %></div>
+										</div>
+										<div class="control-group">
+										<label class="control-label"># of Dev Samples Needed :</label>
+											<div class="controls"><%= f.text_field :daf2nmbrofdefsmplneeded, class:"span6",placeholder:"# OF DEV. Samples Needed" %></div>
+										</div>
+										<div class="control-group">
+										<label class="control-label">DAF Issued :</label>
+											<div class="controls"><%= f.text_field :daf2dafissued, class:"span6",placeholder:"DAF issued" %></div>
+										</div>
+										<div class="control-group">
+										<label class="control-label">Sample Due Date :</label>
+											<div class="controls"><%= f.text_field :daf2sampleduedate, class:"span6",placeholder:"Sample Due Date" %></div>
+										</div>
+										
+	                                </div>
+	                            </div>                            
+	                        </div>
+									<div class="widget-box" style="border-bottom: 1px solid #CDCDCD;">
+										<div class="form-actions">
+								 		<div class="control-group" style="float:left;border:none;">
+											<label class="control-label">Comments:</label>
+												<div class="controls"><%= f.text_area :comments, class:"span20",placeholder:"Comments",cols:"42", rows:"3" %></div>	
+											</div>	
+											<%= f.submit 'Save', :class => 'btn btn-success btn-xs',:style=>'float:right;' %>
+	 									</div>	
+									</div>	
+</div><!-- -->
+
+
+
+					<div class="span2">
+						<div class="widget-box">
+							<div class="widget-title">
+								<span class="icon">
+									<i class="icon-file"></i>
+								</span>
+								<h5>Version History</h5>
+							</div>
+							<div class="widget-content nopadding">
+								<table class="table table-bordered">
+									<thead>
+								
+									</thead>
+									<tbody>
+										<tr>
+											<td><a href="#">Version 1</a></td>
+										</tr>
+										<tr>
+											<td><a href="#">Version 2</a></td>
+										</tr>
+										<tr>
+											<td><a href="#">Version 3</a></td>
+										</tr>
+										<tr>
+											<td><a href="#">Version 4</a></td>
+										</tr>
+										<tr>
+											<td><a href="#">Version 5</a></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+		
+</div>			
+<% end %>	
+

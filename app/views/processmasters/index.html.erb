@@ -1,0 +1,55 @@
+<% #breadcrumb :processmaster, @processmaster %>
+<div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-content nopadding">
+            <table class="table table-bordered data-table">
+              <thead>
+                <tr>
+                  <th>Sl</th>
+                  <th>Division</th>
+				  <th>Brand</th>
+				  <th>Season</th>
+				  <th>Year</th>
+				  <th>Market</th>
+				  <th>Customer Name</th>
+				  <th>Customer Account</th>
+				  <th>Project</th>
+          <th>Created Date</th>
+          <th colspan='3'>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+								<% @i=1 %>
+								<% @processmasters.each do |processmaster| %>
+									<% @trackingsheet=Trackingsheet.where("processmaster_id"=>processmaster._id) %>
+									<% @trackingsheet.each do |tk| %>
+									<% @trackingsheet_id= tk.id %>
+									<%end%>
+									<tr class="gradeX">
+												<td><%= @i %></td>
+												<td><%= processmaster.division %></td>
+								        <td><%= processmaster.brand %></td>
+								        <td><%= processmaster.season %></td>
+								        <td><%= processmaster.year %></td>
+								        <td><%= processmaster.market %></td>
+								        <td><%= processmaster.customername %></td>
+								        <td><%= processmaster.customeraccount %></td>
+								        <td><%= processmaster.project %></td>
+								        <td><%= processmaster.created_at %></td>
+												<td><%= link_to 'Edit', edit_processmaster_path(processmaster),class:'btn btn-info' %></td>
+												<td><%= link_to 'Tracking Sheet', edit_trackingsheet_path(@trackingsheet_id),class:'btn btn-warning' %></td>
+												<td><%= link_to 'Destroy', processmaster, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td>
+									</tr>
+									<% @i+=1%>
+								<% end %>	
+							</tbody>
+            </table>
+				
+         	</div>
+       </div>
+   </div>
+			<%= link_to 'New Processmaster', new_processmaster_path ,class:'btn btn-success' %>
+</div>
+<!-- EOF -->
