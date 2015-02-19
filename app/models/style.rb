@@ -7,7 +7,8 @@ class Style
 
 	has_and_belongs_to_many :users 
 	accepts_nested_attributes_for :users, allow_destroy: true#, reject_if: :all_blank
-   
+  
+	has_many:processmasters 
   
   has_mongoid_attached_file :image,
       :url => "/system/attachments/:id/:style/:basename.:extension", 

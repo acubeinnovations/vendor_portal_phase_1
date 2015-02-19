@@ -27,8 +27,11 @@ class ProcessmastersController < ApplicationController
   def create
     @processmaster = Processmaster.new(processmaster_params)
 		@style = Style.find(processmaster_params['referencestyle'])
-		@processmaster.attributes = @style.attributes
-		
+		@processmaster.stylename = @style.stylename
+		@processmaster.stylecode = @style.stylecode
+		@processmaster.image = @style.image
+		@processmaster.user_ids = @style.user_ids
+		#@processmaster.id=@processmaster.project.to_s.parameterize+Date.today.to_time.to_i.to_s
     respond_to do |format|
       if @processmaster.save
         format.html { redirect_to processmasters_path, notice: 'Processmaster was successfully created.' }
@@ -46,7 +49,7 @@ class ProcessmastersController < ApplicationController
 		@processmaster = Processmaster.find(params[:id])
 		@processmaster.users.clear
     respond_to do |format|
-      if @processmaster.update(processmaster_update_params)
+      if @processmaster.update_attributes(processmaster_update_params)
         format.html { redirect_to processmasters_path, notice: 'Processmaster was successfully updated.' }
         format.json { render :show, status: :ok, location: @processmaster }
       else
@@ -77,6 +80,6 @@ class ProcessmastersController < ApplicationController
       params.require(:processmaster).permit(:division,:brand,:season,:year,:market,:customername,:customeraccount,:project,:referencestyle)
     end
 		def processmaster_update_params
-      params.require(:processmaster).permit(:division,:brand,:season,:year,:market,:customername,:customeraccount,:project,:referencestyle,:stylename,:stylecode,:stylename,:stylecode, :image,{ :user_ids => [] })
+      params.require(:processmaster).permit(:division,:brand,:season,:year,:market,:customername,:customeraccount,:project,:referencestyle,:stylename,:stylecode,:image,{ :user_ids => [] })
     end
 end
