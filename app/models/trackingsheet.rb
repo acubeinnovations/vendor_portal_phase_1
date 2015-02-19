@@ -2,7 +2,7 @@ class Trackingsheet
   include Mongoid::Document
 	include Mongoid::Paperclip
 	include Mongoid::Timestamps::Created
-	#include Mongoid::Delorean::Trackable
+	include Mongoid::Delorean::Trackable
 
   #general tab values
   field :images, type: String

@@ -1,6 +1,11 @@
 class ProcessmastersController < ApplicationController
 	layout 'vendor_portal'
   before_action :set_processmaster, only: [:show, :edit, :update, :destroy]
+	#for authentication
+	before_filter :authenticate_user!
+
+	#for checking user roles
+	before_filter :admin_only, :except =>  [:index ] 
 
   # GET /processmasters
   # GET /processmasters.json
@@ -68,7 +73,13 @@ class ProcessmastersController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+	def admin_only
+    if current_user.userrole=='admin' || current_user.userrole=='operations'
+				true
+    else
+				redirect_to root_path, :alert => "Access denied."
+    end
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_processmaster

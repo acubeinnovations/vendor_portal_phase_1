@@ -1,6 +1,9 @@
 class TrackingsheetsController < ApplicationController
 	layout 'vendor_portal'
   before_action :set_trackingsheet, only: [:show, :edit, :update, :destroy]
+	
+	#for authentication
+	before_filter :authenticate_user!	
 
   # GET /trackingsheets
   # GET /trackingsheets.json

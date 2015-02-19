@@ -1,4 +1,4 @@
-var c = document.getElementById("myCanvas1");
+/*<!--var c = document.getElementById("myCanvas1");
 var ctx = c.getContext("2d");
 
 // Create gradient
@@ -50,4 +50,5 @@ grd.addColorStop(0,"green");
 // Fill with gradient
 ctx.arc(50, 50, 50, 0, 2*Math.PI);
 ctx.fillStyle = grd;
-ctx.fill();
+ctx.fill();-->
+*/
