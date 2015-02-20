@@ -54,12 +54,9 @@
 	 <li class="" ><a title="" href="#"><i class="icon icon-user"></i> <span class="text"> Signed in as: <%= current_user.email %></span></a></li>
    
    
-    <li class="">
-		
-		<%= link_to edit_user_path(current_user), :method => 'get'  do %>
-	  	 	<i class="icon icon-cog"></i> Profile
+    <li class=""><%= link_to edit_user_path(current_user), :method => 'get'  do %><i class="icon icon-cog"></i> Profile
 		 <% end %>
-	</li>	
+		</li>	
 		
     <li class=""> 
 	<% if user_signed_in? %>	

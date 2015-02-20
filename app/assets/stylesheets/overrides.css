@@ -1,3 +1,14 @@
+
+
+.checkbox_seperation{
+padding: 3px;
+border: 1px solid #dfdfdf;
+margin-top: 4px;	
+}
+.checkbox_seperation  input {
+	vertical-align: top !important;
+}
+
 .nav-tabs li a{
 	font-size:10px !important;
 }
