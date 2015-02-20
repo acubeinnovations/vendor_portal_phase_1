@@ -88,57 +88,86 @@
 										<div class="control-group">
 											<label class="control-label">Factory :</label>
 												<div class="controls">
-													<%= f.text_field :factory, class:"span6",placeholder:"Factory" %>
+													<%= factory( @trackingsheet.factory)%>
 												</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label">Subcontractor :</label>
 												<div class="controls">
-													<%= f.text_field :subcontractor, class:"span6",placeholder:"Subcontractor" %>
+													<%= subcontractor( @trackingsheet.subcontractor)%>
+												</div>
+										</div>
+										<!--<div class="control-group">
+											<label class="control-label">Customer Name :</label>
+												<div class="controls">
+													customername( @trackingsheet.customername)
 												</div>
 										</div>
 										<div class="control-group">
+											<label class="control-label">Customer Account :</label>
+												<div class="controls">
+													customeraccount( @trackingsheet.customeraccount)
+												</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">Project :</label>
+												<div class="controls">
+													project( @trackingsheet.project)
+												</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">Reference Style :</label>
+												<div class="controls">
+													referncestyle( @trackingsheet.referncestyle)
+												</div>
+										</div> -->
+										<div class="control-group">
 											<label class="control-label">X Mill Date :</label>
 												<div class="controls">
-													<%= f.text_field :xmilldate, class:"span6",placeholder:"X Mill Date" %>
+													<%= xmilldate( @trackingsheet.xmilldate)%>
 												</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label">Production Lead Time :</label>
 												<div class="controls">
-													<%= f.text_field :productionleadtime, class:"span6",placeholder:"Production Lead Time" %>
+													<%= productionleadtime( @trackingsheet.productionleadtime)%>
 												</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label">Sales Proceed to Sample Request :</label>
 												<div class="controls">
-													<%= f.text_field :salestrackingsheetedtosamplerequest, class:"span6",placeholder:"Sales Proceed to Sample Request" %>
+													<%= salesproceedtosamplerequest( @trackingsheet.salesproceedtosamplerequest)%>
 												</div>
 										</div>
 
 										<div class="control-group">
 											<label class="control-label">Proto Due Back From Vendor :</label>
 												<div class="controls">
-													<%= f.text_field :protoduebackfromvendor, class:"span6",placeholder:"Proto Due Back From Vendor" %>
+													<%= protoduebackfromvendor( @trackingsheet.protoduebackfromvendor)%>
 												</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label">Daf to Vendor Date :</label>
 												<div class="controls">
-													<%= f.text_field :daftovendordate, class:"span6",placeholder:"Daf to Vendor Date" %>
+													<%= daftovendordate( @trackingsheet.daftovendordate)%>
 												</div>
 										</div>
-										
+										<div class="control-group">
+											<label class="control-label">Comments :</label>
+												<div class="controls">
+													<%= comments( @trackingsheet.comments)%>
+												</div>
+										</div>
 										<div class="control-group">
 											<label class="control-label">RTL MU :</label>
 												<div class="controls">
-													<%= f.text_field :rtlmu, class:"span6",placeholder:"RTL MU" %>
+													<%= rtlmu( @trackingsheet.rtlmu)%>
 												</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label">MK-UP :</label>
 												<div class="controls">
-													<%= f.text_field :mkup, class:"span6",placeholder:"MK-UP" %>
+													<%= mkup( @trackingsheet.mkup)%>
 												</div>
 										</div>
                   					
@@ -146,73 +175,73 @@
 	                                <div id="tab2" class="tab-pane">
 										<div class="control-group">
 										<label class="control-label">Projected Units :</label>
-											<div class="controls"><%= f.text_field :projectedunits, class:"span6",placeholder:"Projected Units" %></div>
+											<div class="controls"><%= projectedunits( @trackingsheet.projectedunits)%></div>
 										</div>
 										<div class="control-group">
 										<label class="control-label">Target FOB :</label>
-											<div class="controls"><%= f.text_field :targetfob, class:"span6",placeholder:"Target FOB" %></div>
+											<div class="controls"><%= targetfob( @trackingsheet.targetfob)%></div>
 										</div>
 										<div class="control-group">
 										<label class="control-label">Target MU :</label>
-											<div class="controls"><%= f.text_field :targetmu, class:"span6",placeholder:"Target MU" %></div>
+											<div class="controls"><%= targetmu( @trackingsheet.targetmu)%></div>
 										</div>
 										<div class="control-group">
 										<label class="control-label">Target WS :</label>
-											<div class="controls"><%= f.text_field :targetws, class:"span6",placeholder:"Target WS" %></div>
+											<div class="controls"><%= targetws( @trackingsheet.targetws)%></div>
 										</div>
 									</div>
 	                                <div id="tab3" class="tab-pane">
 										<div class="control-group">
 										<label class="control-label">Per Color :</label>
-											<div class="controls"><%= f.text_field :percolor, class:"span6",placeholder:"Per Color" %></div>
+											<div class="controls"><%= percolor( @trackingsheet.percolor)%></div>
 										</div>
 										<div class="control-group">
 										<label class="control-label">Per Style :</label>
-											<div class="controls"><%= f.text_field :perstyle, class:"span6",placeholder:"Per Style" %></div>
+											<div class="controls"><%= perstyle( @trackingsheet.perstyle)%></div>
 										</div>
 										<label class="control-label">Inco Terms :</label>
-											<div class="controls"><%= f.text_field :incoterms, class:"span6",placeholder:"Inco Terms" %></div>
+											<div class="controls"><%= incoterms( @trackingsheet.incoterms)%></div>
 										
 										
 	                                </div>
 	                                <div id="tab4" class="tab-pane">
 										<div class="control-group">
 										<label class="control-label">MOQ :</label>
-											<div class="controls"><%= f.text_field :moq, class:"span6",placeholder:"MOQ" %></div>
+											<div class="controls"><%= moq( @trackingsheet.moq)%></div>
 										</div>
 										<div class="control-group">
 										<label class="control-label">1000 - 5000 PCS:</label>
-											<div class="controls"><%= f.text_field :thousandtofivethousandPCS, class:"span6",placeholder:"1000 - 5000 PCS" %></div>
+									<div class="controls"><%= thousandtofivethousandPCS( @trackingsheet.thousandtofivethousandPCS)%></div>
 										</div>
 										<div class="control-group">
 										<label class="control-label">5000 - 10000 PCS :</label>
-											<div class="controls"><%= f.text_field :fivethousandtotenthousandPCS, class:"span6",placeholder:"5000 - 10000 PCS" %></div>
+											<div class="controls"><%= fivethousandtotenthousandPCS( @trackingsheet.fivethousandtotenthousandPCS)%></div>
 										</div>
 										
 	                                </div>
 	                                <div id="tab5" class="tab-pane">
 										<div class="control-group">
 										<label class="control-label">LDP Boat :</label>
-											<div class="controls"><%= f.text_field :ldpboat, class:"span6",placeholder:"LDP Boat" %></div>
+											<div class="controls"><%= ldpboat( @trackingsheet.ldpboat)%></div>
 										</div>
 										
 										<div class="control-group">
 										<label class="control-label">LDP Air :</label>
-											<div class="controls"><%= f.text_field :ldpair, class:"span6",placeholder:"LDP Air" %></div>
+											<div class="controls"><%= ldpair( @trackingsheet.ldpair)%></div>
 										</div>
 	                                </div>
 	                                <div id="tab6" class="tab-pane">
 										<div class="control-group">
 										<label class="control-label">Start Ship Date:</label>
-											<div class="controls"><%= f.text_field :startshipdate, class:"span6",placeholder:"Start Ship Date" %></div>
+											<div class="controls"><%= startshipdate( @trackingsheet.startshipdate)%></div>
 										</div>
 										<div class="control-group">
 										<label class="control-label">Order Due Date Via Boat :</label>
-											<div class="controls"><%= f.text_field :orderduedateviaboat, class:"span6",placeholder:"Order Due Date Via Boat" %></div>
+											<div class="controls"><%= orderduedateviaboat( @trackingsheet.orderduedateviaboat)%></div>
 										</div>
 										<div class="control-group">
 										<label class="control-label">Order Due Date Via Air :</label>
-											<div class="controls"><%= f.text_field :orderduedateviaair, class:"span6",placeholder:"Order Due Date Via Air" %></div>
+											<div class="controls"><%= orderduedateviaair( @trackingsheet.orderduedateviaair)%></div>
 										</div>
 										
 	                                </div>
@@ -256,15 +285,6 @@
 	                                </div>
 	                            </div>                            
 	                        </div>
-									<div class="widget-box" style="border-bottom: 1px solid #CDCDCD;">
-										<div class="form-actions">
-								 		<div class="control-group" style="float:left;border:none;">
-											<label class="control-label">Comments:</label>
-												<div class="controls"><%= f.text_area :comments, class:"span20",placeholder:"Comments",cols:"42", rows:"3" %></div>	
-											</div>	
-											<%= f.submit 'Save', :class => 'btn btn-success btn-xs',:style=>'float:right;' %>
-	 									</div>	
-									</div>	
 </div><!-- -->
 
 								
