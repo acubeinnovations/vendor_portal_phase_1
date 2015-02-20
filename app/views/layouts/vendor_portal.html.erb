@@ -54,12 +54,9 @@
 	 <li class="" ><a title="" href="#"><i class="icon icon-user"></i> <span class="text"> Signed in as: <%= current_user.email %></span></a></li>
    
    
-    <li class="">
-		
-		<%= link_to '/users/'+current_user._id+'/edit'.to_s, :method => 'get'  do %>
-	  	 	<i class="icon icon-cog"></i> Profile
+    <li class=""><%= link_to edit_user_path(current_user), :method => 'get'  do %><i class="icon icon-cog"></i> Profile
 		 <% end %>
-	</li>	
+		</li>	
 		
     <li class=""> 
 	<% if user_signed_in? %>	
@@ -81,12 +78,15 @@
 <div id="sidebar"> <a href="#" class="visible-phone"><i class="icon icon-th-list"></i> Tables</a>
   <ul>
     <li class="active"><a href="../.."><i class="icon icon-home"></i> <span>Dashboard</span></a></li>
-	<li> <a href="/../usertypes"><i class="icon-list-alt"></i> <span>Usertypes</span></a> </li>
-    <li> <a href="/../users"><i class="icon-user"></i> <span>Users</span></a> </li>
-    <!-- <li> <a href="../process"><i class="icon-folder-close"></i> <span>Process</span></a> </li> -->
-    <li> <a href="/../styles"><i class="icon-cog"></i> <span>Styles</span></a> </li>
-    
-    
+		<% if  current_user.userrole=='admin' %>
+		<li> <a href="<%= usertypes_path %>"><i class="icon-list-alt"></i> <span>Usertypes</span></a> </li>
+    <li> <a href="<%= users_path %>"><i class="icon-user"></i> <span>Users</span></a> </li>
+    <li> <a href="<%= styles_path %>"><i class="icon-cog"></i> <span>Styles</span></a> </li>
+		<li> <a href="<%= processmasters_path %>"><i class="icon-cog"></i> <span>Process</span></a> </li>
+    <% else %>
+    <% if  current_user.userrole!='admin'   %>
+		<li> <a href="<%= processmasters_path %>"><i class="icon-cog"></i> <span>Process</span></a> </li>
+		<%end end%>
 
   </ul>
 </div>
