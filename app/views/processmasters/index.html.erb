@@ -46,8 +46,9 @@
 													<td><%= link_to 'Tracking Sheet', edit_trackingsheet_path(@trackingsheet_id),class:'btn btn-warning' %></td>
 												<% if current_user.userrole.in?(allowed_users) %>	<td><%= link_to 'Destroy', processmaster, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td><%end%>
 										</tr>	
+										<% @i+=1%>
 									<% end %>	
-									<% @i+=1%>
+									
 								<% end %>	
 							</tbody>
             </table>
