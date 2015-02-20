@@ -1,69 +1,68 @@
-<%= form_for @proce, :html => {:class => "form-horizontal"} do |f| %>
-	 <% if @proce.errors.any? %>
+<%
+	#data=[]
+ data={'images'=>'Images','factory'=>'Factory','subcontractor'=>'Sub Contractor','salestrackingsheetedtosamplerequest'=>'Sales Proceed to Sample Request','customername'=>'Customer Name','customeraccount'=>'Customer Account','project'=>'Project','xmilldate'=>'X Mill Date','productionleadtime'=>'Production Lead Time', 'salesproceedtosamplerequest'=>'Sales Proceed to Sample Request','protoduebackfromvendor'=>'Proto Due Back From Vendor','daftovendordate'=>'Daf to Vendor Date','rtlmu'=>'RTL MU','mkup'=>'MK-UP','projectedunits'=>'Projected Units','targetfob'=>'Target FOB','targetmu'=>'Target MU','targetws'=>'Target WS','percolor'=>'Per Color','perstyle'=>'Per Style','incoterms'=>'Inco Terms','moq'=>'MOQ','thousandtofivethousandPCS'=>'1000 - 5000 PCS','fivethousandtotenthousandPCS'=>'5000 - 10000 PCS','ldpboat'=>'LDP Boat','ldpair'=>'LDP Air','startshipdate'=>'Start Ship Date','orderduedateviaboat'=>'Order Due Date Via Boat','orderduedateviaair'=>'Order Due Date Via Air','soss'=>'S/O OR S/S','nmbrofdefsmplneeded'=>'# of Dev Samples Needed','dafissued'=>'DAF Issued','sampleduedate'=>'Sample Due Date','daf2soss'=>'S/O OR S/S','daf2nmbrofdefsmplneeded'=>'# of Dev Samples Needed','daf2dafissued'=>'DAF Issued','daf2sampleduedate'=>'Sample Due Date','comments'=>'Comments'}
+#data=[{'factory'=>'Factory'}]
+  
+
+%>
+<% model_class='trackingsheet' %>
+<%= form_for @trackingsheet, :html => {:class => "form-horizontal"} do |f| %>
+	 <% if @trackingsheet.errors.any? %>
 		 <div id="error_explanation">
-		   <h2><%= pluralize(@proce.errors.count, "error") %> prohibited this post from being saved:</h2>
+		   <h2><%= pluralize(@trackingsheet.errors.count, "error") %> prohibited this post from being saved:</h2>
 
 		   <ul>
-		   <% @proce.errors.full_messages.each do |message| %>
+		   <% @trackingsheet.errors.full_messages.each do |message| %>
 		     <li><%= message %></li>
 		   <% end %>
 		   </ul>
 		 </div>
 	 <% end %>
 	
- 	<div style="text-align:right" class="form-actions">
- <% if @proce.persisted?  %>		<%= f.submit 'Save', :class => 'btn btn-success btn-xs' %><% end %>
- 	</div>
-  
+ 	
+  <% @processmaster=Processmaster.find(@trackingsheet.processmaster_id) %>
 <div class="container-fluid">
             	<div class="row-fluid">
-					<div class="<% if @proce.persisted?  %>span2<% else %>span12<% end %>">
+					<div class="<% if @trackingsheet.persisted?  %>span2<% else %>span12<% end %>">
 						<div class="widget-box">
 							<div class="widget-title">
 								<span class="icon">
 									<i class="icon-info-sign"></i>
 								</span>
-								<h5>Project</h5>
+								<h5>Tracking Sheet</h5>
 							</div>
 							<div class="widget-content nopadding">
 								<table class="table table-bordered">
 									
 									<tbody>
 										<tr>
-											<td>Logo</td>
-											<td>{LOGO}</td>
-										</tr>
-										<tr>
 											<td>Division</td>
-											<td><%= f.text_field :division, class:"span20",placeholder:"Division" %></td>
+											<td><%= label_tag 'Division',@processmaster.division.to_s %></td>
 										</tr>
 										<tr>
 											<td>Brand</td>
-											<td><%= f.text_field :brand, class:"span20",placeholder:"Brand" %></td>
+											<td><%= label_tag 'brand',@processmaster.brand.to_s %></td>
 										</tr>
 										<tr>
 											<td>Season</td>
-											<td><%= f.text_field :season, class:"span6",placeholder:"Season" %></td>
+											<td><%= label_tag 'season',@processmaster.season.to_s %></td>
 										</tr>
 										<tr>
 											<td>Year</td>
-											<td><%= f.text_field :year, class:"span20",placeholder:"Year" %></td>
+											<td><%= label_tag 'year',@processmaster.year.to_s %></td>
 										</tr>
 										<tr>
 											<td>Market</td>
-											<td><%= f.text_field :market, class:"span20",placeholder:"Market" %></td>
+											<td><%= label_tag 'market',@processmaster.market.to_s %></td>
 										</tr>
 									</tbody>
 								</table>
 							</div>
-							<div style="text-align:right" class="form-actions">
- 									<% if @proce.persisted?  %>	<% else %>	<%= f.submit 'Save', :class => 'btn btn-success btn-xs' %><% end %>
- 							</div>
 						</div>
 					</div>
 
 
-<% if @proce.persisted?  %>
+
 <div class="span8"><!-- -->
 	<div class="widget-box">
 	                            <div class="widget-title">
@@ -99,30 +98,6 @@
 												</div>
 										</div>
 										<div class="control-group">
-											<label class="control-label">Customer Name :</label>
-												<div class="controls">
-													<%= f.text_field :customername, class:"span6",placeholder:"Customer Name" %>
-												</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label">Customer Account :</label>
-												<div class="controls">
-													<%= f.text_field :customeraccount, class:"span6",placeholder:"Customer Account" %>
-												</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label">Project :</label>
-												<div class="controls">
-													<%= f.text_field :project, class:"span6",placeholder:"Project" %>
-												</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label">Reference Style :</label>
-												<div class="controls">
-													<%= f.text_field :referncestyle, class:"span6",placeholder:"Reference Style" %>
-												</div>
-										</div>
-										<div class="control-group">
 											<label class="control-label">X Mill Date :</label>
 												<div class="controls">
 													<%= f.text_field :xmilldate, class:"span6",placeholder:"X Mill Date" %>
@@ -137,7 +112,7 @@
 										<div class="control-group">
 											<label class="control-label">Sales Proceed to Sample Request :</label>
 												<div class="controls">
-													<%= f.text_field :salesproceedtosamplerequest, class:"span6",placeholder:"Sales Proceed to Sample Request" %>
+													<%= f.text_field :salestrackingsheetedtosamplerequest, class:"span6",placeholder:"Sales Proceed to Sample Request" %>
 												</div>
 										</div>
 
@@ -153,12 +128,7 @@
 													<%= f.text_field :daftovendordate, class:"span6",placeholder:"Daf to Vendor Date" %>
 												</div>
 										</div>
-										<div class="control-group">
-											<label class="control-label">Comments :</label>
-												<div class="controls">
-													<%= f.text_field :comments, class:"span6",placeholder:"Comments" %>
-												</div>
-										</div>
+										
 										<div class="control-group">
 											<label class="control-label">RTL MU :</label>
 												<div class="controls">
@@ -286,18 +256,72 @@
 	                                </div>
 	                            </div>                            
 	                        </div>
+									<div class="widget-box" style="border-bottom: 1px solid #CDCDCD;">
+										<div class="form-actions">
+								 		<div class="control-group" style="float:left;border:none;">
+											<label class="control-label">Comments:</label>
+												<div class="controls"><%= f.text_area :comments, class:"span20",placeholder:"Comments",cols:"42", rows:"3" %></div>	
+											</div>	
+											<%= f.submit 'Save', :class => 'btn btn-success btn-xs',:style=>'float:right;' %>
+	 									</div>	
+									</div>	
 </div><!-- -->
 
+								
 
 
+								<div class="span2">
+									<div class="widget-box">
+										<div class="widget-title">
+											<span class="icon">
+												<i class="icon-book"></i>
+											</span>
+											<h5>Previous Versions</h5>
+										</div>
+									<div class="widget-content ">
+										<div class="scroll-area" data-spy="scroll">
+											<% i=0 %>
+											<%exptarray=['version','user_id']%>
+											<% @trackingsheet.versions.reverse.each do |version| %>
+											<%	if i < @trackingsheet.versions.length-1 %>
+												<div class="widget-content nopadding no-border">
+													<ul id="toggle-view">
+														<li>
+															<span class="label label-success label-with-border-radius">Version  #   <%= version.version %><span class='plus-minus'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+</span></span><br>
+															<div class="panel"> 
+															 <div class="trackingsheet-versions"> 
+																		<div> Updated by: <%= User.find(version.full_attributes['user_id']).email%></div>
+																		<% version.altered_attributes.each do |altattrbkey,altattrbval| %>
+																		
+																				<%	if !altattrbkey.in?(exptarray) %>
+																					<div><%= data[altattrbkey] %> : <% if altattrbval.first!='' %> <%= altattrbval.first %> to <% end %><%= altattrbval.second %> </p></div>
+																				<% end %>
+																		<% end %>
+									 								<div><%= 'updated_at' %> : <%= version.updated_at %> </p></div>
+								 									
+								 							 	  
+															</div>
+														 </div>
+														</li>
+													</ul> 
+												 </div>
+												<% end %>
+												<% i+=1 %>
+												<% end %>
+											</div>
+										</div>
+									</div>
+								</div>
 
 
+				
+		
+</div>			
+<% end %>	
 
 
-
-
-
-					<div class="span2">
+<!--
+	<div class="span2">
 						<div class="widget-box">
 							<div class="widget-title">
 								<span class="icon">
@@ -332,6 +356,4 @@
 						</div>
 					</div>
 				</div>
-		<% end %>
-</div>			
-<% end %>	
+-->

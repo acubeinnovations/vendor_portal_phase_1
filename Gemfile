@@ -64,6 +64,8 @@ group :development, :test do
   gem "gretel"
 	
 	gem "puma"
+
+	gem 'mongoid_delorean'
 	# Newly Added ##
 end
 

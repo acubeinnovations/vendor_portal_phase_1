@@ -4,7 +4,7 @@ $(document).ready(function(){
 	
 	
 	// === Prepare peity charts === //
-	maruti.peity();
+	vendor.peity();
 	
 	// === Prepare the chart data ===/
 	var sin = [], cos = [];
@@ -38,7 +38,7 @@ $(document).ready(function(){
                 var x = item.datapoint[0].toFixed(2),
 					y = item.datapoint[1].toFixed(2);
                     
-                maruti.flot_tooltip(item.pageX, item.pageY,item.series.label + " of " + x + " = " + y);
+                vendor.flot_tooltip(item.pageX, item.pageY,item.series.label + " of " + x + " = " + y);
             }
             
         } else {
@@ -109,7 +109,7 @@ $(document).ready(function(){
 });
 
 
-maruti = {
+vendor = {
 		// === Peity charts === //
 		peity: function(){		
 			$.fn.peity.defaults.line = {

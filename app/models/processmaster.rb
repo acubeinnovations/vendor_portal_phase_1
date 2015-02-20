@@ -1,19 +1,28 @@
-class Style
+class Processmaster
   include Mongoid::Document
-  include Mongoid::Paperclip
-  include Mongoid::Timestamps::Created
-  field :stylename, type: String
+	include Mongoid::Timestamps::Created
+	include Mongoid::Paperclip
+
+  field :division, type: String
+	field :brand, type: String
+  field :season, type: String
+  field :year, type: String
+  field :market, type: String
+	field :customername, type: String
+  field :customeraccount, type: String
+  field :project, type: String
+	field :referencestyle, type: String
+	field :stylename, type: String
   field :stylecode, type: String
+	field :user_ids ,type: Array
 
 	has_and_belongs_to_many :users 
 	accepts_nested_attributes_for :users, allow_destroy: true#, reject_if: :all_blank
-  
-	has_many:processmasters 
-  
-  has_mongoid_attached_file :image,
+  belongs_to :style 
+  has_one :trackingsheet 
+
+	has_mongoid_attached_file :image,
       :url => "/system/attachments/:id/:style/:basename.:extension", 
-           :keep_old_files => true , 
-          :keep_old_files => :version_condition_met?,
       :path => ":rails_root/public/system/attachments/:id/:style/:basename.:extension", 
       :styles => {
         :original => ['1920x1680>', :jpg],
@@ -23,7 +32,8 @@ class Style
       },
       :convert_options => { :all => '-background white -flatten +matte' }
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+	#validates :project, :presence => true
 
-
-
+	
+	after_create :create_trackingsheet
 end

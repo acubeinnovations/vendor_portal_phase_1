@@ -1,3 +1,56 @@
 // Place all the styles related to the Styles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.label-with-border-radius{
+	border-radius: 2px;
+}
+.border-left-0px > tbody > tr > td {
+	border-left: 0px;
+}
+.no-border{
+	border-bottom: 0px !important;
+}
+.scroll-area {
+	height: 380px;
+	position: relative;
+	overflow: auto;
+}
+
+#toggle-view {
+list-style:none;	
+font-family:arial;
+font-size:10px;
+margin:0;
+padding:0;
+//width:300px;
+border-bottom: medium none !important;
+}
+
+#toggle-view li {
+margin:10px 10px 10px 0;
+padding-top:7px;
+padding-bottom:10px;
+
+position:relative;
+cursor:pointer;
+}
+#toggle-view h3 {
+margin:0;
+font-size:14px;
+}
+
+#toggle-view span {
+position:absolute;
+ top:0;
+color:#fff;
+font-size:12px;
+width:105px;
+}
+#toggle-view .panel {
+margin:5px 0;
+display:none;
+border-bottom:1px solid #ccc;
+}	
+.plus-minus{
+font-weight:strong;
+}

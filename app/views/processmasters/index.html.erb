@@ -1,0 +1,60 @@
+<% #breadcrumb :processmaster, @processmaster %>
+<div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-content nopadding">
+            <table class="table table-bordered data-table">
+              <thead>
+                <tr>
+                  <th>Sl</th>
+                  <th>Division</th>
+				  <th>Brand</th>
+				  <th>Season</th>
+				  <th>Year</th>
+				  <th>Market</th>
+				  <th>Customer Name</th>
+				  <th>Customer Account</th>
+				  <th>Project</th>
+          <th>Created Date</th>
+					<% allowed_users=['admin','operations']%>
+          <th colspan="<% if current_user.userrole.in?(allowed_users) %>3<% else %> 1<% end %>">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+								<% @i=1 %>
+								
+								<% @processmasters.each do |processmaster| %>
+									<% @trackingsheet=Trackingsheet.where("processmaster_id"=>processmaster._id) %>
+									<% @trackingsheet.each do |tk| %>
+									<% @trackingsheet_id= tk.id %>
+									<%end%>
+									
+									<% if current_user.id.in?(processmaster.user_ids) || current_user.userrole.in?(allowed_users) %>
+										<tr class="gradeX">
+													<td><%= @i %></td>
+													<td><%= processmaster.division %></td>
+										      <td><%= processmaster.brand %></td>
+										      <td><%= processmaster.season %></td>
+										      <td><%= processmaster.year %></td>
+										      <td><%= processmaster.market %></td>
+										      <td><%= processmaster.customername %></td>
+										      <td><%= processmaster.customeraccount %></td>
+										      <td><%= processmaster.project %></td>
+										      <td><%= processmaster.created_at %></td>
+													<% if current_user.userrole.in?(allowed_users) %><td><%= link_to 'Edit', edit_processmaster_path(processmaster),class:'btn btn-info' %></td><%end%>
+													<td><%= link_to 'Tracking Sheet', edit_trackingsheet_path(@trackingsheet_id),class:'btn btn-warning' %></td>
+												<% if current_user.userrole.in?(allowed_users) %>	<td><%= link_to 'Destroy', processmaster, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td><%end%>
+										</tr>	
+									<% end %>	
+									<% @i+=1%>
+								<% end %>	
+							</tbody>
+            </table>
+				
+         	</div>
+       </div>
+   </div>
+				<% if current_user.userrole.in?(allowed_users) %>	<%= link_to 'New Process', new_processmaster_path ,class:'btn btn-success' %><%end%>
+</div>
+<!-- EOF -->

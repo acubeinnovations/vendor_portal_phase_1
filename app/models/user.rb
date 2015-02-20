@@ -29,6 +29,8 @@ class User
   field :last_sign_in_ip,    type: String
 	
 	has_and_belongs_to_many :styles
+	has_and_belongs_to_many :processmasters
+
 	#referenced_in:uesertype
   ## Confirmable
   # field :confirmation_token,   type: String

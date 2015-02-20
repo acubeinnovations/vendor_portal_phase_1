@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   
 
   
+  resources :trackingsheets
+
+  resources :processmasters
+
   resources :proces, :path => "process" #Url Aliasing from proces ->  process
   
    resources :styles
@@ -20,5 +24,5 @@ Rails.application.routes.draw do
 		#delete "/logout" => "devise/sessions#destroy", :as => :destroy_user_session
   end
   
-	root :to => 'proces#index'
+	root :to => 'home#index'
 end
