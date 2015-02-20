@@ -4,6 +4,15 @@
 .label-with-border-radius{
 	border-radius: 2px;
 }
+.font-size-10px > h5{
+font-size:10px !important;
+}
+.pading-0-0-0-10px{
+ padding:0 0 0 5px !important;
+}
+.display-inline-block{
+display:inline-block;
+}
 .border-left-0px > tbody > tr > td {
 	border-left: 0px;
 }
@@ -12,7 +21,7 @@
 }
 .scroll-area {
 	height: 380px;
-	position: relative;
+	//position: relative;
 	overflow: auto;
 }
 
@@ -30,6 +39,7 @@ border-bottom: medium none !important;
 margin:10px 10px 10px 0;
 padding-top:7px;
 padding-bottom:10px;
+width:180px;
 
 position:relative;
 cursor:pointer;
