@@ -330,20 +330,27 @@
 											<%exptarray=['version','user_id']%>
 											<% @trackingsheet.versions.reverse.each do |version| %>
 											<%	if i < @trackingsheet.versions.length-1 %>
-												<div class="widget-content nopadding no-border">
+												<div class="widget-content nopadding">
+													<% if Time.now.strftime("%Y-%m-%d") == version.updated_at.strftime("%Y-%m-%d")%> 													<div class="version_head">Today, <%= version.updated_at.strftime("%T %p")  %></div>
+													<% else%>
+													<div class="version_head"><%= version.updated_at.strftime("%d %b %Y, %T %p")  %></div>                                        <% end %> 
+													
+													<div class="version_head"><i class="icon-stop"></i><%= User.find(version.full_attributes['user_id']).email%></div>
 													<ul id="toggle-view">
 														<li>
-															<span class="label label-success label-with-border-radius">Version  #   <%= version.version %><span class='plus-minus'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+</span></span><br>
+															
+															<span class="label label-success label-with-border-radius">Details<span class='plus-minus'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+</span></span><br>
 															<div class="panel"> 
 															 <div class="trackingsheet-versions"> 
-																		<div> Updated by: <%= User.find(version.full_attributes['user_id']).email%></div>
+																		
 																		<% version.altered_attributes.each do |altattrbkey,altattrbval| %>
 																		
+										
 																				<%	if !altattrbkey.in?(exptarray) %>
 																					<div><%= data[altattrbkey] %> : <% if altattrbval.first!='' %> <%= altattrbval.first %> to <% end %><%= altattrbval.second %> </p></div>
 																				<% end %>
 																		<% end %>
-									 								<div><%= 'Updated At ' %> : <%= version.updated_at %> </p></div>
+									 								
 								 									
 								 							 	  
 															</div>

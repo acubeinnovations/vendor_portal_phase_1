@@ -12,3 +12,12 @@ margin-top: 4px;
 .nav-tabs li a{
 	font-size:10px !important;
 }
+.version_head{
+	font-size:11px;
+}
+.controls label{
+	margin-top:5px;
+}
+.version_head i {
+	margin-top:-1px;
+}
