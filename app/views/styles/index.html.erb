@@ -19,7 +19,7 @@
 				  <%  @styles.each do |style| %>
 					<tr class="gradeX">
 						<td> <%=@i %></td>
-						<td><%= link_to style.stylename, style %></td>
+						<td><%=  style.stylename %></td>
 							<td><%= style.stylecode %></td>
 						<td><% @k=1 %><% style.users.each do |user| %><%= @k.to_s+'. '+user.email %><br><% @k+=1 %><% end %></td>
 						<td><%= image_tag style.image.url(:small)  %></td>

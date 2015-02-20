@@ -73,8 +73,14 @@
 										<li class=""><a data-toggle="tab" href="#tab4">First Cost Per Style</a></li>
 										<li class=""><a data-toggle="tab" href="#tab5">LDP Load</a></li>
 										<li class=""><a data-toggle="tab" href="#tab6">Customer Delivery</a></li>
-										<li class=""><a data-toggle="tab" href="#tab7">1st DAF/STYLE Sample</a></li>
-										<li class=""><a data-toggle="tab" href="#tab8">2nd DAF/STYLE Sample</a></li>
+									<!--	<li class=""><a data-toggle="tab" href="#tab7">1st DAF/STYLE Sample</a></li>
+										<li class=""><a data-toggle="tab" href="#tab8">2nd DAF/STYLE Sample</a></li>-->
+										<% if current_user.userrole=='operations' || current_user.userrole=='admin'  %>
+										<li class=""><a data-toggle="tab" href="#tab9">Cost sheet</a></li>
+										<% end %>
+										<% if current_user.userrole=='operations' || current_user.userrole=='admin' || current_user.userrole=='vendor' %>
+											<li class=""><a data-toggle="tab" href="#tab10">Testing</a></li>
+										<% end %>
 	                                </ul>
 	                            </div>
 	                            <div class="widget-content tab-content">
@@ -152,12 +158,12 @@
 													<%= daftovendordate( @trackingsheet.daftovendordate)%>
 												</div>
 										</div>
-										<div class="control-group">
+									<!--	<div class="control-group">
 											<label class="control-label">Comments :</label>
 												<div class="controls">
-													<%= comments( @trackingsheet.comments)%>
+													<%#= comments( @trackingsheet.comments)%>
 												</div>
-										</div>
+										</div>-->
 										<div class="control-group">
 											<label class="control-label">RTL MU :</label>
 												<div class="controls">
@@ -281,10 +287,30 @@
 										<label class="control-label">Sample Due Date :</label>
 											<div class="controls"><%= f.text_field :daf2sampleduedate, class:"span6",placeholder:"Sample Due Date" %></div>
 										</div>
+											</div> 
+
+										<div id="tab9" class="tab-pane">
 										
-	                                </div>
-	                            </div>                            
+										</div>                             
+
+										<div id="tab10" class="tab-pane">
+										
+										
+	                  </div>
+
+										 
+										</div>                            
 	                        </div>
+
+											<div class="widget-box" style="border-bottom: 1px solid #CDCDCD;">
+										<div class="form-actions">
+								 		<div class="control-group" style="float:left;border:none;">
+											<label class="control-label">Comments:</label>
+												<div class="controls"><%= f.text_area :comments, class:"span20",placeholder:"Comments",cols:"42", rows:"3" %></div>	
+											</div>	
+											<%= f.submit 'Save', :class => 'btn btn-success btn-xs',:style=>'float:right;' %>
+	 									</div>	
+									</div>	
 </div><!-- -->
 
 								

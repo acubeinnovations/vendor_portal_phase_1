@@ -222,23 +222,9 @@ module TrackingsheetsHelper
    
          ###---------------------------------------Comments--------------------------------------------### 
 
-          def comments(comments)
-            if current_user.userrole=='admin'
-            text_field_tag('trackingsheet[comments]',comments,class:"span20",placeholder:"Comments")  
-            else if current_user.userrole=='operations'
-            text_field_tag('trackingsheet[comments]',comments,class:"span20",placeholder:"Comments")    
-            else if current_user.userrole=='sales'
-            text_field_tag('trackingsheet[comments]',comments,class:"span20",placeholder:"Comments")    
-            else if current_user.userrole=='designer'
-            text_field_tag('trackingsheet[comments]',comments,class:"span20",placeholder:"Comments")    
-            else if current_user.userrole=='vendor'
-            text_field_tag('trackingsheet[comments]',comments,class:"span20",placeholder:"Comments")    
-            end #vendors
-            end #designers
-            end #sales
-            end #operations 
-            end #admin
-          end   
+         # def comments(comments)
+					#	text_area 'trackingsheet[comments]',comments, class:"span20",placeholder:"Comments",cols:"42", rows:"3"
+        #  end   
 
         ###---------------------------------------RTL MU--------------------------------------------### 
 

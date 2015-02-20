@@ -16,6 +16,7 @@ class StylesController < ApplicationController
   # GET /styles/1
   # GET /styles/1.json
   def show
+		redirect_to styles_path
   end
 
   # GET /styles/new
