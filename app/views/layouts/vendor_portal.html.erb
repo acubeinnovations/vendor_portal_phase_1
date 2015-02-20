@@ -82,11 +82,8 @@
 		<li> <a href="<%= usertypes_path %>"><i class="icon-list-alt"></i> <span>Usertypes</span></a> </li>
     <li> <a href="<%= users_path %>"><i class="icon-user"></i> <span>Users</span></a> </li>
     <li> <a href="<%= styles_path %>"><i class="icon-cog"></i> <span>Styles</span></a> </li>
-		<li> <a href="<%= processmasters_path %>"><i class="icon-align-left"></i> <span>Process</span></a> </li>
-    <% else %>
-    <% if  current_user.userrole!='admin'   %>
-		<li> <a href="<%= processmasters_path %>"><i class="icon-align-left"></i> <span>Process</span></a> </li>
-		<%end end%>
+
+		<%end%>
 
   </ul>
 </div>
