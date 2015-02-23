@@ -80,7 +80,7 @@
 															<% if !@processmaster.persisted? %>
 															<tr>
 																<td>Refer Style</td>
-																<td> <%= f.collection_select :referencestyle,Style.all,:id,:stylename %></td>
+																<td> <%= f.collection_select :referencestyle,current_user.division.styles,:id,:stylename %></td>
 															</tr>
 															<%	end	%>
 															<% if !@processmaster.persisted? %><% else %>
