@@ -37,7 +37,7 @@
 									<tbody>
 										<tr>
 											<td>Division</td>
-											<td><%= label_tag 'Division',@processmaster.division.to_s %></td>
+											<td><% if !@processmaster.division.blank? %><%= Division.find(@processmaster.division).name %><% end %></td>
 										</tr>
 										<tr>
 											<td>Brand</td>
@@ -92,7 +92,10 @@
 													<%#= f.text_field :images, class:"span6",placeholder:"Images" %>
 												</div>
 										</div>-->
-
+											
+										
+										
+										
 										<div class="control-group">
 											<label class="control-label">Factory :</label>
 												<div class="controls">
@@ -177,6 +180,12 @@
 												<div class="controls">
 													<%= mkup( @trackingsheet.mkup)%>
 												</div>
+										</div>
+										
+										<div class="control-group">	
+										<label class="control-label">Comments:</label>
+											<div class="controls">
+								<%= f.text_area :comments, class:"span20",placeholder:"Comments",cols:"12", rows:"2", readonly:true %></div>	
 										</div>
                   					
 	                                </div>
@@ -308,7 +317,7 @@
 										<div class="form-actions">
 								 		<div class="control-group" style="float:left;border:none;">
 											<label class="control-label">Comments:</label>
-												<div class="controls"><%= f.text_area :comments, class:"span20",placeholder:"Comments",cols:"42", rows:"3" %></div>	
+												<div class="controls"><%= text_area_tag 'trackingsheet[comments]', nil, rows: 2, cols: 85, placeholder:"Comment", class:"span60" %></div>	
 											</div>	
 											<%= f.submit 'Save', :class => 'btn btn-success btn-xs',:style=>'float:right;' %>
 	 									</div>	
@@ -384,21 +393,8 @@
 <% else %> <!-- Vendor Check else condition -->
 
 
-<% i=0 %>
-<% @trackingsheet.versions.reverse.each do |version| %>
-
-<%	if i < @trackingsheet.versions.length-2 %>
-
-<% if User.find(version.full_attributes['user_id']).userrole == 'vendor'%>
 
 
-
-
-
-
-
-
-							
 								<div class="span2">
 									
 									<div class="widget-box">
@@ -471,8 +467,7 @@
 
 <% end %>
 <% end %>
-<% end %>
-<% end %> <!-- Vendor Check else condition ends-->	
-<% end %> 
+
+
 
 
