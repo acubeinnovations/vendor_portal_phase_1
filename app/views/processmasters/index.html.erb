@@ -32,8 +32,8 @@
 									
 									<% if current_user.id.in?(processmaster.user_ids) || current_user.userrole.in?(allowed_users) %>
 										<tr class="gradeX">
-													<td><%= @i %></td>
-													<td><%= processmaster.division %></td>
+											  <td><%= @i %></td>
+											  <td><% if !processmaster.division.blank? %><%= Division.find(processmaster.division).name %><% end %></td>
 										      <td><%= processmaster.brand %></td>
 										      <td><%= processmaster.season %></td>
 										      <td><%= processmaster.year %></td>

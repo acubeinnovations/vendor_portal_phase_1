@@ -21,3 +21,7 @@ margin-top: 4px;
 .version_head i {
 	margin-top:-1px;
 }
+
+span input {
+	margin:0 !important;
+}
