@@ -38,6 +38,7 @@ class ProcessmastersController < ApplicationController
     @processmaster.division = @style.division
     @processmaster.brand = @style.brand
     @processmaster.market = @style.market
+    @processmaster.season = @style.season
     
     
 		@processmaster.image = @style.image

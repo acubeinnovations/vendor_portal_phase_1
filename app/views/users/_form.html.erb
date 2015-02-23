@@ -55,6 +55,17 @@
 					
   			</div>
     	</div>
+		
+		
+  		<div class="control-group select_user_division">
+		
+  		<label class="control-label">Division</label>
+  			<div class="controls">
+  					<%= f.collection_select :division,Division.all,:id,:name,{class: "span6"} %>
+					
+  			</div>
+		
+    	</div>
 		<% end %>
 
 		

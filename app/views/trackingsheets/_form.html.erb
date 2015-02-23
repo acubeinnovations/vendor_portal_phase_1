@@ -322,7 +322,7 @@
 										
 										
 	                  </div>
-										<div id="tab11" class="tab-pane"><div class="control-group container-export-csv"><a href="#" name="exportcsv" class="btn btn-info btn-xs" style="float:right;">Export CSV</a></div>
+										<div id="tab11" class="tab-pane"><div class="control-group container-export-csv"><a href="#" name="lockvendor" class="btn btn-info btn-xs" style="float:right;">Lock Vendor</a></div>
 											<table class="table table-bordered data-table">
 										    <thead>
 										      <tr>
@@ -358,7 +358,7 @@
 													</td>
 													<td>
 														<div class="controls">
-															<%= link_to 'Details','#modal-view-vendor-details',:class=>'btn btn-warning float-right','data-toggle':"modal" %>
+															<%= link_to 'Details','#modal-view-vendor-details',:class=>'btn btn-warning get-versions','data-toggle':"modal",:data => { :userid => vuser.id, :trackingsheetid => @trackingsheet.id } %>
 																
 														</div>
 													</td>
@@ -388,19 +388,20 @@
 
 								
 
-
+							<% if current_user.userrole!='vendor'%>
 								<div class="span2">
 									<div class="widget-box">
 										<div class="widget-title font-size-10px">
 											<span class="icon">
 												<i class="icon-book"></i>
 											</span>
+											
 											<h5>Previous Versions</h5>
 										</div>
 									<div class="widget-content display-inline-block pading-0-0-0-10px ">
 										<div class="scroll-area" data-spy="scroll">
 											<% i=0 %>
-											<%exptarray=['version','user_id']%>
+											<% exptarray=['version','user_id'] %>
 											<% @trackingsheet.versions.reverse.each do |version| %>
 
 											<%	if i < @trackingsheet.versions.length-2 %>
@@ -446,13 +447,78 @@
 								</div>
 
 
-				<div class="modal vendor-modal hide" id="modal-view-vendor-details">
+</div>	
+
+<% else %> <!-- Vendor Check else condition -->
+							<div class="span2">
+									
+									<div class="widget-box">
+										<div class="widget-title font-size-10px">
+											<span class="icon">
+												<i class="icon-book"></i>
+											</span>
+											
+											<h5>Previous Versions</h5>
+										</div>
+									<div class="widget-content display-inline-block pading-0-0-0-10px">
+										<div class="scroll-area" data-spy="scroll">
+											<% i=0 %>
+											<%exptarray=['version','user_id']%>
+											<% @trackingsheet.versions.reverse.each do |version| %>
+
+											<%	if i < @trackingsheet.versions.length-2 %>
+												<% if User.find(version.full_attributes['user_id']).userrole=='vendor' && User.find(version.full_attributes['user_id']).email==current_user.email%>
+												<div class="widget-content nopadding">
+													
+													<% if Time.now.strftime("%Y-%m-%d") == version.updated_at.strftime("%Y-%m-%d")%> 													<div class="version_head">Today, <%= version.updated_at.strftime("%T")  %></div>
+													
+													<% else%>
+													<div class="version_head"><%= version.updated_at.strftime("%d %b %Y, %T")  %></div>                                        <% end %> 
+																												 <div class="trackingsheet-versions"> 
+												<div class="version_head"><i class="icon-stop"></i><%= User.find(version.full_attributes['user_id']).email%></div>
+
+													<ul id="toggle-view">
+														<li>
+															
+															<span class="label label-success label-with-border-radius">Details<span class='plus-minus'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+</span></span><br>
+															<div class="panel"> 
+															 						
+																		<% version.altered_attributes.each do |altattrbkey,altattrbval| %>
+																		
+										
+																				<%	if !altattrbkey.in?(exptarray) %>
+
+																					<div><% if !altattrbval.first.blank? || !altattrbval.second.blank? %> <%= data[altattrbkey] %> : <% if !altattrbval.first.blank? %> <%= altattrbval.first %> to <% end %><%= altattrbval.second %><% end %> </p></div>
+
+																				<% end %>
+																		<% end %>
+									 								
+								 									
+								 							 	  
+															</div>
+														 </div>
+														</li>
+													</ul> 
+												 </div><% end %>
+												<% end %>
+												<% i+=1 %>
+												<% end %>
+											</div>
+										</div>
+									</div>
+								</div>
+	
+</div>
+<% end %>	
+ <!-- Vendor Check else condition ends-->	
+ 
+<div class="modal vendor-modal hide" id="modal-view-vendor-details">
 										 <div class="modal-header">
 											<button type="button" id="close-modal" class="close" data-dismiss="modal">×</button>
 											<h3>Vendor</h3>
 										</div>
 										<div class="modal-body">
-											<div class="span9">
+											<div class="span6">
 												<div class="widget-box">
 												<div class="widget-title">
 		                      <ul class="nav nav-tabs">
@@ -460,7 +526,7 @@
 		                          <li class="active"><a data-toggle="tab" href="#sec-tab1">General</a></li>
 		                          <li class=""><a data-toggle="tab" href="#sec-tab2">Minimum MOQ</a></li>
 															<li class=""><a data-toggle="tab" href="#sec-tab3">First Cost Per Style</a></li>
-															<% if current_user.userrole=='operations' || current_user.userrole=='admin' || current_user.userrole=='vendor' %>
+															<% if current_user.userrole=='operations' || current_user.userrole=='admin' %>
 															<li class=""><a data-toggle="tab" href="#sec-tab4">Cost sheet</a></li>
 															<li class=""><a data-toggle="tab" href="#sec-tab5">Testing</a></li>
 															<% end %>
@@ -547,34 +613,10 @@
 													</div>
 											</div>
 										</div>
-										<!-- span 2 versions-->
-											<div class="span3">
-									<div class="widget-box">
-										<div class="widget-title font-size-10px">
-											<span class="icon">
-												<i class="icon-book"></i>
-											</span>
-											<h5>Previous Versions</h5>
-										</div>
-										<div class="widget-content display-inline-block pading-0-0-0-10px width-165px">
-										<div class="scroll-area" style="height:250px;" data-spy="scroll">
-											<div class="widget-content nopadding">
-													<div class="version_head">24 Feb 2015, 05:48:37 AM</div>                                         
-															<div class="trackingsheet-versions"> 
-																<div class="version_head"><i class="icon-stop"></i>admin@vendor.com</div>
-																	<ul id="toggle-view">
-																		<li>
-																			<span class="label label-success label-with-border-radius">Details<span class="plus-minus">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+</span></span><br>
-																				<div class="panel"> 
-															 						<div> X Mill Date : vv <p></p></div>
-																				</div>
-																		 </li>
-																	</ul>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
+										<!-- span 3 versions-->
+											<div class="span3" id="vendor_versions">
+
+
 											</div>
 										</div>
 									
@@ -583,50 +625,7 @@
 										
 										</div>
 					</div>
-		
+
 </div>		
-<div id="overlay"></div>	
-<% end %>	
 
-
-							
-
-
-
-<!--
-	<div class="span2">
-						<div class="widget-box">
-							<div class="widget-title">
-								<span class="icon">
-									<i class="icon-file"></i>
-								</span>
-								<h5>Version History</h5>
-							</div>
-							<div class="widget-content nopadding">
-								<table class="table table-bordered">
-									<thead>
-								
-									</thead>
-									<tbody>
-										<tr>
-											<td><a href="#">Version 1</a></td>
-										</tr>
-										<tr>
-											<td><a href="#">Version 2</a></td>
-										</tr>
-										<tr>
-											<td><a href="#">Version 3</a></td>
-										</tr>
-										<tr>
-											<td><a href="#">Version 4</a></td>
-										</tr>
-										<tr>
-											<td><a href="#">Version 5</a></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				</div>
---!>
+<% end %>

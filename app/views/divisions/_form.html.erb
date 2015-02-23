@@ -1,0 +1,38 @@
+<%= form_for @division, :html => {:class => "form-horizontal"} do |f| %>
+	 <% if @division.errors.any? %>
+		 <div id="error_explanation">
+		   <h2><%= pluralize(@division.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+		   <ul>
+		   <% @usertype.errors.full_messages.each do |message| %>
+		     <li><%= message %></li>
+		   <% end %>
+		   </ul>
+		 </div>
+	 <% end %>
+<div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+	<div class="widget-box">
+		<div class="control-group">
+		<label class="control-label">Name</label>
+			<div class="controls">
+					<%= f.text_field :name, class:"span6",placeholder:"Name" %>
+			</div>
+		</div>
+		<div class="control-group">
+		<label class="control-label">Description</label>
+			<div class="controls">
+					<%= f.text_field :description, class:"span6",placeholder:"Description" %>
+			</div>
+	</div>
+	<div class="form-actions">
+		<%= f.submit 'Save', :class => 'btn btn-success btn-xs' %>
+	</div>  
+</div>
+
+</div>
+</div>
+
+
+<% end %>

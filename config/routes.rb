@@ -2,7 +2,13 @@ Rails.application.routes.draw do
   
 
   
-  resources :trackingsheets
+  resources :divisions 
+
+  resources :trackingsheets do
+		collection do
+			get "vendor_versions"
+		end
+	end
 
   resources :processmasters
 

@@ -152,7 +152,7 @@ module TrackingsheetsHelper
             else if current_user.userrole=='designer'
             label_tag(:productionleadtime,productionleadtime,class:"span20") 
             else if current_user.userrole=='vendor'
-            text_field_tag('proce[productionleadtime]',productionleadtime,class:"span20",placeholder:"Production Lead Time")    
+            text_field_tag('trackingsheet[productionleadtime]',productionleadtime,class:"span20",placeholder:"Production Lead Time")    
             end #vendors
             end #designers
             end #sales

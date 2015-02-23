@@ -8,6 +8,7 @@ class Style
   field :division, type: String
   field :brand, type: String
   field :market, type: String
+  field :season, type: String
   
 
 	has_and_belongs_to_many :users 

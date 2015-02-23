@@ -7,9 +7,9 @@
               <thead>
                 <tr>
                   <th>Sl</th>
+                  <th>Name</th>
+				  <th>Role</th>
                   <th>Email id</th>
-								 <th>Role</th>
-                  <th>Created</th>
                   <th>Last Login</th>
                   <th colspan="2">Actions</th>
                 </tr>
@@ -18,10 +18,10 @@
 				  <% @i=1 %>
 				  <% @users.each do |user| %>
 					<tr class="gradeX">
-						<td> <%=@i %></td>
+						<td class="center"> <%=@i %></td>
+						<td><%= user.lastname %> <%= user.firstname %></td>
+						<td><%= user.userrole %></td>
 						<td><%= user.email %></td>
-							<td><%= user.userrole %></td>
-						<td><%= user.created_at %></td>
 						<td><%= user.last_sign_in_at %></td>
 					<!--	<td><%= link_to 'Show', user, :class => 'btn btn-primary btn-xs' %></td>-->
 						<td><%= link_to 'Edit', edit_user_path(user), :class => 'btn btn-warning btn-xs' %></td>

@@ -12,6 +12,7 @@ class User
 	field :firstname,          type: String, default: ""
   field :lastname, 					 type: String, default: ""
 	field :userrole, 			 type: String, default: ""
+  field :division, 			 type: String, default: ""
  # field :_id, 			 type: String,  default:->{ email.to_s.parameterize}
 
   ## Recoverable
@@ -30,6 +31,7 @@ class User
 	
 	has_and_belongs_to_many :styles
 	has_and_belongs_to_many :processmasters
+  belongs_to :division
 
 	#referenced_in:uesertype
   ## Confirmable
