@@ -34,6 +34,12 @@ class ProcessmastersController < ApplicationController
 		@style = Style.find(processmaster_params['referencestyle'])
 		@processmaster.stylename = @style.stylename
 		@processmaster.stylecode = @style.stylecode
+    
+    @processmaster.division = @style.division
+    @processmaster.brand = @style.brand
+    @processmaster.market = @style.market
+    
+    
 		@processmaster.image = @style.image
 		@processmaster.user_ids = @style.user_ids
 		#@processmaster.id=@processmaster.project.to_s.parameterize+Date.today.to_time.to_i.to_s
@@ -88,7 +94,7 @@ class ProcessmastersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def processmaster_params
-      params.require(:processmaster).permit(:division,:brand,:season,:year,:market,:customername,:customeraccount,:project,:referencestyle)
+      params.require(:processmaster).permit(:season,:year,:customername,:customeraccount,:project,:referencestyle)
     end
 		def processmaster_update_params
       params.require(:processmaster).permit(:division,:brand,:season,:year,:market,:customername,:customeraccount,:project,:referencestyle,:stylename,:stylecode,:image,{ :user_ids => [] })

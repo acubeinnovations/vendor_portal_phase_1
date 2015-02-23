@@ -4,6 +4,11 @@ class Style
   include Mongoid::Timestamps::Created
   field :stylename, type: String
   field :stylecode, type: String
+  
+  field :division, type: String
+  field :brand, type: String
+  field :market, type: String
+  
 
 	has_and_belongs_to_many :users 
 	accepts_nested_attributes_for :users, allow_destroy: true#, reject_if: :all_blank

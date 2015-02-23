@@ -28,14 +28,34 @@
 												<td style="<% if !@processmaster.persisted?  %><%= 'width:100%;'.to_s %><% else %><%= 'width:40%;'.to_s %><% end %>">
 													<table class="table table-bordered border-left-0px">
 														<tbody>
+															<% if !@processmaster.persisted? %><% else %>
 															<tr>
 																<td>Division</td>
-																<td><%= f.text_field :division, class:"span10",placeholder:"Division" %></td>
+																<td><%= f.text_field :division, class:"span10" %></td>
 															</tr>
+															
 															<tr>
 																<td>Brand</td>
-																<td><%= f.text_field :brand, class:"span10",placeholder:"Brand" %></td>
+																<td><%= f.text_field :brand, class:"span10" %></td>
 															</tr>
+															<tr>
+																<td>Market</td>
+																<td><%= f.text_field :market, class:"span10" %></td>
+															</tr>
+															
+															
+															
+															<tr>
+																<td>Style Name</td>
+																<td><%= f.text_field :stylename, class:"span10" %></td>
+															</tr>
+															<tr>
+																<td>Style Code</td>
+																<td><%= f.text_field :stylecode, class:"span10" %></td>
+															</tr>
+															<tr>
+															<% end %>	
+														
 															<tr>
 																<td>Season</td>
 																<td><%= f.text_field :season, class:"span10",placeholder:"Season" %></td>
@@ -44,10 +64,7 @@
 																<td>Year</td>
 																<td><%= f.text_field :year, class:"span10",placeholder:"Year" %></td>
 															</tr>
-															<tr>
-																<td>Market</td>
-																<td><%= f.text_field :market, class:"span10",placeholder:"Market" %></td>
-															</tr>
+															
 															<tr>
 																<td>Customer Name</td>
 																<td><%= f.text_field :customername, class:"span10",placeholder:"Customer Name" %></td>
@@ -67,14 +84,7 @@
 															</tr>
 															<%	end	%>
 															<% if !@processmaster.persisted? %><% else %>
-															<tr>
-																<td>Style Name</td>
-																<td><%= f.text_field :stylename, class:"span10" %></td>
-															</tr>
-															<tr>
-																<td>Style Code</td>
-																<td><%= f.text_field :stylecode, class:"span10" %></td>
-															</tr>
+															
 															<tr>
 																<td>Image</td>
 																<td><% if @processmaster.image.url!='/images/original/missing.png' %>
