@@ -51,7 +51,7 @@ layout 'vendor_portal'
     end
   end
 	def user_params
-      params.require(:user).permit(:username, :email, :password, :password_confirmation,:firstname,:lastname,:userrole)
+      params.require(:user).permit(:username, :email, :password, :password_confirmation,:firstname,:lastname,:userrole,:division)
   end
 
   def destroy

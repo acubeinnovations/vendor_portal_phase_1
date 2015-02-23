@@ -26,7 +26,8 @@
 												<div class="control-group">
 													<label class="control-label">Division</label>
 														<div class="controls">
-																<%= f.text_field :division, class:"span6",placeholder:"Division" %>
+															<%= f.collection_select :division,Division.all,:id,:name,{class: "span6"} %>
+																
 														</div>
 													</div>
 													<div class="control-group">
@@ -40,6 +41,11 @@
 													<label class="control-label">Market</label>
 														<div class="controls">
 																<%= f.text_field :market, class:"span6",placeholder:"Brand" %>
+														</div>
+													</div>
+													<label class="control-label">Season</label>
+														<div class="controls">
+																<%= f.text_field :season, class:"span6",placeholder:"Season" %>
 														</div>
 													</div>
 
