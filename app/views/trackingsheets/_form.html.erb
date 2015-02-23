@@ -37,7 +37,7 @@
 									<tbody>
 										<tr>
 											<td>Division</td>
-											<td><%= label_tag 'Division',@processmaster.division.to_s %></td>
+											<td><% if !@processmaster.division.blank? %><%= Division.find(@processmaster.division).name %><% end %></td>
 										</tr>
 										<tr>
 											<td>Brand</td>
@@ -95,7 +95,7 @@
 													<%#= f.text_field :images, class:"span6",placeholder:"Images" %>
 												</div>
 										</div>-->
-										<%#= vendorusers=User.only('id').where('userrole'=>'vendor')%>	
+
 										<%if	@processmaster.users.where(:userrole=>'vendor').count > 0%>
 											<%  if current_user.userrole=='vendor'  %>
 													<div class="control-group">
@@ -200,6 +200,12 @@
 												<div class="controls">
 													<%= mkup( @trackingsheet.mkup)%>
 												</div>
+										</div>
+										
+										<div class="control-group">	
+										<label class="control-label">Comments:</label>
+											<div class="controls">
+								<%= f.text_area :comments, class:"span20",placeholder:"Comments",cols:"12", rows:"2", readonly:true %></div>	
 										</div>
                   					
 	                                </div>
@@ -379,7 +385,7 @@
 										<div class="form-actions">
 								 		<div class="control-group" style="float:left;border:none;">
 											<label class="control-label">Comments:</label>
-												<div class="controls"><%= f.text_area :comments, class:"span20",placeholder:"Comments",cols:"42", rows:"3" %></div>	
+												<div class="controls"><%= text_area_tag 'trackingsheet[comments]', nil, rows: 2, cols: 85, placeholder:"Comment", class:"span60" %></div>	
 											</div>	
 											<%= f.submit 'Save', :class => 'btn btn-success btn-xs',:style=>'float:right;' %>
 	 									</div>	
@@ -446,12 +452,12 @@
 									</div>
 								</div>
 
-
-</div>	
-
+		
+</div>			
 <% else %> <!-- Vendor Check else condition -->
-							<div class="span2">
-									
+
+								<div class="span2">
+						
 									<div class="widget-box">
 										<div class="widget-title font-size-10px">
 											<span class="icon">
@@ -629,3 +635,4 @@
 </div>		
 
 <% end %>
+

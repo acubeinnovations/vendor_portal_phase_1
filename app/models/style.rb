@@ -10,7 +10,7 @@ class Style
   field :market, type: String
   field :season, type: String
   
-
+  belongs_to :division
 	has_and_belongs_to_many :users 
 	accepts_nested_attributes_for :users, allow_destroy: true#, reject_if: :all_blank
   

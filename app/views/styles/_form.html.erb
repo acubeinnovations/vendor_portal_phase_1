@@ -26,7 +26,7 @@
 												<div class="control-group">
 													<label class="control-label">Division</label>
 														<div class="controls">
-															<%= f.collection_select :division,Division.all,:id,:name,{class: "span6"} %>
+															<%= f.collection_select :division,Division.all,:id,:name, prompt: true %>
 																
 														</div>
 													</div>
@@ -65,8 +65,10 @@
 											<% @UT.each do |usertype|  %>
 											<% if usertype.userrole!='admin'  %>
 											<% @U=User.all('userrole'=>usertype.userrole) %>
+											<% if usertype.userrole.titleize!='Operations' %>
 											<div class="widget-box">
                  				 	<div class="widget-title"><span class="icon"><i class="icon-file"></i></span>
+										
                    				 	<h5><%= usertype.userrole.titleize %></h5>
                     			</div>
 													<div class="widget-content nopadding">
@@ -84,7 +86,7 @@
 															 	</label>
 															</div>-->
 																
-															<%= check_box_tag("style[user_ids][]", user.id, user.id.in?(@style.users.collect(&:id))) %> <%= user.email %>
+															<%= check_box_tag("style[user_ids][]", user.id, user.id.in?(@style.users.collect(&:id))) %> <%= user.lastname %> <%= user.firstname %>
 															<!--	<input name="users[]" type="checkbox" value="<%= user.email %>">	<%= user.email %>-->
 														</span>
 													
@@ -92,7 +94,7 @@
 											</div>
 										</div><br>
 										<% end %>
-									<% end %>
+									<% end %><% end %>
 									</td>	
 								</tr>
 								<tr>

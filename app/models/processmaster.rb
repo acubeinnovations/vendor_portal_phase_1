@@ -18,7 +18,8 @@ class Processmaster
 
 	has_and_belongs_to_many :users 
 	accepts_nested_attributes_for :users, allow_destroy: true#, reject_if: :all_blank
-  belongs_to :style 
+  belongs_to :style
+  belongs_to :division
   has_one :trackingsheet 
 
 	has_mongoid_attached_file :image,

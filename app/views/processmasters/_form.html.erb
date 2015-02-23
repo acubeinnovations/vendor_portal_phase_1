@@ -31,7 +31,8 @@
 															<% if !@processmaster.persisted? %><% else %>
 															<tr>
 																<td>Division</td>
-																<td><%= f.text_field :division, class:"span10" %></td>
+																
+																<td><% if !@processmaster.division.blank? %><%= Division.find(@processmaster.division).name %><% end %></td>
 															</tr>
 															
 															<tr>
@@ -80,7 +81,7 @@
 															<% if !@processmaster.persisted? %>
 															<tr>
 																<td>Refer Style</td>
-																<td> <%= f.collection_select :referencestyle,Style.all,:id,:stylename %></td>
+							<td> <%= f.collection_select :referencestyle,current_user.division.styles,:id,:stylename %></td>
 															</tr>
 															<%	end	%>
 															<% if !@processmaster.persisted? %><% else %>
@@ -106,6 +107,7 @@
 																	<% @UT.each do |usertype|  %>
 																	<% if usertype.userrole!='admin'  %>
 																	<% @U=User.all('userrole'=>usertype.userrole) %>
+																	<% if usertype.userrole.titleize!='Operations' %>
 																	<div class="widget-box">
 														 				 	<div class="widget-title"><span class="icon"><i class="icon-file"></i></span>
 															 				 	<h5><%= usertype.userrole.titleize %></h5>
@@ -114,14 +116,14 @@
 																	<% @U.each do |user|  %>
 																		<div></div>
 																				<span class="span3">
-																					<%= check_box_tag("processmaster[user_ids][]", user.id, user.id.in?(@processmaster.users.collect(&:id))) %> <%= user.email %>
+																					<%= check_box_tag("processmaster[user_ids][]", user.id, user.id.in?(@processmaster.users.collect(&:id))) %> <%= user.lastname %> <%= user.firstname %>
 																				</span>
 											
 																		<% end %>
 																	</div>
 																</div><br>
 																<% end %>
-															<% end %>
+															<% end %><% end %>
 																</td>
 															</tr>
 														</tbody>
