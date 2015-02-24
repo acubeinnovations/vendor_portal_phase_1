@@ -51,54 +51,26 @@
 					</div>
 
 
-
 <!-- Newly Added Starts-->
-<script>
-	$('#myCarousel').carousel({
-		interval:   4000
-	});
-</script>					
-<div id="myCarousel" class="carousel slide">
-                 <!-- Indicators -->         
-                <div class="carousel-inner">           
-                    <div class="item active">
-                        <blockquote>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                          <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
-                        </blockquote>
-                    </div>
-                    <div class="item">
-                        <blockquote>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                          <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
-                        </blockquote>
-                     </div>  
-                    <div class="item">
-                        <blockquote>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                          <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
-                        </blockquote>
-                    </div>                                                                                   
-                </div> 
-               <div class="carousel-controls">
-                  <a class="carousel-control left" href="#myCarousel" data-slide="prev"> <i class="icon-step-backward"></i> </a>
-                  <a class="carousel-control right" href="#myCarousel" data-slide="next"><i class="icon-step-forward"></i> </a>
-              </div>               
-                                                            
-            </div><!-- End Carousel -->  
-					
-					
-					
-					<div class="container-fluid">
-					            	<div class="row-fluid">
-										<div class="span10">
-											<div class="widget-box">
+<div class="<% if @trackingsheet.persisted?  %>span9<% else %>span9<% end %>">
+<div class="widget-box">
 												<div class="widget-title">
 													<span class="icon">
 														<i class="icon-info-sign"></i>
 													</span>
 													<h5>Scrolling Form</h5>
-												</div>
+													 <div class="carousel-controls margin-top-10px">
+												      <a class="carousel-control overide-carousel-control left overide-left" href="#myCarousel" data-slide="prev"> <i class="icon-step-backward"></i> </a>
+												      <a class="carousel-control overide-carousel-control right overide-right" href="#myCarousel" data-slide="next"><i class="icon-step-forward"></i> </a>
+												  </div>   
+												</div>	
+<div id="myCarousel" class="carousel slide">
+                 <!-- Indicators -->         
+                <div class="carousel-inner">           
+                    <div class="item active">
+                        <blockquote>
+                          	
+											
 												<div class="widget-content nopadding">
 													<table class="table table-bordered">
 														<th>Factory</th>
@@ -107,15 +79,6 @@
 														<th>Production Lead Time</th>
 														<th>Sales Proceed to Sample Request</th>
 														<th>Proto Due Back From Vendor</th>
-														<th>Daf to Vendor Date</th>
-														<th>RTL MU</th>
-														<th>MK-UP</th>
-														<th>Comments</th>
-														<th>Projected Units</th>
-														<th>Target FOB</th>
-														<th>Target MU</th>
-														<th>Target WS</th>
-														<th>Per Color</th>
 														
 														<tbody>
 				<td style="text-align:center;"><%= factory( @trackingsheet.factory)%></td>
@@ -124,12 +87,57 @@
 				<td style="text-align:center;"><%= productionleadtime( @trackingsheet.productionleadtime)%></td>
 				<td style="text-align:center;"><%= salesproceedtosamplerequest( @trackingsheet.salesproceedtosamplerequest)%></td>
 				<td style="text-align:center;"><%= protoduebackfromvendor( @trackingsheet.protoduebackfromvendor)%></td>
+				
+														</tbody>
+													</table>
+												</div>
+											
+										
+                        </blockquote>
+                    </div>
+                    <div class="item">
+                        <blockquote>
+                          
+														<div class="widget-content nopadding">
+													<table class="table table-bordered">
+														
+														<th>Daf to Vendor Date</th>
+														<th>RTL MU</th>
+														<th>MK-UP</th>
+														<th>Comments</th>
+														<th>Projected Units</th>
+														<th>Target FOB</th>
+														
+														<tbody>
+				
 				<td style="text-align:center;"><%= daftovendordate( @trackingsheet.daftovendordate)%></td>
 				<td style="text-align:center;"><%= rtlmu( @trackingsheet.rtlmu)%></td>
 				<td style="text-align:center;"><%= mkup( @trackingsheet.mkup)%></td>
 				<td style="text-align:center;"><%= f.text_area :comments, class:"span20",placeholder:"Comments",cols:"12", rows:"2", readonly:true %></td>
 				<td style="text-align:center;"><%= projectedunits( @trackingsheet.projectedunits)%></td>
 				<td style="text-align:center;"><%= targetfob( @trackingsheet.targetfob)%></td>
+				
+				
+														</tbody>
+													</table>
+												</div>
+
+
+                        </blockquote>
+                     </div>  
+                    <div class="item">
+                        <blockquote>
+                         
+
+														<div class="widget-content nopadding">
+													<table class="table table-bordered">
+														
+														<th>Target MU</th>
+														<th>Target WS</th>
+														<th>Per Color</th>
+														
+														<tbody>
+				
 				<td style="text-align:center;"><%= targetmu( @trackingsheet.targetmu)%></td>
 				<td style="text-align:center;"><%= targetws( @trackingsheet.targetws)%></td>
 				<td style="text-align:center;"><%= percolor( @trackingsheet.percolor)%></td>
@@ -137,15 +145,25 @@
 														</tbody>
 													</table>
 												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+
+
+                        </blockquote>
+                    </div>                                                                                   
+                </div> 
+                          
+                                                            
+            </div><!-- End Carousel -->  
+					
+					
+		</div>			
+					
 <!-- Newly Added Ends-->
+</div>
 
 
 
 <div class="span8"><!-- -->
+
 	<div class="widget-box">
                         <div class="widget-title">
 		                      <ul class="nav nav-tabs">
