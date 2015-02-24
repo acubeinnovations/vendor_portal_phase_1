@@ -65,6 +65,7 @@ unicorn = {
 			$('#external-events .panel-content').append('<div class="external-event ui-draggable label label-inverse">'+event_name+'</div>');
 			this.external_events();
 			$('#modal-add-event').modal('hide');
+			$('#modal-view-vendor-details').modal('hide');
 			$('#event-name').val('');
 		} else {
 			this.show_error();

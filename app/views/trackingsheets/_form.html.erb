@@ -147,24 +147,27 @@
 
 <div class="span8"><!-- -->
 	<div class="widget-box">
-	                            <div class="widget-title">
-	                                <ul class="nav nav-tabs">
-	                                    <li class="active"><a data-toggle="tab" href="#tab1">General</a></li>
-	                                    <li class=""><a data-toggle="tab" href="#tab2">Sales Enters</a></li>
-	                                    <li class=""><a data-toggle="tab" href="#tab3">Minimum MOQ</a></li>
-										<li class=""><a data-toggle="tab" href="#tab4">First Cost Per Style</a></li>
-										<li class=""><a data-toggle="tab" href="#tab5">LDP Load</a></li>
-										<li class=""><a data-toggle="tab" href="#tab6">Customer Delivery</a></li>
-									<!--	<li class=""><a data-toggle="tab" href="#tab7">1st DAF/STYLE Sample</a></li>
-										<li class=""><a data-toggle="tab" href="#tab8">2nd DAF/STYLE Sample</a></li>-->
-										<% if current_user.userrole=='operations' || current_user.userrole=='admin'  %>
-										<li class=""><a data-toggle="tab" href="#tab9">Cost sheet</a></li>
-										<% end %>
-										<% if current_user.userrole=='operations' || current_user.userrole=='admin' || current_user.userrole=='vendor' %>
-											<li class=""><a data-toggle="tab" href="#tab10">Testing</a></li>
-										<% end %>
-	                                </ul>
-	                            </div>
+                        <div class="widget-title">
+		                      <ul class="nav nav-tabs">
+												
+		                          <li class="active"><a data-toggle="tab" href="#tab1">General</a></li>
+		                          <li class=""><a data-toggle="tab" href="#tab2">Sales Enters</a></li>
+															<li class=""><a data-toggle="tab" href="#tab3">Minimum MOQ</a></li>
+															<li class=""><a data-toggle="tab" href="#tab4">First Cost Per Style</a></li>
+															<li class=""><a data-toggle="tab" href="#tab5">LDP Load</a></li>
+															<li class=""><a data-toggle="tab" href="#tab6">Customer Delivery</a></li>
+													
+														<!--	<li class=""><a data-toggle="tab" href="#tab7">1st DAF/STYLE Sample</a></li>
+															<li class=""><a data-toggle="tab" href="#tab8">2nd DAF/STYLE Sample</a></li>-->
+														<% if current_user.userrole=='operations' || current_user.userrole=='admin' || current_user.userrole=='vendor' %>
+														<li class=""><a data-toggle="tab" href="#tab9">Cost sheet</a></li>
+														<li class=""><a data-toggle="tab" href="#tab10">Testing</a></li>
+														<% end %>
+														<% if current_user.userrole!='vendor' %>
+		                          <li class=""><a data-toggle="tab" href="#tab11">Vendors</a></li>
+		                        <% end %>
+		                      </ul>
+                        </div>
 	                            <div class="widget-content tab-content">
 	                                <div id="tab1" class="tab-pane active">
 
@@ -174,16 +177,33 @@
 													<%#= f.text_field :images, class:"span6",placeholder:"Images" %>
 												</div>
 										</div>-->
-											
-										
-										
-										
-										<div class="control-group">
-											<label class="control-label">Factory :</label>
-												<div class="controls">
-													<%= factory( @trackingsheet.factory)%>
+
+										<%if	@processmaster.users.where(:userrole=>'vendor').count > 0%>
+											<%  if current_user.userrole=='vendor'  %>
+													<div class="control-group">
+														<label class="control-label">Factory :</label>
+															<div class="controls">
+																<%= factory( @trackingsheet.factory)%>
+															</div>
+													</div>
+												<% else  %>
+													<div class="control-group">
+														<label class="control-label">Factory :</label>
+														<div class="controls">
+																<label class="span20" for="factory"><%= @trackingsheet.factory %></label>
+														</div>
+													</div>
+											<% end %>
+									 	<% else %>
+											<% if current_user.userrole!='vendor' %>
+												<div class="control-group">
+													<label class="control-label">Factory :</label>
+														<div class="controls">
+														<%= factory( @trackingsheet.factory)%>
+														</div>
 												</div>
-										</div>
+											<% end %>
+										<% end %>
 										<div class="control-group">
 											<label class="control-label">Subcontractor :</label>
 												<div class="controls">
@@ -390,7 +410,55 @@
 										
 										
 	                  </div>
+										<div id="tab11" class="tab-pane"><div class="control-group container-export-csv"><a href="#" name="lockvendor" class="btn btn-info btn-xs" style="float:right;">Lock Vendor</a></div>
+											<table class="table table-bordered data-table">
+										    <thead>
+										      <tr>
+														<th></th>
+										        <th>Sl</th>
+										        <th>Email</th>
+														<th>First Name</th>
+														<th>Last Name</th>
+														<th colspan="2">Actions</th>
+													</tr>
+										    		</thead>
+														<tbody>
+												<%	k=1	 %>
+												<%	@vendorusers=@processmaster.users.where(:userrole=>'vendor')%>
 
+													<%	@vendorusers.each do |vuser| %>
+													<tr>
+															<td>
+																<input type="radio" name="selectvendor">
+														</td>
+														<td>
+																<%= k %>
+														</td>
+														
+														<td>
+															<%= vuser.email %>
+														</td>
+														<td>
+															<%= vuser.firstname %>
+													</td>
+													<td>
+															<%= vuser.lastname %>
+													</td>
+													<td>
+														<div class="controls">
+															<%= link_to 'Details','#modal-view-vendor-details',:class=>'btn btn-warning get-versions','data-toggle':"modal",:data => { :userid => vuser.id, :trackingsheetid => @trackingsheet.id } %>
+																
+														</div>
+													</td>
+													</tr>
+											<%	k+=1	 %>
+										
+										<% end %>
+										</tbody>
+								</table>
+
+
+	                  </div>
 										 
 										</div>                            
 	                        </div>
@@ -418,10 +486,10 @@
 											
 											<h5>Previous Versions</h5>
 										</div>
-									<div class="widget-content display-inline-block pading-0-0-0-10px">
+									<div class="widget-content display-inline-block pading-0-0-0-10px ">
 										<div class="scroll-area" data-spy="scroll">
 											<% i=0 %>
-											<%exptarray=['version','user_id']%>
+											<% exptarray=['version','user_id'] %>
 											<% @trackingsheet.versions.reverse.each do |version| %>
 
 											<%	if i < @trackingsheet.versions.length-2 %>
@@ -432,10 +500,8 @@
 													
 													<% else%>
 													<div class="version_head"><%= version.updated_at.strftime("%d %b %Y, %T %p")  %></div>                                        <% end %> 
-																												 <div class="trackingsheet-versions"> 
-													<div class="version_head"><i class="icon-stop"></i>Updated By :  </div>
-
-													<div class="version_head"><i class="icon-stop"></i><% if !version.full_attributes['user_id'].blank? %><%= User.find(version.full_attributes['user_id']).email%><% end %></div>
+																<div class="trackingsheet-versions"> 
+																			<div class="version_head"><i class="icon-stop"></i><% if !version.full_attributes['user_id'].blank? %><%= User.find(version.full_attributes['user_id']).email%><% end %></div>
 
 													<ul id="toggle-view">
 														<li>
@@ -468,17 +534,12 @@
 									</div>
 								</div>
 
-
-				
 		
 </div>			
 <% else %> <!-- Vendor Check else condition -->
 
-
-
-
 								<div class="span2">
-									
+						
 									<div class="widget-box">
 										<div class="widget-title font-size-10px">
 											<span class="icon">
@@ -502,9 +563,7 @@
 													<% else%>
 													<div class="version_head"><%= version.updated_at.strftime("%d %b %Y, %T")  %></div>                                        <% end %> 
 																												 <div class="trackingsheet-versions"> 
-													<div class="version_head"><i class="icon-stop"></i>Updated By :  </div>
-
-													<div class="version_head"><i class="icon-stop"></i><%= User.find(version.full_attributes['user_id']).email%></div>
+												<div class="version_head"><i class="icon-stop"></i><%= User.find(version.full_attributes['user_id']).email%></div>
 
 													<ul id="toggle-view">
 														<li>
@@ -536,20 +595,126 @@
 										</div>
 									</div>
 								</div>
+	
+</div>
+<% end %>	
+ <!-- Vendor Check else condition ends-->	
+ 
+<div class="modal vendor-modal hide" id="modal-view-vendor-details">
+										 <div class="modal-header">
+											<button type="button" id="close-modal" class="close" data-dismiss="modal">×</button>
+											<h3>Vendor</h3>
+										</div>
+										<div class="modal-body">
+											<div class="span6">
+												<div class="widget-box">
+												<div class="widget-title">
+		                      <ul class="nav nav-tabs">
+													<% if current_user.userrole!='vendor' %>
+		                          <li class="active"><a data-toggle="tab" href="#sec-tab1">General</a></li>
+		                          <li class=""><a data-toggle="tab" href="#sec-tab2">Minimum MOQ</a></li>
+															<li class=""><a data-toggle="tab" href="#sec-tab3">First Cost Per Style</a></li>
+															<% if current_user.userrole=='operations' || current_user.userrole=='admin' %>
+															<li class=""><a data-toggle="tab" href="#sec-tab4">Cost sheet</a></li>
+															<li class=""><a data-toggle="tab" href="#sec-tab5">Testing</a></li>
+															<% end %>
+													<% end %>
+													</ul>
+                        </div>
+	                      <div class="widget-content tab-content">
+	                        <div id="sec-tab1" class="tab-pane active">
+															<%if	@processmaster.users.where(:userrole=>'vendor').count > 0%>
+																<%  if current_user.userrole=='vendor'  %>
+																		<div class="control-group">
+																			<label class="control-label">Factory :</label>
+																				<div class="controls">
+																					<%= factory( @trackingsheet.factory)%>
+																				</div>
+																		</div>
+																	<% else  %>
+																		<div class="control-group">
+																			<label class="control-label">Factory :</label>
+																			<div class="controls">
+																					<label class="span20" for="factory"><%= @trackingsheet.factory %></label>
+																			</div>
+																		</div>
+																<% end %>
+														 	<% else %>
+																<% if current_user.userrole!='vendor' %>
+																	<div class="control-group">
+																		<label class="control-label">Factory :</label>
+																			<div class="controls">
+																			<%= factory( @trackingsheet.factory)%>
+																			</div>
+																	</div>
+																<% end %>
+															<% end %>
+															<div class="control-group">
+																<label class="control-label">Subcontractor :</label>
+																	<div class="controls">
+																		<%= subcontractor( @trackingsheet.subcontractor)%>
+																	</div>
+															</div>
+															<div class="control-group">
+																<label class="control-label">X Mill Date :</label>
+																	<div class="controls">
+																		<%= xmilldate( @trackingsheet.xmilldate)%>
+																	</div>
+															</div>
+															<div class="control-group">
+																<label class="control-label">Production Lead Time :</label>
+																	<div class="controls">
+																		<%= productionleadtime( @trackingsheet.productionleadtime)%>
+																	</div>
+															</div>
+														</div>
+														 <div id="sec-tab2" class="tab-pane">
+																<div class="control-group">
+																<label class="control-label">Per Color :</label>
+																	<div class="controls"><%= percolor( @trackingsheet.percolor)%></div>
+																</div>
+																<div class="control-group">
+																<label class="control-label">Per Style :</label>
+																	<div class="controls"><%= perstyle( @trackingsheet.perstyle)%></div>
+																</div>
+																<label class="control-label">Inco Terms :</label>
+																	<div class="controls"><%= incoterms( @trackingsheet.incoterms)%></div>
+														 </div>
+				                      <div id="sec-tab3" class="tab-pane">
+																	<div class="control-group">
+																	<label class="control-label">MOQ :</label>
+																		<div class="controls"><%= moq( @trackingsheet.moq)%></div>
+																	</div>
+																	<div class="control-group">
+																	<label class="control-label">1000 - 5000 PCS:</label>
+																<div class="controls"><%= thousandtofivethousandPCS( @trackingsheet.thousandtofivethousandPCS)%></div>
+																	</div>
+																	<div class="control-group">
+																	<label class="control-label">5000 - 10000 PCS :</label>
+																		<div class="controls"><%= fivethousandtotenthousandPCS( @trackingsheet.fivethousandtotenthousandPCS)%></div>
+																	</div>
+																</div>
+																<div id="sec-tab4" class="tab-pane active">
+																</div>
+																<div id="sec-tab5" class="tab-pane active">
+																</div>
+													</div>
+											</div>
+										</div>
+										<!-- span 3 versions-->
+											<div class="span3" id="vendor_versions">
 
 
-				
-		
-</div>	
+											</div>
+										</div>
+									
+										<div class="modal-footer">
+										<a href="#" class="btn btn-success btn-xs" style="float:right;">Save</a>	<a href="#" class="btn btn-danger" data-dismiss="modal">Cancel</a>
+										
+										</div>
+					</div>
 
-
-
-
-
+</div>		
 
 <% end %>
-<% end %>
-
-
-
 

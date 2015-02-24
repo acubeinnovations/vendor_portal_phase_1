@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   
   resources :divisions 
 
-  resources :trackingsheets
+  resources :trackingsheets do
+		collection do
+			get "vendor_versions"
+		end
+	end
 
   resources :processmasters
 
