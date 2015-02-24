@@ -32,7 +32,7 @@ display:inline-block;
 .scroll-area {
 	height: 380px;
 	//position: relative;
-	overflow: auto;
+	overflow-x: hidden;
 }
 
 #toggle-view {

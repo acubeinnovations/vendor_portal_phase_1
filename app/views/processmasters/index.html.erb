@@ -2,11 +2,14 @@
 <div class="container-fluid">
     <div class="row-fluid">
       <div class="span12">
+				<a href="#" name="exportprocess" class="btn btn-primary btn-xs" style="float:right;">Export CSV</a>
         <div class="widget-box">
           <div class="widget-content nopadding">
+						
             <table class="table table-bordered data-table">
               <thead>
                 <tr>
+									 <th></th>
                   <th>Sl</th>
                   <th>Division</th>
 				  <th>Brand</th>
@@ -22,6 +25,7 @@
                 </tr>
               </thead>
               <tbody>
+								
 								<% @i=1 %>
 								
 								<% @processmasters.each do |processmaster| %>
@@ -32,6 +36,7 @@
 									
 									<% if current_user.id.in?(processmaster.user_ids) || current_user.userrole.in?(allowed_users) %>
 										<tr class="gradeX">
+												<td><input type="radio" name="selectprocess"></td>
 											  <td><%= @i %></td>
 											  <td><% if !processmaster.division.blank? %><%= Division.find(processmaster.division).name %><% end %></td>
 										      <td><%= processmaster.brand %></td>
@@ -57,5 +62,6 @@
        </div>
    </div>
 				<% if current_user.userrole.in?(allowed_users) %>	<%= link_to 'New Process', new_processmaster_path ,class:'btn btn-success' %><%end%>
+
 </div>
 <!-- EOF -->
