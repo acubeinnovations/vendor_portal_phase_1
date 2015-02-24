@@ -230,9 +230,9 @@ module TrackingsheetsHelper
 
          def rtlmu(rtlmu)
            if current_user.userrole=='admin'
-           text_field_tag('trackingsheet[rtlmu]',rtlmu,class:"span20",placeholder:"Comments")  
+           text_field_tag('trackingsheet[rtlmu]',rtlmu,class:"span20",placeholder:"RTL MU")  
            else if current_user.userrole=='operations'
-           text_field_tag('trackingsheet[rtlmu]',rtlmu,class:"span20",placeholder:"Comments")    
+           text_field_tag('trackingsheet[rtlmu]',rtlmu,class:"span20",placeholder:"RTL MU")    
            else if current_user.userrole=='sales'
            label_tag(:rtlmu,rtlmu,class:"span20")   
            else if current_user.userrole=='designer'
@@ -250,9 +250,9 @@ module TrackingsheetsHelper
 
           def mkup(mkup)
             if current_user.userrole=='admin'
-            text_field_tag('trackingsheet[mkup]',mkup,class:"span20",placeholder:"Comments")  
+            text_field_tag('trackingsheet[mkup]',mkup,class:"span20",placeholder:"MK UP")  
             else if current_user.userrole=='operations'
-            text_field_tag('trackingsheet[mkup]',mkup,class:"span20",placeholder:"Comments")    
+            text_field_tag('trackingsheet[mkup]',mkup,class:"span20",placeholder:"MK UP")    
             else if current_user.userrole=='sales'
             label_tag(:mkup,mkup,class:"span20")   
             else if current_user.userrole=='designer'
