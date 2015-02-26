@@ -1,8 +1,8 @@
+
 jQuery('#myCarousel').carousel({
 		interval: false
-		
+	
 	});
-
 
 
 $('.left.carousel-control').hide();
