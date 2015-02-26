@@ -28,108 +28,38 @@
 												<td style="<% if !@processmaster.persisted?  %><%= 'width:100%;'.to_s %><% else %><%= 'width:40%;'.to_s %><% end %>">
 													<table class="table table-bordered border-left-0px">
 														<tbody>
-															<% if !@processmaster.persisted? %><% else %>
-															<tr>
-																<td>Division</td>
+																<tr>
+																<td>Name</td>
 																
-																<td><% if !@processmaster.division.blank? %><%= Division.find(@processmaster.division).name %><% end %></td>
-															</tr>
-															
-															<tr>
-																<td>Brand</td>
-																<td><%= f.text_field :brand, class:"span10" %></td>
-															</tr>
-															<tr>
-																<td>Market</td>
-																<td><%= f.text_field :market, class:"span10" %></td>
-															</tr>
-															<tr>
-																<td>Season</td>
-																<td><%= f.text_field :season, class:"span10" %></td>
+																<td><%= f.text_field :name, class:"span10" %></td>
 															</tr>
 															
 															
-															<tr>
-																<td>Style Name</td>
-																<td><%= f.text_field :stylename, class:"span10" %></td>
-															</tr>
-															<tr>
-																<td>Style Code</td>
-																<td><%= f.text_field :stylecode, class:"span10" %></td>
-															</tr>
-															<tr>
-															<% end %>	
-														
-															
-															<tr>
-																<td>Year</td>
-																<td><%= f.text_field :year, class:"span10",placeholder:"Year" %></td>
-															</tr>
-															
-															<tr>
-																<td>Customer Name</td>
-																<td><%= f.text_field :customername, class:"span10",placeholder:"Customer Name" %></td>
-															</tr>
-															<tr>
-																<td>Customer Account</td>
-																<td><%= f.text_field :customeraccount, class:"span10",placeholder:"Customer Account" %></td>
-															</tr>
-															<tr>
-																<td>Project</td>
-																<td><%= f.text_field :project, class:"span10",placeholder:"Project" %></td>
-															</tr>
-															<% if !@processmaster.persisted? %>
+															<% if !@processmaster.persisted? %><% else %>
 															<tr>
 																<td>Refer Style</td>
-							<td> <%= f.collection_select :referencestyle,current_user.division.styles,:id,:stylename %></td>
-															</tr>
-															<%	end	%>
-															<% if !@processmaster.persisted? %><% else %>
+																<td> <%#= f.collection_select :style_ids,current_user.division.styles,:id,:stylename %>
+															<div class="widget-box">
+                 				 	<div class="widget-content nopadding">		
+													<% current_user.division.styles.each do |style|  %>
+											
+										  			<span class="span3 checkbox_seperation">
+																														
+															<%= check_box_tag("processmaster[style_ids][]", style.id, style.id.in?(@processmaster.styles.collect(&:id))) %> <%= style.stylename %>
 															
-															<tr>
-																<td>Image</td>
-																<td><% if @processmaster.image.url!='/images/original/missing.png' %>
-																		<%= image_tag @processmaster.image.url(:small)  %>
-																		<%	end			 %>
-																		<%= f.file_field :image,class:'styleimage' %></td>
+														</span>
+													
+														<% end %>
+														</div>
+													</div>
+															</td>
 															</tr>
-															<%	end	%>
+														<% end %>
+															
 														</tbody>
 													</table>
 												</td>
-												<% if !@processmaster.persisted? %><% else %>
-												<td>
-													<table class="table table-bordered border-left-0px">
-														<tbody>
-															<tr>
-																<td>
-																	<% @UT=Usertype.all() %> 
-																	<% @UT.each do |usertype|  %>
-																	<% if usertype.userrole!='admin'  %>
-																	<% @U=User.all('userrole'=>usertype.userrole) %>
-																	<% if usertype.userrole.titleize!='Operations' %>
-																	<div class="widget-box">
-														 				 	<div class="widget-title"><span class="icon"><i class="icon-file"></i></span>
-															 				 	<h5><%= usertype.userrole.titleize %></h5>
-																			</div>
-																			<div class="widget-content nopadding">
-																	<% @U.each do |user|  %>
-																		<div></div>
-																				<span class="span3">
-																					<%= check_box_tag("processmaster[user_ids][]", user.id, user.id.in?(@processmaster.users.collect(&:id))) %> <%= user.lastname %> <%= user.firstname %>
-																				</span>
-											
-																		<% end %>
-																	</div>
-																</div><br>
-																<% end %>
-															<% end %><% end %>
-																</td>
-															</tr>
-														</tbody>
-													</table>
-												</td>	
-											<% end %>
+												
 											</tr>
 										</tbody>
 									</table>

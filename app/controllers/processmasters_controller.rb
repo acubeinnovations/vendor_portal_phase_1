@@ -21,6 +21,7 @@ class ProcessmastersController < ApplicationController
   # GET /processmasters/new
   def new
     @processmaster = Processmaster.new
+		@trackingsheet = Trackingsheet.new
   end
 
   # GET /processmasters/1/edit
@@ -31,21 +32,22 @@ class ProcessmastersController < ApplicationController
   # POST /processmasters.json
   def create
     @processmaster = Processmaster.new(processmaster_params)
-		@style = Style.find(processmaster_params['referencestyle'])
-		@processmaster.stylename = @style.stylename
-		@processmaster.stylecode = @style.stylecode
+		#@style = Style.find(processmaster_params['referencestyle'])
+		#@processmaster.stylename = @style.stylename
+		#@processmaster.stylecode = @style.stylecode
     
-    @processmaster.division = @style.division
-    @processmaster.brand = @style.brand
-    @processmaster.market = @style.market
-    @processmaster.season = @style.season
+   	#@processmaster.division = @style.division
+   #@processmaster.brand = @style.brand
+    #@processmaster.market = @style.market
+    #@processmaster.season = @style.season
     
     
-		@processmaster.image = @style.image
-		@processmaster.user_ids = @style.user_ids
+		#@processmaster.image = @style.image
+		#@processmaster.user_ids = @style.user_ids
 		#@processmaster.id=@processmaster.project.to_s.parameterize+Date.today.to_time.to_i.to_s
     respond_to do |format|
       if @processmaster.save
+				
         format.html { redirect_to processmasters_path, notice: 'Processmaster was successfully created.' }
         format.json { render :show, status: :created, location: @processmaster }
       else
@@ -59,9 +61,17 @@ class ProcessmastersController < ApplicationController
   # PATCH/PUT /processmasters/1.json
   def update
 		@processmaster = Processmaster.find(params[:id])
-		@processmaster.users.clear
+		@processmaster.styles.clear
     respond_to do |format|
-      if @processmaster.update_attributes(processmaster_update_params)
+      if @processmaster.update_attributes(processmaster_params)
+				if 	!processmaster_params[:style_ids].blank?
+					processmaster_params[:style_ids].each do |style|
+						if Trackingsheet.where('processmaster_id'=>params[:id],"style_id"=>style).count== 0
+							@trackingsheet = Trackingsheet.new("processmaster_id"=>params[:id],"style_id"=>style)
+							@trackingsheet.save
+						end
+					end
+				end
         format.html { redirect_to processmasters_path, notice: 'Processmaster was successfully updated.' }
         format.json { render :show, status: :ok, location: @processmaster }
       else
@@ -95,7 +105,7 @@ class ProcessmastersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def processmaster_params
-      params.require(:processmaster).permit(:season,:year,:customername,:customeraccount,:project,:referencestyle)
+      params.require(:processmaster).permit(:name,{ :style_ids => [] })
     end
 		def processmaster_update_params
       params.require(:processmaster).permit(:division,:brand,:season,:year,:market,:customername,:customeraccount,:project,:referencestyle,:stylename,:stylecode,:image,{ :user_ids => [] })

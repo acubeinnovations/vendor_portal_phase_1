@@ -9,13 +9,7 @@ class Trackingsheet
   field :factory, type: String
   field :subcontractor, type: String
 	field :salestrackingsheetedtosamplerequest, type: String
- 	#field :customername, type: String
-  #field :customeraccount, type: String
-  #field :project, type: String
-  #
-  #field :_id, type: String,  default:->{ project.to_s.parameterize}
-  #
-  #field :referncestyle, type: String
+ 	
   field :xmilldate, type: String
   field :productionleadtime, type: String
   field :salesproceedtosamplerequest, type: String
@@ -64,11 +58,12 @@ class Trackingsheet
 
 	field :user_id,type: String
 	field :processmaster_id,type: String	
+	field :style_id,type: String
 	field :comments,type: String
 
 	belongs_to :user
-  belongs_to :processmaster
-
+  has_one :processmaster
+	has_one :style
 	#validates_presence_of :comments, :on => :update
 	
 end
