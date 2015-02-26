@@ -61,6 +61,7 @@ class ProcessmastersController < ApplicationController
   # PATCH/PUT /processmasters/1.json
   def update
 		@processmaster = Processmaster.find(params[:id])
+		old_styles=@processmaster.styles
 		@processmaster.styles.clear
     respond_to do |format|
       if @processmaster.update_attributes(processmaster_params)
@@ -69,7 +70,17 @@ class ProcessmastersController < ApplicationController
 						if Trackingsheet.where('processmaster_id'=>params[:id],"style_id"=>style).count== 0
 							@trackingsheet = Trackingsheet.new("processmaster_id"=>params[:id],"style_id"=>style)
 							@trackingsheet.save
+						else if style.in?(old_styles)
+									@trackingsheet = Trackingsheet.where('processmaster_id'=>params[:id],"style_id"=>style)
+									@trackingsheet.destroy
+								end
 						end
+					end
+					else if !old_styles.blank?
+							old_styles.each do |style|
+								@trackingsheet = Trackingsheet.where('processmaster_id'=>params[:id],"style_id"=>style)
+								@trackingsheet.destroy
+							end
 					end
 				end
         format.html { redirect_to processmasters_path, notice: 'Processmaster was successfully updated.' }

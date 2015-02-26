@@ -14,7 +14,7 @@
 <div class="container-fluid">
      <div class="row-fluid">
 					<div class="span12">
-						<div class="widget-box">
+						<div class="widget-box  border-bottom">
 							<div class="widget-title">
 								<span class="icon">
 									<i class="icon-info-sign"></i>
@@ -31,16 +31,16 @@
 																<tr>
 																<td>Name</td>
 																
-																<td><%= f.text_field :name, class:"span10" %></td>
+																<td><%= f.text_field :name, class:"span3" %></td>
 															</tr>
 															
 															
 															<% if !@processmaster.persisted? %><% else %>
 															<tr>
 																<td>Refer Style</td>
-																<td> <%#= f.collection_select :style_ids,current_user.division.styles,:id,:stylename %>
-															<div class="widget-box">
-                 				 	<div class="widget-content nopadding">		
+																<td class="border-none"> <%#= f.collection_select :style_ids,current_user.division.styles,:id,:stylename %>
+															<div class="widget-box border-none">
+                 				 	<div class="widget-content nopadding no-border">		
 													<% current_user.division.styles.each do |style|  %>
 											
 										  			<span class="span3 checkbox_seperation">

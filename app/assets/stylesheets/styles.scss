@@ -29,6 +29,12 @@ display:inline-block;
 .no-border{
 	border-bottom: 0px !important;
 }
+.border-none{
+	border: 0px !important;
+}
+.border-bottom{
+border-bottom: 1px solid #CDCDCD;
+}
 .scroll-area {
 	height: 380px;
 	//position: relative;
