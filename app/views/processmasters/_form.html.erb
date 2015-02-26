@@ -45,7 +45,7 @@
 											
 										  			<span class="span3 checkbox_seperation">
 																														
-															<%= check_box_tag("processmaster[style_ids][]", style.id, style.id.in?(@processmaster.styles.collect(&:id))) %> <%= style.stylename %>
+															<%= check_box_tag("processmaster[style_ids][]", style.id, style.id.in?(@processmaster.styles.collect(&:id)),"class"=>"selectstyle") %> <%= style.stylename %>
 															
 														</span>
 													
