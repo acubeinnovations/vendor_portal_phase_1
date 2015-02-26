@@ -30,7 +30,7 @@ class User
   field :last_sign_in_ip,    type: String
 	
 	has_and_belongs_to_many :styles
-	has_and_belongs_to_many :processmasters
+	#has_and_belongs_to_many :processmasters
   belongs_to :division
 
 	#referenced_in:uesertype
@@ -50,5 +50,9 @@ class User
     record = to_adapter.get(key[0]["$oid"])
     record if record && record.authenticatable_salt == salt
   end
+
+	def name
+  "#{self.lastname} #{self.firstname}"
+	end
 	
 end

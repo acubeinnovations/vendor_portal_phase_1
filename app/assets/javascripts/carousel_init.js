@@ -1,4 +1,3 @@
-
 jQuery('#myCarousel').carousel({
 		interval: false
 		

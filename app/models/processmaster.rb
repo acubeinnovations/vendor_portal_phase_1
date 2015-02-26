@@ -3,24 +3,26 @@ class Processmaster
 	include Mongoid::Timestamps::Created
 	include Mongoid::Paperclip
 
-  field :division, type: String
-	field :brand, type: String
-  field :season, type: String
-  field :year, type: String
-  field :market, type: String
-	field :customername, type: String
-  field :customeraccount, type: String
-  field :project, type: String
-	field :referencestyle, type: String
-	field :stylename, type: String
-  field :stylecode, type: String
-	field :user_ids ,type: Array
+  #field :division, type: String
+	#field :brand, type: String
+  #field :season, type: String
+  #field :year, type: String
+  #field :market, type: String
+	#field :customername, type: String
+  #field :customeraccount, type: String
+  #field :project, type: String
+	field :name, type: String
+	field :style_ids, type: String
+	#field :stylename, type: String
+  #field :stylecode, type: String
+	#field :user_ids ,type: Array
 
-	has_and_belongs_to_many :users 
-	accepts_nested_attributes_for :users, allow_destroy: true#, reject_if: :all_blank
-  belongs_to :style
+	#has_and_belongs_to_many :users 
+	#accepts_nested_attributes_for :users, allow_destroy: true#, reject_if: :all_blank
+ 	has_and_belongs_to_many :styles 
+	accepts_nested_attributes_for :styles,allow_destroy: true#, reject_if: :all_blank
   belongs_to :division
-  has_one :trackingsheet 
+  has_many :trackingsheet 
 
 	has_mongoid_attached_file :image,
       :url => "/system/attachments/:id/:style/:basename.:extension", 
@@ -36,5 +38,5 @@ class Processmaster
 	#validates :project, :presence => true
 
 	
-	after_create :create_trackingsheet
+	#after_create :create_trackingsheet
 end

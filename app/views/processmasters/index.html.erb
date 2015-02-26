@@ -14,12 +14,8 @@
                   <th>Division</th>
 				  <th>Brand</th>
 				  <th>Season</th>
-				  <th>Year</th>
-				  <th>Market</th>
-				  <th>Customer Name</th>
-				  <th>Customer Account</th>
-				  <th>Project</th>
-          <th>Created Date</th>
+				 <th>Market</th>
+				  <th>Created Date</th>
 					<% allowed_users=['admin','operations']%>
           <th colspan="<% if current_user.userrole.in?(allowed_users) %>3<% else %> 1<% end %>">Actions</th>
                 </tr>
@@ -27,25 +23,26 @@
               <tbody>
 								
 								<% @i=1 %>
-								
 								<% @processmasters.each do |processmaster| %>
+								<%	if current_user.userrole!='admin' %>
+								<% exist=false%>
+								<% processmaster.styles.each do |style| %>
+								<% break if exist==true %>
+								 <% if current_user.id.in?(style.users.collect(&:id)) %>
+									 <% exist=true %>
 									<% @trackingsheet=Trackingsheet.where("processmaster_id"=>processmaster._id) %>
 									<% @trackingsheet.each do |tk| %>
 									<% @trackingsheet_id= tk.id %>
 									<%end%>
 									
-									<% if current_user.id.in?(processmaster.user_ids) || current_user.userrole.in?(allowed_users) %>
+									<%# if current_user.id.in?(processmaster.styles.user_ids) || current_user.userrole.in?(allowed_users) %>
 										<tr class="gradeX">
 												<td><input type="radio" name="selectprocess"></td>
 											  <td><%= @i %></td>
-											  <td><% if !processmaster.division.blank? %><%= Division.find(processmaster.division).name %><% end %></td>
-										      <td><%= processmaster.brand %></td>
-										      <td><%= processmaster.season %></td>
-										      <td><%= processmaster.year %></td>
-										      <td><%= processmaster.market %></td>
-										      <td><%= processmaster.customername %></td>
-										      <td><%= processmaster.customeraccount %></td>
-										      <td><%= processmaster.project %></td>
+											  <td><% if !style.try(:division).blank? %><%= Division.find(style.division).name %><% end %></td>
+										      <td><%= style.try(:brand) %></td>
+										      <td><%= style.try(:season) %></td>
+										      <td><%= style.try(:market) %></td>
 										      <td><%= processmaster.created_at %></td>
 													<% if current_user.userrole.in?(allowed_users) %><td><%= link_to 'Edit', edit_processmaster_path(processmaster),class:'btn btn-info' %></td><%end%>
 													<td><%= link_to 'Tracking Sheet', edit_trackingsheet_path(@trackingsheet_id),class:'btn btn-warning' %></td>
@@ -53,7 +50,28 @@
 										</tr>	
 										<% @i+=1%>
 									<% end %>	
+								<% end %>	<%# if allowed users %>
+									<% else %><%# if admin %>
+											<% @trackingsheet=Trackingsheet.where("processmaster_id"=>processmaster._id) %>
+									<% @trackingsheet.each do |tk| %>
+									<% @trackingsheet_id= tk.id %>
+									<%end%>
 									
+									<%# if current_user.id.in?(processmaster.styles.user_ids) || current_user.userrole.in?(allowed_users) %>
+										<tr class="gradeX">
+												<td><input type="radio" name="selectprocess"></td>
+											  <td><%= @i %></td>
+											  <td><% if !processmaster.try(:styles).first.try(:division).blank? %><%= Division.find(processmaster.styles.first.division).name %><% end %></td>
+										      <td><%= processmaster.try(:styles).first.try(:brand) %></td>
+										      <td><%= processmaster.try(:styles).first.try(:season) %></td>
+										      <td><%= processmaster.try(:styles).first.try(:market) %></td>
+										      <td><%= processmaster.created_at %></td>
+													<% if current_user.userrole.in?(allowed_users) %><td><%= link_to 'Edit', edit_processmaster_path(processmaster),class:'btn btn-info' %></td><%end%>
+													<td><%= link_to 'Tracking Sheet', edit_trackingsheet_path(@trackingsheet_id),class:'btn btn-warning' %></td>
+												<% if current_user.userrole.in?(allowed_users) %>	<td><%= link_to 'Destroy', processmaster, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td><%end%>
+										</tr>	
+										<% @i+=1%>
+									<% end %>	
 								<% end %>	
 							</tbody>
             </table>

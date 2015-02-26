@@ -48,22 +48,28 @@
 																<%= f.text_field :season, class:"span6",placeholder:"Season" %>
 														</div>
 													</div>
-
-												<div class="control-group">
-												<label class="control-label">Image</label>
-													<div class="controls">	
-															<% if @style.image.url!='/images/original/missing.png' %>
-															<%= image_tag @style.image.url(:small)  %>
-															<%	end			 %>
+													<div class="control-group select_user_division">
+													<label class="control-label">Vendor</label>
+														<div class="controls">
+																<%= f.collection_select :vendor,User.all('userrole'=>'vendor'),:id,:name,prompt: true%>
+					
+														</div>
+													</div>
+													<div class="control-group">
+													<label class="control-label">Image</label>
+														<div class="controls">	
+																<% if @style.image.url!='/images/original/missing.png' %>
+																<%= image_tag @style.image.url(:small)  %>
+																<%	end			 %>
 															
-																<%= f.file_field :image,class:'styleimage' %>
+																	<%= f.file_field :image,class:'styleimage' %>
 																
 													</div>
 										</td>
 										<td class="span8">
 											<% @UT=Usertype.all() %> 
 											<% @UT.each do |usertype|  %>
-											<% if usertype.userrole!='admin'  %>
+											<% if usertype.userrole!='admin' && usertype.userrole!='vendor'   %>
 											<% @U=User.all('userrole'=>usertype.userrole) %>
 											<% if usertype.userrole.titleize!='Operations' %>
 											<div class="widget-box">
@@ -95,6 +101,7 @@
 										</div><br>
 										<% end %>
 									<% end %><% end %>
+									
 									</td>	
 								</tr>
 								<tr>
