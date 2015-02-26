@@ -67,7 +67,7 @@
 										      <td><%= processmaster.try(:styles).first.try(:market) %></td>
 										      <td><%= processmaster.created_at %></td>
 													<% if current_user.userrole.in?(allowed_users) %><td><%= link_to 'Edit', edit_processmaster_path(processmaster),class:'btn btn-info' %></td><%end%>
-													<td><%= link_to 'Tracking Sheet', edit_trackingsheet_path(@trackingsheet_id),class:'btn btn-warning' %></td>
+													<td><%= link_to 'Tracking Sheet', edit_trackingsheet_path(trackingsheet_id),class:'btn btn-warning' %></td>
 												<% if current_user.userrole.in?(allowed_users) %>	<td><%= link_to 'Destroy', processmaster, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td><%end%>
 										</tr>	
 										<% @i+=1%>
