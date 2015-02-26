@@ -62,11 +62,8 @@ class Trackingsheet
 	field :comments,type: String
 
 	belongs_to :user
-
-  belongs_to :processmaster
-
-  has_one :processmaster
-	has_one :style
+	belongs_to :processmaster
+	belongs_to :style
 
 	#validates_presence_of :comments, :on => :update
 	

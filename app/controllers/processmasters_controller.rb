@@ -61,25 +61,37 @@ class ProcessmastersController < ApplicationController
   # PATCH/PUT /processmasters/1.json
   def update
 		@processmaster = Processmaster.find(params[:id])
-		old_styles=@processmaster.styles
+		@old_styles=@processmaster.styles.collect(&:id)
 		@processmaster.styles.clear
     respond_to do |format|
       if @processmaster.update_attributes(processmaster_params)
+					
 				if 	!processmaster_params[:style_ids].blank?
-					processmaster_params[:style_ids].each do |style|
-						if Trackingsheet.where('processmaster_id'=>params[:id],"style_id"=>style).count== 0
+							
+					processmaster_params[:style_ids].each do |style|	
+						
+						if Trackingsheet.where('processmaster_id'=>params[:id],"style_id"=>BSON::ObjectId.from_string(style.to_s)).count== 0
+						
 							@trackingsheet = Trackingsheet.new("processmaster_id"=>params[:id],"style_id"=>style)
 							@trackingsheet.save
-						else if style.in?(old_styles)
-									@trackingsheet = Trackingsheet.where('processmaster_id'=>params[:id],"style_id"=>style)
-									@trackingsheet.destroy
-								end
 						end
 					end
-					else if !old_styles.blank?
-							old_styles.each do |style|
-								@trackingsheet = Trackingsheet.where('processmaster_id'=>params[:id],"style_id"=>style)
-								@trackingsheet.destroy
+						@processmaster=Processmaster.find(params[:id])
+						@new_styles=@processmaster.styles.collect(&:id)
+						if !@old_styles.blank?
+						fordelete= @old_styles-@new_styles
+							fordelete.each do |fordeletestyle|
+							
+								@trackingsheet = Trackingsheet.where('processmaster_id'=>params[:id],"style_id"=>BSON::ObjectId.from_string(fordeletestyle.to_s))
+								@trackingsheet.delete
+								end	
+							end
+					else if !@old_styles.blank?
+							#render :text => @old_styles
+							#return false
+							@old_styles.each do |style|
+								@trackingsheet = Trackingsheet.where('processmaster_id'=>params[:id],"style_id"=>BSON::ObjectId.from_string(style.to_s))
+								@trackingsheet.delete
 							end
 					end
 				end
