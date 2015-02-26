@@ -23,6 +23,7 @@
   <% @processmaster=Processmaster.find(@trackingsheet.processmaster_id) %>
 <div class="container-fluid">
             	<div class="row-fluid">
+
 					<div class="<% if @trackingsheet.persisted?  %>span12<% else %>span12<% end %>">
 						<div class="widget-box">
 							<div class="widget-title">
@@ -49,22 +50,30 @@
 							</div>
 						</div>
 					</div>
-
+</div>
+<div class="row-fluid">
 
 <!-- Newly Added Starts-->
-<div class="<% if @trackingsheet.persisted?  %>span9<% else %>span9<% end %>">
-<div class="widget-box">
+<div class="<% if @trackingsheet.persisted?  %>span10<% else %>span10<% end %>">
+	<span style="text-align:right; margin-top:2px;">
+<div class="widget-box"><%= link_to "Apply Changes", url_for(params),:class => 'btn btn-warning btn-xs' %> 	
+</span>
 												<div class="widget-title">
 													<span class="icon">
-														<i class="icon-info-sign"></i>
+														<i class="icon-file"></i>
 													</span>
-													<h5>Scrolling Form</h5>
+												
+													<h5>Tracking Sheets  </h5>
+									
+									
+									
 													 <div class="carousel-controls margin-top-10px">
 												      <a class="carousel-control overide-carousel-control left overide-left" href="#myCarousel" data-slide="prev"> <i class="icon-step-backward"></i> </a>
 												      <a class="carousel-control overide-carousel-control right overide-right" href="#myCarousel" data-slide="next"><i class="icon-step-forward"></i> </a>
 												  </div>   
 												</div>	
 <div id="myCarousel" class="carousel slide">
+	
                  <!-- Indicators -->         
                 <div class="carousel-inner">           
                     <div class="item active">
@@ -74,19 +83,23 @@
 												<div class="widget-content nopadding">
 													<table class="table table-bordered">
 														<th>Factory</th>
-														<th>Subcontractor</th>
+														<th>Subcontractors</th>
 														<th>X Mill Date</th>
 														<th>Production Lead Time</th>
 														<th>Sales Proceed to Sample Request</th>
 														<th>Proto Due Back From Vendor</th>
 														
 														<tbody>
-				<td style="text-align:center;"><%= factory( @trackingsheet.factory)%></td>
-				<td style="text-align:center;"><%= subcontractor( @trackingsheet.subcontractor)%></td>
-				<td style="text-align:center;"><%= xmilldate( @trackingsheet.xmilldate)%></td>
-				<td style="text-align:center;"><%= productionleadtime( @trackingsheet.productionleadtime)%></td>
-				<td style="text-align:center;"><%= salesproceedtosamplerequest( @trackingsheet.salesproceedtosamplerequest)%></td>
-				<td style="text-align:center;"><%= protoduebackfromvendor( @trackingsheet.protoduebackfromvendor)%></td>
+				<td style="text-align:center;">
+					
+					<%= best_in_place @trackingsheet, :factory%>
+				
+				</td>
+				<td style="text-align:center;"><%=best_in_place @trackingsheet, :subcontractor%></td>
+				<td style="text-align:center;"><%=best_in_place @trackingsheet, :xmilldate%></td>
+				<td style="text-align:center;"><%=best_in_place @trackingsheet, :productionleadtime%></td>
+				<td style="text-align:center;"><%=best_in_place @trackingsheet, :salesproceedtosamplerequest%></td>
+				<td style="text-align:center;"><%=best_in_place @trackingsheet, :protoduebackfromvendor%></td>
 				
 														</tbody>
 													</table>
@@ -110,12 +123,12 @@
 														
 														<tbody>
 				
-				<td style="text-align:center;"><%= daftovendordate( @trackingsheet.daftovendordate)%></td>
-				<td style="text-align:center;"><%= rtlmu( @trackingsheet.rtlmu)%></td>
-				<td style="text-align:center;"><%= mkup( @trackingsheet.mkup)%></td>
-				<td style="text-align:center;"><%= f.text_area :comments, class:"span20",placeholder:"Comments",cols:"12", rows:"2", readonly:true %></td>
-				<td style="text-align:center;"><%= projectedunits( @trackingsheet.projectedunits)%></td>
-				<td style="text-align:center;"><%= targetfob( @trackingsheet.targetfob)%></td>
+				<td style="text-align:center;"><%=best_in_place @trackingsheet, :daftovendordate%></td>
+				<td style="text-align:center;"><%=best_in_place @trackingsheet, :rtlmu%></td>
+				<td style="text-align:center;"><%=best_in_place @trackingsheet, :mkup%></td>
+				<td style="text-align:center;"><%=best_in_place @trackingsheet, :comments%></td>
+				<td style="text-align:center;"><%=best_in_place @trackingsheet, :projectedunits%></td>
+				<td style="text-align:center;"><%=best_in_place @trackingsheet, :targetfob%></td>
 				
 				
 														</tbody>
@@ -125,30 +138,78 @@
 
                         </blockquote>
                      </div>  
-                    <div class="item">
-                        <blockquote>
+       
+					
+					<!-- Scroll Tabs Starts-->
+					
+	                    <div class="item">
+	                        <blockquote>
                          
 
-														<div class="widget-content nopadding">
-													<table class="table table-bordered">
+															<div class="widget-content nopadding">
+														<table class="table table-bordered">
 														
-														<th>Target MU</th>
-														<th>Target WS</th>
-														<th>Per Color</th>
+															<th>Target MU</th>
+															<th>Target WS</th>
+															<th>Per Color</th>
+															<th>Per Style</th>
+															<th>Inco Terms</th>
+															<th>MOQ</th>
 														
-														<tbody>
+															<tbody>
 				
-				<td style="text-align:center;"><%= targetmu( @trackingsheet.targetmu)%></td>
-				<td style="text-align:center;"><%= targetws( @trackingsheet.targetws)%></td>
-				<td style="text-align:center;"><%= percolor( @trackingsheet.percolor)%></td>
+					<td style="text-align:center;"><%=best_in_place @trackingsheet, :targetmu%></td>
+					<td style="text-align:center;"><%=best_in_place @trackingsheet, :targetws%></td>
+					<td style="text-align:center;"><%=best_in_place @trackingsheet, :percolor%></td>
+					<td style="text-align:center;"><%=best_in_place @trackingsheet, :perstyle%></td>
+					<td style="text-align:center;"><%=best_in_place @trackingsheet, :incoterms%></td>
+					<td style="text-align:center;"><%=best_in_place @trackingsheet, :moq%></td>
 				
-														</tbody>
-													</table>
-												</div>
+															</tbody>
+														</table>
+													</div>
 
 
-                        </blockquote>
-                    </div>                                                                                   
+	                        </blockquote>
+						</div>
+					<!-- Scroll Tabs Ends-->
+					
+					<!-- Scroll Tabs Starts-->
+					
+	                    <div class="item">
+	                        <blockquote>
+                         
+
+															<div class="widget-content nopadding">
+														<table class="table table-bordered">
+														
+															<th>1000 - 5000 PCS</th>
+															<th>5000 - 10000 PCS</th>
+															<th>LDP Boat</th>
+															<th>LDP Air</th>
+															<th>Start Ship Date</th>
+															<th>Order Due Date Via Boat</th>
+														
+															<tbody>
+				
+					<td style="text-align:center;"><%=best_in_place @trackingsheet, :thousandtofivethousandPCS%></td>
+					<td style="text-align:center;"><%=best_in_place @trackingsheet, :fivethousandtotenthousandPCS%></td>
+					<td style="text-align:center;"><%=best_in_place @trackingsheet, :ldpboat%></td>
+					<td style="text-align:center;"><%=best_in_place @trackingsheet, :ldpair%></td>
+					<td style="text-align:center;"><%=best_in_place @trackingsheet, :startshipdate%></td>
+					<td style="text-align:center;"><%=best_in_place @trackingsheet, :orderduedateviaboat%></td>
+				
+															</tbody>
+														</table>
+													</div>
+
+
+	                        </blockquote>
+						</div>
+					<!-- Scroll Tabs Ends-->	
+					
+					
+					                                                                        
                 </div> 
                           
                                                             
@@ -162,339 +223,9 @@
 
 
 
-<div class="span8"><!-- -->
-
-	<div class="widget-box">
-                        <div class="widget-title">
-		                      <ul class="nav nav-tabs">
-												
-		                          <li class="active"><a data-toggle="tab" href="#tab1">General</a></li>
-		                          <li class=""><a data-toggle="tab" href="#tab2">Sales Enters</a></li>
-															<li class=""><a data-toggle="tab" href="#tab3">Minimum MOQ</a></li>
-															<li class=""><a data-toggle="tab" href="#tab4">First Cost Per Style</a></li>
-															<li class=""><a data-toggle="tab" href="#tab5">LDP Load</a></li>
-															<li class=""><a data-toggle="tab" href="#tab6">Customer Delivery</a></li>
-													
-														<!--	<li class=""><a data-toggle="tab" href="#tab7">1st DAF/STYLE Sample</a></li>
-															<li class=""><a data-toggle="tab" href="#tab8">2nd DAF/STYLE Sample</a></li>-->
-														<% if current_user.userrole=='operations' || current_user.userrole=='admin' || current_user.userrole=='vendor' %>
-														<li class=""><a data-toggle="tab" href="#tab9">Cost sheet</a></li>
-														<li class=""><a data-toggle="tab" href="#tab10">Testing</a></li>
-														<% end %>
-														<% if current_user.userrole!='vendor' %>
-		                          <li class=""><a data-toggle="tab" href="#tab11">Vendors</a></li>
-		                        <% end %>
-		                      </ul>
-                        </div>
-	                            <div class="widget-content tab-content">
-	                                <div id="tab1" class="tab-pane active">
-
-										<!--<div class="control-group">
-											<label class="control-label">Images :</label>
-												<div class="controls">
-													<%#= f.text_field :images, class:"span6",placeholder:"Images" %>
-												</div>
-										</div>-->
-
-										<%if	@processmaster.users.where(:userrole=>'vendor').count > 0%>
-											<%  if current_user.userrole=='vendor'  %>
-													<div class="control-group">
-														<label class="control-label">Factory :</label>
-															<div class="controls">
-																<%= factory( @trackingsheet.factory)%>
-															</div>
-													</div>
-												<% else  %>
-													<div class="control-group">
-														<label class="control-label">Factory :</label>
-														<div class="controls">
-																<label class="span20" for="factory"><%= @trackingsheet.factory %></label>
-														</div>
-													</div>
-											<% end %>
-									 	<% else %>
-											<% if current_user.userrole!='vendor' %>
-												<div class="control-group">
-													<label class="control-label">Factory :</label>
-														<div class="controls">
-														<%= factory( @trackingsheet.factory)%>
-														</div>
-												</div>
-											<% end %>
-										<% end %>
-										<div class="control-group">
-											<label class="control-label">Subcontractor :</label>
-												<div class="controls">
-													<%= subcontractor( @trackingsheet.subcontractor)%>
-												</div>
-										</div>
-										<!--<div class="control-group">
-											<label class="control-label">Customer Name :</label>
-												<div class="controls">
-													customername( @trackingsheet.customername)
-												</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label">Customer Account :</label>
-												<div class="controls">
-													customeraccount( @trackingsheet.customeraccount)
-												</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label">Project :</label>
-												<div class="controls">
-													project( @trackingsheet.project)
-												</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label">Reference Style :</label>
-												<div class="controls">
-													referncestyle( @trackingsheet.referncestyle)
-												</div>
-										</div> -->
-										<div class="control-group">
-											<label class="control-label">X Mill Date :</label>
-												<div class="controls">
-													<%= xmilldate( @trackingsheet.xmilldate)%>
-												</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label">Production Lead Time :</label>
-												<div class="controls">
-													<%= productionleadtime( @trackingsheet.productionleadtime)%>
-												</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label">Sales Proceed to Sample Request :</label>
-												<div class="controls">
-													<%= salesproceedtosamplerequest( @trackingsheet.salesproceedtosamplerequest)%>
-												</div>
-										</div>
-
-										<div class="control-group">
-											<label class="control-label">Proto Due Back From Vendor :</label>
-												<div class="controls">
-													<%= protoduebackfromvendor( @trackingsheet.protoduebackfromvendor)%>
-												</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label">Daf to Vendor Date :</label>
-												<div class="controls">
-													<%= daftovendordate( @trackingsheet.daftovendordate)%>
-												</div>
-										</div>
-									<!--	<div class="control-group">
-											<label class="control-label">Comments :</label>
-												<div class="controls">
-													<%#= comments( @trackingsheet.comments)%>
-												</div>
-										</div>-->
-										<div class="control-group">
-											<label class="control-label">RTL MU :</label>
-												<div class="controls">
-													<%= rtlmu( @trackingsheet.rtlmu)%>
-												</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label">MK-UP :</label>
-												<div class="controls">
-													<%= mkup( @trackingsheet.mkup)%>
-												</div>
-										</div>
-										
-										<div class="control-group">	
-										<label class="control-label">Comments:</label>
-											<div class="controls">
-								<%= f.text_area :comments, class:"span20",placeholder:"Comments",cols:"12", rows:"2", readonly:true %></div>	
-										</div>
-                  					
-	                                </div>
-	                                <div id="tab2" class="tab-pane">
-										<div class="control-group">
-										<label class="control-label">Projected Units :</label>
-											<div class="controls"><%= projectedunits( @trackingsheet.projectedunits)%></div>
-										</div>
-										<div class="control-group">
-										<label class="control-label">Target FOB :</label>
-											<div class="controls"><%= targetfob( @trackingsheet.targetfob)%></div>
-										</div>
-										<div class="control-group">
-										<label class="control-label">Target MU :</label>
-											<div class="controls"><%= targetmu( @trackingsheet.targetmu)%></div>
-										</div>
-										<div class="control-group">
-										<label class="control-label">Target WS :</label>
-											<div class="controls"><%= targetws( @trackingsheet.targetws)%></div>
-										</div>
-									</div>
-	                                <div id="tab3" class="tab-pane">
-										<div class="control-group">
-										<label class="control-label">Per Color :</label>
-											<div class="controls"><%= percolor( @trackingsheet.percolor)%></div>
-										</div>
-										<div class="control-group">
-										<label class="control-label">Per Style :</label>
-											<div class="controls"><%= perstyle( @trackingsheet.perstyle)%></div>
-										</div>
-										<label class="control-label">Inco Terms :</label>
-											<div class="controls"><%= incoterms( @trackingsheet.incoterms)%></div>
-										
-										
-	                                </div>
-	                                <div id="tab4" class="tab-pane">
-										<div class="control-group">
-										<label class="control-label">MOQ :</label>
-											<div class="controls"><%= moq( @trackingsheet.moq)%></div>
-										</div>
-										<div class="control-group">
-										<label class="control-label">1000 - 5000 PCS:</label>
-									<div class="controls"><%= thousandtofivethousandPCS( @trackingsheet.thousandtofivethousandPCS)%></div>
-										</div>
-										<div class="control-group">
-										<label class="control-label">5000 - 10000 PCS :</label>
-											<div class="controls"><%= fivethousandtotenthousandPCS( @trackingsheet.fivethousandtotenthousandPCS)%></div>
-										</div>
-										
-	                                </div>
-	                                <div id="tab5" class="tab-pane">
-										<div class="control-group">
-										<label class="control-label">LDP Boat :</label>
-											<div class="controls"><%= ldpboat( @trackingsheet.ldpboat)%></div>
-										</div>
-										
-										<div class="control-group">
-										<label class="control-label">LDP Air :</label>
-											<div class="controls"><%= ldpair( @trackingsheet.ldpair)%></div>
-										</div>
-	                                </div>
-	                                <div id="tab6" class="tab-pane">
-										<div class="control-group">
-										<label class="control-label">Start Ship Date:</label>
-											<div class="controls"><%= startshipdate( @trackingsheet.startshipdate)%></div>
-										</div>
-										<div class="control-group">
-										<label class="control-label">Order Due Date Via Boat :</label>
-											<div class="controls"><%= orderduedateviaboat( @trackingsheet.orderduedateviaboat)%></div>
-										</div>
-										<div class="control-group">
-										<label class="control-label">Order Due Date Via Air :</label>
-											<div class="controls"><%= orderduedateviaair( @trackingsheet.orderduedateviaair)%></div>
-										</div>
-										
-	                                </div>
-	                                <div id="tab7" class="tab-pane">
-										<div class="control-group">
-										<label class="control-label">S/O OR S/S :</label>
-											<div class="controls"><%= f.text_field :soss, class:"span6",placeholder:"S/O OR S/S" %></div>
-										</div>
-										<div class="control-group">
-										<label class="control-label"># of Dev Samples Needed :</label>
-											<div class="controls"><%= f.text_field :nmbrofdefsmplneeded, class:"span6",placeholder:"# OF DEV. Samples Needed" %></div>
-										</div>
-										<div class="control-group">
-										<label class="control-label">DAF Issued :</label>
-											<div class="controls"><%= f.text_field :dafissued, class:"span6",placeholder:"DAF issued" %></div>
-										</div>
-										<div class="control-group">
-										<label class="control-label">Sample Due Date :</label>
-											<div class="controls"><%= f.text_field :sampleduedate, class:"span6",placeholder:"Sample Due Date" %></div>
-										</div>
-										
-	                                </div>
-	                                <div id="tab8" class="tab-pane">
-										<div class="control-group">
-										<label class="control-label">S/O OR S/S :</label>
-											<div class="controls"><%= f.text_field :daf2soss, class:"span6",placeholder:"S/O OR S/S" %></div>
-										</div>
-										<div class="control-group">
-										<label class="control-label"># of Dev Samples Needed :</label>
-											<div class="controls"><%= f.text_field :daf2nmbrofdefsmplneeded, class:"span6",placeholder:"# OF DEV. Samples Needed" %></div>
-										</div>
-										<div class="control-group">
-										<label class="control-label">DAF Issued :</label>
-											<div class="controls"><%= f.text_field :daf2dafissued, class:"span6",placeholder:"DAF issued" %></div>
-										</div>
-										<div class="control-group">
-										<label class="control-label">Sample Due Date :</label>
-											<div class="controls"><%= f.text_field :daf2sampleduedate, class:"span6",placeholder:"Sample Due Date" %></div>
-										</div>
-											</div> 
-
-										<div id="tab9" class="tab-pane">
-										
-										</div>                             
-
-										<div id="tab10" class="tab-pane">
-										
-										
-	                  </div>
-										<div id="tab11" class="tab-pane"><div class="control-group container-export-csv"><a href="#" name="lockvendor" class="btn btn-info btn-xs" style="float:right;">Lock Vendor</a></div>
-											<table class="table table-bordered data-table">
-										    <thead>
-										      <tr>
-														<th></th>
-										        <th>Sl</th>
-										        <th>Email</th>
-														<th>First Name</th>
-														<th>Last Name</th>
-														<th colspan="2">Actions</th>
-													</tr>
-										    		</thead>
-														<tbody>
-												<%	k=1	 %>
-												<%	@vendorusers=@processmaster.users.where(:userrole=>'vendor')%>
-
-													<%	@vendorusers.each do |vuser| %>
-													<tr>
-															<td>
-																<input type="radio" name="selectvendor">
-														</td>
-														<td>
-																<%= k %>
-														</td>
-														
-														<td>
-															<%= vuser.email %>
-														</td>
-														<td>
-															<%= vuser.firstname %>
-													</td>
-													<td>
-															<%= vuser.lastname %>
-													</td>
-													<td>
-														<div class="controls">
-															<%= link_to 'Details','#modal-view-vendor-details',:class=>'btn btn-warning get-versions','data-toggle':"modal",:data => { :userid => vuser.id, :trackingsheetid => @trackingsheet.id } %>
-																
-														</div>
-													</td>
-													</tr>
-											<%	k+=1	 %>
-										
-										<% end %>
-										</tbody>
-								</table>
-
-
-	                  </div>
-										 
-										</div>                            
-	                        </div>
-
-											<div class="widget-box" style="border-bottom: 1px solid #CDCDCD;">
-										<div class="form-actions">
-								 		<div class="control-group" style="float:left;border:none;">
-											<label class="control-label">Comments:</label>
-												<div class="controls"><%= text_area_tag 'trackingsheet[comments]', nil, rows: 2, cols: 85, placeholder:"Comment", class:"span60" %></div>	
-											</div>	
-											<%= f.submit 'Save', :class => 'btn btn-success btn-xs',:style=>'float:right;' %>
-	 									</div>	
-									</div>	
-</div><!-- -->
-
 								
 
-							<% if current_user.userrole!='vendor'%>
+							
 								<div class="span2">
 									<div class="widget-box">
 										<div class="widget-title font-size-10px">
@@ -506,47 +237,8 @@
 										</div>
 									<div class="widget-content display-inline-block pading-0-0-0-10px ">
 										<div class="scroll-area" data-spy="scroll">
-											<% i=0 %>
-											<% exptarray=['version','user_id'] %>
-											<% @trackingsheet.versions.reverse.each do |version| %>
-
-											<%	if i < @trackingsheet.versions.length-2 %>
-
-												<div class="widget-content nopadding">
-													
-													<% if Time.now.strftime("%Y-%m-%d") == version.updated_at.strftime("%Y-%m-%d")%> 													<div class="version_head">Today, <%= version.updated_at.strftime("%T %p")  %></div>
-													
-													<% else%>
-													<div class="version_head"><%= version.updated_at.strftime("%d %b %Y, %T %p")  %></div>                                        <% end %> 
-																<div class="trackingsheet-versions"> 
-																			<div class="version_head"><i class="icon-stop"></i><% if !version.full_attributes['user_id'].blank? %><%= User.find(version.full_attributes['user_id']).email%><% end %></div>
-
-													<ul id="toggle-view">
-														<li>
-															
-															<span class="label label-success label-with-border-radius">Details<span class='plus-minus'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+</span></span><br>
-															<div class="panel"> 
-															 						
-																		<% version.altered_attributes.each do |altattrbkey,altattrbval| %>
-																		
-										
-																				<%	if !altattrbkey.in?(exptarray) %>
-
-																					<div><% if !altattrbval.first.blank? || !altattrbval.second.blank? %> <%= data[altattrbkey] %> : <% if !altattrbval.first.blank? %> <%= altattrbval.first %> to <% end %><%= altattrbval.second %><% end %> </p></div>
-
-																				<% end %>
-																		<% end %>
-									 								
-								 									
-								 							 	  
-															</div>
-														 </div>
-														</li>
-													</ul> 
-												 </div>
-												<% end %>
-												<% i+=1 %>
-												<% end %>
+											<br>
+											Updated at : <%= @trackingsheet.updated_at.strftime("%d %b %Y, %T %p")%>
 											</div>
 										</div>
 									</div>
@@ -554,69 +246,7 @@
 
 		
 </div>			
-<% else %> <!-- Vendor Check else condition -->
 
-								<div class="span2">
-						
-									<div class="widget-box">
-										<div class="widget-title font-size-10px">
-											<span class="icon">
-												<i class="icon-book"></i>
-											</span>
-											
-											<h5>Previous Versions</h5>
-										</div>
-									<div class="widget-content display-inline-block pading-0-0-0-10px">
-										<div class="scroll-area" data-spy="scroll">
-											<% i=0 %>
-											<%exptarray=['version','user_id']%>
-											<% @trackingsheet.versions.reverse.each do |version| %>
-
-											<%	if i < @trackingsheet.versions.length-2 %>
-												<% if User.find(version.full_attributes['user_id']).userrole=='vendor' && User.find(version.full_attributes['user_id']).email==current_user.email%>
-												<div class="widget-content nopadding">
-													
-													<% if Time.now.strftime("%Y-%m-%d") == version.updated_at.strftime("%Y-%m-%d")%> 													<div class="version_head">Today, <%= version.updated_at.strftime("%T")  %></div>
-													
-													<% else%>
-													<div class="version_head"><%= version.updated_at.strftime("%d %b %Y, %T")  %></div>                                        <% end %> 
-																												 <div class="trackingsheet-versions"> 
-												<div class="version_head"><i class="icon-stop"></i><%= User.find(version.full_attributes['user_id']).email%></div>
-
-													<ul id="toggle-view">
-														<li>
-															
-															<span class="label label-success label-with-border-radius">Details<span class='plus-minus'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+</span></span><br>
-															<div class="panel"> 
-															 						
-																		<% version.altered_attributes.each do |altattrbkey,altattrbval| %>
-																		
-										
-																				<%	if !altattrbkey.in?(exptarray) %>
-
-																					<div><% if !altattrbval.first.blank? || !altattrbval.second.blank? %> <%= data[altattrbkey] %> : <% if !altattrbval.first.blank? %> <%= altattrbval.first %> to <% end %><%= altattrbval.second %><% end %> </p></div>
-
-																				<% end %>
-																		<% end %>
-									 								
-								 									
-								 							 	  
-															</div>
-														 </div>
-														</li>
-													</ul> 
-												 </div><% end %>
-												<% end %>
-												<% i+=1 %>
-												<% end %>
-											</div>
-										</div>
-									</div>
-								</div>
-	
-</div>
-<% end %>	
- <!-- Vendor Check else condition ends-->	
  
 <div class="modal vendor-modal hide" id="modal-view-vendor-details">
 										 <div class="modal-header">

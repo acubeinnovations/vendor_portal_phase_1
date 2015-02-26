@@ -78,3 +78,10 @@ left:auto;
 .margin-top-10px{
 margin-top: 10px;
 }
+
+.lblcolor{
+	background-color:#ECD3C5 !important;
+}
+.widget-box a{
+	margin:2px;
+}

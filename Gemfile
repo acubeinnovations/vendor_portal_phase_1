@@ -63,9 +63,19 @@ group :development, :test do
   #For Breadcrumb
   gem "gretel"
 	
-	#gem "puma"
+	gem "puma"
 
 	gem 'mongoid_delorean'
+  
+  #For Grid Edit
+  
+  gem 'best_in_place'
+  
+  
 	# Newly Added ##
+  
+  
+  
+  
 end
 

@@ -1,7 +1,7 @@
 class Trackingsheet
   include Mongoid::Document
 	include Mongoid::Paperclip
-	include Mongoid::Timestamps::Created
+	include Mongoid::Timestamps
 	include Mongoid::Delorean::Trackable
 
   #general tab values
@@ -68,6 +68,7 @@ class Trackingsheet
 
 	belongs_to :user
   belongs_to :processmaster
+ 
 
 	#validates_presence_of :comments, :on => :update
 	

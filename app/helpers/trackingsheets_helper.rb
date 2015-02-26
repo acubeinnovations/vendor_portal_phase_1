@@ -1,18 +1,27 @@
 module TrackingsheetsHelper
   
+   
+  
   ###---------------------------------------Factory----------------------------------------------### 
    
    def factory(factory)
      if current_user.userrole=='admin'
-     text_field_tag('trackingsheet[factory]',factory,class:"span6",placeholder:"Factory")  
+       
+     text_field_tag('trackingsheet[factory]',factory,class:"span20",placeholder:"Factory")  
+     
      else if current_user.userrole=='operations'
      text_field_tag('trackingsheet[factory]',factory,class:"span20",placeholder:"Factory")     
+     return true
      else if current_user.userrole=='sales'
+       return false
      label_tag(:factory,factory,class:"span20") 
+     
      else if current_user.userrole=='designer'
      text_field_tag('trackingsheet[factory]',factory,class:"span20",placeholder:"Factory")     
+     return true
      else if current_user.userrole=='vendor'
-     text_field_tag('trackingsheet[factory]',factory,class:"span20",placeholder:"Factory")     
+     text_field_tag('trackingsheet[factory]',factory,class:"span20",placeholder:"Factory")    
+     return true 
      end #vendors
      end #designers
      end #sales
@@ -24,11 +33,11 @@ module TrackingsheetsHelper
    
     def subcontractor(subcontractor)
       if current_user.userrole=='admin'
-      text_field_tag('trackingsheet[subcontractor]',subcontractor,class:"span20",placeholder:"Subcontractor")  
+      text_field_tag('trackingsheet[subcontractor]',subcontractor,class:"span20")  
       else if current_user.userrole=='operations'
       label_tag(:subcontractor,subcontractor,class:"span20")    
       else if current_user.userrole=='sales'
-      label_tag(:subcontractor,subcontractor,class:"span20") 
+      label_tag(:subcontractor,subcontractor,class:"span20 lblcolor") 
       else if current_user.userrole=='designer'
       label_tag(:subcontractor,subcontractor,class:"span20")     
       else if current_user.userrole=='vendor'
@@ -184,7 +193,7 @@ module TrackingsheetsHelper
  
           def protoduebackfromvendor(protoduebackfromvendor)
             if current_user.userrole=='admin'
-            text_field_tag('trackingsheettrackingsheet[protoduebackfromvendor]',protoduebackfromvendor,class:"span20",placeholder:"Proto Due Back From Vendor")  
+            text_field_tag('trackingsheet[protoduebackfromvendor]',protoduebackfromvendor,class:"span20",placeholder:"Proto Due Back From Vendor")  
             else if current_user.userrole=='operations'
             text_field_tag('trackingsheet[protoduebackfromvendor]',protoduebackfromvendor,class:"span20",placeholder:"Proto Due Back From Vendor")    
             else if current_user.userrole=='sales'

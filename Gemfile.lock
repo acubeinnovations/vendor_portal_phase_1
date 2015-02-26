@@ -38,6 +38,9 @@ GEM
       tzinfo (~> 1.1)
     arel (6.0.0)
     bcrypt (3.1.10)
+    best_in_place (3.0.3)
+      actionpack (>= 3.2)
+      railties (>= 3.2)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bson (2.3.0)
@@ -123,6 +126,8 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    puma (2.11.1)
+      rack (>= 1.1, < 2.0)
     rack (1.6.0)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -210,6 +215,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  best_in_place
   bson_ext
   byebug
   coffee-rails (~> 4.1.0)
@@ -221,6 +227,7 @@ DEPENDENCIES
   mongoid (~> 4.0.0)
   mongoid-paperclip
   mongoid_delorean
+  puma
   rails (= 4.2.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
