@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+group :production do
+	gem 'dotenv-rails'
+end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
@@ -12,7 +15,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
- gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -32,6 +35,43 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+
+
+# Newly Added ##
+
+#mongoid
+gem "mongoid", "~> 4.0.0"
+gem 'bson_ext'
+
+#user Auth
+gem 'devise'
+
+#bootsrap
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"
+gem 'simple_form'
+
+#for attaching image for mongo only
+gem "mongoid-paperclip", :require => "mongoid_paperclip"
+
+#For Breadcrumb
+gem "gretel"
+
+gem "puma"
+
+gem 'mongoid_delorean'
+
+#For Grid Edit
+
+gem 'best_in_place'
+
+# for spawn
+
+gem 'posix-spawn'
+
+# Newly Added ##
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -41,41 +81,6 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-
-
-	# Newly Added ##
-
-	#mongoid
-	gem "mongoid", "~> 4.0.0"
-	gem 'bson_ext'
-	
-	#user Auth
-	gem 'devise'
-
-	#bootsrap
-	gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-	gem "twitter-bootstrap-rails"
-	gem 'simple_form'
-  
-  #for attaching image for mongo only
-  gem "mongoid-paperclip", :require => "mongoid_paperclip"
-  
-  #For Breadcrumb
-  gem "gretel"
-	
-	gem "puma"
-
-	gem 'mongoid_delorean'
-  
-  #For Grid Edit
-  
-  gem 'best_in_place'
-  
-  
-	# Newly Added ##
-  
-  
-  
   
 end
 
