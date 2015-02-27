@@ -9,8 +9,12 @@ class TrackingsheetsController < ApplicationController
   # GET /trackingsheets
   # GET /trackingsheets.json
   def index
+    if request.GET.length==0
+      redirect_to processmasters_path
+    end
     #@trackingsheets = Trackingsheet.all
-		redirect_to processmasters_path
+    #trackingsheets =  Trackingsheet.find(params[:processmaster_id]) 
+		#redirect_to processmasters_path
   end
 
   # GET /trackingsheets/1
@@ -20,8 +24,8 @@ class TrackingsheetsController < ApplicationController
 
   # GET /trackingsheets/new
   def new
-    #@trackingsheet = Trackingsheet.new
-		redirect_to processmasters_path
+    @trackingsheet = Trackingsheet.new
+		#redirect_to processmasters_path
   end
 
   # GET /trackingsheets/1/edit
