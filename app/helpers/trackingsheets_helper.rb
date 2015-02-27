@@ -336,7 +336,7 @@ module TrackingsheetsHelper
 
              def targetmu(targetmu)
                if current_user.userrole=='admin'
-               t return true     
+                return true     
                else if current_user.userrole=='operations'
                return false  
                else if current_user.userrole=='sales'
