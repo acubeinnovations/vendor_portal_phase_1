@@ -9,8 +9,6 @@
 			<td><%= processmaster.try(:styles).first.try(:market) %></td>
 			<td><%= processmaster.created_at %></td>
 			<td><%= link_to 'Edit', edit_processmaster_path(processmaster),class:'btn btn-info' %></td>
-			<td><% link_to 'Tracking Sheet', trackingsheets_path(:processmaster_id => processmaster.id),class:'btn btn-warning' %>
-			</td><td>	
 			<td><%= link_to 'Destroy', processmaster, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td>
 
 		</tr>	
