@@ -95,6 +95,10 @@ class TrackingsheetsController < ApplicationController
       params.require(:trackingsheet).permit(:images,:factory,:subcontractor,:xmilldate, :productionleadtime,:salesproceedtosamplerequest, :protoduebackfromvendor,
       :daftovendordate, :rtlmu, :mkup, :projectedunits, :targetfob, :targetmu, :targetws, :percolor, :perstyle, :incoterms, :moq,
       :thousandtofivethousandPCS, :fivethousandtotenthousandPCS, :ldpboat, :ldpair, :startshipdate, :orderduedateviaboat, :orderduedateviaair,
-      :soss, :nmbrofdefsmplneeded, :dafissued, :sampleduedate, :daf2soss, :daf2nmbrofdefsmplneeded, :daf2dafissued, :daf2sampleduedate,:processmaster_id,:comments,:useremail).merge(user: current_user)
+      :soss, :nmbrofdefsmplneeded, :dafissued, :sampleduedate, :daf2soss, :daf2nmbrofdefsmplneeded, :daf2dafissued, :daf2sampleduedate,:processmaster_id,:comments,
+      :useremail, :vendor, :brand, :customername, :customeraccountnumber, :projectnumber, :customerstylenumber, :groupname, :productcategory, :designname,
+       :shape, :size, :fiber, :construction, :fabrictype, :gauge_end, :finish, :finishdetails, :colors, :hw_logo_trim, :components, :targetretailus,
+        :targetretailcan, :pricebasedonprojection, :additionalsurcharge, :tenthousandtotwentythousandPCS, :twentythousandplusPCS, :xmill, :received,
+         :approved, :daf2xmill, :daf2received, :daf2approved, :vsdsreceived, :vsdsapproved, :proto_daf_number).merge(user: current_user)
     end
 end
