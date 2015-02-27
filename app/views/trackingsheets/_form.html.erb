@@ -1,4 +1,10 @@
-								<% trackingsheets=Trackingsheet.where('processmaster_id'=>BSON::ObjectId.from_string(request.GET.first.second.to_s))%> 
+<%= trackingsheets=Trackingsheet.where('processmaster_id') and style.division = current_user.division %>
+	
+<% return false %>
+
+
+
+<% trackingsheets=Trackingsheet.where('processmaster_id'=>BSON::ObjectId.from_string(request.GET.first.second.to_s))%> 
 
 
 
