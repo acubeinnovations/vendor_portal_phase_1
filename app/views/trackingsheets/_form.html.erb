@@ -78,20 +78,80 @@
 
 	
 								                 <!-- Indicators -->         
-								                <div class="carousel-inner">           
-								                    <div class="item active">
+								                <div class="carousel-inner">  
+													
+													
+													
+													
+				<!-- Scroll Tabs Starts-->
+
+                    <div class="item active">
+						
+
+
+						
+                        <blockquote>
+                         
+
+										<div class="widget-content nopadding">
+									<table class="table table-bordered">
+										<th>ECHO DIVISION</th>
+										<th>DIVISION</th>
+										<th>SEASON</th>
+										<th>YEAR</th>
+										<th>MARKET</th>
+										
+													<% model_class='trackingsheet' %>
+													<% @a=1%>
+													<% trackingsheets.each do |trackingsheet|%>
+
+													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
+														
+													<tbody>
+										<td style="text-align:center;"></td>
+										<td style="text-align:center;"></td>
+										<td style="text-align:center;"></td>
+										<td style="text-align:center;"></td>
+										<td style="text-align:center;"></td>
+										
+
+													</tbody>
+																	<% @a=@a+1%>
+																	<% end %>
+
+																	<% end %>						
+										</table>
+									</div>
+
+
+									                        </blockquote>
+															
+														</div>
+	<!-- Scroll Tabs Ends-->													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													         
+								                    <div class="item">
 														
 								                        <blockquote>
                           	
 											
 																				<div class="widget-content nopadding">
 																					<table class="table table-bordered">
-																						<th>Factory</th>
-																						<th>Subcontractors</th>
-																						<th>X Mill Date</th>
-																						<th>Production Lead Time</th>
-																						<th>Sales Proceed to Sample Request</th>
-																						<th>Proto Due Back From Vendor</th>
+																						<th>IMAGES</th>
+																						<th>VENDOR</th>
+																						<th>FACTORY</th>
+																						<th>SUBCONTRACTOR</th>
+																						<th>BRAND</th>
+																						<th>CUSTOMER NAME</th>
 												<% model_class='trackingsheet' %>
 												<% @a=1%>
 												<% trackingsheets.each do |trackingsheet|%>
@@ -104,14 +164,15 @@
 																						<tbody>
 												<td style="text-align:center;">
 					
-													<%= best_in_place trackingsheet, :factory%>
+													
 				
 												</td>
+												<td style="text-align:center;"></td>
+												
+												<td style="text-align:center;"><%=best_in_place trackingsheet, :factory%></td>
 												<td style="text-align:center;"><%=best_in_place trackingsheet, :subcontractor%></td>
-												<td style="text-align:center;"><%=best_in_place trackingsheet, :xmilldate%></td>
-												<td style="text-align:center;"><%=best_in_place trackingsheet, :productionleadtime%></td>
-												<td style="text-align:center;"><%=best_in_place trackingsheet, :salesproceedtosamplerequest%></td>
-												<td style="text-align:center;"><%=best_in_place trackingsheet, :protoduebackfromvendor%></td>
+												<td style="text-align:center;"><%=best_in_place trackingsheet, :brand%></td>
+												<td style="text-align:center;"><%=best_in_place trackingsheet, :customername%></td>
 				
 																						</tbody>
 																						<% @a=@a+1%>
@@ -133,12 +194,12 @@
 																						<div class="widget-content nopadding">
 																					<table class="table table-bordered">
 														
-																						<th>Daf to Vendor Date</th>
-																						<th>RTL MU</th>
-																						<th>MK-UP</th>
-																						<th>Comments</th>
-																						<th>Projected Units</th>
-																						<th>Target FOB</th>
+																						<th>CUSTOMER ACCOUNT #</th>
+																						<th>PROJECT #</th>
+																						<th>REFERENCE STYLE</th>
+																						<th>CUSTOMER STYLE #</th>
+																						<th>PROTO # / DAF #</th>
+																						<th>STYLE #</th>
 														<% model_class='trackingsheet' %>
 														<% @a=1%>
 														<% trackingsheets.each do |trackingsheet|%>
@@ -150,12 +211,12 @@
 														<% @processmaster=Processmaster.find(trackingsheet.processmaster_id) %>
 																						<tbody>
 				
-												<td style="text-align:center;"><%=best_in_place trackingsheet, :daftovendordate%></td>
-												<td style="text-align:center;"><%=best_in_place trackingsheet, :rtlmu%></td>
-												<td style="text-align:center;"><%=best_in_place trackingsheet, :mkup%></td>
-												<td style="text-align:center;"><%=best_in_place trackingsheet, :comments%></td>
-												<td style="text-align:center;"><%=best_in_place trackingsheet, :projectedunits%></td>
-												<td style="text-align:center;"><%=best_in_place trackingsheet, :targetfob%></td>
+												<td style="text-align:center;"><%=best_in_place trackingsheet, :customeraccountnumber%></td>
+												<td style="text-align:center;"><%=best_in_place trackingsheet, :projectnumber%></td>
+												<td style="text-align:center;"></td>
+												<td style="text-align:center;"><%=best_in_place trackingsheet, :customerstylenumber%></td>
+												<td style="text-align:center;"><%=best_in_place trackingsheet, :proto_daf_number%></td>
+												<td style="text-align:center;"></td>
 				
 				
 																						</tbody>
@@ -183,12 +244,12 @@
 																							<div class="widget-content nopadding">
 																						<table class="table table-bordered">
 														
-																							<th>Target MU</th>
-																							<th>Target WS</th>
-																							<th>Per Color</th>
-																							<th>Per Style</th>
-																							<th>Inco Terms</th>
-																							<th>MOQ</th>
+																							<th>DESIGNER</th>
+																							<th>GROUP NAME</th>
+																							<th>PRODUCT CATEGORY</th>
+																							<th>DESIGN NAME / DESCRIPTION</th>
+																							<th>SHAPE (level code 4)</th>
+																							<th>SIZE (level code 6)</th>
 											<% model_class='trackingsheet' %>
 											<% @a=1%>
 											<% trackingsheets.each do |trackingsheet|%>
@@ -200,12 +261,12 @@
 											<% @processmaster=Processmaster.find(trackingsheet.processmaster_id) %>			
 																							<tbody>
 				
-													<td style="text-align:center;"><%=best_in_place trackingsheet, :targetmu%></td>
-													<td style="text-align:center;"><%=best_in_place trackingsheet, :targetws%></td>
-													<td style="text-align:center;"><%=best_in_place trackingsheet, :percolor%></td>
-													<td style="text-align:center;"><%=best_in_place trackingsheet, :perstyle%></td>
-													<td style="text-align:center;"><%=best_in_place trackingsheet, :incoterms%></td>
-													<td style="text-align:center;"><%=best_in_place trackingsheet, :moq%></td>
+													<td style="text-align:center;"></td>
+													<td style="text-align:center;"><%=best_in_place trackingsheet, :groupname%></td>
+													<td style="text-align:center;"><%=best_in_place trackingsheet, :productcategory%></td>
+													<td style="text-align:center;"><%=best_in_place trackingsheet, :designname%></td>
+													<td style="text-align:center;"><%=best_in_place trackingsheet, :shape%></td>
+													<td style="text-align:center;"><%=best_in_place trackingsheet, :size%></td>
 				
 																							</tbody>
 													<% @a=@a+1%>
@@ -234,12 +295,12 @@
 																							<div class="widget-content nopadding">
 																						<table class="table table-bordered">
 														
-																							<th>1000 - 5000 PCS</th>
-																							<th>5000 - 10000 PCS</th>
-																							<th>LDP Boat</th>
-																							<th>LDP Air</th>
-																							<th>Start Ship Date</th>
-																							<th>Order Due Date Via Boat</th>
+																							<th>FIBER (level code 2)</th>
+																							<th>CONSTRUCTION (level code 1)</th>
+																							<th>FABRIC TYPE (level code 3)</th>
+																							<th>GAUGE / END</th>
+																							<th>FINISH</th>
+																							<th>FINISH DETAIL</th>
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
@@ -248,12 +309,12 @@
 														
 																							<tbody>
 				
-													<td style="text-align:center;"><%=best_in_place trackingsheet, :thousandtofivethousandPCS%></td>
-													<td style="text-align:center;"><%=best_in_place trackingsheet, :fivethousandtotenthousandPCS%></td>
-													<td style="text-align:center;"><%=best_in_place trackingsheet, :ldpboat%></td>
-													<td style="text-align:center;"><%=best_in_place trackingsheet, :ldpair%></td>
-													<td style="text-align:center;"><%=best_in_place trackingsheet, :startshipdate%></td>
-													<td style="text-align:center;"><%=best_in_place trackingsheet, :orderduedateviaboat%></td>
+													<td style="text-align:center;"><%=best_in_place trackingsheet, :fiber%></td>
+													<td style="text-align:center;"><%=best_in_place trackingsheet, :construction%></td>
+													<td style="text-align:center;"><%=best_in_place trackingsheet, :fabrictype%></td>
+													<td style="text-align:center;"><%=best_in_place trackingsheet, :gauge_end%></td>
+													<td style="text-align:center;"><%=best_in_place trackingsheet, :finish%></td>
+													<td style="text-align:center;"><%=best_in_place trackingsheet, :finishdetails%></td>
 				
 																							</tbody>
 																	<% @a=@a+1%>
@@ -268,6 +329,409 @@
 															
 														</div>
 													<!-- Scroll Tabs Ends-->	
+													
+				<!-- Scroll Tabs Starts-->
+
+                    <div class="item">
+						
+
+
+						
+                        <blockquote>
+                         
+
+										<div class="widget-content nopadding">
+									<table class="table table-bordered">
+	
+										<th>COLORS</th>
+										<th>HARDWARE / LOGO / TRIM</th>
+										<th>COMPONENT (labels / tickets)</th>
+										<th>PROJECTED UNITS</th>
+										<th>TARGET FOB</th>
+										<th>TARGET MU</th>
+													<% model_class='trackingsheet' %>
+													<% @a=1%>
+													<% trackingsheets.each do |trackingsheet|%>
+
+													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
+														
+													<tbody>
+
+										<td style="text-align:center;"><%=best_in_place trackingsheet, :colors%></td>
+										<td style="text-align:center;"><%=best_in_place trackingsheet, :hw_logo_trim%></td>
+										<td style="text-align:center;"><%=best_in_place trackingsheet, :components%></td>
+										<td style="text-align:center;"><%=best_in_place trackingsheet, :projectedunits%></td>
+										<td style="text-align:center;"><%=best_in_place trackingsheet, :targetfob%></td>
+										<td style="text-align:center;"><%=best_in_place trackingsheet, :targetmu%></td>
+
+													</tbody>
+																	<% @a=@a+1%>
+																	<% end %>
+
+																	<% end %>						
+										</table>
+									</div>
+
+
+									                        </blockquote>
+															
+														</div>
+	<!-- Scroll Tabs Ends-->
+									
+				<!-- Scroll Tabs Starts-->
+
+                    <div class="item">
+						
+
+
+						
+                        <blockquote>
+                         
+
+										<div class="widget-content nopadding">
+									<table class="table table-bordered">
+	
+										<th>TARGET WS</th>
+										<th>TARGET RETAIL US $</th>
+										<th>TARGET RETAIL CAN $</th>
+										<th>PER COLOR</th>
+										<th>INCO TERMS</th>
+										<th>PRICE BASED UPON PROJECTION</th>
+													<% model_class='trackingsheet' %>
+													<% @a=1%>
+													<% trackingsheets.each do |trackingsheet|%>
+
+													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
+														
+													<tbody>
+
+										<td style="text-align:center;"><%=best_in_place trackingsheet, :targetws%></td>
+										<td style="text-align:center;"><%=best_in_place trackingsheet, :targetretailus%></td>
+										<td style="text-align:center;"><%=best_in_place trackingsheet, :targetretailcan%></td>
+										<td style="text-align:center;"><%=best_in_place trackingsheet, :percolor%></td>
+										<td style="text-align:center;"><%=best_in_place trackingsheet, :incoterms%></td>
+										<td style="text-align:center;"><%=best_in_place trackingsheet, :pricebasedonprojection%></td>
+
+													</tbody>
+																	<% @a=@a+1%>
+																	<% end %>
+
+																	<% end %>						
+										</table>
+									</div>
+
+
+									                        </blockquote>
+															
+														</div>
+	<!-- Scroll Tabs Ends-->		
+	
+	
+				<!-- Scroll Tabs Starts-->
+
+                    <div class="item">
+						
+
+
+						
+                        <blockquote>
+                         
+
+										<div class="widget-content nopadding">
+									<table class="table table-bordered">
+	
+										<th>ADDITIONAL SURCHARGE</th>
+										<th>MOQ</th>
+										<th>1000 - 5000 PCS</th>
+										<th>5000 - 10000 PCS</th>
+										<th>10000 - 20000 PCS</th>
+										<th>20000+ PCS</th>
+													<% model_class='trackingsheet' %>
+													<% @a=1%>
+													<% trackingsheets.each do |trackingsheet|%>
+
+													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
+														
+													<tbody>
+
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :additionalsurcharge%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :moq%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :thousandtofivethousandPCS%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :fivethousandtotenthousandPCS%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :tenthousandtotwentythousandPCS%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :twentythousandplusPCS%></td>
+
+													</tbody>
+																	<% @a=@a+1%>
+																	<% end %>
+
+																	<% end %>						
+										</table>
+									</div>
+
+
+									                        </blockquote>
+															
+														</div>
+	<!-- Scroll Tabs Ends-->			
+	
+	
+	
+				<!-- Scroll Tabs Starts-->
+
+                    <div class="item">
+						
+
+
+						
+                        <blockquote>
+                         
+
+										<div class="widget-content nopadding">
+									<table class="table table-bordered">
+	
+										<th>LDP BOAT</th>
+										<th>LDP AIR</th>
+										<th>X MILL DATE</th>
+										<th>START SHIP DATE</th>
+										<th>ORDER DUE DATE VIA BOAT</th>
+										<th>ORDER DUE DATE VIA AIR</th>
+													<% model_class='trackingsheet' %>
+													<% @a=1%>
+													<% trackingsheets.each do |trackingsheet|%>
+
+													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
+														
+													<tbody>
+
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :ldpboat%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :ldpair%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :xmilldate%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :startshipdate%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :orderduedateviaboat%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :orderduedateviaair%></td>
+
+													</tbody>
+																	<% @a=@a+1%>
+																	<% end %>
+
+																	<% end %>						
+										</table>
+									</div>
+
+
+									                        </blockquote>
+															
+														</div>
+	<!-- Scroll Tabs Ends-->
+	
+	
+	
+	
+	
+				<!-- Scroll Tabs Starts-->
+
+                    <div class="item">
+						
+
+
+						
+                        <blockquote>
+                         
+
+										<div class="widget-content nopadding">
+									<table class="table table-bordered">
+	
+										<th>PRODUCT LEAD TIME</th>
+										<th>SALES PROCEEDS <br>TO SAMPLE <br>REQUEST DATE</th>
+										<th>PROTO DUE BACK  <br> FROM VENDOR</th>
+										<th>DAF TO VENDOR DATE</th>
+										<th> S/0 OR S/S (1st DAF)</th>
+										<th># OF DEV. SAMPLES <br> NEEDED(1st DAF)</th>
+													<% model_class='trackingsheet' %>
+													<% @a=1%>
+													<% trackingsheets.each do |trackingsheet|%>
+
+													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
+														
+													<tbody>
+
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :productionleadtime%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :salesproceedtosamplerequest%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :protoduebackfromvendor%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :daftovendordate%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :soss%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :nmbrofdefsmplneeded%></td>
+
+													</tbody>
+																	<% @a=@a+1%>
+																	<% end %>
+
+																	<% end %>						
+										</table>
+									</div>
+
+
+									                        </blockquote>
+															
+														</div>
+	<!-- Scroll Tabs Ends-->	
+	
+
+
+				<!-- Scroll Tabs Starts-->
+
+                    <div class="item">
+						
+
+
+						
+                        <blockquote>
+                         
+
+										<div class="widget-content nopadding">
+									<table class="table table-bordered">
+	
+										<th>DAF ISSUED (1st DAF)</th>
+										<th>SAMPLE DUE DATE (1st DAF)</th>
+										<th>X-MILL (1st DAF)</th>
+										<th>RECEIVED (1st DAF)</th>
+										<th>APPROVED (1st DAF)</th>
+										<th>S/0 OR S/S (2nd DAF)</th>
+													<% model_class='trackingsheet' %>
+													<% @a=1%>
+													<% trackingsheets.each do |trackingsheet|%>
+
+													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
+														
+													<tbody>
+
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :dafissued%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :sampleduedate%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :xmill%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :received%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :approved%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :daf2soss%></td>
+
+													</tbody>
+																	<% @a=@a+1%>
+																	<% end %>
+
+																	<% end %>						
+										</table>
+									</div>
+
+
+									                        </blockquote>
+															
+														</div>
+	<!-- Scroll Tabs Ends-->	
+	
+	
+				<!-- Scroll Tabs Starts-->
+
+                    <div class="item">
+						
+
+
+						
+                        <blockquote>
+                         
+
+										<div class="widget-content nopadding">
+									<table class="table table-bordered">
+										<th># OF DEV. SAMPLES <br> NEEDED(2nd DAF)</th>
+										<th>DAF ISSUED (2nd DAF)</th>
+										<th>SAMPLE DUE DATE (2nd DAF)</th>
+										<th>X-MILL (2nd DAF)</th>
+										<th>RECEIVED (2nd DAF)</th>
+										<th>APPROVED (2nd DAF)</th>
+										
+													<% model_class='trackingsheet' %>
+													<% @a=1%>
+													<% trackingsheets.each do |trackingsheet|%>
+
+													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
+														
+													<tbody>
+
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :daf2nmbrofdefsmplneeded%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :daf2dafissued%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :daf2sampleduedate%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :daf2xmill%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :daf2received%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :daf2approved%></td>
+
+													</tbody>
+																	<% @a=@a+1%>
+																	<% end %>
+
+																	<% end %>						
+										</table>
+									</div>
+
+
+									                        </blockquote>
+															
+														</div>
+	<!-- Scroll Tabs Ends-->	
+	
+	
+	
+	
+				<!-- Scroll Tabs Starts-->
+
+                    <div class="item">
+						
+
+
+						
+                        <blockquote>
+                         
+
+										<div class="widget-content nopadding">
+									<table class="table table-bordered">
+										<th>COMMENTS</th>
+										<th>RECEIVED (VSDS)</th>
+										<th>APPROVED (VSDS)</th>
+										<th>RTL MU</th>
+										<th>MK-UP</th>
+										
+										
+													<% model_class='trackingsheet' %>
+													<% @a=1%>
+													<% trackingsheets.each do |trackingsheet|%>
+
+													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
+														
+													<tbody>
+
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :comments%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :vsdsreceived%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :vsdsapproved%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :rtlmu%></td>
+								<td style="text-align:center;"><%=best_in_place trackingsheet, :mkup%></td>
+								
+
+													</tbody>
+																	<% @a=@a+1%>
+																	<% end %>
+
+																	<% end %>						
+										</table>
+									</div>
+
+
+									                        </blockquote>
+															
+														</div>
+	<!-- Scroll Tabs Ends-->		
+	
+	
+	
+	
+													
+																											
 					
 					
 					                                                                        
