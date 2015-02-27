@@ -4,230 +4,241 @@ module TrackingsheetsHelper
   
   ###---------------------------------------Factory----------------------------------------------### 
    
-   def factory(factory)
-     if current_user.userrole=='admin'
-       
-     text_field_tag('trackingsheet[factory]',factory,class:"span20",placeholder:"Factory")  
-     
-     else if current_user.userrole=='operations'
-     text_field_tag('trackingsheet[factory]',factory,class:"span20",placeholder:"Factory")     
-     return true
-     else if current_user.userrole=='sales'
-       return false
-     label_tag(:factory,factory,class:"span20") 
-     
-     else if current_user.userrole=='designer'
-     text_field_tag('trackingsheet[factory]',factory,class:"span20",placeholder:"Factory")     
-     return true
-     else if current_user.userrole=='vendor'
-     text_field_tag('trackingsheet[factory]',factory,class:"span20",placeholder:"Factory")    
-     return true 
-     end #vendors
-     end #designers
-     end #sales
-     end #operations 
-     end #admin
+   def factory()
+		 
+				if current_user.userrole=='admin'
+					return true  
+				else if current_user.userrole=='operations'
+					return true
+				else if current_user.userrole=='sales'
+					return false
+				else if current_user.userrole=='designer'
+					return true
+				else if current_user.userrole=='vendor'
+					return true 
+				end #vendors
+				end #designers
+				end #sales
+				end #operations 
+				end #admin
+		
    end   
    
    ###---------------------------------------Subcontarctor----------------------------------------------### 
    
-    def subcontractor(subcontractor)
-      if current_user.userrole=='admin'
-      text_field_tag('trackingsheet[subcontractor]',subcontractor,class:"span20")  
-      else if current_user.userrole=='operations'
-      label_tag(:subcontractor,subcontractor,class:"span20")    
-      else if current_user.userrole=='sales'
-      label_tag(:subcontractor,subcontractor,class:"span20 lblcolor") 
-      else if current_user.userrole=='designer'
-      label_tag(:subcontractor,subcontractor,class:"span20")     
-      else if current_user.userrole=='vendor'
-      text_field_tag('trackingsheettrackingsheet[subcontractor]',subcontractor,class:"span20",placeholder:"Subcontractor")     
-      end #vendors
-      end #designers
-      end #sales
-      end #operations 
-      end #admin
+    def subcontractor()	
+			
+				if current_user.userrole=='admin'
+					return true   
+				else if current_user.userrole=='operations'
+					return false    
+				else if current_user.userrole=='sales'
+					return false
+				else if current_user.userrole=='designer'
+					return false     
+				else if current_user.userrole=='vendor'
+					return true      
+				end #vendors
+				end #designers
+				end #sales
+				end #operations 
+				end #admin
+			
     end    
     
     ###---------------------------------------Customername----------------------------------------------### 
    
-     def customername(customername)
-       if current_user.userrole=='admin'
-       text_field_tag('trackingsheet[customername]',customername,class:"span20",placeholder:"Customer Name")  
-       else if current_user.userrole=='operations'
-       text_field_tag('trackingsheet[customername]',customername,class:"span20",placeholder:"Customer Name")     
-       else if current_user.userrole=='sales'
-       label_tag(:customername,customername,class:"span20") 
-       else if current_user.userrole=='designer'
-       text_field_tag('trackingsheet[customername]',customername,class:"span20",placeholder:"Customer Name")     
-       else if current_user.userrole=='vendor'
-       label_tag(:customername,customername,class:"span20")   
-       end #vendors
-       end #designers
-       end #sales
-       end #operations 
-       end #admin
+     def customername()
+			
+				 if current_user.userrole=='admin'
+		     		return true   
+		     else if current_user.userrole=='operations'
+		    		return true      
+		     else if current_user.userrole=='sales'
+		     		return false  
+		     else if current_user.userrole=='designer'
+		    		return true      
+		     else if current_user.userrole=='vendor'
+		     	 return false    
+		     end #vendors
+		     end #designers
+		     end #sales
+		     end #operations 
+		     end #admin
+			
      end     
      
      ###---------------------------------------Customeraccount----------------------------------------------### 
    
-      def customeraccount(customeraccount)
-        if current_user.userrole=='admin'
-        text_field_tag('trackingsheet[customeraccount]',customeraccount,class:"span20",placeholder:"Customer Account")  
-        else if current_user.userrole=='operations'
-        text_field_tag('trackingsheet[customeraccount]',customeraccount,class:"span20",placeholder:"Customer Account")     
-        else if current_user.userrole=='sales'
-        label_tag(:customeraccount,customeraccount,class:"span20") 
-        else if current_user.userrole=='designer'
-        text_field_tag('trackingsheet[customeraccount]',customeraccount,class:"span20",placeholder:"Customer Account")     
-        else if current_user.userrole=='vendor'
-        label_tag(:customeraccount,customeraccount,class:"span20")   
-        end #vendors
-        end #designers
-        end #sales
-        end #operations 
-        end #admin
+      def customeraccount()
+				
+						if current_user.userrole=='admin'
+				    		return true  
+				    else if current_user.userrole=='operations'
+				   		return true     
+				    else if current_user.userrole=='sales'
+				   return false   
+				    else if current_user.userrole=='designer'
+				    		return true     
+				    else if current_user.userrole=='vendor'
+				    return false      
+				    end #vendors
+				    end #designers
+				    end #sales
+				    end #operations 
+				    end #admin
+				
       end   
       
       ###---------------------------------------Project----------------------------------------------### 
    
-       def project(project)
-         if current_user.userrole=='admin'
-         text_field_tag('trackingsheet[project]',project,class:"span20",placeholder:"Project")  
-         else if current_user.userrole=='operations'
-         text_field_tag('trackingsheet[project]',project,class:"span20",placeholder:"Project")     
-         else if current_user.userrole=='sales'
-         label_tag(:project,project,class:"span20") 
-         else if current_user.userrole=='designer'
-         text_field_tag('trackingsheet[project]',project,class:"span20",placeholder:"Project")     
-         else if current_user.userrole=='vendor'
-         label_tag(:project,project,class:"span20")   
-         end #vendors
-         end #designers
-         end #sales
-         end #operations 
-         end #admin
+       def project()
+				
+						 if current_user.userrole=='admin'
+				     return true   
+				     else if current_user.userrole=='operations'
+				     return true      
+				     else if current_user.userrole=='sales'
+				     return false 
+				     else if current_user.userrole=='designer'
+				     return true     
+				     else if current_user.userrole=='vendor'
+				     return false    
+				     end #vendors
+				     end #designers
+				     end #sales
+				     end #operations 
+				     end #admin
+				
        end             
        
        ###---------------------------------------Reference Style----------------------------------------------### 
    
-        def referncestyle(referncestyle)
-          if current_user.userrole=='admin'
-          text_field_tag('trackingsheet[referncestyle]',referncestyle,class:"span20",placeholder:"Reference Style")  
-          else if current_user.userrole=='operations'
-          text_field_tag('trackingsheet[referncestyle]',referncestyle,class:"span20",placeholder:"Reference Style")     
-          else if current_user.userrole=='sales'
-          label_tag(:referncestyle,referncestyle,class:"span20") 
-          else if current_user.userrole=='designer'
-          text_field_tag('trackingsheet[referncestyle]',referncestyle,class:"span20",placeholder:"Reference Style")     
-          else if current_user.userrole=='vendor'
-          label_tag(:referncestyle,referncestyle,class:"span20")   
-          end #vendors
-          end #designers
-          end #sales
-          end #operations 
-          end #admin
+        def referncestyle()
+					
+						if current_user.userrole=='admin'
+		         return true   
+		        else if current_user.userrole=='operations'
+		        return true     
+		        else if current_user.userrole=='sales'
+		        return false    
+		        else if current_user.userrole=='designer'
+		        return true      
+		        else if current_user.userrole=='vendor'
+		        return false       
+		        end #vendors
+		        end #designers
+		        end #sales
+		        end #operations 
+		        end #admin
+					
         end    
         
         ###---------------------------------------X Mill Date----------------------------------------------### 
    
-         def xmilldate(xmilldate)
-           if current_user.userrole=='admin'
-           text_field_tag('trackingsheet[xmilldate]',xmilldate,class:"span20",placeholder:"X Mill Date")  
-           else if current_user.userrole=='operations'
-           label_tag(:xmilldate,xmilldate,class:"span20")    
-           else if current_user.userrole=='sales'
-           label_tag(:xmilldate,xmilldate,class:"span20") 
-           else if current_user.userrole=='designer'
-           label_tag(:xmilldate,xmilldate,class:"span20") 
-           else if current_user.userrole=='vendor'
-           text_field_tag('trackingsheet[xmilldate]',xmilldate,class:"span20",placeholder:"X Mill Date")    
-           end #vendors
-           end #designers
-           end #sales
-           end #operations 
-           end #admin
+         def xmilldate()
+					
+							if current_user.userrole=='admin'
+							return true 
+							else if current_user.userrole=='operations'
+							return false    
+							else if current_user.userrole=='sales'
+							return false  
+							else if current_user.userrole=='designer'
+							return false 
+							else if current_user.userrole=='vendor'
+							return true    
+							end #vendors
+							end #designers
+							end #sales
+							end #operations 
+							end #admin
+					
          end           
          
          ###---------------------------------------Production Lead Time----------------------------------------------### 
    
-          def productionleadtime(productionleadtime)
-            if current_user.userrole=='admin'
-            text_field_tag('trackingsheet[productionleadtime]',productionleadtime,class:"span20",placeholder:"Production Lead Time")  
-            else if current_user.userrole=='operations'
-            label_tag(:productionleadtime,productionleadtime,class:"span20")    
-            else if current_user.userrole=='sales'
-            label_tag(:productionleadtime,productionleadtime,class:"span20") 
-            else if current_user.userrole=='designer'
-            label_tag(:productionleadtime,productionleadtime,class:"span20") 
-            else if current_user.userrole=='vendor'
-            text_field_tag('trackingsheet[productionleadtime]',productionleadtime,class:"span20",placeholder:"Production Lead Time")    
-            end #vendors
-            end #designers
-            end #sales
-            end #operations 
-            end #admin
+          def productionleadtime()
+					
+								if current_user.userrole=='admin'
+				        return true  
+				        else if current_user.userrole=='operations'
+				       return false      
+				        else if current_user.userrole=='sales'
+				        return false  
+				        else if current_user.userrole=='designer'
+				        return false  
+				        else if current_user.userrole=='vendor'
+				        return true     
+				        end #vendors
+				        end #designers
+				        end #sales
+				        end #operations 
+				        end #admin
+						
           end      
           
           ###---------------------------------------Sales Proceeds to Sample Request--------------------------------------------### 
    
-           def salesproceedtosamplerequest(salesproceedtosamplerequest)
-             if current_user.userrole=='admin'
-             text_field_tag('trackingsheet[salesproceedtosamplerequest]',salesproceedtosamplerequest,class:"span20",placeholder:"Sales Proceeds to Sample Request")  
-             else if current_user.userrole=='operations'
-             label_tag(:salesproceedtosamplerequest,salesproceedtosamplerequest,class:"span20")    
-             else if current_user.userrole=='sales'
-             text_field_tag('trackingsheet[salesproceedtosamplerequest]',salesproceedtosamplerequest,class:"span20",placeholder:"Sales Proceeds to Sample Request")
-             else if current_user.userrole=='designer'
-             label_tag(:salesproceedtosamplerequest,salesproceedtosamplerequest,class:"span20") 
-             else if current_user.userrole=='vendor'
-             label_tag(:salesproceedtosamplerequest,salesproceedtosamplerequest,class:"span20") 
-             end #vendors
-             end #designers
-             end #sales
-             end #operations 
-             end #admin
+           def salesproceedtosamplerequest()
+						
+							if current_user.userrole=='admin'
+							return true  
+							else if current_user.userrole=='operations'
+							return false     
+							else if current_user.userrole=='sales'
+							return true  
+							else if current_user.userrole=='designer'
+							return false   
+							else if current_user.userrole=='vendor'
+							return false  
+							end #vendors
+							end #designers
+							end #sales
+							end #operations 
+							end #admin
+						
            end                         
 
          ###---------------------------------------Proto Due Back From Vendor--------------------------------------------### 
  
-          def protoduebackfromvendor(protoduebackfromvendor)
-            if current_user.userrole=='admin'
-            text_field_tag('trackingsheet[protoduebackfromvendor]',protoduebackfromvendor,class:"span20",placeholder:"Proto Due Back From Vendor")  
-            else if current_user.userrole=='operations'
-            text_field_tag('trackingsheet[protoduebackfromvendor]',protoduebackfromvendor,class:"span20",placeholder:"Proto Due Back From Vendor")    
-            else if current_user.userrole=='sales'
-            label_tag(:protoduebackfromvendor,protoduebackfromvendor,class:"span20") 
-            else if current_user.userrole=='designer'
-            label_tag(:protoduebackfromvendor,protoduebackfromvendor,class:"span20") 
-            else if current_user.userrole=='vendor'
-            label_tag(:protoduebackfromvendor,protoduebackfromvendor,class:"span20") 
-            end #vendors
-            end #designers
-            end #sales
-            end #operations 
-            end #admin
-          end   
+          def protoduebackfromvendor()
+							if current_user.userrole=='admin'
+							return true  
+							else if current_user.userrole=='operations'
+							return true  
+							else if current_user.userrole=='sales'
+							return false   
+							else if current_user.userrole=='designer'
+							return false    
+							else if current_user.userrole=='vendor'
+							return false    
+							end #vendors
+							end #designers
+							end #sales
+							end #operations 
+							end #admin
+					end   
           
         ###---------------------------------------DAF to Vendor Date--------------------------------------------### 
 
-         def daftovendordate(daftovendordate)
-           if current_user.userrole=='admin'
-           text_field_tag('trackingsheet[daftovendordate]',daftovendordate,class:"span20",placeholder:"DAF to Vendor Date")  
+         def daftovendordate()
+					if current_user.userrole=='admin'
+           return true    
            else if current_user.userrole=='operations'
-           text_field_tag('trackingsheet[daftovendordate]',daftovendordate,class:"span20",placeholder:"DAF to Vendor Date")    
+           return true     
            else if current_user.userrole=='sales'
-           label_tag(:daftovendordate,daftovendordate,class:"span20") 
+           return false  
            else if current_user.userrole=='designer'
-           label_tag(:daftovendordate,daftovendordate,class:"span20") 
+           return false  
            else if current_user.userrole=='vendor'
-           label_tag(:daftovendordate,daftovendordate,class:"span20") 
+           return false 
            end #vendors
            end #designers
            end #sales
            end #operations 
            end #admin
-         end                        
+				end                        
    
          ###---------------------------------------Comments--------------------------------------------### 
 
@@ -237,17 +248,17 @@ module TrackingsheetsHelper
 
         ###---------------------------------------RTL MU--------------------------------------------### 
 
-         def rtlmu(rtlmu)
+         def rtlmu()
            if current_user.userrole=='admin'
-           text_field_tag('trackingsheet[rtlmu]',rtlmu,class:"span20",placeholder:"RTL MU")  
+           return true
            else if current_user.userrole=='operations'
-           text_field_tag('trackingsheet[rtlmu]',rtlmu,class:"span20",placeholder:"RTL MU")    
+          return true
            else if current_user.userrole=='sales'
-           label_tag(:rtlmu,rtlmu,class:"span20")   
+            return false   
            else if current_user.userrole=='designer'
-           label_tag(:rtlmu,rtlmu,class:"span20")   
+            return false    
            else if current_user.userrole=='vendor'
-           label_tag(:rtlmu,rtlmu,class:"span20") 
+          return false 
            end #vendors
            end #designers
            end #sales
@@ -259,15 +270,15 @@ module TrackingsheetsHelper
 
           def mkup(mkup)
             if current_user.userrole=='admin'
-            text_field_tag('trackingsheet[mkup]',mkup,class:"span20",placeholder:"MK UP")  
+            return true    
             else if current_user.userrole=='operations'
-            text_field_tag('trackingsheet[mkup]',mkup,class:"span20",placeholder:"MK UP")    
+             return true        
             else if current_user.userrole=='sales'
-            label_tag(:mkup,mkup,class:"span20")   
+           return false
             else if current_user.userrole=='designer'
-            label_tag(:mkup,mkup,class:"span20")   
+           return false
             else if current_user.userrole=='vendor'
-            label_tag(:mkup,mkup,class:"span20") 
+           return false
             end #vendors
             end #designers
             end #sales
@@ -285,15 +296,15 @@ module TrackingsheetsHelper
 
            def projectedunits(projectedunits)
              if current_user.userrole=='admin'
-             text_field_tag('trackingsheet[projectedunits]',projectedunits,class:"span20",placeholder:"Projected Units")  
+              return true     
              else if current_user.userrole=='operations'
-             label_tag(:projectedunits,projectedunits,class:"span20")  
+             return false
              else if current_user.userrole=='sales'
-              text_field_tag('trackingsheet[projectedunits]',projectedunits,class:"span20",placeholder:"Projected Units")  
+               return true      
              else if current_user.userrole=='designer'
-             label_tag(:projectedunits,projectedunits,class:"span20")   
+             return false 
              else if current_user.userrole=='vendor'
-             label_tag(:projectedunits,projectedunits,class:"span20") 
+             return false
              end #vendors
              end #designers
              end #sales
@@ -305,15 +316,15 @@ module TrackingsheetsHelper
 
             def targetfob(targetfob)
               if current_user.userrole=='admin'
-              text_field_tag('trackingsheet[targetfob]',targetfob,class:"span20",placeholder:"Target FOB")  
+               return true      
               else if current_user.userrole=='operations'
-              label_tag(:targetfob,targetfob,class:"span20")  
+            return false
               else if current_user.userrole=='sales'
-               text_field_tag('trackingsheet[targetfob]',targetfob,class:"span20",placeholder:"Target FOB")  
+                return true      
               else if current_user.userrole=='designer'
-              label_tag(:targetfob,targetfob,class:"span20")   
+              return false   
               else if current_user.userrole=='vendor'
-              label_tag(:targetfob,targetfob,class:"span20") 
+              return false
               end #vendors
               end #designers
               end #sales
@@ -325,15 +336,15 @@ module TrackingsheetsHelper
 
              def targetmu(targetmu)
                if current_user.userrole=='admin'
-               text_field_tag('trackingsheet[targetmu]',targetmu,class:"span20",placeholder:"Target MU")  
+               t return true     
                else if current_user.userrole=='operations'
-               label_tag(:targetmu,targetmu,class:"span20")  
+               return false  
                else if current_user.userrole=='sales'
-                text_field_tag('trackingsheet[targetmu]',targetmu,class:"span20",placeholder:"Target MU")  
+                 return true      
                else if current_user.userrole=='designer'
-               label_tag(:targetmu,targetmu,class:"span20")   
+               return false   
                else if current_user.userrole=='vendor'
-               label_tag(:targetmu,targetmu,class:"span20") 
+               return false
                end #vendors
                end #designers
                end #sales
@@ -345,15 +356,15 @@ module TrackingsheetsHelper
 
               def targetws(targetws)
                 if current_user.userrole=='admin'
-                text_field_tag('trackingsheet[targetws]',targetws,class:"span20",placeholder:"Target MU")  
+                 return true    
                 else if current_user.userrole=='operations'
-                label_tag(:targetws,targetws,class:"span20")  
+               return false 
                 else if current_user.userrole=='sales'
-                 text_field_tag('trackingsheet[targetws]',targetws,class:"span20",placeholder:"Target MU")  
+                 return true      
                 else if current_user.userrole=='designer'
-                label_tag(:targetws,targetws,class:"span20")   
+                return false
                 else if current_user.userrole=='vendor'
-                label_tag(:targetws,targetws,class:"span20") 
+               return false
                 end #vendors
                 end #designers
                 end #sales
@@ -369,15 +380,15 @@ module TrackingsheetsHelper
 
            def percolor(percolor)
              if current_user.userrole=='admin'
-             text_field_tag('trackingsheet[percolor]',percolor,class:"span20",placeholder:"Per Color")  
+              return true      
              else if current_user.userrole=='operations'
-             label_tag(:percolor,percolor,class:"span20")  
+             return false 
              else if current_user.userrole=='sales'
-             label_tag(:percolor,percolor,class:"span20") 
+             return false 
              else if current_user.userrole=='designer'
-             label_tag(:percolor,percolor,class:"span20")   
+             return false
              else if current_user.userrole=='vendor'
-             text_field_tag('trackingsheet[percolor]',percolor,class:"span20",placeholder:"Per Color")  
+              return true      
              end #vendors
              end #designers
              end #sales
@@ -389,15 +400,15 @@ module TrackingsheetsHelper
 
             def perstyle(perstyle)
               if current_user.userrole=='admin'
-              text_field_tag('trackingsheet[perstyle]',perstyle,class:"span20",placeholder:"Per Style")  
+               return true      
               else if current_user.userrole=='operations'
-              label_tag(:perstyle,perstyle,class:"span20")  
+              return false 
               else if current_user.userrole=='sales'
-              label_tag(:perstyle,perstyle,class:"span20") 
+              return false
               else if current_user.userrole=='designer'
-              label_tag(:perstyle,perstyle,class:"span20")   
+              return false   
               else if current_user.userrole=='vendor'
-              text_field_tag('trackingsheet[perstyle]',perstyle,class:"span20",placeholder:"Per Style")  
+               return true      
               end #vendors
               end #designers
               end #sales
@@ -409,15 +420,15 @@ module TrackingsheetsHelper
 
              def incoterms(incoterms)
                if current_user.userrole=='admin'
-               text_field_tag('trackingsheet[incoterms]',incoterms,class:"span20",placeholder:"Incoterms")  
+                return true      
                else if current_user.userrole=='operations'
-               label_tag(:incoterms,incoterms,class:"span20")  
+              return false 
                else if current_user.userrole=='sales'
-               label_tag(:incoterms,incoterms,class:"span20") 
+              return false
                else if current_user.userrole=='designer'
-               label_tag(:incoterms,incoterms,class:"span20")   
+               return false  
                else if current_user.userrole=='vendor'
-               text_field_tag('trackingsheet[incoterms]',incoterms,class:"span20",placeholder:"Incoterms")  
+                return true      
                end #vendors
                end #designers
                end #sales
@@ -432,15 +443,15 @@ module TrackingsheetsHelper
 
            def moq(moq)
              if current_user.userrole=='admin'
-             text_field_tag('trackingsheet[moq]',moq,class:"span20",placeholder:"MOQ")  
+              return true      
              else if current_user.userrole=='operations'
-             label_tag(:moq,moq,class:"span20")  
+            return false
              else if current_user.userrole=='sales'
-             label_tag(:moq,moq,class:"span20") 
+             return false
              else if current_user.userrole=='designer'
-             label_tag(:moq,moq,class:"span20")   
+             return false
              else if current_user.userrole=='vendor'
-             text_field_tag('trackingsheet[moq]',moq,class:"span20",placeholder:"moq")  
+             return true      
              end #vendors
              end #designers
              end #sales
@@ -452,15 +463,15 @@ module TrackingsheetsHelper
 
             def thousandtofivethousandPCS(thousandtofivethousandPCS)
               if current_user.userrole=='admin'
-              text_field_tag('trackingsheet[thousandtofivethousandPCS]',thousandtofivethousandPCS,class:"span20",placeholder:"1000 - 5000 PCS")  
+               return true    
               else if current_user.userrole=='operations'
-              label_tag(:thousandtofivethousandPCS,thousandtofivethousandPCS,class:"span20")  
+              return false  
               else if current_user.userrole=='sales'
-              label_tag(:thousandtofivethousandPCS,thousandtofivethousandPCS,class:"span20") 
+              return false
               else if current_user.userrole=='designer'
-              label_tag(:thousandtofivethousandPCS,thousandtofivethousandPCS,class:"span20")   
+              return false
               else if current_user.userrole=='vendor'
-              text_field_tag('trackingsheet[thousandtofivethousandPCS]',thousandtofivethousandPCS,class:"span20",placeholder:"1000 - 5000 PCS")  
+               return true    
               end #vendors
               end #designers
               end #sales
@@ -472,15 +483,15 @@ module TrackingsheetsHelper
 
              def fivethousandtotenthousandPCS(fivethousandtotenthousandPCS)
                if current_user.userrole=='admin'
-               text_field_tag('trackingsheet[fivethousandtotenthousandPCS]',fivethousandtotenthousandPCS,class:"span20",placeholder:"5000 - 10,000 PCS")  
+                return true    
                else if current_user.userrole=='operations'
-               label_tag(:fivethousandtotenthousandPCS,fivethousandtotenthousandPCS,class:"span20")  
+               return false
                else if current_user.userrole=='sales'
-               label_tag(:fivethousandtotenthousandPCS,fivethousandtotenthousandPCS,class:"span20") 
+               return false 
                else if current_user.userrole=='designer'
-               label_tag(:fivethousandtotenthousandPCS,fivethousandtotenthousandPCS,class:"span20")   
+               return false
                else if current_user.userrole=='vendor'
-               text_field_tag('trackingsheet[fivethousandtotenthousandPCS]',fivethousandtotenthousandPCS,class:"span20",placeholder:"5000 - 10,000 PCS")  
+                return true    
                end #vendors
                end #designers
                end #sales
@@ -496,15 +507,15 @@ module TrackingsheetsHelper
 
            def ldpboat(ldpboat)
              if current_user.userrole=='admin'
-             text_field_tag('trackingsheet[ldpboat]',ldpboat,class:"span20",placeholder:"LDP Boat")  
+              return true    
              else if current_user.userrole=='operations'
-             text_field_tag('trackingsheet[ldpboat]',ldpboat,class:"span20",placeholder:"LDP Boat")  
+              return true    
              else if current_user.userrole=='sales'
-             label_tag(ldpboat,ldpboat,class:"span20") 
+             return false
              else if current_user.userrole=='designer'
-             label_tag(ldpboat,ldpboat,class:"span20")   
+             return false
              else if current_user.userrole=='vendor'
-             label_tag(ldpboat,ldpboat,class:"span20") 
+            return false
              end #vendors
              end #designers
              end #sales
@@ -516,15 +527,15 @@ module TrackingsheetsHelper
 
             def ldpair(ldpair)
               if current_user.userrole=='admin'
-              text_field_tag('trackingsheet[ldpair]',ldpair,class:"span20",placeholder:"LDP Air")  
+              return true     
               else if current_user.userrole=='operations'
-              text_field_tag('trackingsheet[ldpair]',ldpair,class:"span20",placeholder:"LDP Air")  
+               return true     
               else if current_user.userrole=='sales'
-              label_tag(ldpair,ldpair,class:"span20") 
+              return false
               else if current_user.userrole=='designer'
-              label_tag(ldpair,ldpair,class:"span20")   
+              return false
               else if current_user.userrole=='vendor'
-              label_tag(ldpair,ldpair,class:"span20") 
+              return false
               end #vendors
               end #designers
               end #sales
@@ -540,15 +551,15 @@ module TrackingsheetsHelper
 
            def startshipdate(startshipdate)
              if current_user.userrole=='admin'
-             text_field_tag('trackingsheet[startshipdate]',startshipdate,class:"span20",placeholder:"Start Ship Date")  
+              return true      
              else if current_user.userrole=='operations'
-             label_tag(startshipdate,startshipdate,class:"span20") 
+             return false
              else if current_user.userrole=='sales'
-             text_field_tag('trackingsheet[startshipdate]',startshipdate,class:"span20",placeholder:"Start Ship Date")
+              return true    
              else if current_user.userrole=='designer'
-             label_tag(startshipdate,startshipdate,class:"span20")   
+            return false 
              else if current_user.userrole=='vendor'
-             label_tag(startshipdate,startshipdate,class:"span20") 
+             return false
              end #vendors
              end #designers
              end #sales
@@ -560,15 +571,15 @@ module TrackingsheetsHelper
 
             def orderduedateviaboat(orderduedateviaboat)
               if current_user.userrole=='admin'
-              text_field_tag('trackingsheet[orderduedateviaboat]',orderduedateviaboat,class:"span20",placeholder:"Order Due Date Via Boat")  
+               return true     
               else if current_user.userrole=='operations'
-              label_tag(orderduedateviaboat,orderduedateviaboat,class:"span20") 
+              return false 
               else if current_user.userrole=='sales'
-              text_field_tag('trackingsheet[orderduedateviaboat]',orderduedateviaboat,class:"span20",placeholder:"Order Due Date Via Boat")
+               return true    
               else if current_user.userrole=='designer'
-              label_tag(orderduedateviaboat,orderduedateviaboat,class:"span20")   
+              return false  
               else if current_user.userrole=='vendor'
-              label_tag(orderduedateviaboat,orderduedateviaboat,class:"span20") 
+              return false
               end #vendors
               end #designers
               end #sales
@@ -576,26 +587,641 @@ module TrackingsheetsHelper
               end #admin
             end 
             
-            ###---------------------------------------Order Due Date Via Air--------------------------------------------### 
+            ###-----------------------------------------------------------------------------------### 
 
              def orderduedateviaair(orderduedateviaair)
                if current_user.userrole=='admin'
-               text_field_tag('trackingsheet[orderduedateviaair]',orderduedateviaair,class:"span20",placeholder:"Order Due Date Via Air")  
+                return true    
                else if current_user.userrole=='operations'
-               label_tag(orderduedateviaair,orderduedateviaair,class:"span20") 
+              return false
                else if current_user.userrole=='sales'
-               text_field_tag('trackingsheet[orderduedateviaair]',orderduedateviaair,class:"span20",placeholder:"Order Due Date Via Air")
+                return true    
                else if current_user.userrole=='designer'
-               label_tag(orderduedateviaair,orderduedateviaair,class:"span20")   
+               return false  
                else if current_user.userrole=='vendor'
-               label_tag(orderduedateviaair,orderduedateviaair,class:"span20") 
+              return false
                end #vendors
                end #designers
                end #sales
                end #operations 
                end #admin
              end    
-                
+               	
+
+					 ###---------------------------------------Brand----------------------------------------------### 					
+
+						  def	brand()
+								 if current_user.userrole=='admin'
+		              return true    
+		             else if current_user.userrole=='operations'
+		            return false
+		             else if current_user.userrole=='sales'
+		              return true    
+		             else if current_user.userrole=='designer'
+		             return false
+		             else if current_user.userrole=='vendor'
+		             return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+			 	 ###---------------------------------------Customername----------------------------------------------### 
+							def	customername()
+	 							if current_user.userrole=='admin'
+		              return true    
+		             else if current_user.userrole=='operations'
+		             return false
+		             else if current_user.userrole=='sales'
+		              return true    
+		             else if current_user.userrole=='designer'
+		            return false
+		             else if current_user.userrole=='vendor'
+		            return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+ 			 	###---------------------------------------Customeraccountnumber----------------------------------------------### 
+							def	customeraccountnumber()
+	 							if current_user.userrole=='admin'
+		              return true    
+		             else if current_user.userrole=='operations'
+		             return false
+		             else if current_user.userrole=='sales'
+		              return true    
+		             else if current_user.userrole=='designer'
+		            return false
+		             else if current_user.userrole=='vendor'
+		             return false 
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+			 	 ###---------------------------------------Projectnumber----------------------------------------------### 
+							def	projectnumber()
+	 							if current_user.userrole=='admin'
+		             return true    
+		             else if current_user.userrole=='operations'
+		             return false
+		             else if current_user.userrole=='sales'
+		              return true    
+		             else if current_user.userrole=='designer'
+		            return false   
+		             else if current_user.userrole=='vendor'
+		             return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+ 			 	###---------------------------------------Customerstylenumber----------------------------------------------### 
+							def	customerstylenumber()
+	 							if current_user.userrole=='admin'
+		              return true    
+		             else if current_user.userrole=='operations'
+		            return false
+		             else if current_user.userrole=='sales'
+		              return true    
+		             else if current_user.userrole=='designer'
+		             return false
+		             else if current_user.userrole=='vendor'
+		            return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+ 			 	###---------------------------------------Groupname----------------------------------------------### 
+							def	groupname()
+								 if current_user.userrole=='admin'
+		              return true    
+		             else if current_user.userrole=='operations'
+		             return false
+		             else if current_user.userrole=='sales'
+		              return true    
+		             else if current_user.userrole=='designer'
+		             return false   
+		             else if current_user.userrole=='vendor'
+		             return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+			 	 ###--------------------------------------Productcategory----------------------------------------------### 
+							def	productcategory()
+	 							 if current_user.userrole=='admin'
+		              return true    
+		             else if current_user.userrole=='operations'
+		             return false
+		             else if current_user.userrole=='sales'
+		              return true    
+		             else if current_user.userrole=='designer'
+		             return false 
+		             else if current_user.userrole=='vendor'
+		             return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+ 			 	###---------------------------------------Designname----------------------------------------------### 
+							def	designname()
+	 							 if current_user.userrole=='admin'
+		              return true    
+		             else if current_user.userrole=='operations'
+		             return false
+		             else if current_user.userrole=='sales'
+		              return true    
+		             else if current_user.userrole=='designer'
+		             return false
+		             else if current_user.userrole=='vendor'
+		             return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+ 			 	###---------------------------------------Shape----------------------------------------------### 
+							def	shape()
+	 							 if current_user.userrole=='admin'
+		              return true    
+		             else if current_user.userrole=='operations'
+		             return false
+		             else if current_user.userrole=='sales'
+		              return true    
+		             else if current_user.userrole=='designer'
+		             return false
+		             else if current_user.userrole=='vendor'
+		             return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+			 	 ###---------------------------------------Size----------------------------------------------### 
+							def	size()
+	 							 if current_user.userrole=='admin'
+		              return true    
+		             else if current_user.userrole=='operations'
+		            return false
+		             else if current_user.userrole=='sales'
+		              return true    
+		             else if current_user.userrole=='designer'
+		            return false
+		             else if current_user.userrole=='vendor'
+		            return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+ 			 	###---------------------------------------Fiber----------------------------------------------### 
+							def	fiber()
+								 if current_user.userrole=='admin'
+		              return true    
+		             else if current_user.userrole=='operations'
+		             return false
+		             else if current_user.userrole=='sales'
+		             return true    
+		             else if current_user.userrole=='designer'
+		             return false  
+		             else if current_user.userrole=='vendor'
+		             return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+			 	 ###---------------------------------------Construction----------------------------------------------### 
+							def	construction()
+	 							 if current_user.userrole=='admin'
+		             return true    
+		             else if current_user.userrole=='operations'
+		             return false
+		             else if current_user.userrole=='sales'
+		              return true    
+		             else if current_user.userrole=='designer'
+		            return false
+		             else if current_user.userrole=='vendor'
+		             return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+ 			 	###---------------------------------------Fabrictype----------------------------------------------### 
+							def	fabrictype()
+	 							 if current_user.userrole=='admin'
+		              return true    
+		             else if current_user.userrole=='operations'
+		             return false 
+		             else if current_user.userrole=='sales'
+		              return true    
+		             else if current_user.userrole=='designer'
+		             return false 
+		             else if current_user.userrole=='vendor'
+		             return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+ 			 	###---------------------------------------Gauge End----------------------------------------------### 
+							def	gauge_end()
+	 							 if current_user.userrole=='admin'
+		              return true    
+		             else if current_user.userrole=='operations'
+		            return false
+		             else if current_user.userrole=='sales'
+		              return true    
+		             else if current_user.userrole=='designer'
+		             return false  
+		             else if current_user.userrole=='vendor'
+		             return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+			 	 ###---------------------------------------Finish----------------------------------------------### 
+							def	finish()
+	 if current_user.userrole=='admin'
+		              return true    
+		             else if current_user.userrole=='operations'
+		             return false 
+		             else if current_user.userrole=='sales'
+		              return true    
+		             else if current_user.userrole=='designer'
+		             return false   
+		             else if current_user.userrole=='vendor'
+		             return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+			 	 ###---------------------------------------finishdetails----------------------------------------------### 
+							def	finishdetails()
+	 							 if current_user.userrole=='admin'
+		              return true     
+		             else if current_user.userrole=='operations'
+		             return false
+		             else if current_user.userrole=='sales'
+		              return true    
+		             else if current_user.userrole=='designer'
+		             return false   
+		             else if current_user.userrole=='vendor'
+		             return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+ 			 	###---------------------------------------colors----------------------------------------------### 
+							def	colors()
+								 if current_user.userrole=='admin'
+		              return true     
+		             else if current_user.userrole=='operations'
+		             return false
+		             else if current_user.userrole=='sales'
+		             return true    
+		             else if current_user.userrole=='designer'
+		             return false   
+		             else if current_user.userrole=='vendor'
+		            return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+			 	 ###---------------------------------------hw_logo_trim----------------------------------------------### 
+							def	hw_logo_trim()
+	 							 if current_user.userrole=='admin'
+		              return true    
+		             else if current_user.userrole=='operations'
+		             return false
+		             else if current_user.userrole=='sales'
+		              return true    
+		             else if current_user.userrole=='designer'
+		             return false   
+		             else if current_user.userrole=='vendor'
+		            return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+			 	 ###---------------------------------------components----------------------------------------------### 
+							def	components()
+	 							 if current_user.userrole=='admin'
+		              return true     
+		             else if current_user.userrole=='operations'
+		             return false
+		             else if current_user.userrole=='sales'
+		             return true    
+		             else if current_user.userrole=='designer'
+		            return false
+		             else if current_user.userrole=='vendor'
+		             return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+
+
+			 	 ###---------------------------------------targetretailus----------------------------------------------### 
+							def	targetretailus()
+	 							 if current_user.userrole=='admin'
+		              return true    
+		             else if current_user.userrole=='operations'
+		             return false
+		             else if current_user.userrole=='sales'
+		              return true    
+		             else if current_user.userrole=='designer'
+		             return false  
+		             else if current_user.userrole=='vendor'
+		             return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+			 	 ###---------------------------------------targetretailcan----------------------------------------------### 
+							def	targetretailcan()
+	 							 if current_user.userrole=='admin'
+		              return true      
+		             else if current_user.userrole=='operations'
+		             return false
+		             else if current_user.userrole=='sales'
+		              return true    
+		             else if current_user.userrole=='designer'
+		            return false  
+		             else if current_user.userrole=='vendor'
+		             return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+
+
+			 	 ###---------------------------------------pricebasedonprojection----------------------------------------------### 
+							def	pricebasedonprojection()
+								 if current_user.userrole=='admin'
+		              return true      
+		             else if current_user.userrole=='operations'
+		             return false 
+		             else if current_user.userrole=='sales'
+		              return true    
+		             else if current_user.userrole=='designer'
+		            return false   
+		             else if current_user.userrole=='vendor'
+		             return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+ 			 	###---------------------------------------additionalsurcharge----------------------------------------------### 
+							def	additionalsurcharge()
+								 if current_user.userrole=='admin'
+		              return true      
+		             else if current_user.userrole=='operations'
+		             return false
+		             else if current_user.userrole=='sales'
+		              return true    
+		             else if current_user.userrole=='designer'
+		             return false
+		             else if current_user.userrole=='vendor'
+		            return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+
+
+			 	 ###---------------------------------------tenthousandtotwentythousandPCS----------------------------------------------### 
+							def	tenthousandtotwentythousandPCS()
+	 							 if current_user.userrole=='admin'
+		              return true    
+		             else if current_user.userrole=='operations'
+		             return false
+		             else if current_user.userrole=='sales'
+		             return true    
+		             else if current_user.userrole=='designer'
+		             return false  
+		             else if current_user.userrole=='vendor'
+		             return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+			 	 ###---------------------------------------twentythousandplusPCS----------------------------------------------### 
+							def	twentythousandplusPCS()
+	 							 if current_user.userrole=='admin'
+		             return true    
+		             else if current_user.userrole=='operations'
+		             return false
+		             else if current_user.userrole=='sales'
+		             return true    
+		             else if current_user.userrole=='designer'
+		             return false   
+		             else if current_user.userrole=='vendor'
+		             return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+
+
+ 			 	###---------------------------------------xmill----------------------------------------------### 
+							def	xmill()
+	 						   if current_user.userrole=='admin'
+		              return true    
+		             else if current_user.userrole=='operations'
+		             return false
+		             else if current_user.userrole=='sales'
+		              return true    
+		             else if current_user.userrole=='designer'
+		             return false 
+		             else if current_user.userrole=='vendor'
+		             return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+ 			 	###---------------------------------------received----------------------------------------------### 
+							def	received()
+	 							 if current_user.userrole=='admin'
+		             return true    
+		             else if current_user.userrole=='operations'
+		             return false
+		             else if current_user.userrole=='sales'
+		              return true    
+		             else if current_user.userrole=='designer'
+		             return false  
+		             else if current_user.userrole=='vendor'
+		             return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+			 	 ###---------------------------------------approved----------------------------------------------### 
+							def	approved()
+							   if current_user.userrole=='admin'
+		              return true     
+		             else if current_user.userrole=='operations'
+		             return false
+		             else if current_user.userrole=='sales'
+		             return true    
+		             else if current_user.userrole=='designer'
+		             return false   
+		             else if current_user.userrole=='vendor'
+		             return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+
+			 	 ###---------------------------------------daf2xmill----------------------------------------------### 
+							def	daf2xmill()
+	 							 if current_user.userrole=='admin'
+		              return true    
+		             else if current_user.userrole=='operations'
+		             return false
+		             else if current_user.userrole=='sales'
+		              return true    
+		             else if current_user.userrole=='designer'
+		             return false  
+		             else if current_user.userrole=='vendor'
+		             return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+			 	 ###---------------------------------------daf2received----------------------------------------------### 
+							def	daf2received()
+	 							 if current_user.userrole=='admin'
+		              return true    
+		             else if current_user.userrole=='operations'
+		             return false
+		             else if current_user.userrole=='sales'
+		              return true    
+		             else if current_user.userrole=='designer'
+		             return false  
+		             else if current_user.userrole=='vendor'
+		             return false 
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+			 	 ###---------------------------------------daf2approved----------------------------------------------### 
+							def	daf2approved()
+	 							 if current_user.userrole=='admin'
+		              return true    
+		             else if current_user.userrole=='operations'
+		             return false 
+		             else if current_user.userrole=='sales'
+		             return true    
+		             else if current_user.userrole=='designer'
+		             return false 
+		             else if current_user.userrole=='vendor'
+		             return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+
+
+
+
+
+
+
+							#VS DS tab values #new
+			 	###---------------------------------------sdsreceived----------------------------------------------### 
+							def	vsdsreceived()
+	 							 if current_user.userrole=='admin'
+		              return true    
+		             else if current_user.userrole=='operations'
+		             return false
+		             else if current_user.userrole=='sales'
+		             return true    
+		             else if current_user.userrole=='designer'
+		             return false   
+		             else if current_user.userrole=='vendor'
+		             return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+
+				  ###---------------------------------------vsdsapproved----------------------------------------------### 
+							def	vsdsapproved()
+	 							 if current_user.userrole=='admin'
+		              return true    
+		             else if current_user.userrole=='operations'
+		             return false
+		             else if current_user.userrole=='sales'
+		             return true    
+		             else if current_user.userrole=='designer'
+		             return false
+		             else if current_user.userrole=='vendor'
+		             return false
+		             end #vendors
+		             end #designers
+		             end #sales
+		             end #operations 
+		             end #admin
+							end
+
           
           
           ####### Customer Delivery Tab Ends ######
