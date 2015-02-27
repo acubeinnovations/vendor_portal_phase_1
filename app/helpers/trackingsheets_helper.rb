@@ -1,5 +1,7 @@
 module TrackingsheetsHelper
   
+
+   
    
   
   ###---------------------------------------Factory----------------------------------------------### 
@@ -314,9 +316,9 @@ module TrackingsheetsHelper
            
            ###---------------------------------------Target FOB--------------------------------------------### 
 
-            def targetfob(targetfob)
+            def targetfob()
               if current_user.userrole=='admin'
-               return true      
+               return false      
               else if current_user.userrole=='operations'
             return false
               else if current_user.userrole=='sales'
@@ -589,7 +591,7 @@ module TrackingsheetsHelper
             
             ###-----------------------------------------------------------------------------------### 
 
-             def orderduedateviaair(orderduedateviaair)
+             def orderduedateviaair()
                if current_user.userrole=='admin'
                 return true    
                else if current_user.userrole=='operations'
@@ -686,11 +688,11 @@ module TrackingsheetsHelper
 	 							if current_user.userrole=='admin'
 		              return true    
 		             else if current_user.userrole=='operations'
-		            return false
+		            return true
 		             else if current_user.userrole=='sales'
-		              return true    
+		              return false    
 		             else if current_user.userrole=='designer'
-		             return false
+		             return true
 		             else if current_user.userrole=='vendor'
 		            return false
 		             end #vendors
@@ -704,9 +706,9 @@ module TrackingsheetsHelper
 								 if current_user.userrole=='admin'
 		              return true    
 		             else if current_user.userrole=='operations'
-		             return false
+		             return true
 		             else if current_user.userrole=='sales'
-		              return true    
+		              return false    
 		             else if current_user.userrole=='designer'
 		             return false   
 		             else if current_user.userrole=='vendor'
@@ -722,11 +724,11 @@ module TrackingsheetsHelper
 	 							 if current_user.userrole=='admin'
 		              return true    
 		             else if current_user.userrole=='operations'
-		             return false
+		             return true
 		             else if current_user.userrole=='sales'
-		              return true    
+		              return false    
 		             else if current_user.userrole=='designer'
-		             return false 
+		             return true 
 		             else if current_user.userrole=='vendor'
 		             return false
 		             end #vendors
@@ -740,11 +742,11 @@ module TrackingsheetsHelper
 	 							 if current_user.userrole=='admin'
 		              return true    
 		             else if current_user.userrole=='operations'
-		             return false
+		             return true
 		             else if current_user.userrole=='sales'
-		              return true    
+		              return false    
 		             else if current_user.userrole=='designer'
-		             return false
+		             return true
 		             else if current_user.userrole=='vendor'
 		             return false
 		             end #vendors
@@ -758,11 +760,11 @@ module TrackingsheetsHelper
 	 							 if current_user.userrole=='admin'
 		              return true    
 		             else if current_user.userrole=='operations'
-		             return false
+		             return true
 		             else if current_user.userrole=='sales'
-		              return true    
+		              return false    
 		             else if current_user.userrole=='designer'
-		             return false
+		             return true
 		             else if current_user.userrole=='vendor'
 		             return false
 		             end #vendors
@@ -776,11 +778,11 @@ module TrackingsheetsHelper
 	 							 if current_user.userrole=='admin'
 		              return true    
 		             else if current_user.userrole=='operations'
-		            return false
+		            return true
 		             else if current_user.userrole=='sales'
-		              return true    
+		              return false    
 		             else if current_user.userrole=='designer'
-		            return false
+		            return true
 		             else if current_user.userrole=='vendor'
 		            return false
 		             end #vendors
@@ -794,11 +796,11 @@ module TrackingsheetsHelper
 								 if current_user.userrole=='admin'
 		              return true    
 		             else if current_user.userrole=='operations'
-		             return false
+		             return true
 		             else if current_user.userrole=='sales'
-		             return true    
+		             return false    
 		             else if current_user.userrole=='designer'
-		             return false  
+		             return true  
 		             else if current_user.userrole=='vendor'
 		             return false
 		             end #vendors
@@ -812,11 +814,11 @@ module TrackingsheetsHelper
 	 							 if current_user.userrole=='admin'
 		             return true    
 		             else if current_user.userrole=='operations'
-		             return false
+		             return true
 		             else if current_user.userrole=='sales'
-		              return true    
+		              return false    
 		             else if current_user.userrole=='designer'
-		            return false
+		            return true
 		             else if current_user.userrole=='vendor'
 		             return false
 		             end #vendors
@@ -830,11 +832,11 @@ module TrackingsheetsHelper
 	 							 if current_user.userrole=='admin'
 		              return true    
 		             else if current_user.userrole=='operations'
-		             return false 
+		             return true 
 		             else if current_user.userrole=='sales'
-		              return true    
+		              return false    
 		             else if current_user.userrole=='designer'
-		             return false 
+		             return true 
 		             else if current_user.userrole=='vendor'
 		             return false
 		             end #vendors
@@ -848,11 +850,11 @@ module TrackingsheetsHelper
 	 							 if current_user.userrole=='admin'
 		              return true    
 		             else if current_user.userrole=='operations'
-		            return false
+		            return true
 		             else if current_user.userrole=='sales'
-		              return true    
+		              return false    
 		             else if current_user.userrole=='designer'
-		             return false  
+		             return true  
 		             else if current_user.userrole=='vendor'
 		             return false
 		             end #vendors
@@ -866,11 +868,11 @@ module TrackingsheetsHelper
 	 if current_user.userrole=='admin'
 		              return true    
 		             else if current_user.userrole=='operations'
-		             return false 
+		             return true 
 		             else if current_user.userrole=='sales'
-		              return true    
+		              return false    
 		             else if current_user.userrole=='designer'
-		             return false   
+		             return true   
 		             else if current_user.userrole=='vendor'
 		             return false
 		             end #vendors
@@ -884,11 +886,11 @@ module TrackingsheetsHelper
 	 							 if current_user.userrole=='admin'
 		              return true     
 		             else if current_user.userrole=='operations'
-		             return false
+		             return true
 		             else if current_user.userrole=='sales'
-		              return true    
+		              return false    
 		             else if current_user.userrole=='designer'
-		             return false   
+		             return true   
 		             else if current_user.userrole=='vendor'
 		             return false
 		             end #vendors
@@ -902,11 +904,11 @@ module TrackingsheetsHelper
 								 if current_user.userrole=='admin'
 		              return true     
 		             else if current_user.userrole=='operations'
-		             return false
+		             return true
 		             else if current_user.userrole=='sales'
-		             return true    
+		             return false    
 		             else if current_user.userrole=='designer'
-		             return false   
+		             return true   
 		             else if current_user.userrole=='vendor'
 		            return false
 		             end #vendors
@@ -938,11 +940,11 @@ module TrackingsheetsHelper
 	 							 if current_user.userrole=='admin'
 		              return true     
 		             else if current_user.userrole=='operations'
-		             return false
+		             return true
 		             else if current_user.userrole=='sales'
-		             return true    
+		             return false    
 		             else if current_user.userrole=='designer'
-		            return false
+		            return true
 		             else if current_user.userrole=='vendor'
 		             return false
 		             end #vendors
@@ -998,11 +1000,11 @@ module TrackingsheetsHelper
 		             else if current_user.userrole=='operations'
 		             return false 
 		             else if current_user.userrole=='sales'
-		              return true    
+		              return false    
 		             else if current_user.userrole=='designer'
 		            return false   
 		             else if current_user.userrole=='vendor'
-		             return false
+		             return true
 		             end #vendors
 		             end #designers
 		             end #sales
@@ -1016,11 +1018,11 @@ module TrackingsheetsHelper
 		             else if current_user.userrole=='operations'
 		             return false
 		             else if current_user.userrole=='sales'
-		              return true    
+		              return false    
 		             else if current_user.userrole=='designer'
 		             return false
 		             else if current_user.userrole=='vendor'
-		            return false
+		            return true
 		             end #vendors
 		             end #designers
 		             end #sales
@@ -1036,11 +1038,11 @@ module TrackingsheetsHelper
 		             else if current_user.userrole=='operations'
 		             return false
 		             else if current_user.userrole=='sales'
-		             return true    
+		             return false    
 		             else if current_user.userrole=='designer'
 		             return false  
 		             else if current_user.userrole=='vendor'
-		             return false
+		             return true
 		             end #vendors
 		             end #designers
 		             end #sales
@@ -1054,11 +1056,11 @@ module TrackingsheetsHelper
 		             else if current_user.userrole=='operations'
 		             return false
 		             else if current_user.userrole=='sales'
-		             return true    
+		             return false    
 		             else if current_user.userrole=='designer'
 		             return false   
 		             else if current_user.userrole=='vendor'
-		             return false
+		             return true
 		             end #vendors
 		             end #designers
 		             end #sales
@@ -1074,11 +1076,11 @@ module TrackingsheetsHelper
 		             else if current_user.userrole=='operations'
 		             return false
 		             else if current_user.userrole=='sales'
-		              return true    
+		              return false    
 		             else if current_user.userrole=='designer'
 		             return false 
 		             else if current_user.userrole=='vendor'
-		             return false
+		             return true
 		             end #vendors
 		             end #designers
 		             end #sales
@@ -1090,9 +1092,9 @@ module TrackingsheetsHelper
 	 							 if current_user.userrole=='admin'
 		             return true    
 		             else if current_user.userrole=='operations'
-		             return false
+		             return true
 		             else if current_user.userrole=='sales'
-		              return true    
+		              return false    
 		             else if current_user.userrole=='designer'
 		             return false  
 		             else if current_user.userrole=='vendor'
@@ -1108,9 +1110,9 @@ module TrackingsheetsHelper
 							   if current_user.userrole=='admin'
 		              return true     
 		             else if current_user.userrole=='operations'
-		             return false
+		             return true
 		             else if current_user.userrole=='sales'
-		             return true    
+		             return false    
 		             else if current_user.userrole=='designer'
 		             return false   
 		             else if current_user.userrole=='vendor'
@@ -1129,11 +1131,11 @@ module TrackingsheetsHelper
 		             else if current_user.userrole=='operations'
 		             return false
 		             else if current_user.userrole=='sales'
-		              return true    
+		              return false    
 		             else if current_user.userrole=='designer'
 		             return false  
 		             else if current_user.userrole=='vendor'
-		             return false
+		             return true
 		             end #vendors
 		             end #designers
 		             end #sales
@@ -1145,9 +1147,9 @@ module TrackingsheetsHelper
 	 							 if current_user.userrole=='admin'
 		              return true    
 		             else if current_user.userrole=='operations'
-		             return false
+		             return true
 		             else if current_user.userrole=='sales'
-		              return true    
+		              return false    
 		             else if current_user.userrole=='designer'
 		             return false  
 		             else if current_user.userrole=='vendor'
@@ -1163,9 +1165,9 @@ module TrackingsheetsHelper
 	 							 if current_user.userrole=='admin'
 		              return true    
 		             else if current_user.userrole=='operations'
-		             return false 
+		             return true 
 		             else if current_user.userrole=='sales'
-		             return true    
+		             return false    
 		             else if current_user.userrole=='designer'
 		             return false 
 		             else if current_user.userrole=='vendor'
@@ -1189,9 +1191,9 @@ module TrackingsheetsHelper
 	 							 if current_user.userrole=='admin'
 		              return true    
 		             else if current_user.userrole=='operations'
-		             return false
+		             return true
 		             else if current_user.userrole=='sales'
-		             return true    
+		             return false    
 		             else if current_user.userrole=='designer'
 		             return false   
 		             else if current_user.userrole=='vendor'
@@ -1208,9 +1210,9 @@ module TrackingsheetsHelper
 	 							 if current_user.userrole=='admin'
 		              return true    
 		             else if current_user.userrole=='operations'
-		             return false
+		             return true
 		             else if current_user.userrole=='sales'
-		             return true    
+		             return false    
 		             else if current_user.userrole=='designer'
 		             return false
 		             else if current_user.userrole=='vendor'
@@ -1221,6 +1223,164 @@ module TrackingsheetsHelper
 		             end #operations 
 		             end #admin
 							end
+              
+  				  ###---------------------------------------proto_daf_number----------------------------------------------### 
+  							def	proto_daf_number()
+  	 							 if current_user.userrole=='admin'
+  		              return true    
+  		             else if current_user.userrole=='operations'
+  		             return true
+  		             else if current_user.userrole=='sales'
+  		             return false    
+  		             else if current_user.userrole=='designer'
+  		             return true
+  		             else if current_user.userrole=='vendor'
+  		             return false
+  		             end #vendors
+  		             end #designers
+  		             end #sales
+  		             end #operations 
+  		             end #admin
+  							end
+                
+      				  ###---------------------------------------FIRST DAF SOSS----------------------------------------------### 
+      							def	soss()
+      	 							 if current_user.userrole=='admin'
+      		              return true    
+      		             else if current_user.userrole=='operations'
+      		             return true
+      		             else if current_user.userrole=='sales'
+      		             return false    
+      		             else if current_user.userrole=='designer'
+      		             return false
+      		             else if current_user.userrole=='vendor'
+      		             return false
+      		             end #vendors
+      		             end #designers
+      		             end #sales
+      		             end #operations 
+      		             end #admin
+      							end  
+                    
+          				  ###---------------------------------------Development Samples----------------------------------------------### 
+          							def	nmbrofdefsmplneeded()
+          	 							 if current_user.userrole=='admin'
+          		              return true    
+          		             else if current_user.userrole=='operations'
+          		             return true
+          		             else if current_user.userrole=='sales'
+          		             return false    
+          		             else if current_user.userrole=='designer'
+          		             return false
+          		             else if current_user.userrole=='vendor'
+          		             return false
+          		             end #vendors
+          		             end #designers
+          		             end #sales
+          		             end #operations 
+          		             end #admin
+          							end     
+                        
+              				  ###-----------------------------Daf Issued----------------------------------------------### 
+              							def	dafissued()
+              	 							 if current_user.userrole=='admin'
+              		              return true    
+              		             else if current_user.userrole=='operations'
+              		             return true
+              		             else if current_user.userrole=='sales'
+              		             return false    
+              		             else if current_user.userrole=='designer'
+              		             return false
+              		             else if current_user.userrole=='vendor'
+              		             return false
+              		             end #vendors
+              		             end #designers
+              		             end #sales
+              		             end #operations 
+              		             end #admin
+              							end       
+                            
+                  				  ###-----------------------------Sample Due Date----------------------------------------------### 
+                  							def	sampleduedate()
+                  	 							 if current_user.userrole=='admin'
+                  		              return true    
+                  		             else if current_user.userrole=='operations'
+                  		             return true
+                  		             else if current_user.userrole=='sales'
+                  		             return false    
+                  		             else if current_user.userrole=='designer'
+                  		             return false
+                  		             else if current_user.userrole=='vendor'
+                  		             return false
+                  		             end #vendors
+                  		             end #designers
+                  		             end #sales
+                  		             end #operations 
+                  		             end #admin
+                  							end      
+                                
+                                
+                      				  ###-----------------------------Daf2 SOSS----------------------------------------------### 
+                      							def	daf2soss()
+                      	 							 if current_user.userrole=='admin'
+                      		              return true    
+                      		             else if current_user.userrole=='operations'
+                      		             return true
+                      		             else if current_user.userrole=='sales'
+                      		             return false    
+                      		             else if current_user.userrole=='designer'
+                      		             return false
+                      		             else if current_user.userrole=='vendor'
+                      		             return false
+                      		             end #vendors
+                      		             end #designers
+                      		             end #sales
+                      		             end #operations 
+                      		             end #admin
+                      							end     
+                                    
+                          				  ###------------------------Development Samples----------------------------------------------### 
+                          							def	daf2nmbrofdefsmplneeded()
+                          	 							 if current_user.userrole=='admin'
+                          		              return true    
+                          		             else if current_user.userrole=='operations'
+                          		             return true
+                          		             else if current_user.userrole=='sales'
+                          		             return false    
+                          		             else if current_user.userrole=='designer'
+                          		             return false
+                          		             else if current_user.userrole=='vendor'
+                          		             return false
+                          		             end #vendors
+                          		             end #designers
+                          		             end #sales
+                          		             end #operations 
+                          		             end #admin
+                          							end          
+                                        
+                              				  ###-----------------Development Samples----------------------------------------------### 
+                              							def	daf2dafissued()
+                              	 							 if current_user.userrole=='admin'
+                              		              return true    
+                              		             else if current_user.userrole=='operations'
+                              		             return true
+                              		             else if current_user.userrole=='sales'
+                              		             return false    
+                              		             else if current_user.userrole=='designer'
+                              		             return false
+                              		             else if current_user.userrole=='vendor'
+                              		             return false
+                              		             end #vendors
+                              		             end #designers
+                              		             end #sales
+                              		             end #operations 
+                              		             end #admin
+                              							end       
+                                            
+                                            
+                                  	                                                      
+                        
+                           
 
           
           
