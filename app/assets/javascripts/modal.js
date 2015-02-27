@@ -7,4 +7,10 @@ $(document).keyup(function(e) {
 	 }  
 });
 
+$(window).load(function(){
+if($('.best_in_place').html()=='-'){
+$('.best_in_place').html('Click To Add Content');
+$('.best_in_place').attr('data-bip-placeholder','Click To Add Content');
+}
 
+});

@@ -1,6 +1,6 @@
 
 jQuery('#myCarousel').carousel({
-		interval: false
+		interval: 0
 	
 	});
 

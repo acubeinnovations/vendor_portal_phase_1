@@ -5,7 +5,7 @@ class Style
   field :stylename, type: String
   field :stylecode, type: String
   
-  field :division, type: String
+  field :division_id, type: String
   field :brand, type: String
   field :market, type: String
   field :season, type: String

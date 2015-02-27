@@ -51,7 +51,7 @@
 									<span style="text-align:right; margin-top:2px;">
 								<div class="widget-box">
 
-								<%= link_to "Apply Changes", url_for(params),:class => 'btn btn-warning btn-xs' %> 	
+								<%#= link_to "Apply Changes", url_for(params),:class => 'btn btn-warning btn-xs' %> 	
 								</span>
 
 																				<div class="widget-title">
@@ -65,11 +65,11 @@
 									
 									
 																					 <div class="carousel-controls margin-top-10px">
-																				      <a class="carousel-control overide-carousel-control left overide-left" href="#myCarousel<%= @a%>" data-slide="prev"> <i class="icon-step-backward"></i> </a>
-																				      <a class="carousel-control overide-carousel-control right overide-right" href="#myCarousel<%= @a%>" data-slide="next"><i class="icon-step-forward"></i> </a>
+																				      <a class="carousel-control overide-carousel-control left overide-left" href="#myCarousel" data-slide="prev"> <i class="icon-step-backward"></i> </a>
+																				      <a class="carousel-control overide-carousel-control right overide-right" href="#myCarousel" data-slide="next"><i class="icon-step-forward"></i> </a>
 																				  </div>   
 																				</div>	
-								<div id="myCarousel<%= @a%>" class="carousel slide">
+								<div id="myCarousel" class="carousel slide">
 
 
 
@@ -95,6 +95,7 @@
 
 										<div class="widget-content nopadding">
 									<table class="table table-bordered">
+										<th>ACTIONS</th>
 										<th>ECHO DIVISION</th>
 										<th>DIVISION</th>
 										<th>SEASON</th>
@@ -104,15 +105,15 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-													<% 	if current_user.id==trackingsheet.style.vendor) %>
+													<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.style.vendor.to_s) %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
-													<tbody>
-										<td style="text-align:center;"></td>
-										<td style="text-align:center;"></td>
-										<td style="text-align:center;"></td>
-										<td style="text-align:center;"></td>
-										<td style="text-align:center;"></td>
+													<tbody>			<td style="text-align:center;"><%= link_to "Comments", url_for(params),:class => 'btn btn-warning btn-xs' %> <br> <%= link_to " History ", url_for(params),:class => 'btn btn-warning btn-xs' %> </td>
+																			<td style="text-align:center;"><%=trackingsheet.style.division.name%></td>
+																			<td style="text-align:center;"><%=trackingsheet.style.division.name%></td>
+																			<td style="text-align:center;"><%=trackingsheet.style.season%></td>
+																			<td style="text-align:center;"></td>
+																			<td style="text-align:center;"><%=trackingsheet.style.market%></td>
 										
 
 													</tbody>
@@ -147,7 +148,6 @@
 																				<div class="widget-content nopadding">
 																					<table class="table table-bordered">
 																						<th>IMAGES</th>
-																						<th>VENDOR</th>
 																						<th>FACTORY</th>
 																						<th>SUBCONTRACTOR</th>
 																						<th>BRAND</th>
@@ -155,19 +155,16 @@
 												<% model_class='trackingsheet' %>
 												<% @a=1%>
 												<% trackingsheets.each do |trackingsheet|%>
-													<% 	if current_user.id==trackingsheet.style.vendor) %>
+													<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.style.vendor.to_s) %>
 												<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
-
-
-
-												<% @processmaster=Processmaster.find(trackingsheet.processmaster_id) %>		
+	
 																						<tbody>
 												<td style="text-align:center;">
 					
 													<%= image_tag trackingsheet.style.image.url(:small)  %>
 				
 												</td>
-												<td style="text-align:center;"></td>
+												
 												
 						<td style="text-align:center;"><%=best_in_place_if factory,  trackingsheet, :factory, :as => :input%></td>
 						<td style="text-align:center;"><%=best_in_place_if subcontractor,  trackingsheet, :subcontractor, :as => :input%></td>
@@ -204,20 +201,17 @@
 														<% model_class='trackingsheet' %>
 														<% @a=1%>
 														<% trackingsheets.each do |trackingsheet|%>
-															<% 	if current_user.id==trackingsheet.style.vendor) %>
+															<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.style.vendor.to_s) %>
 														<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 	 
-	
- 	
-														<% @processmaster=Processmaster.find(trackingsheet.processmaster_id) %>
 																						<tbody>
 				
 				<td style="text-align:center;"><%=best_in_place_if customeraccountnumber,  trackingsheet, :customeraccountnumber, :as => :input%></td>
 				<td style="text-align:center;"><%=best_in_place_if projectnumber,  trackingsheet, :projectnumber, :as => :input%></td>
-				<td style="text-align:center;"></td>
+				<td style="text-align:center;"><%=trackingsheet.style.stylename %></td>
 				<td style="text-align:center;"><%=best_in_place_if customerstylenumber,  trackingsheet, :customerstylenumber, :as => :input%></td>
 				<td style="text-align:center;"><%=best_in_place_if proto_daf_number,  trackingsheet, :proto_daf_number, :as => :input%></td>
-				<td style="text-align:center;"></td>											
+				<td style="text-align:center;"><%=trackingsheet.style.stylecode %></td>											
 				
 				
 																						</tbody>
@@ -254,12 +248,9 @@
 											<% model_class='trackingsheet' %>
 											<% @a=1%>
 											<% trackingsheets.each do |trackingsheet|%>
-												<% 	if current_user.id==trackingsheet.style.vendor) %>
+												<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.style.vendor.to_s) %>
 											<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
-
-
-
-											<% @processmaster=Processmaster.find(trackingsheet.processmaster_id) %>			
+		
 																							<tbody>
 				<td style="text-align:center;"></td>
 				<td style="text-align:center;"><%=best_in_place_if groupname,  trackingsheet, :groupname, :as => :input%></td>
@@ -305,7 +296,7 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-														<% 	if current_user.id==trackingsheet.style.vendor) %>
+														<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.style.vendor.to_s) %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 																							<tbody>
@@ -354,14 +345,14 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-														<% 	if current_user.id==trackingsheet.style.vendor) %>
+														<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.style.vendor.to_s) %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 													<tbody>
 
 				<td style="text-align:center;"><%=best_in_place_if colors,  trackingsheet, :colors, :as => :input%></td>
-				<td style="text-align:center;"><%=best_in_place_if hw_logo_trim,  trackingsheet, :hw_logo_trim, :as => :input%></td>
-				<td style="text-align:center;"><%=best_in_place_if components,  trackingsheet, :components, :as => :input%></td>
+				<td style="text-align:center;"><%= link_to "Link To Tab", url_for(params),:class => 'btn btn-warning btn-xs' %> </td>
+				<td style="text-align:center;"><%= link_to "Link To Tab", url_for(params),:class => 'btn btn-warning btn-xs' %> </td>
 				<td style="text-align:center;"><%=best_in_place_if projectedunits,  trackingsheet, :projectedunits, :as => :input%></td>
 				<td style="text-align:center;"><%=best_in_place_if targetfob,  trackingsheet, :targetfob, :as => :input%></td>
 				<td style="text-align:center;"><%=best_in_place_if targetmu,  trackingsheet, :targetmu, :as => :input%></td>
@@ -402,7 +393,7 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-														<% 	if current_user.id==trackingsheet.style.vendor) %>
+														<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.style.vendor.to_s) %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 													<tbody>
@@ -451,7 +442,7 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-															<% 	if current_user.id==trackingsheet.style.vendor) %>
+															<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.style.vendor.to_s) %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 													<tbody>
@@ -503,7 +494,7 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-																<% 	if current_user.id==trackingsheet.style.vendor) %>
+																<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.style.vendor.to_s) %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 													<tbody>
@@ -557,7 +548,7 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-														<% 	if current_user.id==trackingsheet.style.vendor) %>
+														<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.style.vendor.to_s) %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 													<tbody>
@@ -608,7 +599,7 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-														<% 	if current_user.id==trackingsheet.style.vendor) %>
+														<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.style.vendor.to_s) %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 													<tbody>
@@ -658,7 +649,7 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-														<% 	if current_user.id==trackingsheet.style.vendor) %>
+														<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.style.vendor.to_s) %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 													<tbody>
@@ -709,7 +700,7 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-																<% 	if current_user.id==trackingsheet.style.vendor) %>
+																<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.style.vendor.to_s) %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 													<tbody>
