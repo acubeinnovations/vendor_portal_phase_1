@@ -1,9 +1,3 @@
-<%#= trackingsheets=Trackingsheet.where('processmaster_id') and style.division = current_user.division %>
-
-<%#= ts=current_user.division.styles.trackingsheet %>
-
-<% trackingsheets=Trackingsheet.where('processmaster_id'=>BSON::ObjectId.from_string(request.GET.first.second.to_s))%> 
-
 								<%
 									#data=[]
 								 data={'images'=>'Images','factory'=>'Factory','subcontractor'=>'Sub Contractor','salestrackingsheetedtosamplerequest'=>'Sales Proceed to Sample Request','customername'=>'Customer Name','customeraccount'=>'Customer Account','project'=>'Project','xmilldate'=>'X Mill Date','productionleadtime'=>'Production Lead Time', 'salesproceedtosamplerequest'=>'Sales Proceed to Sample Request','protoduebackfromvendor'=>'Proto Due Back From Vendor','daftovendordate'=>'Daf to Vendor Date','rtlmu'=>'RTL MU','mkup'=>'MK-UP','projectedunits'=>'Projected Units','targetfob'=>'Target FOB','targetmu'=>'Target MU','targetws'=>'Target WS','percolor'=>'Per Color','perstyle'=>'Per Style','incoterms'=>'Inco Terms','moq'=>'MOQ','thousandtofivethousandPCS'=>'1000 - 5000 PCS','fivethousandtotenthousandPCS'=>'5000 - 10000 PCS','ldpboat'=>'LDP Boat','ldpair'=>'LDP Air','startshipdate'=>'Start Ship Date','orderduedateviaboat'=>'Order Due Date Via Boat','orderduedateviaair'=>'Order Due Date Via Air','soss'=>'S/O OR S/S','nmbrofdefsmplneeded'=>'# of Dev Samples Needed','dafissued'=>'DAF Issued','sampleduedate'=>'Sample Due Date','daf2soss'=>'S/O OR S/S','daf2nmbrofdefsmplneeded'=>'# of Dev Samples Needed','daf2dafissued'=>'DAF Issued','daf2sampleduedate'=>'Sample Due Date','comments'=>'Comments'}
@@ -104,7 +98,7 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-													<% 	if current_user.id==trackingsheet.style.vendor) %>
+													<% 	if trackingsheet.style.division==current_user.division %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 													<tbody>
@@ -118,7 +112,7 @@
 													</tbody>
 																	<% @a=@a+1%>
 																	<% end %>
-																	<% end %>	
+																	<% end %>		
 																	<% end %>						
 										</table>
 									</div>
@@ -155,7 +149,7 @@
 												<% model_class='trackingsheet' %>
 												<% @a=1%>
 												<% trackingsheets.each do |trackingsheet|%>
-													<% 	if current_user.id==trackingsheet.style.vendor) %>
+												<% 	if trackingsheet.style.division==current_user.division %>
 												<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 
 
@@ -164,7 +158,7 @@
 																						<tbody>
 												<td style="text-align:center;">
 					
-													<%= image_tag trackingsheet.style.image.url(:small)  %>
+													
 				
 												</td>
 												<td style="text-align:center;"></td>
@@ -173,12 +167,11 @@
 						<td style="text-align:center;"><%=best_in_place_if subcontractor,  trackingsheet, :subcontractor, :as => :input%></td>
 						<td style="text-align:center;"><%=best_in_place_if brand,  trackingsheet, :brand, :as => :input%></td>
 						<td style="text-align:center;"><%=best_in_place_if customername,  trackingsheet, :customername, :as => :input%></td>
-									
 				
 																						</tbody>
 																						<% @a=@a+1%>
 																						<% end %>
-																							<% end %>	
+																						<% end %>
 																						<% end %>
 																					</table>
 																				</div>
@@ -204,7 +197,7 @@
 														<% model_class='trackingsheet' %>
 														<% @a=1%>
 														<% trackingsheets.each do |trackingsheet|%>
-															<% 	if current_user.id==trackingsheet.style.vendor) %>
+														<% 	if trackingsheet.style.division==current_user.division %>
 														<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 	 
 	
@@ -212,18 +205,18 @@
 														<% @processmaster=Processmaster.find(trackingsheet.processmaster_id) %>
 																						<tbody>
 				
-				<td style="text-align:center;"><%=best_in_place_if customeraccountnumber,  trackingsheet, :customeraccountnumber, :as => :input%></td>
+												<td style="text-align:center;"><%=best_in_place_if customeraccountnumber,  trackingsheet, :customeraccountnumber, :as => :input%></td>
 				<td style="text-align:center;"><%=best_in_place_if projectnumber,  trackingsheet, :projectnumber, :as => :input%></td>
 				<td style="text-align:center;"></td>
 				<td style="text-align:center;"><%=best_in_place_if customerstylenumber,  trackingsheet, :customerstylenumber, :as => :input%></td>
 				<td style="text-align:center;"><%=best_in_place_if proto_daf_number,  trackingsheet, :proto_daf_number, :as => :input%></td>
-				<td style="text-align:center;"></td>											
+				<td style="text-align:center;"></td>
 				
 				
 																						</tbody>
 																				<% @a=@a+1%>
 																				<% end %>
-																			<% end %>	
+																				<% end %>
 																				<% end %>		
 																					</table>
 																				</div>
@@ -254,25 +247,25 @@
 											<% model_class='trackingsheet' %>
 											<% @a=1%>
 											<% trackingsheets.each do |trackingsheet|%>
-												<% 	if current_user.id==trackingsheet.style.vendor) %>
+											<% 	if trackingsheet.style.division==current_user.division %>
 											<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 
 
 
 											<% @processmaster=Processmaster.find(trackingsheet.processmaster_id) %>			
 																							<tbody>
-				<td style="text-align:center;"></td>
+				
+													<td style="text-align:center;"></td>
 				<td style="text-align:center;"><%=best_in_place_if groupname,  trackingsheet, :groupname, :as => :input%></td>
 				<td style="text-align:center;"><%=best_in_place_if productcategory,  trackingsheet, :productcategory, :as => :input%></td>
 				<td style="text-align:center;"><%=best_in_place_if designname,  trackingsheet, :designname, :as => :input%></td>
 				<td style="text-align:center;"><%=best_in_place_if shape,  trackingsheet, :shape, :as => :input%></td>
 				<td style="text-align:center;"><%=best_in_place_if size,  trackingsheet, :size, :as => :input%></td>
-												
 				
 																							</tbody>
 													<% @a=@a+1%>
 													<% end %>
-														<% end %>	
+													<% end %>		
 													<% end %>										
 																						</table>
 																					</div>
@@ -305,23 +298,22 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-														<% 	if current_user.id==trackingsheet.style.vendor) %>
+
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 																							<tbody>
 				
-				<td style="text-align:center;"><%=best_in_place_if fiber,  trackingsheet, :fiber, :as => :input%></td>
+													<td style="text-align:center;"><%=best_in_place_if fiber,  trackingsheet, :fiber, :as => :input%></td>
 				<td style="text-align:center;"><%=best_in_place_if construction,  trackingsheet, :construction, :as => :input%></td>
 				<td style="text-align:center;"><%=best_in_place_if fabrictype,  trackingsheet, :fabrictype, :as => :input%></td>
 				<td style="text-align:center;"><%=best_in_place_if gauge_end,  trackingsheet, :gauge_end, :as => :input%></td>
 				<td style="text-align:center;"><%=best_in_place_if finish,  trackingsheet, :finish, :as => :input%></td>
 				<td style="text-align:center;"><%=best_in_place_if finishdetails,  trackingsheet, :finishdetails, :as => :input%></td>
-
 				
 																							</tbody>
 																	<% @a=@a+1%>
 																	<% end %>
-																	<% end %>	
+																	<% end %>		
 																	<% end %>						
 																						</table>
 																					</div>
@@ -354,22 +346,22 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-														<% 	if current_user.id==trackingsheet.style.vendor) %>
+													<% 	if trackingsheet.style.division==current_user.division %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 													<tbody>
 
-				<td style="text-align:center;"><%=best_in_place_if colors,  trackingsheet, :colors, :as => :input%></td>
+										<td style="text-align:center;"><%=best_in_place_if colors,  trackingsheet, :colors, :as => :input%></td>
 				<td style="text-align:center;"><%=best_in_place_if hw_logo_trim,  trackingsheet, :hw_logo_trim, :as => :input%></td>
 				<td style="text-align:center;"><%=best_in_place_if components,  trackingsheet, :components, :as => :input%></td>
 				<td style="text-align:center;"><%=best_in_place_if projectedunits,  trackingsheet, :projectedunits, :as => :input%></td>
 				<td style="text-align:center;"><%=best_in_place_if targetfob,  trackingsheet, :targetfob, :as => :input%></td>
 				<td style="text-align:center;"><%=best_in_place_if targetmu,  trackingsheet, :targetmu, :as => :input%></td>
 
-																</tbody>
+													</tbody>
 																	<% @a=@a+1%>
 																	<% end %>
-																	<% end %>	
+																		<% end %>		
 																	<% end %>						
 										</table>
 									</div>
@@ -402,22 +394,22 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-														<% 	if current_user.id==trackingsheet.style.vendor) %>
+													<% 	if trackingsheet.style.division==current_user.division %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 													<tbody>
 
-		<td style="text-align:center;"><%=best_in_place_if targetws,  trackingsheet, :targetws, :as => :input%></td>
+										<td style="text-align:center;"><%=best_in_place_if targetws,  trackingsheet, :targetws, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if targetretailus,  trackingsheet, :targetretailus, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if targetretailcan,  trackingsheet, :targetretailcan, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if percolor,  trackingsheet, :percolor, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if incoterms,  trackingsheet, :incoterms, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if pricebasedonprojection,  trackingsheet, :pricebasedonprojection, :as => :input%></td>								
+		<td style="text-align:center;"><%=best_in_place_if pricebasedonprojection,  trackingsheet, :pricebasedonprojection, :as => :input%></td>
 
 													</tbody>
 																	<% @a=@a+1%>
 																	<% end %>
-																<% end %>	
+																	<% end %>		
 																	<% end %>						
 										</table>
 									</div>
@@ -451,24 +443,22 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-															<% 	if current_user.id==trackingsheet.style.vendor) %>
+													<% 	if trackingsheet.style.division==current_user.division %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 													<tbody>
 
-<td style="text-align:center;"><%=best_in_place_if additionalsurcharge,  trackingsheet, :additionalsurcharge, :as => :input%></td>
+								<td style="text-align:center;"><%=best_in_place_if additionalsurcharge,  trackingsheet, :additionalsurcharge, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if moq,  trackingsheet, :moq, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if thousandtofivethousandPCS,  trackingsheet, :thousandtofivethousandPCS, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if fivethousandtotenthousandPCS,  trackingsheet, :fivethousandtotenthousandPCS, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if tenthousandtotwentythousandPCS,  trackingsheet, :tenthousandtotwentythousandPCS, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if twentythousandplusPCS,  trackingsheet, :twentythousandplusPCS, :as => :input%></td>
 
-								
-
 													</tbody>
 																	<% @a=@a+1%>
 																	<% end %>
-																		<% end %>	
+																		<% end %>		
 																	<% end %>						
 										</table>
 									</div>
@@ -503,24 +493,22 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-																<% 	if current_user.id==trackingsheet.style.vendor) %>
+														<% 	if trackingsheet.style.division==current_user.division %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 													<tbody>
 
-		<td style="text-align:center;"><%=best_in_place_if ldpboat,  trackingsheet, :ldpboat, :as => :input%></td>
+								<td style="text-align:center;"><%=best_in_place_if ldpboat,  trackingsheet, :ldpboat, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if ldpair,  trackingsheet, :ldpair, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if xmilldate,  trackingsheet, :xmilldate, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if startshipdate,  trackingsheet, :startshipdate, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if orderduedateviaboat,  trackingsheet, :orderduedateviaboat, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if orderduedateviaair,  trackingsheet, :orderduedateviaair, :as => :input%></td>
 
-							
-
 													</tbody>
 																	<% @a=@a+1%>
 																	<% end %>
-																	<% end %>	
+																	<% end %>		
 																	<% end %>						
 										</table>
 									</div>
@@ -557,23 +545,22 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-														<% 	if current_user.id==trackingsheet.style.vendor) %>
+												<% 	if trackingsheet.style.division==current_user.division %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 													<tbody>
 
-<td style="text-align:center;"><%=best_in_place_if productionleadtime,  trackingsheet, :productionleadtime, :as => :input%></td>
+								<td style="text-align:center;"><%=best_in_place_if productionleadtime,  trackingsheet, :productionleadtime, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if salesproceedtosamplerequest,  trackingsheet, :salesproceedtosamplerequest, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if protoduebackfromvendor,  trackingsheet, :protoduebackfromvendor, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if daftovendordate,  trackingsheet, :daftovendordate, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if soss,  trackingsheet, :soss, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if nmbrofdefsmplneeded,  trackingsheet, :nmbrofdefsmplneeded, :as => :input%></td>
 
-
 													</tbody>
 																	<% @a=@a+1%>
 																	<% end %>
-																	<% end %>	
+																	<% end %>		
 																	<% end %>						
 										</table>
 									</div>
@@ -608,23 +595,22 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-														<% 	if current_user.id==trackingsheet.style.vendor) %>
+													<% 	if trackingsheet.style.division==current_user.division %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 													<tbody>
 
-<td style="text-align:center;"><%=best_in_place_if dafissued,  trackingsheet, :dafissued, :as => :input%></td>
+								<td style="text-align:center;"><%=best_in_place_if dafissued,  trackingsheet, :dafissued, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if sampleduedate,  trackingsheet, :sampleduedate, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if xmill,  trackingsheet, :xmill, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if received,  trackingsheet, :received, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if approved,  trackingsheet, :approved, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if daf2soss,  trackingsheet, :daf2soss, :as => :input%></td>
 
-			
 													</tbody>
 																	<% @a=@a+1%>
 																	<% end %>
-																		<% end %>	
+																	<% end %>		
 																	<% end %>						
 										</table>
 									</div>
@@ -658,22 +644,22 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-														<% 	if current_user.id==trackingsheet.style.vendor) %>
+													<% 	if trackingsheet.style.division==current_user.division %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 													<tbody>
-<td style="text-align:center;"><%=best_in_place_if daf2nmbrofdefsmplneeded,  trackingsheet, :daf2nmbrofdefsmplneeded, :as => :input%></td>
+
+								<td style="text-align:center;"><%=best_in_place_if daf2nmbrofdefsmplneeded,  trackingsheet, :daf2nmbrofdefsmplneeded, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if daf2dafissued,  trackingsheet, :daf2dafissued, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if daf2sampleduedate,  trackingsheet, :daf2sampleduedate, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if daf2xmill,  trackingsheet, :daf2xmill, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if daf2received,  trackingsheet, :daf2received, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if daf2approved,  trackingsheet, :daf2approved, :as => :input%></td>
 
-				
 													</tbody>
 																	<% @a=@a+1%>
 																	<% end %>
-																<% end %>	
+																	<% end %>		
 																	<% end %>						
 										</table>
 									</div>
@@ -709,22 +695,22 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-																<% 	if current_user.id==trackingsheet.style.vendor) %>
+													<% 	if trackingsheet.style.division==current_user.division %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 													<tbody>
-<td style="text-align:center;"></td>
+
+								<td style="text-align:center;"><%=best_in_place_if comments,  trackingsheet, :comments, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if vsdsreceived,  trackingsheet, :vsdsreceived, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if vsdsapproved,  trackingsheet, :vsdsapproved, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if rtlmu,  trackingsheet, :rtlmu, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if mkup,  trackingsheet, :mkup, :as => :input%></td>
-
-																
+								
 
 													</tbody>
 																	<% @a=@a+1%>
 																	<% end %>
-																	<% end %>	
+																	<% end %>		
 																	<% end %>						
 										</table>
 									</div>

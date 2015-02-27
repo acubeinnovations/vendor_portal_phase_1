@@ -270,7 +270,7 @@ module TrackingsheetsHelper
          
          ###---------------------------------------MK UP--------------------------------------------### 
 
-          def mkup(mkup)
+          def mkup()
             if current_user.userrole=='admin'
             return true    
             else if current_user.userrole=='operations'
@@ -296,7 +296,7 @@ module TrackingsheetsHelper
           
           ###---------------------------------------Projected Units--------------------------------------------### 
 
-           def projectedunits(projectedunits)
+           def projectedunits()
              if current_user.userrole=='admin'
               return true     
              else if current_user.userrole=='operations'
@@ -336,7 +336,7 @@ module TrackingsheetsHelper
             
             ###---------------------------------------Target MU--------------------------------------------### 
 
-             def targetmu(targetmu)
+             def targetmu()
                if current_user.userrole=='admin'
                 return true     
                else if current_user.userrole=='operations'
@@ -356,7 +356,7 @@ module TrackingsheetsHelper
              
              ###---------------------------------------Target WS--------------------------------------------### 
 
-              def targetws(targetws)
+              def targetws()
                 if current_user.userrole=='admin'
                  return true    
                 else if current_user.userrole=='operations'
@@ -380,7 +380,7 @@ module TrackingsheetsHelper
           ####### Minimum MOQ Tab Starts ######
           ###---------------------------------------Per Color--------------------------------------------### 
 
-           def percolor(percolor)
+           def percolor()
              if current_user.userrole=='admin'
               return true      
              else if current_user.userrole=='operations'
@@ -400,7 +400,7 @@ module TrackingsheetsHelper
            
            ###---------------------------------------Per Style--------------------------------------------### 
 
-            def perstyle(perstyle)
+            def perstyle()
               if current_user.userrole=='admin'
                return true      
               else if current_user.userrole=='operations'
@@ -420,7 +420,7 @@ module TrackingsheetsHelper
             
             ###---------------------------------------Incoterms--------------------------------------------### 
 
-             def incoterms(incoterms)
+             def incoterms()
                if current_user.userrole=='admin'
                 return true      
                else if current_user.userrole=='operations'
@@ -443,7 +443,7 @@ module TrackingsheetsHelper
           ####### First Cost Per Style Tab Starts ###### 
           ###---------------------------------------MOQ--------------------------------------------### 
 
-           def moq(moq)
+           def moq()
              if current_user.userrole=='admin'
               return true      
              else if current_user.userrole=='operations'
@@ -463,7 +463,7 @@ module TrackingsheetsHelper
            
            ###---------------------------------------1000 - 5000 PCS--------------------------------------------### 
 
-            def thousandtofivethousandPCS(thousandtofivethousandPCS)
+            def thousandtofivethousandPCS()
               if current_user.userrole=='admin'
                return true    
               else if current_user.userrole=='operations'
@@ -483,7 +483,7 @@ module TrackingsheetsHelper
             
             ###---------------------------------------5000 - 10,000 PCS--------------------------------------------### 
 
-             def fivethousandtotenthousandPCS(fivethousandtotenthousandPCS)
+             def fivethousandtotenthousandPCS()
                if current_user.userrole=='admin'
                 return true    
                else if current_user.userrole=='operations'
@@ -507,7 +507,7 @@ module TrackingsheetsHelper
           
           ###---------------------------------------LDP Boat--------------------------------------------### 
 
-           def ldpboat(ldpboat)
+           def ldpboat()
              if current_user.userrole=='admin'
               return true    
              else if current_user.userrole=='operations'
@@ -527,7 +527,7 @@ module TrackingsheetsHelper
            
            ###---------------------------------------LDP Air--------------------------------------------### 
 
-            def ldpair(ldpair)
+            def ldpair()
               if current_user.userrole=='admin'
               return true     
               else if current_user.userrole=='operations'
@@ -551,7 +551,7 @@ module TrackingsheetsHelper
           ####### Customer Delivery Tab Starts ######
           ###---------------------------------------Start Ship Date--------------------------------------------### 
 
-           def startshipdate(startshipdate)
+           def startshipdate()
              if current_user.userrole=='admin'
               return true      
              else if current_user.userrole=='operations'
@@ -571,7 +571,7 @@ module TrackingsheetsHelper
            
            ###---------------------------------------Order Due Date Via Boat--------------------------------------------### 
 
-            def orderduedateviaboat(orderduedateviaboat)
+            def orderduedateviaboat()
               if current_user.userrole=='admin'
                return true     
               else if current_user.userrole=='operations'
@@ -1376,6 +1376,25 @@ module TrackingsheetsHelper
                               		             end #operations 
                               		             end #admin
                               							end       
+                                            
+                                  				  ###-----------------Development Samples----------------------------------------------### 
+                                  							def	daf2sampleduedate()
+                                  	 							 if current_user.userrole=='admin'
+                                  		              return true    
+                                  		             else if current_user.userrole=='operations'
+                                  		             return true
+                                  		             else if current_user.userrole=='sales'
+                                  		             return false    
+                                  		             else if current_user.userrole=='designer'
+                                  		             return false
+                                  		             else if current_user.userrole=='vendor'
+                                  		             return false
+                                  		             end #vendors
+                                  		             end #designers
+                                  		             end #sales
+                                  		             end #operations 
+                                  		             end #admin
+                                  							end                                        
                                             
                                             
                                   	                                                      

@@ -164,7 +164,7 @@
 																						<tbody>
 												<td style="text-align:center;">
 					
-													<%= image_tag trackingsheet.style.image.url(:small)  %>
+													
 				
 												</td>
 												<td style="text-align:center;"></td>
@@ -713,7 +713,7 @@
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 													<tbody>
-<td style="text-align:center;"></td>
+<td style="text-align:center;"><%=best_in_place_if comments,  trackingsheet, :comments, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if vsdsreceived,  trackingsheet, :vsdsreceived, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if vsdsapproved,  trackingsheet, :vsdsapproved, :as => :input%></td>
 		<td style="text-align:center;"><%=best_in_place_if rtlmu,  trackingsheet, :rtlmu, :as => :input%></td>
