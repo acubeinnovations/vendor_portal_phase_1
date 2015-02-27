@@ -1,15 +1,8 @@
-<<<<<<< HEAD
-
-=======
 <%#= trackingsheets=Trackingsheet.where('processmaster_id') and style.division = current_user.division %>
->>>>>>> 14e3ae9258a7827bb5565dfeb04f4cbff19a116f
 
 <%#= ts=current_user.division.styles.trackingsheet %>
 
-
-
-
-
+<% trackingsheets=Trackingsheet.where('processmaster_id'=>BSON::ObjectId.from_string(request.GET.first.second.to_s))%> 
 
 								<%
 									#data=[]
@@ -111,7 +104,7 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-
+													<% 	if current_user.id==trackingsheet.style.vendor) %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 													<tbody>
@@ -125,7 +118,7 @@
 													</tbody>
 																	<% @a=@a+1%>
 																	<% end %>
-
+																	<% end %>	
 																	<% end %>						
 										</table>
 									</div>
@@ -162,7 +155,7 @@
 												<% model_class='trackingsheet' %>
 												<% @a=1%>
 												<% trackingsheets.each do |trackingsheet|%>
-
+													<% 	if current_user.id==trackingsheet.style.vendor) %>
 												<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 
 
@@ -184,7 +177,7 @@
 																						</tbody>
 																						<% @a=@a+1%>
 																						<% end %>
-
+																							<% end %>	
 																						<% end %>
 																					</table>
 																				</div>
@@ -210,7 +203,7 @@
 														<% model_class='trackingsheet' %>
 														<% @a=1%>
 														<% trackingsheets.each do |trackingsheet|%>
-
+															<% 	if current_user.id==trackingsheet.style.vendor) %>
 														<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 	 
 	
@@ -229,7 +222,7 @@
 																						</tbody>
 																				<% @a=@a+1%>
 																				<% end %>
-
+																			<% end %>	
 																				<% end %>		
 																					</table>
 																				</div>
@@ -260,7 +253,7 @@
 											<% model_class='trackingsheet' %>
 											<% @a=1%>
 											<% trackingsheets.each do |trackingsheet|%>
-
+												<% 	if current_user.id==trackingsheet.style.vendor) %>
 											<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 
 
@@ -278,7 +271,7 @@
 																							</tbody>
 													<% @a=@a+1%>
 													<% end %>
-
+														<% end %>	
 													<% end %>										
 																						</table>
 																					</div>
@@ -311,7 +304,7 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-
+														<% 	if current_user.id==trackingsheet.style.vendor) %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 																							<tbody>
@@ -326,7 +319,7 @@
 																							</tbody>
 																	<% @a=@a+1%>
 																	<% end %>
-
+																	<% end %>	
 																	<% end %>						
 																						</table>
 																					</div>
@@ -359,23 +352,22 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-
+														<% 	if current_user.id==trackingsheet.style.vendor) %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
-									<tbody>
+													<tbody>
 
-						<td style="text-align:center;"><%=best_in_place trackingsheet, :colors%></td>
-						<td style="text-align:center;"><%=best_in_place trackingsheet, :hw_logo_trim%></td>
-						<td style="text-align:center;"><%=best_in_place trackingsheet, :components%></td>
-						<td style="text-align:center;"><%=best_in_place trackingsheet, :projectedunits%></td>
-						<td style="text-align:center;"><%=best_in_place_if targetfob,  trackingsheet, :targetfob, :as => :input%></td>
-						
-						<td style="text-align:center;"><%=best_in_place trackingsheet, :targetmu%></td>
+										<td style="text-align:center;"><%=best_in_place trackingsheet, :colors%></td>
+										<td style="text-align:center;"><%=best_in_place trackingsheet, :hw_logo_trim%></td>
+										<td style="text-align:center;"><%=best_in_place trackingsheet, :components%></td>
+										<td style="text-align:center;"><%=best_in_place trackingsheet, :projectedunits%></td>
+										<td style="text-align:center;"><%=best_in_place trackingsheet, :targetfob%></td>
+										<td style="text-align:center;"><%=best_in_place trackingsheet, :targetmu%></td>
 
-									</tbody>
+													</tbody>
 																	<% @a=@a+1%>
 																	<% end %>
-
+																	<% end %>	
 																	<% end %>						
 										</table>
 									</div>
@@ -408,7 +400,7 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-
+														<% 	if current_user.id==trackingsheet.style.vendor) %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 													<tbody>
@@ -423,7 +415,7 @@
 													</tbody>
 																	<% @a=@a+1%>
 																	<% end %>
-
+																<% end %>	
 																	<% end %>						
 										</table>
 									</div>
@@ -457,7 +449,7 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-
+															<% 	if current_user.id==trackingsheet.style.vendor) %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 													<tbody>
@@ -472,7 +464,7 @@
 													</tbody>
 																	<% @a=@a+1%>
 																	<% end %>
-
+																		<% end %>	
 																	<% end %>						
 										</table>
 									</div>
@@ -507,7 +499,7 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-
+																<% 	if current_user.id==trackingsheet.style.vendor) %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 													<tbody>
@@ -522,7 +514,7 @@
 													</tbody>
 																	<% @a=@a+1%>
 																	<% end %>
-
+																	<% end %>	
 																	<% end %>						
 										</table>
 									</div>
@@ -559,7 +551,7 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-
+														<% 	if current_user.id==trackingsheet.style.vendor) %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 													<tbody>
@@ -574,7 +566,7 @@
 													</tbody>
 																	<% @a=@a+1%>
 																	<% end %>
-
+																	<% end %>	
 																	<% end %>						
 										</table>
 									</div>
@@ -609,7 +601,7 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-
+														<% 	if current_user.id==trackingsheet.style.vendor) %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 													<tbody>
@@ -624,7 +616,7 @@
 													</tbody>
 																	<% @a=@a+1%>
 																	<% end %>
-
+																		<% end %>	
 																	<% end %>						
 										</table>
 									</div>
@@ -658,7 +650,7 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-
+														<% 	if current_user.id==trackingsheet.style.vendor) %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 													<tbody>
@@ -673,7 +665,7 @@
 													</tbody>
 																	<% @a=@a+1%>
 																	<% end %>
-
+																<% end %>	
 																	<% end %>						
 										</table>
 									</div>
@@ -709,7 +701,7 @@
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-
+																<% 	if current_user.id==trackingsheet.style.vendor) %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 													<tbody>
@@ -724,7 +716,7 @@
 													</tbody>
 																	<% @a=@a+1%>
 																	<% end %>
-
+																	<% end %>	
 																	<% end %>						
 										</table>
 									</div>

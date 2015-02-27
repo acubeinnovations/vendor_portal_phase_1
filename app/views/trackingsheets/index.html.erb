@@ -1,1 +1,14 @@
-<%= render 'form' %>
+
+<% if current_user.userrole=='operations' %>
+	<%= render 'form_op' %>
+<% else if current_user.userrole=='vendor' %>
+	<%= render 'form_vendor' %>
+<% else if current_user.userrole!='vendor' && current_user.userrole!='operations' %>
+	<%= render 'form_normal' %>
+<%end%>
+<%end%>
+<%end%>
+
+
+
+
