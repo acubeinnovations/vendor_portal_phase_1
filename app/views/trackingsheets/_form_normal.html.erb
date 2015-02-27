@@ -54,7 +54,7 @@
 																					<span class="icon">
 																						<i class="icon-file"></i>
 																					</span>
-													
+																						
 												
 																					<h5>Tracking Sheet #  <%= @a%></h5>
 									
@@ -65,26 +65,13 @@
 																				      <a class="carousel-control overide-carousel-control right overide-right" href="#myCarousel<%= @a%>" data-slide="next"><i class="icon-step-forward"></i> </a>
 																				  </div>   
 																				</div>	
+																			
 								<div id="myCarousel<%= @a%>" class="carousel slide">
-
-
-
-
-
-
-	
 								                 <!-- Indicators -->         
 								                <div class="carousel-inner">  
-													
-													
-													
-													
 				<!-- Scroll Tabs Starts-->
 
                     <div class="item active">
-						
-
-
 						
                         <blockquote>
                          
@@ -163,7 +150,7 @@
 													
 				
 												</td>
-												<td style="text-align:center;"></td>
+												<td style="text-align:center;"><%= image_tag trackingsheet.style.image.url(:small)  %></td>
 												
 												<td style="text-align:center;"><%=best_in_place trackingsheet, :factory%></td>
 												<td style="text-align:center;"><%=best_in_place trackingsheet, :subcontractor%></td>
