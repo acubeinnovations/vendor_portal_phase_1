@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
 
-	
+	$('td:not span(.bestin1)');
 	
 	// === Sidebar navigation === //
 	

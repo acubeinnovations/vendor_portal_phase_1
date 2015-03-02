@@ -59,7 +59,7 @@
 													<label class="control-label">Image</label>
 														<div class="controls">	
 																<% if @style.image.url!='/images/original/missing.png' %>
-																<%= image_tag @style.image.url(:small)  %>
+																<%= image_tag "/vendorportal"+@style.image.url(:small)  %>
 																<%	end			 %>
 															
 																	<%= f.file_field :image,class:'styleimage' %>

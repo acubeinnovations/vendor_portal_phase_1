@@ -1,3 +1,15 @@
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#handle').bind('mousewheel', function(event, delta) {
+        val = this.scrollLeft - (delta * 50);
+        jQuery(this).stop().animate({
+            scrollLeft: val
+        }, 500);
+        event.preventDefault();
+    });
+});
+</script>
+
 <%#= trackingsheets=Trackingsheet.where('processmaster_id') and style.division = current_user.division %>
 
 <%#= ts=current_user.division.styles.trackingsheet %>
@@ -60,37 +72,21 @@
 																					</span>
 													
 												
-																					<h5>Tracking Sheet #  <%= @a%></h5>
+																					<h5>Tracking Sheet</h5>
 									
 									
 									
-																					 <div class="carousel-controls margin-top-10px">
-																				      <a class="carousel-control overide-carousel-control left overide-left" href="#myCarousel" data-slide="prev"> <i class="icon-step-backward"></i> </a>
-																				      <a class="carousel-control overide-carousel-control right overide-right" href="#myCarousel" data-slide="next"><i class="icon-step-forward"></i> </a>
-																				  </div>   
+																					   
 																				</div>	
-								<div id="myCarousel" class="carousel slide">
-
-
-
-
-
-
+								<div style="width:100%; !important;height:500px;overflow:scroll" id="handle">
 	
-								                 <!-- Indicators -->         
-								                <div class="carousel-inner">  
-													
-													
-													
+								                 <!-- Indicators -->   
 													
 				<!-- Scroll Tabs Starts-->
 
-                    <div class="item active">
+                    <div class="item active">	
 						
-
-
-						
-                        <blockquote>
+                        
                          
 
 										<div class="widget-content nopadding">
@@ -101,616 +97,160 @@
 										<th>SEASON</th>
 										<th>YEAR</th>
 										<th>MARKET</th>
-										
-													<% model_class='trackingsheet' %>
-													<% @a=1%>
-													<% trackingsheets.each do |trackingsheet|%>
-													<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.style.vendor.to_s) %>
-													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
-														
-													<tbody>			<td style="text-align:center;"><%= link_to "Comments", url_for(params),:class => 'btn btn-warning btn-xs' %> <br> <%= link_to " History ", url_for(params),:class => 'btn btn-warning btn-xs' %> </td>
-																			<td style="text-align:center;"><%=trackingsheet.style.division.name%></td>
-																			<td style="text-align:center;"><%=trackingsheet.style.division.name%></td>
-																			<td style="text-align:center;"><%=trackingsheet.style.season%></td>
-																			<td style="text-align:center;"></td>
-																			<td style="text-align:center;"><%=trackingsheet.style.market%></td>
-										
-
-													</tbody>
-																	<% @a=@a+1%>
-																	<% end %>
-																	<% end %>	
-																	<% end %>						
-										</table>
-									</div>
-
-
-									                        </blockquote>
-															
-														</div>
-	<!-- Scroll Tabs Ends-->													
-													
-													
-													
-													
-													
-													
-													
-													
-													
-													
-													         
-								                    <div class="item">
-														
-								                        <blockquote>
-                          	
-											
-																				<div class="widget-content nopadding">
-																					<table class="table table-bordered">
-																						<th>IMAGES</th>
-																						<th>FACTORY</th>
-																						<th>SUBCONTRACTOR</th>
-																						<th>BRAND</th>
-																						<th>CUSTOMER NAME</th>
-												<% model_class='trackingsheet' %>
-												<% @a=1%>
-												<% trackingsheets.each do |trackingsheet|%>
-													<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.style.vendor.to_s) %>
-												<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
-	
-																						<tbody>
-												<td style="text-align:center;">
-					
-													<%= image_tag trackingsheet.style.image.url(:small)  %>
-				
-												</td>
-												
-												
-						<td style="text-align:center;"><%=best_in_place_if factory,  trackingsheet, :factory, :as => :input%></td>
-						<td style="text-align:center;"><%=best_in_place_if subcontractor,  trackingsheet, :subcontractor, :as => :input%></td>
-						<td style="text-align:center;"><%=best_in_place_if brand,  trackingsheet, :brand, :as => :input%></td>
-						<td style="text-align:center;"><%=best_in_place_if customername,  trackingsheet, :customername, :as => :input%></td>
-									
-				
-																						</tbody>
-																						<% @a=@a+1%>
-																						<% end %>
-																							<% end %>	
-																						<% end %>
-																					</table>
-																				</div>
-											
-										
-								                        </blockquote>
-														
-						
-								                    </div>
-								                    <div class="item">
-														
-								                        <blockquote>
-                          
-																						<div class="widget-content nopadding">
-																					<table class="table table-bordered">
-														
-																						<th>CUSTOMER ACCOUNT #</th>
-																						<th>PROJECT #</th>
-																						<th>REFERENCE STYLE</th>
-																						<th>CUSTOMER STYLE #</th>
-																						<th>PROTO # / DAF #</th>
-																						<th>STYLE #</th>
-														<% model_class='trackingsheet' %>
-														<% @a=1%>
-														<% trackingsheets.each do |trackingsheet|%>
-															<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.style.vendor.to_s) %>
-														<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
-	 
-																						<tbody>
-				
-				<td style="text-align:center;"><%=best_in_place_if customeraccountnumber,  trackingsheet, :customeraccountnumber, :as => :input%></td>
-				<td style="text-align:center;"><%=best_in_place_if projectnumber,  trackingsheet, :projectnumber, :as => :input%></td>
-				<td style="text-align:center;"><%=trackingsheet.style.stylename %></td>
-				<td style="text-align:center;"><%=best_in_place_if customerstylenumber,  trackingsheet, :customerstylenumber, :as => :input%></td>
-				<td style="text-align:center;"><%=best_in_place_if proto_daf_number,  trackingsheet, :proto_daf_number, :as => :input%></td>
-				<td style="text-align:center;"><%=trackingsheet.style.stylecode %></td>											
-				
-				
-																						</tbody>
-																				<% @a=@a+1%>
-																				<% end %>
-																			<% end %>	
-																				<% end %>		
-																					</table>
-																				</div>
-
-
-								                        </blockquote>
-														
-								                     </div>  
-       
-					
-													<!-- Scroll Tabs Starts-->
-					
-									                    <div class="item">
-															
-									                        <blockquote>
-							
-                         
-
-																							<div class="widget-content nopadding">
-																						<table class="table table-bordered">
-														
-																							<th>DESIGNER</th>
-																							<th>GROUP NAME</th>
-																							<th>PRODUCT CATEGORY</th>
-																							<th>DESIGN NAME / DESCRIPTION</th>
-																							<th>SHAPE (level code 4)</th>
-																							<th>SIZE (level code 6)</th>
-											<% model_class='trackingsheet' %>
-											<% @a=1%>
-											<% trackingsheets.each do |trackingsheet|%>
-												<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.style.vendor.to_s) %>
-											<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
-		
-																							<tbody>
-				<td style="text-align:center;"></td>
-				<td style="text-align:center;"><%=best_in_place_if groupname,  trackingsheet, :groupname, :as => :input%></td>
-				<td style="text-align:center;"><%=best_in_place_if productcategory,  trackingsheet, :productcategory, :as => :input%></td>
-				<td style="text-align:center;"><%=best_in_place_if designname,  trackingsheet, :designname, :as => :input%></td>
-				<td style="text-align:center;"><%=best_in_place_if shape,  trackingsheet, :shape, :as => :input%></td>
-				<td style="text-align:center;"><%=best_in_place_if size,  trackingsheet, :size, :as => :input%></td>
-												
-				
-																							</tbody>
-													<% @a=@a+1%>
-													<% end %>
-														<% end %>	
-													<% end %>										
-																						</table>
-																					</div>
-
-
-									                        </blockquote>
-															
-														</div>
-													<!-- Scroll Tabs Ends-->
-					
-													<!-- Scroll Tabs Starts-->
-					
-									                    <div class="item">
-															
-	
- 	
-															
-									                        <blockquote>
-                         
-
-																							<div class="widget-content nopadding">
-																						<table class="table table-bordered">
-														
-																							<th>FIBER (level code 2)</th>
-																							<th>CONSTRUCTION (level code 1)</th>
-																							<th>FABRIC TYPE (level code 3)</th>
-																							<th>GAUGE / END</th>
-																							<th>FINISH</th>
-																							<th>FINISH DETAIL</th>
-													<% model_class='trackingsheet' %>
-													<% @a=1%>
-													<% trackingsheets.each do |trackingsheet|%>
-														<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.style.vendor.to_s) %>
-													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
-														
-																							<tbody>
-				
-				<td style="text-align:center;"><%=best_in_place_if fiber,  trackingsheet, :fiber, :as => :input%></td>
-				<td style="text-align:center;"><%=best_in_place_if construction,  trackingsheet, :construction, :as => :input%></td>
-				<td style="text-align:center;"><%=best_in_place_if fabrictype,  trackingsheet, :fabrictype, :as => :input%></td>
-				<td style="text-align:center;"><%=best_in_place_if gauge_end,  trackingsheet, :gauge_end, :as => :input%></td>
-				<td style="text-align:center;"><%=best_in_place_if finish,  trackingsheet, :finish, :as => :input%></td>
-				<td style="text-align:center;"><%=best_in_place_if finishdetails,  trackingsheet, :finishdetails, :as => :input%></td>
-
-				
-																							</tbody>
-																	<% @a=@a+1%>
-																	<% end %>
-																	<% end %>	
-																	<% end %>						
-																						</table>
-																					</div>
-
-
-									                        </blockquote>
-															
-														</div>
-													<!-- Scroll Tabs Ends-->	
-													
-				<!-- Scroll Tabs Starts-->
-
-                    <div class="item">
-						
-
-
-						
-                        <blockquote>
-                         
-
-										<div class="widget-content nopadding">
-									<table class="table table-bordered">
-	
+										<th>IMAGES</th>
+										<th>FACTORY</th>
+										<th>SUBCONTRACTOR</th>
+										<th>BRAND</th>
+										<th>CUSTOMER NAME</th>
+										<th>CUSTOMER ACCOUNT #</th>
+										<th>PROJECT #</th>
+										<th>REFERENCE STYLE</th>
+										<th>CUSTOMER STYLE #</th>
+										<th>PROTO # / DAF #</th>
+										<th>STYLE #</th>
+										<th>DESIGNER</th>
+										<th>GROUP NAME</th>
+										<th>PRODUCT CATEGORY</th>
+										<th>DESIGN NAME / DESCRIPTION</th>
+										<th>SHAPE (level code 4)</th>
+										<th>SIZE (level code 6)</th>
+										<th>FIBER (level code 2)</th>
+										<th>CONSTRUCTION (level code 1)</th>
+										<th>FABRIC TYPE (level code 3)</th>
+										<th>GAUGE / END</th>
+										<th>FINISH</th>
+										<th>FINISH DETAIL</th>
 										<th>COLORS</th>
 										<th>HARDWARE / LOGO / TRIM</th>
 										<th>COMPONENT (labels / tickets)</th>
 										<th>PROJECTED UNITS</th>
 										<th>TARGET FOB</th>
 										<th>TARGET MU</th>
-													<% model_class='trackingsheet' %>
-													<% @a=1%>
-													<% trackingsheets.each do |trackingsheet|%>
-														<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.style.vendor.to_s) %>
-													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
-														
-													<tbody>
-
-				<td style="text-align:center;"><%=best_in_place_if colors,  trackingsheet, :colors, :as => :input%></td>
-				<td style="text-align:center;"><%= link_to "Link To Tab", url_for(params),:class => 'btn btn-warning btn-xs' %> </td>
-				<td style="text-align:center;"><%= link_to "Link To Tab", url_for(params),:class => 'btn btn-warning btn-xs' %> </td>
-				<td style="text-align:center;"><%=best_in_place_if projectedunits,  trackingsheet, :projectedunits, :as => :input%></td>
-				<td style="text-align:center;"><%=best_in_place_if targetfob,  trackingsheet, :targetfob, :as => :input%></td>
-				<td style="text-align:center;"><%=best_in_place_if targetmu,  trackingsheet, :targetmu, :as => :input%></td>
-
-																</tbody>
-																	<% @a=@a+1%>
-																	<% end %>
-																	<% end %>	
-																	<% end %>						
-										</table>
-									</div>
-
-
-									                        </blockquote>
-															
-														</div>
-	<!-- Scroll Tabs Ends-->
-									
-				<!-- Scroll Tabs Starts-->
-
-                    <div class="item">
-						
-
-
-						
-                        <blockquote>
-                         
-
-										<div class="widget-content nopadding">
-									<table class="table table-bordered">
-	
 										<th>TARGET WS</th>
 										<th>TARGET RETAIL US $</th>
 										<th>TARGET RETAIL CAN $</th>
 										<th>PER COLOR</th>
 										<th>INCO TERMS</th>
 										<th>PRICE BASED UPON PROJECTION</th>
-													<% model_class='trackingsheet' %>
-													<% @a=1%>
-													<% trackingsheets.each do |trackingsheet|%>
-														<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.style.vendor.to_s) %>
-													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
-														
-													<tbody>
-
-		<td style="text-align:center;"><%=best_in_place_if targetws,  trackingsheet, :targetws, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if targetretailus,  trackingsheet, :targetretailus, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if targetretailcan,  trackingsheet, :targetretailcan, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if percolor,  trackingsheet, :percolor, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if incoterms,  trackingsheet, :incoterms, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if pricebasedonprojection,  trackingsheet, :pricebasedonprojection, :as => :input%></td>								
-
-													</tbody>
-																	<% @a=@a+1%>
-																	<% end %>
-																<% end %>	
-																	<% end %>						
-										</table>
-									</div>
-
-
-									                        </blockquote>
-															
-														</div>
-	<!-- Scroll Tabs Ends-->		
-	
-	
-				<!-- Scroll Tabs Starts-->
-
-                    <div class="item">
-						
-
-
-						
-                        <blockquote>
-                         
-
-										<div class="widget-content nopadding">
-									<table class="table table-bordered">
-	
 										<th>ADDITIONAL SURCHARGE</th>
 										<th>MOQ</th>
 										<th>1000 - 5000 PCS</th>
 										<th>5000 - 10000 PCS</th>
 										<th>10000 - 20000 PCS</th>
 										<th>20000+ PCS</th>
-													<% model_class='trackingsheet' %>
-													<% @a=1%>
-													<% trackingsheets.each do |trackingsheet|%>
-															<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.style.vendor.to_s) %>
-													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
-														
-													<tbody>
-
-<td style="text-align:center;"><%=best_in_place_if additionalsurcharge,  trackingsheet, :additionalsurcharge, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if moq,  trackingsheet, :moq, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if thousandtofivethousandPCS,  trackingsheet, :thousandtofivethousandPCS, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if fivethousandtotenthousandPCS,  trackingsheet, :fivethousandtotenthousandPCS, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if tenthousandtotwentythousandPCS,  trackingsheet, :tenthousandtotwentythousandPCS, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if twentythousandplusPCS,  trackingsheet, :twentythousandplusPCS, :as => :input%></td>
-
-								
-
-													</tbody>
-																	<% @a=@a+1%>
-																	<% end %>
-																		<% end %>	
-																	<% end %>						
-										</table>
-									</div>
-
-
-									                        </blockquote>
-															
-														</div>
-	<!-- Scroll Tabs Ends-->			
-	
-	
-	
-				<!-- Scroll Tabs Starts-->
-
-                    <div class="item">
-						
-
-
-						
-                        <blockquote>
-                         
-
-										<div class="widget-content nopadding">
-									<table class="table table-bordered">
-	
 										<th>LDP BOAT</th>
 										<th>LDP AIR</th>
 										<th>X MILL DATE</th>
 										<th>START SHIP DATE</th>
 										<th>ORDER DUE DATE VIA BOAT</th>
 										<th>ORDER DUE DATE VIA AIR</th>
-													<% model_class='trackingsheet' %>
-													<% @a=1%>
-													<% trackingsheets.each do |trackingsheet|%>
-																<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.style.vendor.to_s) %>
-													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
-														
-													<tbody>
-
-		<td style="text-align:center;"><%=best_in_place_if ldpboat,  trackingsheet, :ldpboat, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if ldpair,  trackingsheet, :ldpair, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if xmilldate,  trackingsheet, :xmilldate, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if startshipdate,  trackingsheet, :startshipdate, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if orderduedateviaboat,  trackingsheet, :orderduedateviaboat, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if orderduedateviaair,  trackingsheet, :orderduedateviaair, :as => :input%></td>
-
-							
-
-													</tbody>
-																	<% @a=@a+1%>
-																	<% end %>
-																	<% end %>	
-																	<% end %>						
-										</table>
-									</div>
-
-
-									                        </blockquote>
-															
-														</div>
-	<!-- Scroll Tabs Ends-->
-	
-	
-	
-	
-	
-				<!-- Scroll Tabs Starts-->
-
-                    <div class="item">
-						
-
-
-						
-                        <blockquote>
-                         
-
-										<div class="widget-content nopadding">
-									<table class="table table-bordered">
-	
 										<th>PRODUCT LEAD TIME</th>
-										<th>SALES PROCEEDS <br>TO SAMPLE <br>REQUEST DATE</th>
-										<th>PROTO DUE BACK  <br> FROM VENDOR</th>
+										<th>SALES PROCEEDS TO SAMPLE REQUEST DATE</th>
+										<th>PROTO DUE BACK FROM VENDOR</th>
 										<th>DAF TO VENDOR DATE</th>
 										<th> S/0 OR S/S (1st DAF)</th>
-										<th># OF DEV. SAMPLES <br> NEEDED(1st DAF)</th>
-													<% model_class='trackingsheet' %>
-													<% @a=1%>
-													<% trackingsheets.each do |trackingsheet|%>
-														<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.style.vendor.to_s) %>
-													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
-														
-													<tbody>
-
-<td style="text-align:center;"><%=best_in_place_if productionleadtime,  trackingsheet, :productionleadtime, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if salesproceedtosamplerequest,  trackingsheet, :salesproceedtosamplerequest, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if protoduebackfromvendor,  trackingsheet, :protoduebackfromvendor, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if daftovendordate,  trackingsheet, :daftovendordate, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if soss,  trackingsheet, :soss, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if nmbrofdefsmplneeded,  trackingsheet, :nmbrofdefsmplneeded, :as => :input%></td>
-
-
-													</tbody>
-																	<% @a=@a+1%>
-																	<% end %>
-																	<% end %>	
-																	<% end %>						
-										</table>
-									</div>
-
-
-									                        </blockquote>
-															
-														</div>
-	<!-- Scroll Tabs Ends-->	
-	
-
-
-				<!-- Scroll Tabs Starts-->
-
-                    <div class="item">
-						
-
-
-						
-                        <blockquote>
-                         
-
-										<div class="widget-content nopadding">
-									<table class="table table-bordered">
-	
+										<th># OF DEV. SAMPLES NEEDED(1st DAF)</th>
 										<th>DAF ISSUED (1st DAF)</th>
 										<th>SAMPLE DUE DATE (1st DAF)</th>
 										<th>X-MILL (1st DAF)</th>
 										<th>RECEIVED (1st DAF)</th>
 										<th>APPROVED (1st DAF)</th>
 										<th>S/0 OR S/S (2nd DAF)</th>
-													<% model_class='trackingsheet' %>
-													<% @a=1%>
-													<% trackingsheets.each do |trackingsheet|%>
-														<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.style.vendor.to_s) %>
-													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
-														
-													<tbody>
-
-<td style="text-align:center;"><%=best_in_place_if dafissued,  trackingsheet, :dafissued, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if sampleduedate,  trackingsheet, :sampleduedate, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if xmill,  trackingsheet, :xmill, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if received,  trackingsheet, :received, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if approved,  trackingsheet, :approved, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if daf2soss,  trackingsheet, :daf2soss, :as => :input%></td>
-
-			
-													</tbody>
-																	<% @a=@a+1%>
-																	<% end %>
-																		<% end %>	
-																	<% end %>						
-										</table>
-									</div>
-
-
-									                        </blockquote>
-															
-														</div>
-	<!-- Scroll Tabs Ends-->	
-	
-	
-				<!-- Scroll Tabs Starts-->
-
-                    <div class="item">
-						
-
-
-						
-                        <blockquote>
-                         
-
-										<div class="widget-content nopadding">
-									<table class="table table-bordered">
-										<th># OF DEV. SAMPLES <br> NEEDED(2nd DAF)</th>
+										<th># OF DEV. SAMPLES NEEDED(2nd DAF)</th>
 										<th>DAF ISSUED (2nd DAF)</th>
 										<th>SAMPLE DUE DATE (2nd DAF)</th>
 										<th>X-MILL (2nd DAF)</th>
 										<th>RECEIVED (2nd DAF)</th>
 										<th>APPROVED (2nd DAF)</th>
-										
-													<% model_class='trackingsheet' %>
-													<% @a=1%>
-													<% trackingsheets.each do |trackingsheet|%>
-														<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.style.vendor.to_s) %>
-													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
-														
-													<tbody>
-<td style="text-align:center;"><%=best_in_place_if daf2nmbrofdefsmplneeded,  trackingsheet, :daf2nmbrofdefsmplneeded, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if daf2dafissued,  trackingsheet, :daf2dafissued, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if daf2sampleduedate,  trackingsheet, :daf2sampleduedate, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if daf2xmill,  trackingsheet, :daf2xmill, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if daf2received,  trackingsheet, :daf2received, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if daf2approved,  trackingsheet, :daf2approved, :as => :input%></td>
-
-				
-													</tbody>
-																	<% @a=@a+1%>
-																	<% end %>
-																<% end %>	
-																	<% end %>						
-										</table>
-									</div>
-
-
-									                        </blockquote>
-															
-														</div>
-	<!-- Scroll Tabs Ends-->	
-	
-	
-	
-	
-				<!-- Scroll Tabs Starts-->
-
-                    <div class="item">
-						
-
-
-						
-                        <blockquote>
-                         
-
-										<div class="widget-content nopadding">
-									<table class="table table-bordered">
-										<th>COMMENTS</th>
 										<th>RECEIVED (VSDS)</th>
 										<th>APPROVED (VSDS)</th>
 										<th>RTL MU</th>
 										<th>MK-UP</th>
 										
-										
 													<% model_class='trackingsheet' %>
 													<% @a=1%>
 													<% trackingsheets.each do |trackingsheet|%>
-																<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.style.vendor.to_s) %>
+													<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.style.vendor.to_s) %>
 													<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
-													<tbody>
+													<tbody>			
+<tr>
+<td style="text-align:center;"><%= link_to "Comments", url_for(params),:class => 'btn btn-warning btn-xs' %> <br> <%= link_to " History ", url_for(params),:class => 'btn btn-warning btn-xs' %> </td>
+<td style="text-align:center;"><%=trackingsheet.style.division.name%></td>
+<td style="text-align:center;"><%=trackingsheet.style.division.name%></td>
+<td style="text-align:center;"><%=trackingsheet.style.season%></td>
 <td style="text-align:center;"></td>
-		<td style="text-align:center;"><%=best_in_place_if vsdsreceived,  trackingsheet, :vsdsreceived, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if vsdsapproved,  trackingsheet, :vsdsapproved, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if rtlmu,  trackingsheet, :rtlmu, :as => :input%></td>
-		<td style="text-align:center;"><%=best_in_place_if mkup,  trackingsheet, :mkup, :as => :input%></td>
-
-																
+<td style="text-align:center;"><%=trackingsheet.style.market%></td>
+<td style="text-align:center;"><%= image_tag "/vendorportal"+trackingsheet.style.image.url(:small)  %></td>								
+<td class="bestin" style="text-align:center;"><%=best_in_place_if factory,  trackingsheet, :factory, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if subcontractor,  trackingsheet, :subcontractor, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if brand,  trackingsheet, :brand, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if customername,  trackingsheet, :customername, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if customeraccountnumber,  trackingsheet, :customeraccountnumber, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if projectnumber,  trackingsheet, :projectnumber, :as => :input,:nil => "Click to add content!"%>
+<td style="text-align:center;"><%=trackingsheet.style.stylename %></td>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if customerstylenumber,  trackingsheet, :customerstylenumber, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if proto_daf_number,  trackingsheet, :proto_daf_number, :as => :input,:nil => "Click to add content!"%>
+<td style="text-align:center;"><%=trackingsheet.style.stylecode %></td>
+<td style="text-align:center;"></td>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if groupname,  trackingsheet, :groupname, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if productcategory,  trackingsheet, :productcategory, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if designname,  trackingsheet, :designname, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if shape,  trackingsheet, :shape, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if size,  trackingsheet, :size, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if fiber,  trackingsheet, :fiber, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if construction,  trackingsheet, :construction, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if fabrictype,  trackingsheet, :fabrictype, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if gauge_end,  trackingsheet, :gauge_end, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if finish,  trackingsheet, :finish, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if finishdetails,  trackingsheet, :finishdetails, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if colors,  trackingsheet, :colors, :as => :input,:nil => "Click to add content!"%>
+<td style="text-align:center;"><%= link_to "Link To Tab", url_for(params),:class => 'btn btn-warning btn-xs' %> </td>
+<td style="text-align:center;"><%= link_to "Link To Tab", url_for(params),:class => 'btn btn-warning btn-xs' %> </td>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if projectedunits,  trackingsheet, :projectedunits, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if targetfob,  trackingsheet, :targetfob, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if targetmu,  trackingsheet, :targetmu, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if targetws,  trackingsheet, :targetws, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if targetretailus,  trackingsheet, :targetretailus, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if targetretailcan,  trackingsheet, :targetretailcan, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if percolor,  trackingsheet, :percolor, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if incoterms,  trackingsheet, :incoterms, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if pricebasedonprojection,  trackingsheet, :pricebasedonprojection, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if additionalsurcharge,  trackingsheet, :additionalsurcharge, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if moq,  trackingsheet, :moq, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if thousandtofivethousandPCS,  trackingsheet, :thousandtofivethousandPCS, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if fivethousandtotenthousandPCS,  trackingsheet, :fivethousandtotenthousandPCS, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if tenthousandtotwentythousandPCS,  trackingsheet, :tenthousandtotwentythousandPCS, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if twentythousandplusPCS,  trackingsheet, :twentythousandplusPCS, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if ldpboat,  trackingsheet, :ldpboat, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if ldpair,  trackingsheet, :ldpair, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if xmilldate,  trackingsheet, :xmilldate, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if startshipdate,  trackingsheet, :startshipdate, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if orderduedateviaboat,  trackingsheet, :orderduedateviaboat, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if orderduedateviaair,  trackingsheet, :orderduedateviaair, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if productionleadtime,  trackingsheet, :productionleadtime, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if salesproceedtosamplerequest,  trackingsheet, :salesproceedtosamplerequest, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if protoduebackfromvendor,  trackingsheet, :protoduebackfromvendor, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if daftovendordate,  trackingsheet, :daftovendordate, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if soss,  trackingsheet, :soss, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if nmbrofdefsmplneeded,  trackingsheet, :nmbrofdefsmplneeded, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if dafissued,  trackingsheet, :dafissued, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if sampleduedate,  trackingsheet, :sampleduedate, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if xmill,  trackingsheet, :xmill, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if received,  trackingsheet, :received, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if approved,  trackingsheet, :approved, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if daf2soss,  trackingsheet, :daf2soss, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if daf2nmbrofdefsmplneeded,  trackingsheet, :daf2nmbrofdefsmplneeded, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if daf2dafissued,  trackingsheet, :daf2dafissued, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if daf2sampleduedate,  trackingsheet, :daf2sampleduedate, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if daf2xmill,  trackingsheet, :daf2xmill, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if daf2received,  trackingsheet, :daf2received, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if daf2approved,  trackingsheet, :daf2approved, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if vsdsreceived,  trackingsheet, :vsdsreceived, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if vsdsapproved,  trackingsheet, :vsdsapproved, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if rtlmu,  trackingsheet, :rtlmu, :as => :input,:nil => "Click to add content!"%>
+<td class="bestin" style="text-align:center;"><%=best_in_place_if mkup,  trackingsheet, :mkup, :as => :input,:nil => "Click to add content!"%>
+</tr>										
 
 													</tbody>
 																	<% @a=@a+1%>
@@ -721,17 +261,11 @@
 									</div>
 
 
-									                        </blockquote>
+
 															
 														</div>
-	<!-- Scroll Tabs Ends-->		
-	
-	
-	
-	
+	<!-- Scroll Tabs Ends-->													
 													
-																											
-					
 					
 					                                                                        
 								                </div> 
@@ -744,13 +278,5 @@
 					
 								<!-- Newly Added Ends-->
 								</div>
-
-
-
-								
-
-							
-
-
+								</div>
 		
-								</div>	
