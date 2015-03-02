@@ -57,7 +57,8 @@ gem "mongoid-paperclip", :require => "mongoid_paperclip"
 #For Breadcrumb
 gem "gretel"
 
-gem "puma"
+#gem "puma"
+gem "thin"
 
 gem 'mongoid_delorean'
 
