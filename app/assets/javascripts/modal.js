@@ -9,7 +9,7 @@ $(document).keyup(function(e) {
 
 $(window).load(function(){
 
-$('.table td').each(function() {
+$('#ts-table td').each(function() { 
       if(!$(this).children().is("span")){
 			 if(!$(this).children().is("a")){
 

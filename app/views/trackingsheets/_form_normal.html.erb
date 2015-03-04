@@ -101,7 +101,7 @@ $(document).ready(function() {
 								                                                  	
 											
 														
-															<table class="table table-bordered">
+															<table class="table table-bordered ts-table">
 
 																<th>ACTIONS</th>
 																<th>IMAGES</th>
@@ -193,7 +193,7 @@ $(document).ready(function() {
 														
 										<% @Vendors= Hash[User.all('userrole'=>'vendor').map { |v| [ v[:id].to_s, v[:email] ] } ] %>
 												</td>
-												<td class="bestin" style="text-align:center;"><% if current_user.userrole=='designer' %> <%= best_in_place trackingsheet, :vendor, :as => :select, :collection =>@Vendors %><% else %><%= User.find(BSON::ObjectId.from_string(trackingsheet.try(:vendor).to_s)).email %><%end%> </td>
+												<td class="bestin" style="text-align:center;"><% if current_user.userrole=='designer' %> <%= best_in_place trackingsheet, :vendor, :as => :select, :nil => "Click to add content!", :collection =>@Vendors %><% else %><%= User.find(BSON::ObjectId.from_string(trackingsheet.try(:vendor).to_s)).email %><%end%> </td>
 
 <td class="bestin" style="text-align:center;"><td class="bestin" style="text-align:center;">
 									<% if	!trackingsheet.vendor.blank? %>
