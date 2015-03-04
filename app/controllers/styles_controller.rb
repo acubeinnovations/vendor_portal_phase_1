@@ -86,6 +86,6 @@ class StylesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def style_params
-      params.require(:style).permit(:stylename, :string, :stylecode,:division_id,:brand,:market,:season,:vendor, :image, :mate, { :user_ids => [] } )
+      params.require(:style).permit(:stylename, :string, :stylecode,:division_id,:brand,:market,:season, :image, :mate, { :user_ids => [] } )
     end
 end

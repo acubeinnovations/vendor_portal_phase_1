@@ -111,6 +111,7 @@ class Trackingsheet
   
 
 	field :user_id,type: String
+	field :vendor,type: String
 	field :processmaster_id,type: String	
 	field :style_id,type: String
 	field :comments,type: String

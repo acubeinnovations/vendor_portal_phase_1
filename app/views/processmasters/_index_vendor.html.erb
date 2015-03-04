@@ -3,7 +3,9 @@
 		<% exist=false%>
 		<% processmaster.styles.each do |style| %>
 		<% break if exist==true %>
-		<% if current_user.id==BSON::ObjectId.from_string(style.vendor.to_s) %>
+		<% style.trackingsheets.each do |ts| %>
+		<% if !ts.vendor.blank? %>
+		<% if current_user.id==BSON::ObjectId.from_string(ts.try(:vendor).to_s) %>
 		<% exist=true %>
 		<tr class="gradeX">
 			<td><input type="radio" name="selectprocess"></td>
@@ -17,5 +19,8 @@
 		</tr>	
 	<% @i+=1%>
 	<% end %>	
+	<% end %>	
+	<% end %>	
+
 <% end %>
 <% end %>
