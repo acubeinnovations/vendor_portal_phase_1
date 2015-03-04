@@ -1,15 +1,3 @@
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#handle').bind('mousewheel', function(event, delta) {
-        val = this.scrollLeft - (delta * 50);
-        jQuery(this).stop().animate({
-            scrollLeft: val
-        }, 500);
-        event.preventDefault();
-    });
-});
-</script>
-
 <% trackingsheets=Trackingsheet.where('processmaster_id'=>BSON::ObjectId.from_string(request.GET.first.second.to_s))%> 		
 
 				<%
@@ -182,7 +170,7 @@ $(document).ready(function() {
 												<th></th>
 												<th></th>
 												<th></th>
-												<th></th>
+												
 												<th></th>
 												<th></th>
 												<th></th>
@@ -252,7 +240,7 @@ $(document).ready(function() {
 												<th>SALES PROCEEDS TO SAMPLE REQUEST DATE</th>
 												<th>PROTO DUE BACK FROM VENDOR</th>
 												<th>DAF TO VENDOR DATE</th>
-												<th>3rd week</th>
+												
 												<th> S/0 OR S/S</th>
 												<th># OF DEV. SAMPLES NEEDED</th>
 												<th>DAF ISSUED </th>
@@ -285,7 +273,7 @@ $(document).ready(function() {
 																						<tbody>
 												
 												<% @Vendors= Hash[User.all('userrole'=>'vendor').map { |v| [ v[:id].to_s, v[:email] ] } ] %>
-												<td class="bestin" style="text-align:center;"><% if current_user.userrole=='designer' %> <%= best_in_place trackingsheet, :vendor, :as => :select, :nil => "Click to add content!", :collection =>@Vendors %><% else %><%= User.find(BSON::ObjectId.from_string(trackingsheet.try(:vendor).to_s)).email %><%end%> </td>
+												<td class="bestin" style="text-align:center;"><% if current_user.userrole=='designer' %> <%= best_in_place trackingsheet, :vendor, :as => :select, :nil => "Click to add content!", :collection =>@Vendors %><% else if !trackingsheet.vendor.blank? %> %><%= User.find(BSON::ObjectId.from_string(trackingsheet.try(:vendor).to_s)).email %><%end%> <%end%></td>
 
 <td class="bestin" style="text-align:center;"><td class="bestin" style="text-align:center;">
 									<% if	!trackingsheet.vendor.blank? %>
@@ -330,9 +318,7 @@ $(document).ready(function() {
 <td class="bestin" style="text-align:center;">
 	<%=trackingsheet.style.stylecode %>
 </td>
-<td class="bestin" style="text-align:center;">
 
-</td>
 <td class="bestin" style="text-align:center;">
 	<%=best_in_place_if groupname,  trackingsheet, :groupname, :as => :input,:nil => "Click to add content!"%>
 </td>

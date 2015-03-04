@@ -8,6 +8,10 @@ $(document).keyup(function(e) {
 });
 
 $(window).load(function(){
+	
+	
+	
+	
 	$('#ts').find('table').find('td').each(function() {
 	if(!$(this).children().is("span")){
 		if(!$(this).children().is("a")){
@@ -29,3 +33,13 @@ $(window).load(function(){
 
 });
 
+
+$(document).ready(function() { 
+    $('#handle').bind('mousewheel', function(event, delta) { 
+        val = this.scrollLeft - (delta * 50); 
+        jQuery(this).stop().animate({ 
+            scrollLeft: val 
+        }, 500); 
+        event.preventDefault(); 
+    }); 
+}); 
