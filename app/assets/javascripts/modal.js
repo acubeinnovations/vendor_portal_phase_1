@@ -8,18 +8,24 @@ $(document).keyup(function(e) {
 });
 
 $(window).load(function(){
+	$('#ts').find('table').find('td').each(function() {
+	if(!$(this).children().is("span")){
+		if(!$(this).children().is("a")){
+		$(this).css('background','#EFEFEF');
+		}else{
+		$(this).css('background','#FFF');
+		}
+		}else{
+		$(this).css('background','#FFF');
+		}
+	});
 
-$('#ts-table td').each(function() { 
-      if(!$(this).children().is("span")){
-			 if(!$(this).children().is("a")){
+	var max = 0;  	
+	$('#ts').find('table').find('td').each(function() {
+		max = Math.max($(this).height(), max);
+	}).height(max);
 
-			$(this).css('background','#EFEFEF');
+	
 
-			}
-			}
-        
 });
 
-
-
-});
