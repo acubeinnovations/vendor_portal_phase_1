@@ -1,4 +1,6 @@
-<% if current_user.userrole=='operations' %>
+<% if current_user.userrole=='admin' %>
+	<%= render 'form_admin' %>
+<% else if current_user.userrole=='operations' %>
 	<%= render 'form_op' %>
 <% else if current_user.userrole=='vendor' %>
 	<%= render 'form_vendor' %>
@@ -7,7 +9,7 @@
 <%end%>
 <%end%>
 <%end%>
-
+<%end%>
 
 
 

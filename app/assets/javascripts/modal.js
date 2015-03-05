@@ -9,6 +9,13 @@ $(document).keyup(function(e) {
 
 $(window).load(function(){
 	
+	$('#handle').bind('mousewheel', function(event, delta) { 
+        val = this.scrollLeft - (delta * 50); 
+        jQuery(this).stop().animate({ 
+            scrollLeft: val 
+        }, 500); 
+        event.preventDefault(); 
+    }); 
 	
 	
 	
@@ -33,13 +40,73 @@ $(window).load(function(){
 
 });
 
+//added for tab-start
+$('table td span').on('keydown',function(e){
 
-$(document).ready(function() { 
-    $('#handle').bind('mousewheel', function(event, delta) { 
-        val = this.scrollLeft - (delta * 50); 
-        jQuery(this).stop().animate({ 
-            scrollLeft: val 
-        }, 500); 
-        event.preventDefault(); 
-    }); 
-}); 
+	var keyCode = e.keyCode || e.which; 
+
+	if (e.shiftKey && keyCode == 9){
+
+			findPrevTabindex($(this).parent().prev());
+			e.preventDefault(); 
+	
+	}else if (keyCode == 9) { 
+		 findNextTabindex($(this).parent().next());
+			e.preventDefault(); 
+   
+  }
+});
+	
+
+
+function findNextTabindex(next){
+
+if(next.children().is("span")){
+$('#'+next.find('span').attr('id')).trigger('click');
+scrollMeRight();
+}else{
+nextspan=next.next();
+findNextTabindex(nextspan);
+scrollMeRight();
+}
+}
+
+function findPrevTabindex(prev){
+
+if(prev.children().is("span")){
+$('#'+prev.find('span').attr('id')).trigger('click');
+scrollMeLeft();
+}else{
+prevspan=prev.prev();
+findPrevTabindex(prevspan);
+scrollMeLeft();
+}
+}
+scrollAmount=0;
+function scrollMeRight(){
+scrollAmount=scrollAmount+60;
+$('#handle').animate({
+  scrollLeft: scrollAmount
+}, 100);
+
+
+}
+
+function scrollMeLeft(){
+scrollAmount=scrollAmount-60;
+$('#handle').animate({
+  scrollLeft: scrollAmount
+}, 100);
+
+
+}
+
+$('#handle').scroll(function(){
+
+	scrollAmount=$('#handle').scrollLeft();
+
+});
+//added for tab-end
+
+    
+

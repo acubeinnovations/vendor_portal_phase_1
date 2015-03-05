@@ -15,7 +15,7 @@
 							<th>Market</th>
 							<th>Created Date</th>
 							<% allowed_users=['admin','operations']%>
-							<th colspan="<% if current_user.userrole=='admin' || current_user.userrole=='operations' %>2<% else if current_user.userrole!='admin' || current_user.userrole!='operations'  %> 1<% end %><% end %>">Actions</th>
+							<th colspan="<% if current_user.userrole=='admin' %>3<% else if current_user.userrole=='operations' %>2<% else if current_user.userrole!='admin' || current_user.userrole!='operations'  %> 1<% end %><% end %><% end %>">Actions</th>
 						</tr>
 						</thead>
 						<tbody>
