@@ -77,7 +77,7 @@
 
 <div id="sidebar"> <a href="#" class="visible-phone"><i class="icon icon-th-list"></i> Tables</a>
   <ul>
-    <li class="active"><a href="../.."><i class="icon icon-home"></i> <span>Dashboard</span></a></li>
+    <li class="active"><a href="http://stage.echodesign.com/"><i class="icon icon-home"></i> <span>Dashboard</span></a></li>
 		<% if  current_user.userrole=='admin' %>
 		<li> <a href="<%= usertypes_path %>"><i class="icon-list-alt"></i> <span>Usertypes</span></a> </li>
     <li> <a href="<%= users_path %>"><i class="icon-user"></i> <span>Users</span></a> </li>
@@ -112,7 +112,7 @@
 	
 
 	
-    <div id="breadcrumb"> <a href="../.." title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current"><%= @pagename  %></a> </div>
+    <div id="breadcrumb"> <a href="http://stage.echodesign.com/" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current"><%= @pagename  %></a> </div>
 	
    <div id="breadcrumb"><%= breadcrumbs pretext: " ",separator: " " %></div>
    
