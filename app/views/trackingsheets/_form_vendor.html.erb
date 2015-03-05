@@ -1,3 +1,15 @@
+<script>
+$(document).ready(function() { 
+    $('#handle').bind('mousewheel', function(event, delta) { 
+        val = this.scrollLeft - (delta * 50); 
+        jQuery(this).stop().animate({ 
+            scrollLeft: val 
+        }, 500); 
+        event.preventDefault(); 
+    }); 
+}); 
+
+</script>
 <% trackingsheets=Trackingsheet.where('processmaster_id'=>BSON::ObjectId.from_string(request.GET.first.second.to_s))%> 
 
 
@@ -49,10 +61,90 @@
                          
 
 										<div class="widget-content nopadding">
-									<table class="table table-bordered">
+											
+														
+										<table class="table table-bordered"  style="margin-left: 20%;">
+											<thead>
+												<tr>
+													<th></th>
+													<th></th>
+													
+													<th></th>
+													<th></th>
+													<th></th>
+													<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th colspan="7"> 1st DAF</th>
+												<th colspan="7"> 2nd DAF</th>
+												<th></th>
+												<th></th>
+												<th></th>
+												<th></th>
+												</tr>											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+									<tr>
 										<th>ACTIONS</th>
 										<th>ECHO DIVISION</th>
-										<th>DIVISION</th>
+										
 										<th>SEASON</th>
 										<th>YEAR</th>
 										<th>MARKET</th>
@@ -66,7 +158,6 @@
 										<th>REFERENCE STYLE</th>
 										<th>CUSTOMER STYLE #</th>
 										<th>PROTO # / DAF #</th>
-										<th>STYLE #</th>
 										<th>DESIGNER</th>
 										<th>GROUP NAME</th>
 										<th>PRODUCT CATEGORY</th>
@@ -107,24 +198,27 @@
 										<th>SALES PROCEEDS TO SAMPLE REQUEST DATE</th>
 										<th>PROTO DUE BACK FROM VENDOR</th>
 										<th>DAF TO VENDOR DATE</th>
-										<th> S/0 OR S/S (1st DAF)</th>
-										<th># OF DEV. SAMPLES NEEDED(1st DAF)</th>
-										<th>DAF ISSUED (1st DAF)</th>
-										<th>SAMPLE DUE DATE (1st DAF)</th>
-										<th>X-MILL (1st DAF)</th>
-										<th>RECEIVED (1st DAF)</th>
-										<th>APPROVED (1st DAF)</th>
-										<th>S/0 OR S/S (2nd DAF)</th>
-										<th># OF DEV. SAMPLES NEEDED(2nd DAF)</th>
-										<th>DAF ISSUED (2nd DAF)</th>
-										<th>SAMPLE DUE DATE (2nd DAF)</th>
-										<th>X-MILL (2nd DAF)</th>
-										<th>RECEIVED (2nd DAF)</th>
-										<th>APPROVED (2nd DAF)</th>
+										
+										<th> S/0 OR S/S</th>
+										<th># OF DEV. SAMPLES NEEDED</th>
+										<th>DAF ISSUED </th>
+										<th>SAMPLE DUE DATE</th>
+										<th>X-MILL</th>
+										<th>RECEIVED </th>
+										<th>APPROVED </th>
+										<th> S/0 OR S/S</th>
+										<th># OF DEV. SAMPLES NEEDED</th>
+										<th>DAF ISSUED </th>
+										<th>SAMPLE DUE DATE</th>
+										<th>X-MILL</th>
+										<th>RECEIVED </th>
+										<th>APPROVED </th>
 										<th>RECEIVED (VSDS)</th>
 										<th>APPROVED (VSDS)</th>
 										<th>RTL MU</th>
 										<th>MK-UP</th>
+										</tr>
+										</thead>
 										
 	<% model_class='trackingsheet' %>
 	<% @a=1%>
@@ -137,7 +231,7 @@
 <tr>
 <td style="text-align:center;"><%= link_to "Comments", url_for(params),:class => 'btn btn-warning btn-xs' %> <br> <%= link_to " History ", url_for(params),:class => 'btn btn-warning btn-xs' %> </td>
 <td style="text-align:center;"><%=trackingsheet.style.division.name%></td>
-<td style="text-align:center;"><%=trackingsheet.style.division.name%></td>
+<!--><td style="text-align:center;"><%#=trackingsheet.style.division.name%></td>-->
 <td style="text-align:center;"><%=trackingsheet.style.season%></td>
 <td style="text-align:center;"></td>
 <td style="text-align:center;"><%=trackingsheet.style.market%></td>
