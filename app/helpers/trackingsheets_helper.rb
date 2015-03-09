@@ -244,9 +244,23 @@ module TrackingsheetsHelper
    
          ###---------------------------------------Comments--------------------------------------------### 
 
-         # def comments(comments)
-					#	text_area 'trackingsheet[comments]',comments, class:"span20",placeholder:"Comments",cols:"42", rows:"3"
-        #  end   
+          def comments()
+            if current_user.userrole=='admin'
+            return true
+            else if current_user.userrole=='operations'
+           return true
+            else if current_user.userrole=='sales'
+             return true   
+            else if current_user.userrole=='designer'
+             return true    
+            else if current_user.userrole=='vendor'
+           return true 
+            end #vendors
+            end #designers
+            end #sales
+            end #operations 
+            end #admin
+          end   
 
         ###---------------------------------------RTL MU--------------------------------------------### 
 

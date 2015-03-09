@@ -50,9 +50,79 @@ class TrackingsheetsController < ApplicationController
 
   # PATCH/PUT /trackingsheets/1
   # PATCH/PUT /trackingsheets/1.json
+  
+  
+  
+  
+  
   def update
     @trackingsheet = Trackingsheet.find(params[:id]) #newly added for in_place_edit #newly added for in_place_edit
     @trackingsheet.update_attributes(trackingsheet_params) #newly added for in_place_edit #newly added for in_place_edit
+    
+   @trackingsheetlog=Trackingsheetlog.where('trackingsheet_id'=>params[:id],"sessionid"=>session[:session_id]) 
+   @commentlog=Commentlog.where('trackingsheet_id'=>params[:id],"sessionid"=>session[:session_id]) 
+   
+if    @trackingsheetlog.count== 0
+  
+  
+     
+      @trackingsheetlog = Trackingsheetlog.new("trackingsheet_id"=>params[:id],"useremail"=>current_user.email,"sessionid"=>session[:session_id])
+       @trackingsheetlog.save
+       
+       
+       
+
+       
+       
+else
+  
+ @trackingsheetlog.each do |tslog|
+  
+      @trackingsheetlogobj=Trackingsheetlog.find(tslog.id)
+      @trackingsheetlogobj.update_attributes(:trackingsheet_id=>params[:id],:useremail=>current_user.email,:sessionid=>session[:session_id],:updated_at=>DateTime.now)
+      break
+  end    
+      
+      
+end      
+
+### --------------------------------- newly added
+    
+    
+   @commentlog=Commentlog.where('trackingsheet_id'=>params[:id],"sessionid"=>session[:session_id]) 
+   
+   
+if    @commentlog.count== 0
+  
+  
+     
+      @commentlog = Commentlog.new("trackingsheet_id"=>params[:id],"useremail"=>current_user.email,"sessionid"=>session[:session_id],:comments=>@trackingsheet.comments)
+       @commentlog.save
+       
+       
+       
+
+       
+       
+else
+  
+ @commentlog.each do |tslog|
+  
+      @commentlogobj=Commentlog.find(tslog.id)
+      @commentlogobj.update_attributes(:trackingsheet_id=>params[:id],:useremail=>current_user.email,:sessionid=>session[:session_id],:updated_at=>DateTime.now,:comments=>@trackingsheet.comments)
+      break
+  end    
+      
+      
+end  
+### ---------------------------------------  newly added ends
+
+ 
+
+    
+    
+   
+    
     respond_with @trackingsheet #newly added for in_place_edit #newly added for in_place_edit
     
     
