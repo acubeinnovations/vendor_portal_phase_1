@@ -14,18 +14,18 @@
 							<th>Season</th>
 							<th>Market</th>
 							<th>Created Date</th>
-							<% allowed_users=['admin','operations']%>
-							<th colspan="<% if current_user.userrole=='admin' %>3<% else if current_user.userrole=='operations' %>2<% else if current_user.userrole!='admin' || current_user.userrole!='operations'  %> 1<% end %><% end %><% end %>">Actions</th>
+							<% allowed_users=[VendorPortal::Application.config.admin,VendorPortal::Application.config.operationadmin]%>
+							<th colspan="<% if current_user.userrole==VendorPortal::Application.config.admin %>3<% else if current_user.userrole==VendorPortal::Application.config.operationadmin %>2<% else if current_user.userrole!=VendorPortal::Application.config.admin || current_user.userrole!=VendorPortal::Application.config.operationadmin  %> 1<% end %><% end %><% end %>">Actions</th>
 						</tr>
 						</thead>
 						<tbody>
-								<% if current_user.userrole=='admin' %>
+								<% if current_user.userrole==VendorPortal::Application.config.admin %>
 									<%= render 'index_admin' %>
-								<% else if current_user.userrole=='operations' %>
+								<% else if current_user.userrole==VendorPortal::Application.config.operationadmin %>
 									<%= render 'index_op' %>
-								<% else if current_user.userrole=='vendor' %>
+								<% else if current_user.userrole==VendorPortal::Application.config.vendor %>
 									<%= render 'index_vendor' %>
-								<% else if current_user.userrole!='vendor' && current_user.userrole!='operations' %>
+								<% else if current_user.userrole!=VendorPortal::Application.config.vendor && current_user.userrole!=VendorPortal::Application.config.operationadmin %>
 									<%= render 'index_normal' %>
 								<%end%>
 								<%end%>

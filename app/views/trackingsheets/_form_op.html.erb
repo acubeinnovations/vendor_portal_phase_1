@@ -283,7 +283,7 @@ $(document).ready(function() {
 
 												<td class="bestin" style="text-align:center;">
 												<% if	!trackingsheet.vendor.blank? %>
-												<%  if current_user.userrole=='vendor'  %>
+												<%  if current_user.userrole==VendorPortal::Application.config.vendor  %>
 
 												<%=best_in_place_if factory,  trackingsheet, :factory, :as => :input,:nil => "Click to add content!"%>
 
@@ -293,7 +293,7 @@ $(document).ready(function() {
 
 												<% end %>
 												<% else %>
-												<% if current_user.userrole!='vendor' %>
+												<% if current_user.userrole!=VendorPortal::Application.config.vendor %>
 
 												<%=best_in_place_if factory,  trackingsheet, :factory, :as => :input,:nil => "Click to add content!"%>
 

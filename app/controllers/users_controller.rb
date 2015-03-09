@@ -46,12 +46,12 @@ layout 'vendor_portal'
   end
   
  def admin_only
-    if current_user.userrole!='admin'
+    if current_user.userrole!=VendorPortal::Application.config.admin
       redirect_to root_path, :alert => "Access denied."
     end
   end
 	def user_params
-      params.require(:user).permit(:username, :email, :password, :password_confirmation,:firstname,:lastname,:userrole,:division)
+      params.require(:user).permit(:username, :email, :password, :password_confirmation,:firstname,:lastname,:userrole,:division_id)
   end
 
   def destroy
@@ -60,7 +60,7 @@ layout 'vendor_portal'
     redirect_to users_path, :flash => { :success => 'User was successfully deleted.' }
   end
 	def accesscurrentuserandadmin
-		if @user != current_user && current_user.userrole!='admin'
+		if @user != current_user && current_user.userrole!=VendorPortal::Application.config.admin
         redirect_to root_path, :alert => "Access denied."
 		else
 				return  true

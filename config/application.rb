@@ -23,5 +23,14 @@ module VendorPortal
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
     config.time_zone='Kolkata'
+
+		# constant created for 
+		Application.config.admin = "admin"
+		Application.config.designer = "designer"
+		Application.config.vendor = "vendor"
+		Application.config.sales = "sales"
+		Application.config.operationadmin = "operationadmin"
+		Application.config.operationuser = "operationuser"
+
   end
 end

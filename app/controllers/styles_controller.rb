@@ -30,8 +30,10 @@ class StylesController < ApplicationController
 	
 	#admin only
 	def admin_only
-    if current_user.userrole!='admin'
-      redirect_to root_path, :alert => "Access denied."
+    if current_user.userrole==VendorPortal::Application.config.admin || current_user.userrole==VendorPortal::Application.config.operationadmin
+				true
+    else
+				redirect_to root_path, :alert => "Access denied."
     end
   end
 

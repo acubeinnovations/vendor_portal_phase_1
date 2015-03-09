@@ -273,12 +273,12 @@
 
 																						<tbody>
 												
-												<% @Vendors= Hash[User.all('userrole'=>'vendor').map { |v| [ v[:id].to_s, v[:email] ] } ] %>
-												<td class="bestin" style="text-align:center;"><% if current_user.userrole=='designer' %> <%= best_in_place trackingsheet, :vendor, :as => :select, :nil => "Click to add content!", :collection =>@Vendors %><% else if !trackingsheet.vendor.blank? %> %><%= User.find(BSON::ObjectId.from_string(trackingsheet.try(:vendor).to_s)).email %><%end%> <%end%></td>
+												<% @Vendors= Hash[User.all('userrole'=>VendorPortal::Application.config.vendor).map { |v| [ v[:id].to_s, v[:email] ] } ] %>
+												<td class="bestin" style="text-align:center;"><% if current_user.userrole==VendorPortal::Application.config.designer %> <%= best_in_place trackingsheet, :vendor, :as => :select, :nil => "Click to add content!", :collection =>@Vendors %><% else if !trackingsheet.vendor.blank? %> %><%= User.find(BSON::ObjectId.from_string(trackingsheet.try(:vendor).to_s)).email %><%end%> <%end%></td>
 
 <td class="bestin" style="text-align:center;"><td class="bestin" style="text-align:center;">
 									<% if	!trackingsheet.vendor.blank? %>
- 											<%  if current_user.userrole=='vendor'  %>
+ 											<%  if current_user.userrole==VendorPortal::Application.config.vendor  %>
  													
  															<%=best_in_place_if factory,  trackingsheet, :factory, :as => :input,:nil => "Click to add content!"%>
  															
@@ -288,7 +288,7 @@
  													
  											<% end %>
  									 	<% else %>
- 											<% if current_user.userrole!='vendor' %>
+ 											<% if current_user.userrole!=VendorPortal::Application.config.vendor %>
  												
  														<%=best_in_place_if factory,  trackingsheet, :factory, :as => :input,:nil => "Click to add content!"%>
  													

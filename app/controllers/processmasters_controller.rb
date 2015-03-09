@@ -114,7 +114,7 @@ class ProcessmastersController < ApplicationController
     end
   end
 	def admin_only
-    if current_user.userrole=='admin' || current_user.userrole=='operations'
+    if current_user.userrole==VendorPortal::Application.config.admin || current_user.userrole==VendorPortal::Application.config.operationadmin
 				true
     else
 				redirect_to root_path, :alert => "Access denied."

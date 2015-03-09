@@ -40,7 +40,8 @@
 																<td>Refer Style</td>
 																<td class="border-none"> <%#= f.collection_select :style_ids,current_user.division.styles,:id,:stylename %>
 															<div class="widget-box border-none">
-                 				 	<div class="widget-content nopadding no-border">		
+                 				 	<div class="widget-content nopadding no-border">
+													<% if current_user.userrole==VendorPortal::Application.config.operationadmin %>
 													<% current_user.division.styles.each do |style|  %>
 											
 										  			<span class="span3 checkbox_seperation">
@@ -49,6 +50,19 @@
 															
 														</span>
 													
+														<% end %>
+														<% else if  current_user.userrole==VendorPortal::Application.config.admin %>
+														<% @styles=Style.all %>
+														<% @styles.each do |style|  %>
+											
+										  			<span class="span3 checkbox_seperation">
+																														
+															<%= check_box_tag("processmaster[style_ids][]", style.id, style.id.in?(@processmaster.styles.collect(&:id)),"class"=>"selectstyle") %> <%= style.stylename %>
+															
+														</span>
+													
+														<% end %>
+														<% end %>
 														<% end %>
 														</div>
 													</div>

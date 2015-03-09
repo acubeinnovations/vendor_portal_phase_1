@@ -21,7 +21,48 @@ $(document).ready(function() {
 
 								%>
 
+								<div class="container-fluid"> 
+							           	<div class="row-fluid">
 
+													<div class="span12">
+														<div class="widget-box">
+															<div class="widget-title">
+																<span class="icon">
+																	<i class="icon-info-sign"></i>
+																</span>
+																<h5>General Data</h5>
+															</div>
+															<div class="widget-content nopadding">
+																<table class="table table-bordered">
+																	<th>Division</th>
+																	
+																	<th>Season</th>
+																	<th>Year</th>
+																	<th>Market</th>
+																	<% model_class='trackingsheet' %>
+																		<% exist=false%>
+																		<% @a=1%>
+																		<% trackingsheets.each do |trackingsheet|%>
+																			<% break if exist==true %>
+																				<% if !trackingsheet.vendor.blank? %>
+																			<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.vendor.to_s) %>
+																			<% exist=true%>
+																		<tbody>
+																			<td style="text-align:center;"><%=trackingsheet.style.division.name%></td>
+																			<td style="text-align:center;"><%=trackingsheet.style.season%></td>
+																			<td style="text-align:center;"></td>
+																			<td style="text-align:center;"><%=trackingsheet.style.market%></td>
+																	 </tbody>
+																	<% @a=@a+1%>
+																	<% end %>
+																	<% end %>		
+																		<% end %>			
+																</table>
+															</div>
+														</div>
+													</div>
+								</div>
+								</div>
 
 								<div class="container-fluid">
 
@@ -57,21 +98,53 @@ $(document).ready(function() {
 
                     <div class="item active">	
 						
-                        
-                         
+                       <div id='ts'>
+																	<div style="position: absolute;width: 200px;">
+																	<% model_class='trackingsheet' %>
+																	<% @a=1%>
+																	<table  class="table table-bordered" style="width:20%;">
+																	<thead>
+																	<tr>
+																	<th style="height:21px;"></th>
+																	<th></th>
+																	<th></th>
+																	<th></th>
+																	</tr>
+																	<tr>
+																	<th style="height:121px;">ACTIONS</th>
+																	<th>STYLE #</th>
+																	<th>STYLE NAME</th>
+																	<th>IMAGE</th>
+																	</tr>
+																	</thead>
+																	<% trackingsheets.each do |trackingsheet|%>
+																	<% if !trackingsheet.vendor.blank? %>
+																	<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.vendor.to_s) %>
+																	<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
+																	
+																	<tbody>
+																	<tr>
+																	<td style="text-align:center;"><%= link_to "Comments", url_for(params),:class => 'btn btn-warning btn-xs' %> <br> <%= link_to " History ", url_for(params),:class => 'btn btn-warning btn-xs' %> </td>
+																	<td><%=best_in_place_if customerstylenumber,  trackingsheet, :customerstylenumber, :as => :input,:nil => "Click to add content!"%></td>
+																	<td><%=trackingsheet.style.stylename %></td>
+																	<td><%= image_tag "/vendorportal"+trackingsheet.style.image.url(:small)  %></td>
+																	</tr>
+																	<% @a=@a+1%>
+																	<% end %>
+																	<% end %>	
+																	<% end %>
+																	<% end %>
+																	</tbody>
+																	</table>
+																	</div>
 
-										<div class="widget-content nopadding">
-											
+																	<!-- Newly Added Ends-->
+																														
 														
 										<table class="table table-bordered"  style="margin-left: 20%;">
 											<thead>
 												<tr>
-													<th></th>
-													<th></th>
 													
-													<th></th>
-													<th></th>
-													<th></th>
 													<th></th>
 												<th></th>
 												<th></th>
@@ -128,27 +201,11 @@ $(document).ready(function() {
 												<th colspan="7"> 2nd DAF</th>
 												<th></th>
 												<th></th>
-												<th></th>
-												<th></th>
 												</tr>											
 											
 											
 											
-											
-											
-											
-											
-											
-											
-											
 									<tr>
-										<th>ACTIONS</th>
-										<th>ECHO DIVISION</th>
-										
-										<th>SEASON</th>
-										<th>YEAR</th>
-										<th>MARKET</th>
-										<th>IMAGES</th>
 										<th>FACTORY</th>
 										<th>SUBCONTRACTOR</th>
 										<th>BRAND</th>
@@ -217,6 +274,7 @@ $(document).ready(function() {
 										<th>APPROVED (VSDS)</th>
 										<th>RTL MU</th>
 										<th>MK-UP</th>
+						
 										</tr>
 										</thead>
 										
@@ -229,22 +287,15 @@ $(document).ready(function() {
 														
 <tbody>			
 <tr>
-<td style="text-align:center;"><%= link_to "Comments", url_for(params),:class => 'btn btn-warning btn-xs' %> <br> <%= link_to " History ", url_for(params),:class => 'btn btn-warning btn-xs' %> </td>
-<td style="text-align:center;"><%=trackingsheet.style.division.name%></td>
-<!--><td style="text-align:center;"><%#=trackingsheet.style.division.name%></td>-->
-<td style="text-align:center;"><%=trackingsheet.style.season%></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"><%=trackingsheet.style.market%></td>
-<td style="text-align:center;"><%= image_tag "/vendorportal"+trackingsheet.style.image.url(:small)  %></td>	
 <td class="bestin" style="text-align:center;">
 	<% if	!trackingsheet.vendor.blank? %>
-				<% if current_user.userrole=='vendor'  %>
+				<% if current_user.userrole==VendorPortal::Application.config.vendor  %>
  					<%=best_in_place_if factory,  trackingsheet, :factory, :as => :input,:nil => "Click to add content!"%>
  				<% else  %>
  					<%=best_in_place_if false,  trackingsheet, :factory, :as => :input,:nil => "Click to add content!"%>
  				<% end %>
  	<% else %>
- 				<% if current_user.userrole!='vendor' %>
+ 				<% if current_user.userrole!=VendorPortal::Application.config.vendor %>
  					<%=best_in_place_if factory,  trackingsheet, :factory, :as => :input,:nil => "Click to add content!"%>
  													
  	<% end %>
@@ -265,9 +316,7 @@ $(document).ready(function() {
 <td class="bestin" style="text-align:center;">
 	<%=best_in_place_if projectnumber,  trackingsheet, :projectnumber, :as => :input,:nil => "Click to add content!"%>
 </td>
-<td style="text-align:center;">
-	<%=trackingsheet.style.stylename %>
-</td>
+
 <td class="bestin" style="text-align:center;">
 	<%=best_in_place_if customerstylenumber,  trackingsheet, :customerstylenumber, :as => :input,:nil => "Click to add content!"%>
 </td>

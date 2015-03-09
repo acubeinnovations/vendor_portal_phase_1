@@ -63,9 +63,9 @@
 										<td class="span8">
 											<% @UT=Usertype.all() %> 
 											<% @UT.each do |usertype|  %>
-											<% if usertype.userrole!='admin' && usertype.userrole!='vendor'   %>
+											<% if usertype.userrole!=VendorPortal::Application.config.admin && usertype.userrole!=VendorPortal::Application.config.vendor   %>
 											<% @U=User.all('userrole'=>usertype.userrole) %>
-											<% if usertype.userrole.titleize!='Operations' %>
+											<% if usertype.userrole!=VendorPortal::Application.config.operationadmin %>
 											<div class="widget-box">
                  				 	<div class="widget-title"><span class="icon"><i class="icon-file"></i></span>
 										
