@@ -119,6 +119,8 @@ class Trackingsheet
 	belongs_to :user
 	belongs_to :processmaster
 	belongs_to :style
+  
+  has_many :trackingsheetlog
 
 	#validates_presence_of :comments, :on => :update
 	

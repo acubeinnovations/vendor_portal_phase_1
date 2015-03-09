@@ -112,7 +112,12 @@
 																	
 																	<tbody>
 																	<tr>
-																	<td style="text-align:center;"><%= link_to "Comments", url_for(params),:class => 'btn btn-warning btn-xs' %> <br> <%= link_to " History ", url_for(params),:class => 'btn btn-warning btn-xs' %> </td>
+																	<td style="text-align:center;">
+																		
+												
+<%=best_in_place_if comments,  trackingsheet, :comments, :as => :input,:nil => "Click to add content!"%>																
+							<%= link_to "Comments", url_for(params),:class => 'btn btn-warning btn-xs' %> <br> 
+							<%= link_to " History ", url_for(params),:class => 'btn btn-warning btn-xs' %> </td>
 																	<td><%=best_in_place_if customerstylenumber,  trackingsheet, :customerstylenumber, :as => :input,:nil => "Click to add content!"%></td>
 																	<td><%=trackingsheet.style.stylename %></td>
 																	<td><%= image_tag "/vendorportal"+trackingsheet.style.image.url(:small)  %></td>
