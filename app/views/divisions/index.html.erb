@@ -22,7 +22,7 @@
 										<td><%= division.description %></td>
 									
 										<td><%= link_to 'Edit', edit_division_path(division),class:'btn btn-info' %></td>
-										<td><%= link_to 'Destroy', division, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td>
+										<td><%= link_to 'Delete', division, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td>
 									</tr>
 									<% @i+=1%>
 								<% end %>	

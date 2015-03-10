@@ -3,11 +3,11 @@ class Processmaster
 	include Mongoid::Timestamps::Created
 	include Mongoid::Paperclip
 
-  #field :division, type: String
-	#field :brand, type: String
-  #field :season, type: String
+  field :division, type: String
+	field :brand, type: String
+  field :season, type: String
   #field :year, type: String
-  #field :market, type: String
+  field :market, type: String
 	#field :customername, type: String
   #field :customeraccount, type: String
   #field :project, type: String

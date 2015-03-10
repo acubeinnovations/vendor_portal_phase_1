@@ -108,5 +108,44 @@ $('#handle').scroll(function(){
 });
 //added for tab-end
 
-    
+
+//autocomplte
+
+$('table td span').on('keyup',function(e){
+me=$(this).children().children();
+parent=$(this);
+id=me.attr('id');
+$.get("/vendorportal/custom_search", {
+    term: me.val()
+  },function(data){
+		vendors=data;
+		var dropdown='';
+		//dropdown="<ul class='ui-customautocomplete'>";
+		for(i=0;i<vendors.length;i++){
+		dropdown+="<li><a class='ul-link' insert-to="+id+" vendor="+vendors[i]+">"+vendors[i]+"</a></li>";
+		}
+		//dropdown+="</ul>";
+		parent.next().html(dropdown);
+		$('.ui-customautocomplete').show();
+		init();
+	});
+});
+
+
+function init(){
+
+$('.ul-link').on('mousemove',function(){ 
+var selected_id=$(this).attr('insert-to');
+var selected_vendor=$(this).attr('vendor');
+$('#'+selected_id).val(selected_vendor);
+
+});
+  
+  
+}
+
+$( document ).ajaxStart(function() {
+$('.ui-customautocomplete').html('');
+$('.ui-customautocomplete').hide();
+});
 

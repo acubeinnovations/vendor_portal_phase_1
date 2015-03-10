@@ -56,6 +56,11 @@ class TrackingsheetsController < ApplicationController
   
   
   def update
+		if trackingsheet_params.has_key?("vendor")
+				if !trackingsheet_params[:vendor].blank?
+					@vendor=User.find_by(:email=>trackingsheet_params[:vendor])
+				end
+		end
     @trackingsheet = Trackingsheet.find(params[:id]) #newly added for in_place_edit #newly added for in_place_edit
     @trackingsheet.update_attributes(trackingsheet_params) #newly added for in_place_edit #newly added for in_place_edit
     

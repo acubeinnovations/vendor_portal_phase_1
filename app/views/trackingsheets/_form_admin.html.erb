@@ -1,5 +1,5 @@
 <% trackingsheets=Trackingsheet.where('processmaster_id'=>BSON::ObjectId.from_string(request.GET.first.second.to_s))%> 
-
+<% processmaster=Processmaster.find(request.GET.first.second)%> 
 
 								<%
 									#data=[]
@@ -35,9 +35,9 @@
 																			<% exist=true%>
 																		<tbody>
 																			<td style="text-align:center;"><%=trackingsheet.style.division.name%></td>
-																			<td style="text-align:center;"><%=trackingsheet.style.season%></td>
+																			<td style="text-align:center;"><%=processmaster.try(:season)%></td>
 																			<td style="text-align:center;"></td>
-																			<td style="text-align:center;"><%=trackingsheet.style.market%></td>
+																			<td style="text-align:center;"><%=processmaster.try(:market)%></td>
 																	 </tbody>
 																	<% @a=@a+1%>
 																	<% end %>
@@ -124,7 +124,7 @@
 
 																	<!-- Newly Added Ends-->
 																														
-									<table class="table table-bordered"  style="margin-left: 20%;">
+									<table class="table table-bordered"  style="margin-left: 22%;">
 											<thead>
 												<tr>
 													
@@ -272,7 +272,7 @@
 														
 <tbody>			
 <tr>
-<td style="text-align:center;"><% if !trackingsheet.vendor.blank? %><%= User.find(BSON::ObjectId.from_string(trackingsheet.vendor.to_s)).email %><%end%></td><td class="bestin" style="text-align:center;">
+<td style="text-align:center;"><% if !trackingsheet.vendor.blank? %><%= trackingsheet.vendor %><%end%></td><td class="bestin" style="text-align:center;">
 	<% if	!trackingsheet.vendor.blank? %>
 				<% if current_user.userrole==VendorPortal::Application.config.vendor  %>
  					<%=best_in_place_if factory,  trackingsheet, :factory, :as => :input,:nil => "Click to add content!",:html_attrs => {:tabindex => 1,:class=>'bs-tab'}%>

@@ -1,16 +1,6 @@
-<script>
-$(document).ready(function() { 
-    $('#handle').bind('mousewheel', function(event, delta) { 
-        val = this.scrollLeft - (delta * 50); 
-        jQuery(this).stop().animate({ 
-            scrollLeft: val 
-        }, 500); 
-        event.preventDefault(); 
-    }); 
-}); 
 
-</script>
 <% trackingsheets=Trackingsheet.where('processmaster_id'=>BSON::ObjectId.from_string(request.GET.first.second.to_s))%> 
+<% processmaster=Processmaster.find(request.GET.first.second)%> 
 
 
 								<%
@@ -45,13 +35,13 @@ $(document).ready(function() {
 																		<% trackingsheets.each do |trackingsheet|%>
 																			<% break if exist==true %>
 																				<% if !trackingsheet.vendor.blank? %>
-																			<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.vendor.to_s) %>
+																			<% 	if current_user.email==trackingsheet.vendor %>
 																			<% exist=true%>
 																		<tbody>
 																			<td style="text-align:center;"><%=trackingsheet.style.division.name%></td>
-																			<td style="text-align:center;"><%=trackingsheet.style.season%></td>
+																			<td style="text-align:center;"><%=processmaster.try(:season)%></td>
 																			<td style="text-align:center;"></td>
-																			<td style="text-align:center;"><%=trackingsheet.style.market%></td>
+																			<td style="text-align:center;"><%=processmaster.try(:market)%></td>
 																	 </tbody>
 																	<% @a=@a+1%>
 																	<% end %>
@@ -119,7 +109,7 @@ $(document).ready(function() {
 																	</thead>
 																	<% trackingsheets.each do |trackingsheet|%>
 																	<% if !trackingsheet.vendor.blank? %>
-																	<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.vendor.to_s) %>
+																	<% 	if current_user.email==trackingsheet.vendor %>
 																	<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 																	
 																	<tbody>
@@ -141,7 +131,7 @@ $(document).ready(function() {
 																	<!-- Newly Added Ends-->
 																														
 														
-										<table class="table table-bordered"  style="margin-left: 20%;">
+										<table class="table table-bordered"  style="margin-left: 22%;">
 											<thead>
 												<tr>
 													
@@ -282,7 +272,7 @@ $(document).ready(function() {
 	<% @a=1%>
 	<% trackingsheets.each do |trackingsheet|%>
 	<% if !trackingsheet.vendor.blank? %>
-	<% 	if current_user.id==BSON::ObjectId.from_string(trackingsheet.vendor.to_s) %>
+	<% 	if current_user.email==trackingsheet.vendor %>
 	<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 <tbody>			

@@ -1,5 +1,6 @@
 
-<% trackingsheets=Trackingsheet.where('processmaster_id'=>BSON::ObjectId.from_string(request.GET.first.second.to_s))%> 		
+<% trackingsheets=Trackingsheet.where('processmaster_id'=>BSON::ObjectId.from_string(request.GET.first.second.to_s))%> 	
+<% processmaster=Processmaster.find(request.GET.first.second)%> 	
 
 				<%
 									#data=[]
@@ -35,9 +36,9 @@
 																			<% exist=true%>
 																		<tbody>
 																			<td style="text-align:center;"><%=trackingsheet.style.division.name%></td>
-																			<td style="text-align:center;"><%=trackingsheet.style.season%></td>
+																			<td style="text-align:center;"><%=processmaster.try(:season)%></td>
 																			<td style="text-align:center;"></td>
-																			<td style="text-align:center;"><%=trackingsheet.style.market%></td>
+																			<td style="text-align:center;"><%=processmaster.try(:market)%></td>
 																	 </tbody>
 																	<% @a=@a+1%>
 																	<% end %>
@@ -134,7 +135,7 @@
 																																										                	
 											
 														
-										<table class="table table-bordered"  style="margin-left: 20%;">
+										<table class="table table-bordered"  style="margin-left: 22%;">
 											<thead>
 												<tr>
 												<th></th>
@@ -278,10 +279,15 @@
 
 																						<tbody>
 												
-												<% @Vendors= Hash[User.all('userrole'=>VendorPortal::Application.config.vendor).map { |v| [ v[:id].to_s, v[:email] ] } ] %>
-												<td class="bestin" style="text-align:center;"><% if current_user.userrole==VendorPortal::Application.config.designer %> <%= best_in_place trackingsheet, :vendor, :as => :select, :nil => "Click to add content!", :collection =>@Vendors %><% else if !trackingsheet.vendor.blank? %> %><%= User.find(BSON::ObjectId.from_string(trackingsheet.try(:vendor).to_s)).email %><%end%> <%end%></td>
+<td class="bestin" style="text-align:center;"><% if current_user.userrole==VendorPortal::Application.config.designer %>
+<%=best_in_place_if true,  trackingsheet, :vendor, :as => :input,:nil => "Click to add content!",:html_attrs =>{ "data-autocomplete_source"=>custom_search_path,:class=>'custom_search',:id=>"custom_search"+@a.to_s}%><% else if !trackingsheet.vendor.blank? %><%= trackingsheet.vendor %><%end%> <%end%>
+<ul class='ui-customautocomplete'>
 
-<td class="bestin" style="text-align:center;"><td class="bestin" style="text-align:center;">
+</ul>
+
+</td>
+
+<td class="bestin" style="text-align:center;">
 									<% if	!trackingsheet.vendor.blank? %>
  											<%  if current_user.userrole==VendorPortal::Application.config.vendor  %>
  													

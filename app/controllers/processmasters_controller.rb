@@ -69,11 +69,12 @@ class ProcessmastersController < ApplicationController
 				if 	!processmaster_params[:style_ids].blank?
 							
 					processmaster_params[:style_ids].each do |style|	
+						if !style.blank?
+							if Trackingsheet.where('processmaster_id'=>params[:id],"style_id"=>BSON::ObjectId.from_string(style.to_s)).count== 0
 						
-						if Trackingsheet.where('processmaster_id'=>params[:id],"style_id"=>BSON::ObjectId.from_string(style.to_s)).count== 0
-						
-							@trackingsheet = Trackingsheet.new("processmaster_id"=>params[:id],"style_id"=>style)
-							@trackingsheet.save
+								@trackingsheet = Trackingsheet.new("processmaster_id"=>params[:id],"style_id"=>style)
+								@trackingsheet.save
+							end
 						end
 					end
 						@processmaster=Processmaster.find(params[:id])
@@ -128,7 +129,7 @@ class ProcessmastersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def processmaster_params
-      params.require(:processmaster).permit(:name,{ :style_ids => [] })
+      params.require(:processmaster).permit(:name,:brand,:season,:market,{ :style_ids => [] }).merge(:division=>current_user.division)
     end
 		def processmaster_update_params
       params.require(:processmaster).permit(:division,:brand,:season,:year,:market,:customername,:customeraccount,:project,:referencestyle,:stylename,:stylecode,:image,{ :user_ids => [] })

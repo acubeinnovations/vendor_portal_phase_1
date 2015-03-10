@@ -5,7 +5,7 @@
 		<% break if exist==true %>
 		<% style.trackingsheets.each do |ts| %>
 		<% if !ts.vendor.blank? %>
-		<% if current_user.id==BSON::ObjectId.from_string(ts.try(:vendor).to_s) %>
+		<% if current_user.email==ts.try(:vendor) %>
 		<% exist=true %>
 		<tr class="gradeX">
 			<td><input type="radio" name="selectprocess"></td>

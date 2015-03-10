@@ -6,9 +6,9 @@ class Style
   field :stylecode, type: String
   
   field :division_id, type: String
-  field :brand, type: String
-  field :market, type: String
-  field :season, type: String
+  #field :brand, type: String
+  #field :market, type: String
+ # field :season, type: String
   #field :vendor, type: String
 
   belongs_to :division

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 before_filter :authenticate_user!
 
 #for checking user roles
-before_filter :admin_only, :except =>  [:edit ] 
+before_filter :admin_only, :except =>  [:edit,:custom_search ] 
 layout 'vendor_portal'
   def index 
     @users = User.all
@@ -44,7 +44,10 @@ layout 'vendor_portal'
       render :action => 'edit'
     end
   end
-  
+  def custom_search
+	 	@vendors = User.any_of({email: /#{params[:term]}/i }).where(:userrole=>"vendor")
+    render json: @vendors.map(&:email)
+	end
  def admin_only
     if current_user.userrole!=VendorPortal::Application.config.admin
       redirect_to root_path, :alert => "Access denied."
