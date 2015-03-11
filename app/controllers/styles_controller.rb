@@ -40,6 +40,7 @@ class StylesController < ApplicationController
   # POST /styles
   # POST /styles.json
   def create
+
     @style = Style.new(style_params)
 
     respond_to do |format|

@@ -30,7 +30,12 @@
 																
 														</div>
 													</div>
-													<%	end			 %>	
+														<% else %><div class="hide-me">
+																
+																		<%= f.collection_select :division_id,Division.where('id'=>current_user.division.id),:id,:name, prompt: true,:selected=>current_user.division.id %>
+																</div>	
+															<% end %>
+													
 													<div class="control-group">
 													<label class="control-label">Image</label>
 														<div class="controls">	
