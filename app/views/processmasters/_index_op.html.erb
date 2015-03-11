@@ -7,7 +7,7 @@
 			<tr class="gradeX">
 				<td><input type="radio" name="selectprocess"></td>
 				<td><%= @i %></td>
-				<td><% if !processmaster.try(:division).blank? %><%= processmaster.division.name %><% end %></td>
+				<td><% if !processmaster.division.blank? %><%= processmaster.division.name %><% end %></td>
 				<td><%= processmaster.try(:brand) %></td>
 				<td><%= processmaster.try(:season) %></td>
 				<td><%= processmaster.try(:market) %></td>

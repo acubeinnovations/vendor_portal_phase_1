@@ -32,7 +32,8 @@
 																		<% @a=1%>
 																		<% trackingsheets.each do |trackingsheet|%>
 																			<% break if exist==true %>
-																		<% 	if current_user.id.in?(trackingsheet.style.user_ids) %>
+																		<%allowed_users=[trackingsheet.style.designer_id.to_s,trackingsheet.style.operationuser_id.to_s,trackingsheet.style.sales_id.to_s]%>
+		<% if current_user.id.to_s.in?(allowed_users) %>
 																			<% exist=true%>
 																		<tbody>
 																			<td style="text-align:center;"><%=trackingsheet.style.division.name%></td>
@@ -108,7 +109,8 @@
 																	</tr>
 																	</thead>
 																	<% trackingsheets.each do |trackingsheet|%>
-																	<% if current_user.id.in?(trackingsheet.style.user_ids) %>
+																	<%allowed_users=[trackingsheet.style.designer_id.to_s,trackingsheet.style.operationuser_id.to_s,trackingsheet.style.sales_id.to_s]%>
+		<% if current_user.id.to_s.in?(allowed_users) %>
 																	<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 																	
 																	<tbody>
@@ -273,7 +275,9 @@
 												<% model_class='trackingsheet' %>
 												<% @a=1%>
 												<% trackingsheets.each do |trackingsheet|%>
-												<% 	if current_user.id.in?(trackingsheet.style.user_ids) %>
+												<%allowed_users=[trackingsheet.style.designer_id.to_s,trackingsheet.style.operationuser_id.to_s,trackingsheet.style.sales_id.to_s]%>
+		<% if current_user.id.to_s.in?(allowed_users) %>
+											
 												<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 <div class="widget-content nopadding">
 

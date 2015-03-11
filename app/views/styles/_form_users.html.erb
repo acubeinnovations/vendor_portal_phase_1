@@ -1,0 +1,26 @@
+
+
+											<div class="control-group">
+													<label class="control-label">Sales</label>
+														<div class="controls">
+															<%= f.collection_select :sales_id,User.where('userrole'=>VendorPortal::Application.config.sales,'division'=>@style.division_id),:id,:name, prompt: true %>
+																
+														</div>
+													</div>
+
+										<div class="control-group">
+													<label class="control-label">Designers</label>
+														<div class="controls">
+															<%= f.collection_select :designer_id,User.where('userrole'=>VendorPortal::Application.config.designer,'division'=>@style.division_id),:id,:name, prompt: true %>
+																
+														</div>
+													</div>
+
+
+											<div class="control-group">
+													<label class="control-label">Operations</label>
+														<div class="controls">
+															<%= f.collection_select :operationuser_id,User.where('userrole'=>VendorPortal::Application.config.operationuser,'division'=>@style.division_id),:id,:name, prompt: true,:id=>'op' %>
+																
+														</div>
+													</div>

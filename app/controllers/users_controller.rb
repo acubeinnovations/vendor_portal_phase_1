@@ -48,6 +48,10 @@ layout 'vendor_portal'
 	 	@vendors = User.any_of({email: /#{params[:term]}/i }).where(:userrole=>"vendor")
     render json: @vendors.map(&:email)
 	end
+	def get_users
+		@users = User.where(:division_id=>params[:division_id],:userrole=>params[:userrole])
+    render json: Hash[@users.map { |v| [ v[:id].to_s, v[:lastname]+' '+v[:firstname].to_s ] } ]
+	end
  def admin_only
     if current_user.userrole!=VendorPortal::Application.config.admin
       redirect_to root_path, :alert => "Access denied."

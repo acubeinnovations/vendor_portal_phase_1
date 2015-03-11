@@ -53,13 +53,32 @@
 																	<%= f.text_field :season, class:"span6",placeholder:"Season" %>	
 																</td>
 														</tr>
-															
+
+															<% if current_user.userrole==VendorPortal::Application.config.admin  %>
+															<tr>
+																<td>Division</td>
+																<td>
+																		<%if !@processmaster.division.blank? %>
+																		<% div_id=@processmaster.division.id %>
+																		<%else%>
+																		<% div_id=''%>
+																		<%end%>
+																		<%= f.collection_select :division,Division.all,:id,:name, prompt: true,:selected=>div_id %>
+																</td>
+														</tr>
+														<% else %><tr class="hide-me">
+																<td>Division</td>
+																<td>
+																		<%= f.collection_select :division,Division.where('id'=>current_user.division.id),:id,:name, prompt: true,:selected=>current_user.division.id %>
+																</td>
+														</tr>
+															<% end %>
 															<% if !@processmaster.persisted? %><% else %>
 															<tr>
 																<td>Refer Style</td>
 																<td class="border-none"> <%#= f.collection_select :style_ids,current_user.division.styles,:id,:stylename %>
-																<% if current_user.userrole==VendorPortal::Application.config.operationadmin %>
-																<%= f.select :style_ids ,current_user.division.styles.collect {|s| [ s.stylename, s.id ] }, { include_blank: false },{ multiple: true } %>
+																<% if current_user.userrole==VendorPortal::Application.config.operationadmin || current_user.userrole==VendorPortal::Application.config.admin  %>
+																<%= f.select :style_ids ,@processmaster.division.styles.collect {|s| [ s.stylename, s.id ] }, { include_blank: false },{ multiple: true } %>
 																<%else%>
 
 																<% end %>

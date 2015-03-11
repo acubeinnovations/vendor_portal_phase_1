@@ -44,41 +44,8 @@
 													</div>
 										</td>
 										<td class="span8">
-											<% @UT=Usertype.all() %> 
-											<% @UT.each do |usertype|  %>
-											<% if usertype.userrole!=VendorPortal::Application.config.admin && usertype.userrole!=VendorPortal::Application.config.vendor   %>
-											<% @U=User.all('userrole'=>usertype.userrole) %>
-											<% if usertype.userrole!=VendorPortal::Application.config.operationadmin %>
-											<div class="widget-box">
-                 				 	<div class="widget-title"><span class="icon"><i class="icon-file"></i></span>
-										
-                   				 	<h5><%= usertype.userrole.titleize %></h5>
-                    			</div>
-													<div class="widget-content nopadding">
-										  <% @U.each do |user|  %>
-												<div></div>
-														<span class="span3 checkbox_seperation">
-															<!--<div class="controls">
-																<label>
-																	<div id="uniform-undefined" class="checker">
-																		<span>
-																			<input style="opacity: 0;" name="users[]" type="checkbox">
-																		</span>
-																	</div> 
-																	<%= user.email %>
-															 	</label>
-															</div>-->
-																
-															<%= check_box_tag("style[user_ids][]", user.id, user.id.in?(@style.users.collect(&:id))) %> <%= user.lastname %> <%= user.firstname %>
-															<!--	<input name="users[]" type="checkbox" value="<%= user.email %>">	<%= user.email %>-->
-														</span>
-													
-												<% end %>
-											</div>
-										</div><br>
-										<% end %>
-									<% end %><% end %>
-									
+													<%= render :partial => "form_users",:object => @style, :locals=>{:f=> f } %>
+											
 									</td>	
 								</tr>
 								<tr>

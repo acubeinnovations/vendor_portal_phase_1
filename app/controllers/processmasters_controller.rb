@@ -31,6 +31,7 @@ class ProcessmastersController < ApplicationController
   # POST /processmasters
   # POST /processmasters.json
   def create
+		
     @processmaster = Processmaster.new(processmaster_params)
 		#@style = Style.find(processmaster_params['referencestyle'])
 		#@processmaster.stylename = @style.stylename
@@ -59,7 +60,7 @@ class ProcessmastersController < ApplicationController
 
   # PATCH/PUT /processmasters/1
   # PATCH/PUT /processmasters/1.json
-  def update
+  def update;
 		@processmaster = Processmaster.find(params[:id])
 		@old_styles=@processmaster.styles.collect(&:id)
 		@processmaster.styles.clear
@@ -129,7 +130,7 @@ class ProcessmastersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def processmaster_params
-      params.require(:processmaster).permit(:name,:brand,:season,:market,{ :style_ids => [] }).merge(:division=>current_user.division)
+      params.require(:processmaster).permit(:name,:brand,:season,:market,:division,{ :style_ids => [] })
     end
 		def processmaster_update_params
       params.require(:processmaster).permit(:division,:brand,:season,:year,:market,:customername,:customeraccount,:project,:referencestyle,:stylename,:stylecode,:image,{ :user_ids => [] })

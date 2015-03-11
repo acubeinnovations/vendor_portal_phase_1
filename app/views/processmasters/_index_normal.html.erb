@@ -3,15 +3,18 @@
 		<% exist=false%>
 		<% processmaster.styles.each do |style| %>
 		<% break if exist==true %>
-		<% if current_user.id.in?(style.users.collect(&:id)) %>
+		
+		<%allowed_users=[style.designer_id.to_s,style.operationuser_id.to_s,style.sales_id.to_s]%>
+		<% if current_user.id.to_s.in?(allowed_users) %>
 		<% exist=true %>
+		
 		<tr class="gradeX">
 			<td><input type="radio" name="selectprocess"></td>
 			<td><%= @i %></td>
-			<td><% if !style.try(:division).blank? %><%= Division.find(style.division).name %><% end %></td>
-			<td><%= style.try(:brand) %></td>
-			<td><%= style.try(:season) %></td>
-			<td><%= style.try(:market) %></td>
+			<td><% if !processmaster.division.blank? %><%= processmaster.division.name %><% end %></td>
+			<td><%= processmaster.try(:brand) %></td>
+			<td><%= processmaster.try(:season) %></td>
+			<td><%= processmaster.try(:market) %></td>
 			<td><%= processmaster.created_at %></td>
 			<td>	<%= link_to 'Tracking Sheet', trackingsheets_path(:processmaster_id => processmaster.id),class:'btn btn-warning' %></td>
 		</tr>	
