@@ -31,6 +31,7 @@ class ProcessmastersController < ApplicationController
   # POST /processmasters
   # POST /processmasters.json
   def create
+		
     @processmaster = Processmaster.new(processmaster_params)
 		#@style = Style.find(processmaster_params['referencestyle'])
 		#@processmaster.stylename = @style.stylename
@@ -59,7 +60,7 @@ class ProcessmastersController < ApplicationController
 
   # PATCH/PUT /processmasters/1
   # PATCH/PUT /processmasters/1.json
-  def update
+  def update;
 		@processmaster = Processmaster.find(params[:id])
 		@old_styles=@processmaster.styles.collect(&:id)
 		@processmaster.styles.clear
@@ -69,11 +70,12 @@ class ProcessmastersController < ApplicationController
 				if 	!processmaster_params[:style_ids].blank?
 							
 					processmaster_params[:style_ids].each do |style|	
+						if !style.blank?
+							if Trackingsheet.where('processmaster_id'=>params[:id],"style_id"=>BSON::ObjectId.from_string(style.to_s)).count== 0
 						
-						if Trackingsheet.where('processmaster_id'=>params[:id],"style_id"=>BSON::ObjectId.from_string(style.to_s)).count== 0
-						
-							@trackingsheet = Trackingsheet.new("processmaster_id"=>params[:id],"style_id"=>style)
-							@trackingsheet.save
+								@trackingsheet = Trackingsheet.new("processmaster_id"=>params[:id],"style_id"=>style)
+								@trackingsheet.save
+							end
 						end
 					end
 						@processmaster=Processmaster.find(params[:id])
@@ -114,7 +116,7 @@ class ProcessmastersController < ApplicationController
     end
   end
 	def admin_only
-    if current_user.userrole=='admin' || current_user.userrole=='operations'
+    if current_user.userrole==VendorPortal::Application.config.admin || current_user.userrole==VendorPortal::Application.config.operationadmin
 				true
     else
 				redirect_to root_path, :alert => "Access denied."
@@ -128,7 +130,7 @@ class ProcessmastersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def processmaster_params
-      params.require(:processmaster).permit(:name,{ :style_ids => [] })
+      params.require(:processmaster).permit(:name,:brand,:season,:market,:division,{ :style_ids => [] })
     end
 		def processmaster_update_params
       params.require(:processmaster).permit(:division,:brand,:season,:year,:market,:customername,:customeraccount,:project,:referencestyle,:stylename,:stylecode,:image,{ :user_ids => [] })

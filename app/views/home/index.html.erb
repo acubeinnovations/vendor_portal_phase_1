@@ -3,7 +3,7 @@
      
         <div class="span12">
 					<div class="span3"> </div>
-					<% if current_user.userrole =="admin" || current_user.userrole =="operations"%>
+					<% if current_user.userrole ==VendorPortal::Application.config.admin || current_user.userrole ==VendorPortal::Application.config.operationadmin%>
 					<div class="span3"> 
 						
 						<div><div><%= link_to (image_tag "processbutton.png"),processmasters_path%></div></div>

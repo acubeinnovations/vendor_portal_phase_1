@@ -30,14 +30,17 @@ class StylesController < ApplicationController
 	
 	#admin only
 	def admin_only
-    if current_user.userrole!='admin'
-      redirect_to root_path, :alert => "Access denied."
+    if current_user.userrole==VendorPortal::Application.config.admin || current_user.userrole==VendorPortal::Application.config.operationadmin
+				true
+    else
+				redirect_to root_path, :alert => "Access denied."
     end
   end
 
   # POST /styles
   # POST /styles.json
   def create
+
     @style = Style.new(style_params)
 
     respond_to do |format|
@@ -77,7 +80,10 @@ class StylesController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+	def get_styles
+		@styles = Style.where(:division_id=>params[:division_id])
+    render json: Hash[@styles.map { |v| [ v[:id].to_s, v[:stylename].to_s ] } ]
+	end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_style
@@ -86,6 +92,6 @@ class StylesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def style_params
-      params.require(:style).permit(:stylename, :string, :stylecode,:division_id,:brand,:market,:season, :image, :mate, { :user_ids => [] } )
+      params.require(:style).permit(:stylename, :string, :stylecode,:division_id,:operationuser_id,:sales_id,:designer_id, :image, :mate, { :user_ids => [] } )
     end
 end

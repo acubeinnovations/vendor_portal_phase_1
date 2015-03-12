@@ -12,7 +12,7 @@ class User
 	field :firstname,          type: String, default: ""
   field :lastname, 					 type: String, default: ""
 	field :userrole, 			 type: String, default: ""
-  field :division, 			 type: String, default: ""
+ # field :division, 			 type: String, default: ""
  # field :_id, 			 type: String,  default:->{ email.to_s.parameterize}
 
   ## Recoverable

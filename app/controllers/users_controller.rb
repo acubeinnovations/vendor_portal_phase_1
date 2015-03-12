@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 before_filter :authenticate_user!
 
 #for checking user roles
-before_filter :admin_only, :except =>  [:edit ] 
+before_filter :admin_only, :except =>  [:edit,:custom_search ] 
 layout 'vendor_portal'
   def index 
     @users = User.all
@@ -44,14 +44,21 @@ layout 'vendor_portal'
       render :action => 'edit'
     end
   end
-  
+  def custom_search
+	 	@vendors = User.any_of({email: /#{params[:term]}/i }).where(:userrole=>"vendor")
+    render json: @vendors.map(&:email)
+	end
+	def get_users
+		@users = User.where(:division_id=>params[:division_id],:userrole=>params[:userrole])
+    render json: Hash[@users.map { |v| [ v[:id].to_s, v[:lastname]+' '+v[:firstname].to_s ] } ]
+	end
  def admin_only
-    if current_user.userrole!='admin'
+    if current_user.userrole!=VendorPortal::Application.config.admin
       redirect_to root_path, :alert => "Access denied."
     end
   end
 	def user_params
-      params.require(:user).permit(:username, :email, :password, :password_confirmation,:firstname,:lastname,:userrole,:division)
+      params.require(:user).permit(:username, :email, :password, :password_confirmation,:firstname,:lastname,:userrole,:division_id)
   end
 
   def destroy
@@ -60,7 +67,7 @@ layout 'vendor_portal'
     redirect_to users_path, :flash => { :success => 'User was successfully deleted.' }
   end
 	def accesscurrentuserandadmin
-		if @user != current_user && current_user.userrole!='admin'
+		if @user != current_user && current_user.userrole!=VendorPortal::Application.config.admin
         redirect_to root_path, :alert => "Access denied."
 		else
 				return  true

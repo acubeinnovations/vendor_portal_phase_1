@@ -66,7 +66,7 @@ class UsertypesController < ApplicationController
     end
   end
 	def admin_only
-    if current_user.userrole!='admin'
+    if current_user.userrole!=VendorPortal::Application.config.admin
       redirect_to root_path, :alert => "Access denied."
     end
   end

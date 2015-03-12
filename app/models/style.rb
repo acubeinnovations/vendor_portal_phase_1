@@ -6,10 +6,15 @@ class Style
   field :stylecode, type: String
   
   field :division_id, type: String
-  field :brand, type: String
-  field :market, type: String
-  field :season, type: String
+  #field :brand, type: String
+  #field :market, type: String
+ # field :season, type: String
   #field :vendor, type: String
+
+	field :sales_id, type: String
+  field :designer_id, type: String
+  field :operationuser_id, type: String
+ 
 
   belongs_to :division
 	has_and_belongs_to_many :users 

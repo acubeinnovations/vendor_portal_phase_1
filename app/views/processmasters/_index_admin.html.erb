@@ -3,14 +3,14 @@
 		<tr class="gradeX">
 			<td><input type="radio" name="selectprocess"></td>
 			<td><%= @i %></td>
-			<td><% if !processmaster.try(:styles).first.try(:division).blank? %><%= Division.find(processmaster.styles.first.division).name %><% end %></td>
-			<td><%= processmaster.try(:styles).first.try(:brand) %></td>
-			<td><%= processmaster.try(:styles).first.try(:season) %></td>
-			<td><%= processmaster.try(:styles).first.try(:market) %></td>
+			<td><% if !processmaster.division.blank? %><%= processmaster.division.name %><% end %></td>
+			<td><%= processmaster.try(:brand) %></td>
+			<td><%= processmaster.try(:season) %></td>
+			<td><%= processmaster.try(:market) %></td>
 			<td><%= processmaster.created_at %></td>
 			<td><%= link_to 'Edit', edit_processmaster_path(processmaster),class:'btn btn-info' %></td>
 			<td><%= link_to 'Tracking Sheet', trackingsheets_path(:processmaster_id => processmaster.id),class:'btn btn-warning' %></td>
-			<td><%= link_to 'Destroy', processmaster, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td>
+			<td><%= link_to 'Delete', processmaster, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td>
 
 		</tr>	
 	<% @i+=1%>

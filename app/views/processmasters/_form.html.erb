@@ -33,25 +33,55 @@
 																
 																<td><%= f.text_field :name, class:"span3" %></td>
 															</tr>
-															
-															
+															<tr>
+																<td>Brand</td>
+																<td>
+																	<%= f.text_field :brand, class:"span6",placeholder:"Brand" %>
+																</td>
+															</tr>
+													
+															<tr>
+																<td>Market</td>
+																<td>
+																	<%= f.text_field :market, class:"span6",placeholder:"Market" %>
+															</td>
+															</tr>
+													
+															<tr>
+																<td>Season</td>
+																<td>
+																	<%= f.text_field :season, class:"span6",placeholder:"Season" %>	
+																</td>
+														</tr>
+
+															<% if current_user.userrole==VendorPortal::Application.config.admin  %>
+															<tr>
+																<td>Division</td>
+																<td>
+																		<%if !@processmaster.division.blank? %>
+																		<% div_id=@processmaster.division.id %>
+																		<%else%>
+																		<% div_id=''%>
+																		<%end%>
+																		<%= f.collection_select :division,Division.all,:id,:name, prompt: true,:selected=>div_id %>
+																</td>
+														</tr>
+														<% else %><tr class="hide-me">
+																<td>Division</td>
+																<td>
+																		<%= f.collection_select :division,Division.where('id'=>current_user.division.id),:id,:name, prompt: true,:selected=>current_user.division.id %>
+																</td>
+														</tr>
+															<% end %>
 															<% if !@processmaster.persisted? %><% else %>
 															<tr>
 																<td>Refer Style</td>
 																<td class="border-none"> <%#= f.collection_select :style_ids,current_user.division.styles,:id,:stylename %>
-															<div class="widget-box border-none">
-                 				 	<div class="widget-content nopadding no-border">		
-													<% current_user.division.styles.each do |style|  %>
-											
-										  			<span class="span3 checkbox_seperation">
-																														
-															<%= check_box_tag("processmaster[style_ids][]", style.id, style.id.in?(@processmaster.styles.collect(&:id)),"class"=>"selectstyle") %> <%= style.stylename %>
-															
-														</span>
-													
-														<% end %>
-														</div>
-													</div>
+																<% if current_user.userrole==VendorPortal::Application.config.operationadmin || current_user.userrole==VendorPortal::Application.config.admin  %>
+																<%= f.select :style_ids ,@processmaster.division.styles.collect {|s| [ s.stylename, s.id ] }, { include_blank: false },{ multiple: true } %>
+																<%else%>
+
+																<% end %>
 															</td>
 															</tr>
 														<% end %>

@@ -1,16 +1,5 @@
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#handle').bind('mousewheel', function(event, delta) {
-        val = this.scrollLeft - (delta * 50);
-        jQuery(this).stop().animate({
-            scrollLeft: val
-        }, 500);
-        event.preventDefault();
-    });
-});
-</script>
-
-<% trackingsheets=Trackingsheet.where('processmaster_id'=>BSON::ObjectId.from_string(request.GET.first.second.to_s))%> 		
+<% trackingsheets=Trackingsheet.where('processmaster_id'=>BSON::ObjectId.from_string(request.GET.first.second.to_s))%> 
+<% processmaster=Processmaster.find(request.GET.first.second)%> 		
 								<%
 									#data=[]
 								 data={'images'=>'Images','factory'=>'Factory','subcontractor'=>'Sub Contractor','salestrackingsheetedtosamplerequest'=>'Sales Proceed to Sample Request','customername'=>'Customer Name','customeraccount'=>'Customer Account','project'=>'Project','xmilldate'=>'X Mill Date','productionleadtime'=>'Production Lead Time', 'salesproceedtosamplerequest'=>'Sales Proceed to Sample Request','protoduebackfromvendor'=>'Proto Due Back From Vendor','daftovendordate'=>'Daf to Vendor Date','rtlmu'=>'RTL MU','mkup'=>'MK-UP','projectedunits'=>'Projected Units','targetfob'=>'Target FOB','targetmu'=>'Target MU','targetws'=>'Target WS','percolor'=>'Per Color','perstyle'=>'Per Style','incoterms'=>'Inco Terms','moq'=>'MOQ','thousandtofivethousandPCS'=>'1000 - 5000 PCS','fivethousandtotenthousandPCS'=>'5000 - 10000 PCS','ldpboat'=>'LDP Boat','ldpair'=>'LDP Air','startshipdate'=>'Start Ship Date','orderduedateviaboat'=>'Order Due Date Via Boat','orderduedateviaair'=>'Order Due Date Via Air','soss'=>'S/O OR S/S','nmbrofdefsmplneeded'=>'# of Dev Samples Needed','dafissued'=>'DAF Issued','sampleduedate'=>'Sample Due Date','daf2soss'=>'S/O OR S/S','daf2nmbrofdefsmplneeded'=>'# of Dev Samples Needed','daf2dafissued'=>'DAF Issued','daf2sampleduedate'=>'Sample Due Date','comments'=>'Comments'}
@@ -45,9 +34,9 @@ $(document).ready(function() {
 																			<% exist=true%>
 																		<tbody>
 																			<td style="text-align:center;"><%=trackingsheet.style.division.name%></td>
-																			<td style="text-align:center;"><%=trackingsheet.style.season%></td>
+																			<td style="text-align:center;"><%=processmaster.try(:season)%></td>
 																			<td style="text-align:center;"></td>
-																			<td style="text-align:center;"><%=trackingsheet.style.market%></td>
+																			<td style="text-align:center;"><%=processmaster.try(:market)%></td>
 																	 </tbody>
 																	<% @a=@a+1%>
 																	<% end %>
@@ -138,7 +127,7 @@ $(document).ready(function() {
 																																										                	
 											
 														
-										<table class="table table-bordered"  style="margin-left: 20%;">
+										<table class="table table-bordered"  style="margin-left: 22%;">
 											<thead>
 												<tr>
 												<th colspan="50"></th>
@@ -227,11 +216,11 @@ $(document).ready(function() {
 												
 												<tbody>
 
-												<td style="text-align:center;"><% if !trackingsheet.vendor.blank? %><%= User.find(BSON::ObjectId.from_string(trackingsheet.vendor.to_s)).email %><%end%></td>
+												<td style="text-align:center;"><% if !trackingsheet.vendor.blank? %><%= trackingsheet.vendor %><%end%></td>
 
 												<td class="bestin" style="text-align:center;">
 												<% if	!trackingsheet.vendor.blank? %>
-												<%  if current_user.userrole=='vendor'  %>
+												<%  if current_user.userrole==VendorPortal::Application.config.vendor  %>
 
 												<%=best_in_place_if factory,  trackingsheet, :factory, :as => :input,:nil => "Click to add content!"%>
 
@@ -241,7 +230,7 @@ $(document).ready(function() {
 
 												<% end %>
 												<% else %>
-												<% if current_user.userrole!='vendor' %>
+												<% if current_user.userrole!=VendorPortal::Application.config.vendor %>
 
 												<%=best_in_place_if factory,  trackingsheet, :factory, :as => :input,:nil => "Click to add content!"%>
 

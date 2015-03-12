@@ -1,10 +1,10 @@
-<% if current_user.userrole=='admin' %>
+<% if current_user.userrole==VendorPortal::Application.config.admin %>
 	<%= render 'form_admin' %>
-<% else if current_user.userrole=='operations' %>
+<% else if current_user.userrole==VendorPortal::Application.config.operationadmin %>
 	<%= render 'form_op' %>
-<% else if current_user.userrole=='vendor' %>
+<% else if current_user.userrole==VendorPortal::Application.config.vendor %>
 	<%= render 'form_vendor' %>
-<% else if current_user.userrole!='vendor' && current_user.userrole!='operations' %>
+<% else if current_user.userrole!=VendorPortal::Application.config.vendor && current_user.userrole!=VendorPortal::Application.config.operationadmin %>
 	<%= render 'form_normal' %>
 <%end%>
 <%end%>

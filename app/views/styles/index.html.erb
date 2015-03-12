@@ -15,19 +15,12 @@
                 </tr>
               </thead>
               <tbody>
-				  <% @i=1 %>
-				  <%  @styles.each do |style| %>
-					<tr class="gradeX">
-						<td> <%=@i %></td>
-						<td><%=  style.stylename %></td>
-							<td><%= style.stylecode %></td>
-						<td><% @k=1 %><% style.users.each do |user| %><%= @k.to_s+'. '+user.email %><br><% @k+=1 %><% end %></td>
-						<td><%= image_tag "/vendorportal"+style.image.url(:small)  %></td>
-						<td><%= link_to 'Edit',  edit_style_path(style) , :class => 'btn btn-warning btn-xs' %></td>
-						<td><%= link_to 'Delete', style_path(style), :class => 'btn btn-danger btn-xs', :method => 'delete', :confirm => 'Are you sure?' %> </td>
-					</tr>
-					<% @i+=1%>
-				 <% end %>	
+				 				 <% if current_user.userrole==VendorPortal::Application.config.admin %>
+									<%= render 'index_admin' %>
+								<% else if current_user.userrole==VendorPortal::Application.config.operationadmin %>
+									<%= render 'index_opadmin' %>
+								<%end%>
+								<%end%>
              </tbody>
             </table>
 				

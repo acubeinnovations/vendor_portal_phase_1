@@ -3,6 +3,8 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
 	$('.best_in_place').best_in_place()
+
+
 ready_trackingsheets = ->
 	$('.get-versions').on 'click', ->
 		userid = $(this).data().userid.$oid

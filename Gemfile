@@ -60,7 +60,7 @@ gem "gretel"
 #gem "puma"
 gem "thin"
 
-gem 'mongoid_delorean'
+#gem 'mongoid_delorean'
 
 #For Grid Edit
 
@@ -70,7 +70,14 @@ gem 'best_in_place'
 
 gem 'posix-spawn'
 
+# jquery-ui-rails
+
+gem "jquery-ui-rails"
+
+
+
 # Newly Added ##
+
 
 
 group :development, :test do

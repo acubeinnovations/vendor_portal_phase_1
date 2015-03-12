@@ -8,15 +8,15 @@ module TrackingsheetsHelper
    
    def factory()
 		 
-				if current_user.userrole=='admin'
+				if current_user.userrole==VendorPortal::Application.config.admin
 					return true  
-				else if current_user.userrole=='operations'
+				else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 					return true
-				else if current_user.userrole=='sales'
+				else if current_user.userrole==VendorPortal::Application.config.sales
 					return false
-				else if current_user.userrole=='designer'
+				else if current_user.userrole==VendorPortal::Application.config.designer
 					return true
-				else if current_user.userrole=='vendor'
+				else if current_user.userrole==VendorPortal::Application.config.vendor
 					return true 
 				end #vendors
 				end #designers
@@ -30,15 +30,15 @@ module TrackingsheetsHelper
    
     def subcontractor()	
 			
-				if current_user.userrole=='admin'
+				if current_user.userrole==VendorPortal::Application.config.admin
 					return true   
-				else if current_user.userrole=='operations'
+				else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 					return false    
-				else if current_user.userrole=='sales'
+				else if current_user.userrole==VendorPortal::Application.config.sales
 					return false
-				else if current_user.userrole=='designer'
+				else if current_user.userrole==VendorPortal::Application.config.designer
 					return false     
-				else if current_user.userrole=='vendor'
+				else if current_user.userrole==VendorPortal::Application.config.vendor
 					return true      
 				end #vendors
 				end #designers
@@ -52,15 +52,15 @@ module TrackingsheetsHelper
    
      def customername()
 			
-				 if current_user.userrole=='admin'
+				 if current_user.userrole==VendorPortal::Application.config.admin
 		     		return true   
-		     else if current_user.userrole=='operations'
+		     else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		    		return true      
-		     else if current_user.userrole=='sales'
+		     else if current_user.userrole==VendorPortal::Application.config.sales
 		     		return false  
-		     else if current_user.userrole=='designer'
+		     else if current_user.userrole==VendorPortal::Application.config.designer
 		    		return true      
-		     else if current_user.userrole=='vendor'
+		     else if current_user.userrole==VendorPortal::Application.config.vendor
 		     	 return false    
 		     end #vendors
 		     end #designers
@@ -74,15 +74,15 @@ module TrackingsheetsHelper
    
       def customeraccount()
 				
-						if current_user.userrole=='admin'
+						if current_user.userrole==VendorPortal::Application.config.admin
 				    		return true  
-				    else if current_user.userrole=='operations'
+				    else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 				   		return true     
-				    else if current_user.userrole=='sales'
+				    else if current_user.userrole==VendorPortal::Application.config.sales
 				   return false   
-				    else if current_user.userrole=='designer'
+				    else if current_user.userrole==VendorPortal::Application.config.designer
 				    		return true     
-				    else if current_user.userrole=='vendor'
+				    else if current_user.userrole==VendorPortal::Application.config.vendor
 				    return false      
 				    end #vendors
 				    end #designers
@@ -96,15 +96,15 @@ module TrackingsheetsHelper
    
        def project()
 				
-						 if current_user.userrole=='admin'
+						 if current_user.userrole==VendorPortal::Application.config.admin
 				     return true   
-				     else if current_user.userrole=='operations'
+				     else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 				     return true      
-				     else if current_user.userrole=='sales'
+				     else if current_user.userrole==VendorPortal::Application.config.sales
 				     return false 
-				     else if current_user.userrole=='designer'
+				     else if current_user.userrole==VendorPortal::Application.config.designer
 				     return true     
-				     else if current_user.userrole=='vendor'
+				     else if current_user.userrole==VendorPortal::Application.config.vendor
 				     return false    
 				     end #vendors
 				     end #designers
@@ -118,15 +118,15 @@ module TrackingsheetsHelper
    
         def referncestyle()
 					
-						if current_user.userrole=='admin'
+						if current_user.userrole==VendorPortal::Application.config.admin
 		         return true   
-		        else if current_user.userrole=='operations'
+		        else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		        return true     
-		        else if current_user.userrole=='sales'
+		        else if current_user.userrole==VendorPortal::Application.config.sales
 		        return false    
-		        else if current_user.userrole=='designer'
+		        else if current_user.userrole==VendorPortal::Application.config.designer
 		        return true      
-		        else if current_user.userrole=='vendor'
+		        else if current_user.userrole==VendorPortal::Application.config.vendor
 		        return false       
 		        end #vendors
 		        end #designers
@@ -140,15 +140,15 @@ module TrackingsheetsHelper
    
          def xmilldate()
 					
-							if current_user.userrole=='admin'
+							if current_user.userrole==VendorPortal::Application.config.admin
 							return true 
-							else if current_user.userrole=='operations'
+							else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 							return false    
-							else if current_user.userrole=='sales'
+							else if current_user.userrole==VendorPortal::Application.config.sales
 							return false  
-							else if current_user.userrole=='designer'
+							else if current_user.userrole==VendorPortal::Application.config.designer
 							return false 
-							else if current_user.userrole=='vendor'
+							else if current_user.userrole==VendorPortal::Application.config.vendor
 							return true    
 							end #vendors
 							end #designers
@@ -162,15 +162,15 @@ module TrackingsheetsHelper
    
           def productionleadtime()
 					
-								if current_user.userrole=='admin'
+								if current_user.userrole==VendorPortal::Application.config.admin
 				        return true  
-				        else if current_user.userrole=='operations'
+				        else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 				       return false      
-				        else if current_user.userrole=='sales'
+				        else if current_user.userrole==VendorPortal::Application.config.sales
 				        return false  
-				        else if current_user.userrole=='designer'
+				        else if current_user.userrole==VendorPortal::Application.config.designer
 				        return false  
-				        else if current_user.userrole=='vendor'
+				        else if current_user.userrole==VendorPortal::Application.config.vendor
 				        return true     
 				        end #vendors
 				        end #designers
@@ -184,15 +184,15 @@ module TrackingsheetsHelper
    
            def salesproceedtosamplerequest()
 						
-							if current_user.userrole=='admin'
+							if current_user.userrole==VendorPortal::Application.config.admin
 							return true  
-							else if current_user.userrole=='operations'
+							else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 							return false     
-							else if current_user.userrole=='sales'
+							else if current_user.userrole==VendorPortal::Application.config.sales
 							return true  
-							else if current_user.userrole=='designer'
+							else if current_user.userrole==VendorPortal::Application.config.designer
 							return false   
-							else if current_user.userrole=='vendor'
+							else if current_user.userrole==VendorPortal::Application.config.vendor
 							return false  
 							end #vendors
 							end #designers
@@ -205,15 +205,15 @@ module TrackingsheetsHelper
          ###---------------------------------------Proto Due Back From Vendor--------------------------------------------### 
  
           def protoduebackfromvendor()
-							if current_user.userrole=='admin'
+							if current_user.userrole==VendorPortal::Application.config.admin
 							return true  
-							else if current_user.userrole=='operations'
+							else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 							return true  
-							else if current_user.userrole=='sales'
+							else if current_user.userrole==VendorPortal::Application.config.sales
 							return false   
-							else if current_user.userrole=='designer'
+							else if current_user.userrole==VendorPortal::Application.config.designer
 							return false    
-							else if current_user.userrole=='vendor'
+							else if current_user.userrole==VendorPortal::Application.config.vendor
 							return false    
 							end #vendors
 							end #designers
@@ -225,15 +225,15 @@ module TrackingsheetsHelper
         ###---------------------------------------DAF to Vendor Date--------------------------------------------### 
 
          def daftovendordate()
-					if current_user.userrole=='admin'
+					if current_user.userrole==VendorPortal::Application.config.admin
            return true    
-           else if current_user.userrole=='operations'
+           else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
            return true     
-           else if current_user.userrole=='sales'
+           else if current_user.userrole==VendorPortal::Application.config.sales
            return false  
-           else if current_user.userrole=='designer'
+           else if current_user.userrole==VendorPortal::Application.config.designer
            return false  
-           else if current_user.userrole=='vendor'
+           else if current_user.userrole==VendorPortal::Application.config.vendor
            return false 
            end #vendors
            end #designers
@@ -265,15 +265,15 @@ module TrackingsheetsHelper
         ###---------------------------------------RTL MU--------------------------------------------### 
 
          def rtlmu()
-           if current_user.userrole=='admin'
+           if current_user.userrole==VendorPortal::Application.config.admin
            return true
-           else if current_user.userrole=='operations'
+           else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
           return true
-           else if current_user.userrole=='sales'
+           else if current_user.userrole==VendorPortal::Application.config.sales
             return false   
-           else if current_user.userrole=='designer'
+           else if current_user.userrole==VendorPortal::Application.config.designer
             return false    
-           else if current_user.userrole=='vendor'
+           else if current_user.userrole==VendorPortal::Application.config.vendor
           return false 
            end #vendors
            end #designers
@@ -285,15 +285,15 @@ module TrackingsheetsHelper
          ###---------------------------------------MK UP--------------------------------------------### 
 
           def mkup()
-            if current_user.userrole=='admin'
+            if current_user.userrole==VendorPortal::Application.config.admin
             return true    
-            else if current_user.userrole=='operations'
+            else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
              return true        
-            else if current_user.userrole=='sales'
+            else if current_user.userrole==VendorPortal::Application.config.sales
            return false
-            else if current_user.userrole=='designer'
+            else if current_user.userrole==VendorPortal::Application.config.designer
            return false
-            else if current_user.userrole=='vendor'
+            else if current_user.userrole==VendorPortal::Application.config.vendor
            return false
             end #vendors
             end #designers
@@ -311,15 +311,15 @@ module TrackingsheetsHelper
           ###---------------------------------------Projected Units--------------------------------------------### 
 
            def projectedunits()
-             if current_user.userrole=='admin'
+             if current_user.userrole==VendorPortal::Application.config.admin
               return true     
-             else if current_user.userrole=='operations'
+             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
              return false
-             else if current_user.userrole=='sales'
+             else if current_user.userrole==VendorPortal::Application.config.sales
                return true      
-             else if current_user.userrole=='designer'
+             else if current_user.userrole==VendorPortal::Application.config.designer
              return false 
-             else if current_user.userrole=='vendor'
+             else if current_user.userrole==VendorPortal::Application.config.vendor
              return false
              end #vendors
              end #designers
@@ -331,15 +331,15 @@ module TrackingsheetsHelper
            ###---------------------------------------Target FOB--------------------------------------------### 
 
             def targetfob()
-              if current_user.userrole=='admin'
+              if current_user.userrole==VendorPortal::Application.config.admin
                return false      
-              else if current_user.userrole=='operations'
+              else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
             return false
-              else if current_user.userrole=='sales'
+              else if current_user.userrole==VendorPortal::Application.config.sales
                 return true      
-              else if current_user.userrole=='designer'
+              else if current_user.userrole==VendorPortal::Application.config.designer
               return false   
-              else if current_user.userrole=='vendor'
+              else if current_user.userrole==VendorPortal::Application.config.vendor
               return false
               end #vendors
               end #designers
@@ -351,15 +351,15 @@ module TrackingsheetsHelper
             ###---------------------------------------Target MU--------------------------------------------### 
 
              def targetmu()
-               if current_user.userrole=='admin'
+               if current_user.userrole==VendorPortal::Application.config.admin
                 return true     
-               else if current_user.userrole=='operations'
+               else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
                return false  
-               else if current_user.userrole=='sales'
+               else if current_user.userrole==VendorPortal::Application.config.sales
                  return true      
-               else if current_user.userrole=='designer'
+               else if current_user.userrole==VendorPortal::Application.config.designer
                return false   
-               else if current_user.userrole=='vendor'
+               else if current_user.userrole==VendorPortal::Application.config.vendor
                return false
                end #vendors
                end #designers
@@ -371,15 +371,15 @@ module TrackingsheetsHelper
              ###---------------------------------------Target WS--------------------------------------------### 
 
               def targetws()
-                if current_user.userrole=='admin'
+                if current_user.userrole==VendorPortal::Application.config.admin
                  return true    
-                else if current_user.userrole=='operations'
+                else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
                return false 
-                else if current_user.userrole=='sales'
+                else if current_user.userrole==VendorPortal::Application.config.sales
                  return true      
-                else if current_user.userrole=='designer'
+                else if current_user.userrole==VendorPortal::Application.config.designer
                 return false
-                else if current_user.userrole=='vendor'
+                else if current_user.userrole==VendorPortal::Application.config.vendor
                return false
                 end #vendors
                 end #designers
@@ -395,15 +395,15 @@ module TrackingsheetsHelper
           ###---------------------------------------Per Color--------------------------------------------### 
 
            def percolor()
-             if current_user.userrole=='admin'
+             if current_user.userrole==VendorPortal::Application.config.admin
               return true      
-             else if current_user.userrole=='operations'
+             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
              return false 
-             else if current_user.userrole=='sales'
+             else if current_user.userrole==VendorPortal::Application.config.sales
              return false 
-             else if current_user.userrole=='designer'
+             else if current_user.userrole==VendorPortal::Application.config.designer
              return false
-             else if current_user.userrole=='vendor'
+             else if current_user.userrole==VendorPortal::Application.config.vendor
               return true      
              end #vendors
              end #designers
@@ -415,15 +415,15 @@ module TrackingsheetsHelper
            ###---------------------------------------Per Style--------------------------------------------### 
 
             def perstyle()
-              if current_user.userrole=='admin'
+              if current_user.userrole==VendorPortal::Application.config.admin
                return true      
-              else if current_user.userrole=='operations'
+              else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
               return false 
-              else if current_user.userrole=='sales'
+              else if current_user.userrole==VendorPortal::Application.config.sales
               return false
-              else if current_user.userrole=='designer'
+              else if current_user.userrole==VendorPortal::Application.config.designer
               return false   
-              else if current_user.userrole=='vendor'
+              else if current_user.userrole==VendorPortal::Application.config.vendor
                return true      
               end #vendors
               end #designers
@@ -435,15 +435,15 @@ module TrackingsheetsHelper
             ###---------------------------------------Incoterms--------------------------------------------### 
 
              def incoterms()
-               if current_user.userrole=='admin'
+               if current_user.userrole==VendorPortal::Application.config.admin
                 return true      
-               else if current_user.userrole=='operations'
+               else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
               return false 
-               else if current_user.userrole=='sales'
+               else if current_user.userrole==VendorPortal::Application.config.sales
               return false
-               else if current_user.userrole=='designer'
+               else if current_user.userrole==VendorPortal::Application.config.designer
                return false  
-               else if current_user.userrole=='vendor'
+               else if current_user.userrole==VendorPortal::Application.config.vendor
                 return true      
                end #vendors
                end #designers
@@ -458,15 +458,15 @@ module TrackingsheetsHelper
           ###---------------------------------------MOQ--------------------------------------------### 
 
            def moq()
-             if current_user.userrole=='admin'
+             if current_user.userrole==VendorPortal::Application.config.admin
               return true      
-             else if current_user.userrole=='operations'
+             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
             return false
-             else if current_user.userrole=='sales'
+             else if current_user.userrole==VendorPortal::Application.config.sales
              return false
-             else if current_user.userrole=='designer'
+             else if current_user.userrole==VendorPortal::Application.config.designer
              return false
-             else if current_user.userrole=='vendor'
+             else if current_user.userrole==VendorPortal::Application.config.vendor
              return true      
              end #vendors
              end #designers
@@ -478,15 +478,15 @@ module TrackingsheetsHelper
            ###---------------------------------------1000 - 5000 PCS--------------------------------------------### 
 
             def thousandtofivethousandPCS()
-              if current_user.userrole=='admin'
+              if current_user.userrole==VendorPortal::Application.config.admin
                return true    
-              else if current_user.userrole=='operations'
+              else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
               return false  
-              else if current_user.userrole=='sales'
+              else if current_user.userrole==VendorPortal::Application.config.sales
               return false
-              else if current_user.userrole=='designer'
+              else if current_user.userrole==VendorPortal::Application.config.designer
               return false
-              else if current_user.userrole=='vendor'
+              else if current_user.userrole==VendorPortal::Application.config.vendor
                return true    
               end #vendors
               end #designers
@@ -498,15 +498,15 @@ module TrackingsheetsHelper
             ###---------------------------------------5000 - 10,000 PCS--------------------------------------------### 
 
              def fivethousandtotenthousandPCS()
-               if current_user.userrole=='admin'
+               if current_user.userrole==VendorPortal::Application.config.admin
                 return true    
-               else if current_user.userrole=='operations'
+               else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
                return false
-               else if current_user.userrole=='sales'
+               else if current_user.userrole==VendorPortal::Application.config.sales
                return false 
-               else if current_user.userrole=='designer'
+               else if current_user.userrole==VendorPortal::Application.config.designer
                return false
-               else if current_user.userrole=='vendor'
+               else if current_user.userrole==VendorPortal::Application.config.vendor
                 return true    
                end #vendors
                end #designers
@@ -522,15 +522,15 @@ module TrackingsheetsHelper
           ###---------------------------------------LDP Boat--------------------------------------------### 
 
            def ldpboat()
-             if current_user.userrole=='admin'
+             if current_user.userrole==VendorPortal::Application.config.admin
               return true    
-             else if current_user.userrole=='operations'
+             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
               return true    
-             else if current_user.userrole=='sales'
+             else if current_user.userrole==VendorPortal::Application.config.sales
              return false
-             else if current_user.userrole=='designer'
+             else if current_user.userrole==VendorPortal::Application.config.designer
              return false
-             else if current_user.userrole=='vendor'
+             else if current_user.userrole==VendorPortal::Application.config.vendor
             return false
              end #vendors
              end #designers
@@ -542,15 +542,15 @@ module TrackingsheetsHelper
            ###---------------------------------------LDP Air--------------------------------------------### 
 
             def ldpair()
-              if current_user.userrole=='admin'
+              if current_user.userrole==VendorPortal::Application.config.admin
               return true     
-              else if current_user.userrole=='operations'
+              else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
                return true     
-              else if current_user.userrole=='sales'
+              else if current_user.userrole==VendorPortal::Application.config.sales
               return false
-              else if current_user.userrole=='designer'
+              else if current_user.userrole==VendorPortal::Application.config.designer
               return false
-              else if current_user.userrole=='vendor'
+              else if current_user.userrole==VendorPortal::Application.config.vendor
               return false
               end #vendors
               end #designers
@@ -566,15 +566,15 @@ module TrackingsheetsHelper
           ###---------------------------------------Start Ship Date--------------------------------------------### 
 
            def startshipdate()
-             if current_user.userrole=='admin'
+             if current_user.userrole==VendorPortal::Application.config.admin
               return true      
-             else if current_user.userrole=='operations'
+             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
              return false
-             else if current_user.userrole=='sales'
+             else if current_user.userrole==VendorPortal::Application.config.sales
               return true    
-             else if current_user.userrole=='designer'
+             else if current_user.userrole==VendorPortal::Application.config.designer
             return false 
-             else if current_user.userrole=='vendor'
+             else if current_user.userrole==VendorPortal::Application.config.vendor
              return false
              end #vendors
              end #designers
@@ -586,15 +586,15 @@ module TrackingsheetsHelper
            ###---------------------------------------Order Due Date Via Boat--------------------------------------------### 
 
             def orderduedateviaboat()
-              if current_user.userrole=='admin'
+              if current_user.userrole==VendorPortal::Application.config.admin
                return true     
-              else if current_user.userrole=='operations'
+              else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
               return false 
-              else if current_user.userrole=='sales'
+              else if current_user.userrole==VendorPortal::Application.config.sales
                return true    
-              else if current_user.userrole=='designer'
+              else if current_user.userrole==VendorPortal::Application.config.designer
               return false  
-              else if current_user.userrole=='vendor'
+              else if current_user.userrole==VendorPortal::Application.config.vendor
               return false
               end #vendors
               end #designers
@@ -606,15 +606,15 @@ module TrackingsheetsHelper
             ###-----------------------------------------------------------------------------------### 
 
              def orderduedateviaair()
-               if current_user.userrole=='admin'
+               if current_user.userrole==VendorPortal::Application.config.admin
                 return true    
-               else if current_user.userrole=='operations'
+               else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
               return false
-               else if current_user.userrole=='sales'
+               else if current_user.userrole==VendorPortal::Application.config.sales
                 return true    
-               else if current_user.userrole=='designer'
+               else if current_user.userrole==VendorPortal::Application.config.designer
                return false  
-               else if current_user.userrole=='vendor'
+               else if current_user.userrole==VendorPortal::Application.config.vendor
               return false
                end #vendors
                end #designers
@@ -627,15 +627,15 @@ module TrackingsheetsHelper
 					 ###---------------------------------------Brand----------------------------------------------### 					
 
 						  def	brand()
-								 if current_user.userrole=='admin'
+								 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		            return false
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		              return true    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		             return false
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return false
 		             end #vendors
 		             end #designers
@@ -645,15 +645,15 @@ module TrackingsheetsHelper
 							end
 			 	 ###---------------------------------------Customername----------------------------------------------### 
 							def	customername()
-	 							if current_user.userrole=='admin'
+	 							if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return false
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		              return true    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		            return false
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		            return false
 		             end #vendors
 		             end #designers
@@ -663,15 +663,15 @@ module TrackingsheetsHelper
 							end
  			 	###---------------------------------------Customeraccountnumber----------------------------------------------### 
 							def	customeraccountnumber()
-	 							if current_user.userrole=='admin'
+	 							if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return false
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		              return true    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		            return false
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return false 
 		             end #vendors
 		             end #designers
@@ -681,15 +681,15 @@ module TrackingsheetsHelper
 							end
 			 	 ###---------------------------------------Projectnumber----------------------------------------------### 
 							def	projectnumber()
-	 							if current_user.userrole=='admin'
+	 							if current_user.userrole==VendorPortal::Application.config.admin
 		             return true    
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return false
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		              return true    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		            return false   
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return false
 		             end #vendors
 		             end #designers
@@ -699,15 +699,15 @@ module TrackingsheetsHelper
 							end
  			 	###---------------------------------------Customerstylenumber----------------------------------------------### 
 							def	customerstylenumber()
-	 							if current_user.userrole=='admin'
+	 							if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		            return true
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		              return false    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		             return true
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		            return false
 		             end #vendors
 		             end #designers
@@ -717,15 +717,15 @@ module TrackingsheetsHelper
 							end
  			 	###---------------------------------------Groupname----------------------------------------------### 
 							def	groupname()
-								 if current_user.userrole=='admin'
+								 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return true
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		              return false    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		             return false   
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return false
 		             end #vendors
 		             end #designers
@@ -735,15 +735,15 @@ module TrackingsheetsHelper
 							end
 			 	 ###--------------------------------------Productcategory----------------------------------------------### 
 							def	productcategory()
-	 							 if current_user.userrole=='admin'
+	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return true
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		              return false    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		             return true 
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return false
 		             end #vendors
 		             end #designers
@@ -753,15 +753,15 @@ module TrackingsheetsHelper
 							end
  			 	###---------------------------------------Designname----------------------------------------------### 
 							def	designname()
-	 							 if current_user.userrole=='admin'
+	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return true
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		              return false    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		             return true
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return false
 		             end #vendors
 		             end #designers
@@ -771,15 +771,15 @@ module TrackingsheetsHelper
 							end
  			 	###---------------------------------------Shape----------------------------------------------### 
 							def	shape()
-	 							 if current_user.userrole=='admin'
+	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return true
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		              return false    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		             return true
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return false
 		             end #vendors
 		             end #designers
@@ -789,15 +789,15 @@ module TrackingsheetsHelper
 							end
 			 	 ###---------------------------------------Size----------------------------------------------### 
 							def	size()
-	 							 if current_user.userrole=='admin'
+	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		            return true
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		              return false    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		            return true
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		            return false
 		             end #vendors
 		             end #designers
@@ -807,15 +807,15 @@ module TrackingsheetsHelper
 							end
  			 	###---------------------------------------Fiber----------------------------------------------### 
 							def	fiber()
-								 if current_user.userrole=='admin'
+								 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return true
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		             return false    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		             return true  
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return false
 		             end #vendors
 		             end #designers
@@ -825,15 +825,15 @@ module TrackingsheetsHelper
 							end
 			 	 ###---------------------------------------Construction----------------------------------------------### 
 							def	construction()
-	 							 if current_user.userrole=='admin'
+	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		             return true    
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return true
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		              return false    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		            return true
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return false
 		             end #vendors
 		             end #designers
@@ -843,15 +843,15 @@ module TrackingsheetsHelper
 							end
  			 	###---------------------------------------Fabrictype----------------------------------------------### 
 							def	fabrictype()
-	 							 if current_user.userrole=='admin'
+	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return true 
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		              return false    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		             return true 
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return false
 		             end #vendors
 		             end #designers
@@ -861,15 +861,15 @@ module TrackingsheetsHelper
 							end
  			 	###---------------------------------------Gauge End----------------------------------------------### 
 							def	gauge_end()
-	 							 if current_user.userrole=='admin'
+	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		            return true
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		              return false    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		             return true  
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return false
 		             end #vendors
 		             end #designers
@@ -879,15 +879,15 @@ module TrackingsheetsHelper
 							end
 			 	 ###---------------------------------------Finish----------------------------------------------### 
 							def	finish()
-	 if current_user.userrole=='admin'
+	 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return true 
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		              return false    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		             return true   
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return false
 		             end #vendors
 		             end #designers
@@ -897,15 +897,15 @@ module TrackingsheetsHelper
 							end
 			 	 ###---------------------------------------finishdetails----------------------------------------------### 
 							def	finishdetails()
-	 							 if current_user.userrole=='admin'
+	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true     
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return true
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		              return false    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		             return true   
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return false
 		             end #vendors
 		             end #designers
@@ -915,15 +915,15 @@ module TrackingsheetsHelper
 							end
  			 	###---------------------------------------colors----------------------------------------------### 
 							def	colors()
-								 if current_user.userrole=='admin'
+								 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true     
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return true
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		             return false    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		             return true   
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		            return false
 		             end #vendors
 		             end #designers
@@ -933,15 +933,15 @@ module TrackingsheetsHelper
 							end
 			 	 ###---------------------------------------hw_logo_trim----------------------------------------------### 
 							def	hw_logo_trim()
-	 							 if current_user.userrole=='admin'
+	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return false
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		              return true    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		             return false   
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		            return false
 		             end #vendors
 		             end #designers
@@ -951,15 +951,15 @@ module TrackingsheetsHelper
 							end
 			 	 ###---------------------------------------components----------------------------------------------### 
 							def	components()
-	 							 if current_user.userrole=='admin'
+	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true     
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return true
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		             return false    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		            return true
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return false
 		             end #vendors
 		             end #designers
@@ -971,15 +971,15 @@ module TrackingsheetsHelper
 
 			 	 ###---------------------------------------targetretailus----------------------------------------------### 
 							def	targetretailus()
-	 							 if current_user.userrole=='admin'
+	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return false
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		              return true    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		             return false  
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return false
 		             end #vendors
 		             end #designers
@@ -989,15 +989,15 @@ module TrackingsheetsHelper
 							end
 			 	 ###---------------------------------------targetretailcan----------------------------------------------### 
 							def	targetretailcan()
-	 							 if current_user.userrole=='admin'
+	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true      
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return false
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		              return true    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		            return false  
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return false
 		             end #vendors
 		             end #designers
@@ -1009,15 +1009,15 @@ module TrackingsheetsHelper
 
 			 	 ###---------------------------------------pricebasedonprojection----------------------------------------------### 
 							def	pricebasedonprojection()
-								 if current_user.userrole=='admin'
+								 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true      
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return false 
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		              return false    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		            return false   
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return true
 		             end #vendors
 		             end #designers
@@ -1027,15 +1027,15 @@ module TrackingsheetsHelper
 							end
  			 	###---------------------------------------additionalsurcharge----------------------------------------------### 
 							def	additionalsurcharge()
-								 if current_user.userrole=='admin'
+								 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true      
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return false
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		              return false    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		             return false
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		            return true
 		             end #vendors
 		             end #designers
@@ -1047,15 +1047,15 @@ module TrackingsheetsHelper
 
 			 	 ###---------------------------------------tenthousandtotwentythousandPCS----------------------------------------------### 
 							def	tenthousandtotwentythousandPCS()
-	 							 if current_user.userrole=='admin'
+	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return false
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		             return false    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		             return false  
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return true
 		             end #vendors
 		             end #designers
@@ -1065,15 +1065,15 @@ module TrackingsheetsHelper
 							end
 			 	 ###---------------------------------------twentythousandplusPCS----------------------------------------------### 
 							def	twentythousandplusPCS()
-	 							 if current_user.userrole=='admin'
+	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		             return true    
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return false
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		             return false    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		             return false   
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return true
 		             end #vendors
 		             end #designers
@@ -1085,15 +1085,15 @@ module TrackingsheetsHelper
 
  			 	###---------------------------------------xmill----------------------------------------------### 
 							def	xmill()
-	 						   if current_user.userrole=='admin'
+	 						   if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return false
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		              return false    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		             return false 
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return true
 		             end #vendors
 		             end #designers
@@ -1103,15 +1103,15 @@ module TrackingsheetsHelper
 							end
  			 	###---------------------------------------received----------------------------------------------### 
 							def	received()
-	 							 if current_user.userrole=='admin'
+	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		             return true    
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return true
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		              return false    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		             return false  
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return false
 		             end #vendors
 		             end #designers
@@ -1121,15 +1121,15 @@ module TrackingsheetsHelper
 							end
 			 	 ###---------------------------------------approved----------------------------------------------### 
 							def	approved()
-							   if current_user.userrole=='admin'
+							   if current_user.userrole==VendorPortal::Application.config.admin
 		              return true     
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return true
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		             return false    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		             return false   
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return false
 		             end #vendors
 		             end #designers
@@ -1140,15 +1140,15 @@ module TrackingsheetsHelper
 
 			 	 ###---------------------------------------daf2xmill----------------------------------------------### 
 							def	daf2xmill()
-	 							 if current_user.userrole=='admin'
+	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return false
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		              return false    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		             return false  
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return true
 		             end #vendors
 		             end #designers
@@ -1158,15 +1158,15 @@ module TrackingsheetsHelper
 							end
 			 	 ###---------------------------------------daf2received----------------------------------------------### 
 							def	daf2received()
-	 							 if current_user.userrole=='admin'
+	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return true
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		              return false    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		             return false  
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return false 
 		             end #vendors
 		             end #designers
@@ -1176,15 +1176,15 @@ module TrackingsheetsHelper
 							end
 			 	 ###---------------------------------------daf2approved----------------------------------------------### 
 							def	daf2approved()
-	 							 if current_user.userrole=='admin'
+	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return true 
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		             return false    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		             return false 
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return false
 		             end #vendors
 		             end #designers
@@ -1202,15 +1202,15 @@ module TrackingsheetsHelper
 							#VS DS tab values #new
 			 	###---------------------------------------sdsreceived----------------------------------------------### 
 							def	vsdsreceived()
-	 							 if current_user.userrole=='admin'
+	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return true
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		             return false    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		             return false   
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return false
 		             end #vendors
 		             end #designers
@@ -1221,15 +1221,15 @@ module TrackingsheetsHelper
 
 				  ###---------------------------------------vsdsapproved----------------------------------------------### 
 							def	vsdsapproved()
-	 							 if current_user.userrole=='admin'
+	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
-		             else if current_user.userrole=='operations'
+		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
 		             return true
-		             else if current_user.userrole=='sales'
+		             else if current_user.userrole==VendorPortal::Application.config.sales
 		             return false    
-		             else if current_user.userrole=='designer'
+		             else if current_user.userrole==VendorPortal::Application.config.designer
 		             return false
-		             else if current_user.userrole=='vendor'
+		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return false
 		             end #vendors
 		             end #designers
@@ -1240,15 +1240,15 @@ module TrackingsheetsHelper
               
   				  ###---------------------------------------proto_daf_number----------------------------------------------### 
   							def	proto_daf_number()
-  	 							 if current_user.userrole=='admin'
+  	 							 if current_user.userrole==VendorPortal::Application.config.admin
   		              return true    
-  		             else if current_user.userrole=='operations'
+  		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
   		             return true
-  		             else if current_user.userrole=='sales'
+  		             else if current_user.userrole==VendorPortal::Application.config.sales
   		             return false    
-  		             else if current_user.userrole=='designer'
+  		             else if current_user.userrole==VendorPortal::Application.config.designer
   		             return true
-  		             else if current_user.userrole=='vendor'
+  		             else if current_user.userrole==VendorPortal::Application.config.vendor
   		             return false
   		             end #vendors
   		             end #designers
@@ -1259,15 +1259,15 @@ module TrackingsheetsHelper
                 
       				  ###---------------------------------------FIRST DAF SOSS----------------------------------------------### 
       							def	soss()
-      	 							 if current_user.userrole=='admin'
+      	 							 if current_user.userrole==VendorPortal::Application.config.admin
       		              return true    
-      		             else if current_user.userrole=='operations'
+      		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
       		             return true
-      		             else if current_user.userrole=='sales'
+      		             else if current_user.userrole==VendorPortal::Application.config.sales
       		             return false    
-      		             else if current_user.userrole=='designer'
+      		             else if current_user.userrole==VendorPortal::Application.config.designer
       		             return false
-      		             else if current_user.userrole=='vendor'
+      		             else if current_user.userrole==VendorPortal::Application.config.vendor
       		             return false
       		             end #vendors
       		             end #designers
@@ -1278,15 +1278,15 @@ module TrackingsheetsHelper
                     
           				  ###---------------------------------------Development Samples----------------------------------------------### 
           							def	nmbrofdefsmplneeded()
-          	 							 if current_user.userrole=='admin'
+          	 							 if current_user.userrole==VendorPortal::Application.config.admin
           		              return true    
-          		             else if current_user.userrole=='operations'
+          		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
           		             return true
-          		             else if current_user.userrole=='sales'
+          		             else if current_user.userrole==VendorPortal::Application.config.sales
           		             return false    
-          		             else if current_user.userrole=='designer'
+          		             else if current_user.userrole==VendorPortal::Application.config.designer
           		             return false
-          		             else if current_user.userrole=='vendor'
+          		             else if current_user.userrole==VendorPortal::Application.config.vendor
           		             return false
           		             end #vendors
           		             end #designers
@@ -1297,15 +1297,15 @@ module TrackingsheetsHelper
                         
               				  ###-----------------------------Daf Issued----------------------------------------------### 
               							def	dafissued()
-              	 							 if current_user.userrole=='admin'
+              	 							 if current_user.userrole==VendorPortal::Application.config.admin
               		              return true    
-              		             else if current_user.userrole=='operations'
+              		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
               		             return true
-              		             else if current_user.userrole=='sales'
+              		             else if current_user.userrole==VendorPortal::Application.config.sales
               		             return false    
-              		             else if current_user.userrole=='designer'
+              		             else if current_user.userrole==VendorPortal::Application.config.designer
               		             return false
-              		             else if current_user.userrole=='vendor'
+              		             else if current_user.userrole==VendorPortal::Application.config.vendor
               		             return false
               		             end #vendors
               		             end #designers
@@ -1316,15 +1316,15 @@ module TrackingsheetsHelper
                             
                   				  ###-----------------------------Sample Due Date----------------------------------------------### 
                   							def	sampleduedate()
-                  	 							 if current_user.userrole=='admin'
+                  	 							 if current_user.userrole==VendorPortal::Application.config.admin
                   		              return true    
-                  		             else if current_user.userrole=='operations'
+                  		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
                   		             return true
-                  		             else if current_user.userrole=='sales'
+                  		             else if current_user.userrole==VendorPortal::Application.config.sales
                   		             return false    
-                  		             else if current_user.userrole=='designer'
+                  		             else if current_user.userrole==VendorPortal::Application.config.designer
                   		             return false
-                  		             else if current_user.userrole=='vendor'
+                  		             else if current_user.userrole==VendorPortal::Application.config.vendor
                   		             return false
                   		             end #vendors
                   		             end #designers
@@ -1336,15 +1336,15 @@ module TrackingsheetsHelper
                                 
                       				  ###-----------------------------Daf2 SOSS----------------------------------------------### 
                       							def	daf2soss()
-                      	 							 if current_user.userrole=='admin'
+                      	 							 if current_user.userrole==VendorPortal::Application.config.admin
                       		              return true    
-                      		             else if current_user.userrole=='operations'
+                      		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
                       		             return true
-                      		             else if current_user.userrole=='sales'
+                      		             else if current_user.userrole==VendorPortal::Application.config.sales
                       		             return false    
-                      		             else if current_user.userrole=='designer'
+                      		             else if current_user.userrole==VendorPortal::Application.config.designer
                       		             return false
-                      		             else if current_user.userrole=='vendor'
+                      		             else if current_user.userrole==VendorPortal::Application.config.vendor
                       		             return false
                       		             end #vendors
                       		             end #designers
@@ -1355,15 +1355,15 @@ module TrackingsheetsHelper
                                     
                           				  ###------------------------Development Samples----------------------------------------------### 
                           							def	daf2nmbrofdefsmplneeded()
-                          	 							 if current_user.userrole=='admin'
+                          	 							 if current_user.userrole==VendorPortal::Application.config.admin
                           		              return true    
-                          		             else if current_user.userrole=='operations'
+                          		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
                           		             return true
-                          		             else if current_user.userrole=='sales'
+                          		             else if current_user.userrole==VendorPortal::Application.config.sales
                           		             return false    
-                          		             else if current_user.userrole=='designer'
+                          		             else if current_user.userrole==VendorPortal::Application.config.designer
                           		             return false
-                          		             else if current_user.userrole=='vendor'
+                          		             else if current_user.userrole==VendorPortal::Application.config.vendor
                           		             return false
                           		             end #vendors
                           		             end #designers
@@ -1374,15 +1374,15 @@ module TrackingsheetsHelper
                                         
                               				  ###-----------------Development Samples----------------------------------------------### 
                               							def	daf2dafissued()
-                              	 							 if current_user.userrole=='admin'
+                              	 							 if current_user.userrole==VendorPortal::Application.config.admin
                               		              return true    
-                              		             else if current_user.userrole=='operations'
+                              		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
                               		             return true
-                              		             else if current_user.userrole=='sales'
+                              		             else if current_user.userrole==VendorPortal::Application.config.sales
                               		             return false    
-                              		             else if current_user.userrole=='designer'
+                              		             else if current_user.userrole==VendorPortal::Application.config.designer
                               		             return false
-                              		             else if current_user.userrole=='vendor'
+                              		             else if current_user.userrole==VendorPortal::Application.config.vendor
                               		             return false
                               		             end #vendors
                               		             end #designers
@@ -1393,15 +1393,15 @@ module TrackingsheetsHelper
                                             
                                   				  ###-----------------Development Samples----------------------------------------------### 
                                   							def	daf2sampleduedate()
-                                  	 							 if current_user.userrole=='admin'
+                                  	 							 if current_user.userrole==VendorPortal::Application.config.admin
                                   		              return true    
-                                  		             else if current_user.userrole=='operations'
+                                  		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
                                   		             return true
-                                  		             else if current_user.userrole=='sales'
+                                  		             else if current_user.userrole==VendorPortal::Application.config.sales
                                   		             return false    
-                                  		             else if current_user.userrole=='designer'
+                                  		             else if current_user.userrole==VendorPortal::Application.config.designer
                                   		             return false
-                                  		             else if current_user.userrole=='vendor'
+                                  		             else if current_user.userrole==VendorPortal::Application.config.vendor
                                   		             return false
                                   		             end #vendors
                                   		             end #designers
