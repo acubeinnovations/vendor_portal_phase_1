@@ -120,8 +120,7 @@ class Trackingsheet
 	belongs_to :processmaster
 	belongs_to :style
   
-  has_many :trackingsheetlog
-
+  has_many :trackingsheetlogs, :dependent => :destroy
 	#validates_presence_of :comments, :on => :update
 	
 end

@@ -60,7 +60,7 @@ class ProcessmastersController < ApplicationController
 
   # PATCH/PUT /processmasters/1
   # PATCH/PUT /processmasters/1.json
-  def update;
+  def update
 		@processmaster = Processmaster.find(params[:id])
 		@old_styles=@processmaster.styles.collect(&:id)
 		@processmaster.styles.clear
