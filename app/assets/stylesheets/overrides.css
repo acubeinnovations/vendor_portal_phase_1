@@ -121,3 +121,7 @@ table{
     max-height: calc(100vh - 210px);
     overflow-y: auto;
 }
+
+.mybest{
+	float:left !important;
+}

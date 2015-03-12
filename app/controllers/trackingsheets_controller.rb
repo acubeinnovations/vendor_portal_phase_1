@@ -95,7 +95,7 @@ end
     
     
    @commentlog=Commentlog.where('trackingsheet_id'=>params[:id],"sessionid"=>session[:session_id]) 
-   
+   if trackingsheet_params.has_key?('comments')
    
 if    @commentlog.count== 0
   
@@ -117,7 +117,7 @@ else
       @commentlogobj.update_attributes(:trackingsheet_id=>params[:id],:useremail=>current_user.email,:sessionid=>session[:session_id],:updated_at=>DateTime.now,:comments=>@trackingsheet.comments)
       break
   end    
-      
+    end  
       
 end  
 ### ---------------------------------------  newly added ends
@@ -153,12 +153,14 @@ end
     end
   end
   
-	def history_logs
-			@historylogs = Trackingsheetlog.find(tslog.id).versions
-			respond_to do |format|
-				format.html 
-		 		format.js
-		  end
+	def get_history
+			@historylogs = Trackingsheetlog.where('trackingsheet_id'=>params[:trackingsheetid])
+			render json: Hash[@historylogs.map { |v| [ v[:updated_at].to_s, v[:useremail].to_s ] } ]
+	end
+  
+	def get_comments
+			@commentlogs = Commentlog.where('trackingsheet_id'=>params[:trackingsheetid])
+			render json: @commentlogs
 	end
   
   

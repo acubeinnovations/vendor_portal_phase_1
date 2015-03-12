@@ -1,7 +1,0 @@
-<% model_class='trackingsheetlog' %>
-<%@trackingsheetlog = Trackingsheetlog.order('id DESC') %>
-	<% @trackingsheetlog.each do |trkingsheetlog|%>
-		<div style="float:left"> Updated by : <%=trkingsheetlog.useremail%> </div> 
-		<div style="float:left"> &nbsp;&nbsp;at : <%=trkingsheetlog.updated_at.strftime("%d %b %Y,%T")%> </div> <br>
-		<hr>
-	<% end %> 
