@@ -88,4 +88,36 @@ margin-top: 10px;
 .trackingsheet_form{
 	margin-top:-30px;
 }
+table th{
+  background-color: #999 !important
+}
+table th {
+	border:1px solid #000 !important;
+	color:#000 !important;
+}
+.table-bordered td{
+	border:1px solid #000 !important;
+}
+.widget-title{
+	border-top:1px solid #000 !important;
+	border-left:1px solid #000 !important;
+	border-right:1px solid #000 !important;
+	border-bottom:1px solid #000 !important;
+}
 
+table{
+    border: 1px solid black;
+    
+    
+}
+
+.tbuniformwidth th, td {
+    border: 1px solid black;
+    overflow: hidden;
+    width: 12000px;
+}
+
+.modal-body {
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
+}

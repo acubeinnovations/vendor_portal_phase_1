@@ -152,6 +152,16 @@ end
       format.json { head :no_content }
     end
   end
+  
+	def history_logs
+			@historylogs = Trackingsheetlog.find(tslog.id).versions
+			respond_to do |format|
+				format.html 
+		 		format.js
+		  end
+	end
+  
+  
 	def vendor_versions
 			@vendorversions = Trackingsheet.find(params[:tsid]).versions
 			respond_to do |format|

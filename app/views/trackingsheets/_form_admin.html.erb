@@ -91,13 +91,10 @@
 																	<table  class="table table-bordered" style="width:20%;">
 																	<thead>
 																	<tr>
-																	<th style="height:21px;"></th>
-																	<th></th>
-																	<th></th>
-																	<th></th>
+																	<th colspan="4" style="height:21px;width:50%"></th>
 																	</tr>
 																	<tr>
-																	<th style="height:121px;">ACTIONS</th>
+																	<th>ACTIONS</th>
 																	<th>STYLE #</th>
 																	<th>STYLE NAME</th>
 																	<th>IMAGE</th>
@@ -110,7 +107,7 @@
 																	<tbody>
 																	<tr>
 																	<td style="text-align:center;"><%= link_to "Comments", url_for(params),:class => 'btn btn-warning btn-xs' %> <br> <%= link_to " History ", url_for(params),:class => 'btn btn-warning btn-xs' %> </td>
-																	<td><%=best_in_place_if customerstylenumber,  trackingsheet, :customerstylenumber, :as => :input,:nil => "Click to add content!"%></td>
+																	<td><%=trackingsheet.style.stylecode %></td>
 																	<td><%=trackingsheet.style.stylename %></td>
 																	<td><%= image_tag "/vendorportal"+trackingsheet.style.image.url(:small)  %></td>
 																	</tr>
@@ -124,67 +121,14 @@
 
 																	<!-- Newly Added Ends-->
 																														
-									<table class="table table-bordered"  style="margin-left: 22%;">
+									<table class="table table-bordered tbuniformwidth"  style="margin-left: 22%; table-layout: fixed;">
 											<thead>
 												<tr>
 													
-													<th></th>
-													<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th colspan="7"> 1st DAF</th>
-												<th colspan="7"> 2nd DAF</th>
-												<th></th>
-												<th></th>
+												<th colspan="51"></th>
+												<th colspan="7"  style="width:1400px; !important"> 1st DAF</th>
+												<th colspan="7" style="width:1400px; !important"> 2nd DAF</th>
+												<th colspan="2" style="width:400px; !important"> </th>
 												
 												</tr>											
 											
@@ -240,7 +184,7 @@
 										<th>PRODUCT LEAD TIME</th>
 										<th>SALES PROCEEDS TO SAMPLE REQUEST DATE</th>
 										<th>PROTO DUE BACK FROM VENDOR</th>
-										<th>DAF TO VENDOR DATE</th>
+										<th style="width:400px;">DAF TO VENDOR DATE</th>
 										
 										<th> S/0 OR S/S</th>
 										<th># OF DEV. SAMPLES NEEDED</th>
