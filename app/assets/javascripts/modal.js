@@ -9,6 +9,8 @@ $(document).keyup(function(e) {
 
 $(window).load(function(){
 	
+	
+	
 	$('#handle').bind('mousewheel', function(event, delta) { 
         val = this.scrollLeft - (delta * 50); 
         jQuery(this).stop().animate({ 
@@ -17,6 +19,15 @@ $(window).load(function(){
         event.preventDefault(); 
     }); 
 	
+
+
+
+
+	
+
+
+
+
 	
 	
 	$('#ts').find('table').find('td').each(function() {
@@ -35,6 +46,8 @@ $(window).load(function(){
 	$('#ts').find('table').find('td').each(function() {
 		max = Math.max($(this).height(), max);
 	}).height(max);
+	
+	
 
 	
 

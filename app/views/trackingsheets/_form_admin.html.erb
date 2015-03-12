@@ -8,7 +8,47 @@
   
 
 								%>
+								<div class="container-fluid"> 
+							           	<div class="row-fluid">
 
+													<div class="span12">
+														<div class="widget-box">
+															<div class="widget-title">
+																<span class="icon">
+																	<i class="icon-info-sign"></i>
+																</span>
+																<h5>General Data</h5>
+															</div>
+															<div class="widget-content nopadding">
+																<table class="table table-bordered">
+																	<th>Division</th>
+																	
+																	<th>Season</th>
+																	<th>Year</th>
+																	<th>Market</th>
+																	<% model_class='trackingsheet' %>
+																		<% exist=false%>
+																		<% @a=1%>
+																		<% trackingsheets.each do |trackingsheet|%>
+																			<% break if exist==true %>
+																		<% 	if current_user.userrole==VendorPortal::Application.config.admin %>
+																			<% exist=true%>
+																		<tbody>
+																			<td style="text-align:center;"><%=trackingsheet.style.division.name%></td>
+																			<td style="text-align:center;"><%=trackingsheet.style.season%></td>
+																			<td style="text-align:center;"></td>
+																			<td style="text-align:center;"><%=trackingsheet.style.market%></td>
+																	 </tbody>
+																	<% @a=@a+1%>
+																	<% end %>
+																	<% end %>		
+																					
+																</table>
+															</div>
+														</div>
+													</div>
+								</div>
+								</div>
 
 
 								<div class="container-fluid">
@@ -44,19 +84,63 @@
 				<!-- Scroll Tabs Starts-->
 
                     <div class="item active">	
-						
-                        
-                         
+													 <div id='ts'>
+																	<div style="position: absolute;width: 200px;">
+																	<% model_class='trackingsheet' %>
+																	<% @a=1%>
+																	<table  class="table table-bordered" style="width:20%;">
+																	<thead>
+																	<tr>
+																	<th style="height:21px;"></th>
+																	<th></th>
+																	<th></th>
+																	<th></th>
+																	</tr>
+																	<tr>
+																	<th style="height:121px;">ACTIONS</th>
+																	<th>STYLE #</th>
+																	<th>STYLE NAME</th>
+																	<th>IMAGE</th>
+																	</tr>
+																	</thead>
+																	<% trackingsheets.each do |trackingsheet|%>
+																	<% 	if current_user.userrole==VendorPortal::Application.config.admin %>
+																	<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
+																	
+																	<tbody>
+																	<tr>
+																	<td style="text-align:center;"><%= link_to "Comments", url_for(params),:class => 'btn btn-warning btn-xs' %> <br> <%= link_to " History ", url_for(params),:class => 'btn btn-warning btn-xs' %> </td>
+																	<td><%=trackingsheet.style.stylecode %></td>
+																	<td><%=trackingsheet.style.stylename %></td>
+																	<td><%= image_tag "/vendorportal"+trackingsheet.style.image.url(:small)  %></td>
+																	</tr>
+																	<% @a=@a+1%>
+																	<% end %>
+																	<% end %>	
+																	<% end %>
+																	</tbody>
+																	</table>
+																	</div>
 
-										<div class="widget-content nopadding">
-									<table class="table table-bordered">
-										<th>ACTIONS</th>
-										<th>ECHO DIVISION</th>
-										<th>DIVISION</th>
-										<th>SEASON</th>
-										<th>YEAR</th>
-										<th>MARKET</th>
-										<th>IMAGES</th>
+																	<!-- Newly Added Ends-->
+																														
+									<table class="table table-bordered"  style="margin-left: 22%;">
+											<thead>
+												<tr>
+													
+
+												<th colspan="51"></th>
+												<th colspan="7"> 1st DAF</th>
+												<th colspan="7"> 2nd DAF</th>
+												<th colspan="2"></th>
+												
+												
+												</tr>											
+											
+											
+											
+									<tr>
+										<th>VENDOR</th>
 										<th>FACTORY</th>
 										<th>SUBCONTRACTOR</th>
 										<th>BRAND</th>
@@ -66,7 +150,6 @@
 										<th>REFERENCE STYLE</th>
 										<th>CUSTOMER STYLE #</th>
 										<th>PROTO # / DAF #</th>
-										<th>STYLE #</th>
 										<th>DESIGNER</th>
 										<th>GROUP NAME</th>
 										<th>PRODUCT CATEGORY</th>
@@ -107,50 +190,46 @@
 										<th>SALES PROCEEDS TO SAMPLE REQUEST DATE</th>
 										<th>PROTO DUE BACK FROM VENDOR</th>
 										<th>DAF TO VENDOR DATE</th>
-										<th> S/0 OR S/S (1st DAF)</th>
-										<th># OF DEV. SAMPLES NEEDED(1st DAF)</th>
-										<th>DAF ISSUED (1st DAF)</th>
-										<th>SAMPLE DUE DATE (1st DAF)</th>
-										<th>X-MILL (1st DAF)</th>
-										<th>RECEIVED (1st DAF)</th>
-										<th>APPROVED (1st DAF)</th>
-										<th>S/0 OR S/S (2nd DAF)</th>
-										<th># OF DEV. SAMPLES NEEDED(2nd DAF)</th>
-										<th>DAF ISSUED (2nd DAF)</th>
-										<th>SAMPLE DUE DATE (2nd DAF)</th>
-										<th>X-MILL (2nd DAF)</th>
-										<th>RECEIVED (2nd DAF)</th>
-										<th>APPROVED (2nd DAF)</th>
+										
+										<th> S/0 OR S/S</th>
+										<th># OF DEV. SAMPLES NEEDED</th>
+										<th>DAF ISSUED </th>
+										<th>SAMPLE DUE DATE</th>
+										<th>X-MILL</th>
+										<th>RECEIVED </th>
+										<th>APPROVED </th>
+										<th> S/0 OR S/S</th>
+										<th># OF DEV. SAMPLES NEEDED</th>
+										<th>DAF ISSUED </th>
+										<th>SAMPLE DUE DATE</th>
+										<th>X-MILL</th>
+										<th>RECEIVED </th>
+										<th>APPROVED </th>
 										<th>RECEIVED (VSDS)</th>
 										<th>APPROVED (VSDS)</th>
 										<th>RTL MU</th>
 										<th>MK-UP</th>
+										</tr>
+										</thead>
 										
 	<% model_class='trackingsheet' %>
 	<% @a=1%>
 	<% trackingsheets.each do |trackingsheet|%>
 	
-	<% 	if current_user.userrole=='admin' %>
+	<% 	if current_user.userrole==VendorPortal::Application.config.admin %>
 	<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 														
 <tbody>			
 <tr>
-<td style="text-align:center;"><%= link_to "Comments", url_for(params),:class => 'btn btn-warning btn-xs' %> <br> <%= link_to " History ", url_for(params),:class => 'btn btn-warning btn-xs' %> </td>
-<td style="text-align:center;"><%=trackingsheet.style.division.name%></td>
-<td style="text-align:center;"><%=trackingsheet.style.division.name%></td>
-<td style="text-align:center;"><%=trackingsheet.style.season%></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"><%=trackingsheet.style.market%></td>
-<td style="text-align:center;"><%= image_tag "/vendorportal"+trackingsheet.style.image.url(:small)  %></td>	
-<td class="bestin" style="text-align:center;">
+<td style="text-align:center;"><% if !trackingsheet.vendor.blank? %><%= trackingsheet.vendor %><%end%></td><td class="bestin" style="text-align:center;">
 	<% if	!trackingsheet.vendor.blank? %>
-				<% if current_user.userrole=='vendor'  %>
+				<% if current_user.userrole==VendorPortal::Application.config.vendor  %>
  					<%=best_in_place_if factory,  trackingsheet, :factory, :as => :input,:nil => "Click to add content!",:html_attrs => {:tabindex => 1,:class=>'bs-tab'}%>
  				<% else  %>
  					<%=best_in_place_if false,  trackingsheet, :factory, :as => :input,:nil => "Click to add content!",:html_attrs => {:tabindex => 1,:class=>'bs-tab'} %>
  				<% end %>
  	<% else %>
- 				<% if current_user.userrole!='vendor' %>
+ 				<% if current_user.userrole!=VendorPortal::Application.config.vendor %>
  					<%=best_in_place_if factory,  trackingsheet, :factory, :as => :input,:nil => "Click to add content!",:html_attrs => {:tabindex => 1,:class=>'bs-tab'} %>
  													
  	<% end %>
@@ -171,9 +250,7 @@
 <td class="bestin" style="text-align:center;">
 	<%=best_in_place_if projectnumber,  trackingsheet, :projectnumber, :as => :input,:nil => "Click to add content!"%>
 </td>
-<td style="text-align:center;">
-	<%=trackingsheet.style.stylename %>
-</td>
+
 <td class="bestin" style="text-align:center;">
 	<%=best_in_place_if customerstylenumber,  trackingsheet, :customerstylenumber, :as => :input,:nil => "Click to add content!"%>
 </td>

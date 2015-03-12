@@ -77,7 +77,7 @@
 									
 																					  
 																				</div>	
-								<div style="width:100%; !important;height:500px;overflow:scroll" id="handle">
+								<div style="width:100%; !important;height:500px;overflow:scroll"  id="handle">
 
 
 
@@ -91,19 +91,25 @@
 																	<div style="position: absolute;width: 200px;">
 																	<% model_class='trackingsheet' %>
 																	<% @a=1%>
-																	<table  class="table table-bordered" style="width:20%;">
+															<table  class="table table-bordered " style="width:20%;">
+																		
+																		
+																	
+																		
+																		
+																		
+																		
 																	<thead>
 																	<tr>
-																	<th style="height:21px;"></th>
-																	<th></th>
-																	<th></th>
-																	<th></th>
+																		
+																	<th colspan="4" style="height:21px;width:50%"></th>
+																	
 																	</tr>
 																	<tr>
-																	<th style="height:121px;">ACTIONS</th>
-																	<th>STYLE #</th>
-																	<th>STYLE NAME</th>
-																	<th>IMAGE</th>
+																	<th style="height:121px; width:50%;">ACTIONS</th>
+																	<th style="width:50%">STYLE #</th>
+																	<th style="width:50%">STYLE NAME</th>
+																	<th style="width:50%">IMAGE</th>
 																	</tr>
 																	</thead>
 																	<% trackingsheets.each do |trackingsheet|%>
@@ -114,10 +120,23 @@
 																	<tr>
 																	<td style="text-align:center;">
 																		
+<%= link_to 'History','#modal-view-vendor-details',:class=>'btn btn-warning float-right','data-toggle':"modal",:data => { :user_id=> trackingsheet.id, :trackingsheetid => trackingsheet.id } %>
+
+
+
 												
 <%=best_in_place_if comments,  trackingsheet, :comments, :as => :input,:nil => "Click to add content!"%>																
 							<%= link_to "Comments", url_for(params),:class => 'btn btn-warning btn-xs' %> <br> 
-							<%= link_to " History ", url_for(params),:class => 'btn btn-warning btn-xs' %> </td>
+							
+							
+							
+<%= link_to 'Comments','#modal-comments',:class=>'btn btn-warning float-right','data-toggle':"modal",:data => { :user_id=> trackingsheet.id, :trackingsheetid => trackingsheet.id } %>							
+							
+							
+							
+							
+							
+							 </td>
 																	<td><%=best_in_place_if customerstylenumber,  trackingsheet, :customerstylenumber, :as => :input,:nil => "Click to add content!"%></td>
 																	<td><%=trackingsheet.style.stylename %></td>
 																	<td><%= image_tag "/vendorportal"+trackingsheet.style.image.url(:small)  %></td>
@@ -131,69 +150,99 @@
 																	</div>
 
 																	<!-- Newly Added Ends-->
-																																										                	
+ <!--modal starts-->
+ 
+ <div class="modal vendor-modal hide" id="modal-view-vendor-details">
+                                          <div class="modal-header">
+                                             <button type="button" id="close-modal" class="close" data-dismiss="modal">×</button>
+                                             <h3>History  &nbsp;&nbsp;</h3>
+											 
+                                         </div>
+                                         <div class="modal-body">
+			           
+				            
+                </div>
+                </div>
+         
+    
+ <div id="overlay"></div>
+ 
+ <!-- modal ends-->
+ 
+ 
+ 
+ 
+ 
+ <!-- test modal starts-->
+ 
+ <!-- test modal ends-->
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <!--modal comments starts-->
+ 
+ <div class="modal comments hide" id="modal-comments">
+                                          <div class="modal-header">
+                                             <button type="button" id="close-modal" class="close" data-dismiss="modal">×</button>
+                                             <h3>Comments   &nbsp;&nbsp;</h3>
+                                         </div>
+                                         <div class="modal-body">
+			
+			
+			
+			<!-- best in place -->
+			
+			<% trackingsheets.each do |trackingsheet|%>
+			<% if current_user.id.in?(trackingsheet.style.user_ids) %>
+			<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
+			<br><br>
+			
+		 <div style="float:left;,color: #008000;display: inline-block;background-color: #DAF2D0;height: 30px;padding: 6px 90px 1px 9px;">Add Comment :<%=best_in_place_if comments,  trackingsheet, :comments, :as => :textarea,:nil => "Click to add content!"%></div><br>		
+			
+			
+			<% @a=@a+1%>
+			<% end %>
+			<% end %>	
+			<% end %>
+			
+			
+			
+			
+			
+			<% model_class='commentlog' %>
+			<%@commentlog = Commentlog.order('id DESC') %>
+				<% @commentlog.each do |commnttlog|%>
+				
+				<br>
+				<div style="float:left">  Comment : <%=commnttlog.comments%> </div> <br>
+				<div style="float:left"> Updated by : <%=commnttlog.useremail%> </div> 
+				<div style="float:left"> &nbsp;&nbsp;&nbsp;&nbsp;at : <%=commnttlog.updated_at.strftime("%d %b %Y,%T")%> </div> <br>
+				<hr>
+				<% end %>           
+				            
+                </div>
+                </div>
+         
+    
+ <div id="overlay"></div>
+ 
+ <!-- modal comments ends-->
+ 																														
 											
 														
-										<table class="table table-bordered"  style="margin-left: 20%;">
+										<table class="table table-bordered tbuniformwidth"  style="margin-left: 20%; table-layout: fixed;">
 											<thead>
 												<tr>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
+												<th colspan="49"></th>
 												
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th colspan="7"> 1st DAF</th>
-												<th colspan="7"> 2nd DAF</th>
-												<th></th>
-												<th></th>
-												<th></th>
-												<th></th>
+												<th colspan="7" style="width:1400px; !important"> 1st DAF</th>
+												<th colspan="7" style="width:1400px; !important"> 2nd DAF</th>
+												<th colspan="5" style="width:1200px; !important"> </th>
 												</tr>
 													 <tr>
 												<th>VENDOR</th>
@@ -245,7 +294,7 @@
 												<th>PRODUCT LEAD TIME</th>
 												<th>SALES PROCEEDS TO SAMPLE REQUEST DATE</th>
 												<th>PROTO DUE BACK FROM VENDOR</th>
-												<th>DAF TO VENDOR DATE</th>
+												<th style="width:400px;">DAF TO VENDOR DATE</th>
 												
 												<th> S/0 OR S/S</th>
 												<th># OF DEV. SAMPLES NEEDED</th>
