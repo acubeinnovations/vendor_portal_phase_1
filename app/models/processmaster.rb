@@ -21,7 +21,7 @@ class Processmaster
 	#has_and_belongs_to_many :users 
 	#accepts_nested_attributes_for :users, allow_destroy: true#, reject_if: :all_blank
  	has_and_belongs_to_many :styles 
-	has_many :trackingsheets 
+	has_many :trackingsheets, :dependent => :destroy
 	accepts_nested_attributes_for :styles,:trackingsheets,allow_destroy: true#, reject_if: :all_blank
   belongs_to :division
   

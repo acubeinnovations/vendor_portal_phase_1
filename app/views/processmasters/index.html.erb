@@ -15,7 +15,7 @@
 							<th>Market</th>
 							<th>Created Date</th>
 							<% allowed_users=[VendorPortal::Application.config.admin,VendorPortal::Application.config.operationadmin]%>
-							<th colspan="<% if current_user.userrole==VendorPortal::Application.config.admin %>3<% else if current_user.userrole==VendorPortal::Application.config.operationadmin %>2<% else if current_user.userrole!=VendorPortal::Application.config.admin || current_user.userrole!=VendorPortal::Application.config.operationadmin  %> 1<% end %><% end %><% end %>">Actions</th>
+							<th colspan="<% if current_user.userrole==VendorPortal::Application.config.admin %>3<% else if current_user.userrole==VendorPortal::Application.config.operationadmin %>3<% else if current_user.userrole!=VendorPortal::Application.config.admin || current_user.userrole!=VendorPortal::Application.config.operationadmin  %> 1<% end %><% end %><% end %>">Actions</th>
 						</tr>
 						</thead>
 						<tbody>
