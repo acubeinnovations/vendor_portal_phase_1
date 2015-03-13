@@ -303,7 +303,7 @@
 													<%= link_to "Link To Tab", url_for(params),:class => 'btn btn-warning btn-xs' %>
 												</td>
 												<td style="text-align:center;">
-													<%= link_to "Link To Tab", url_for(params),:class => 'btn btn-warning btn-xs' %>
+													<%= link_to "Link To Tab", url_for(params),:class => 'btn btn-warning btn-xs components',:trackingsheet_id=>trackingsheet.id %>
 												</td>
 												<td class="bestin" style="text-align:center;">
 													<%=best_in_place_if projectedunits,  trackingsheet, :projectedunits, :as => :input,:nil => "Click to add content!"%>

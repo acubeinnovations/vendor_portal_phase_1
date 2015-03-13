@@ -121,6 +121,7 @@ class Trackingsheet
 	belongs_to :style
   
   has_many :trackingsheetlogs, :dependent => :destroy
+	has_many :components, :dependent => :destroy
 	#validates_presence_of :comments, :on => :update
 	
 end
