@@ -1,0 +1,23 @@
+<%= simple_form_for(@component) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :fiber %>
+    <%= f.input :countryoforgin %>
+    <%= f.input :customer %>
+    <%= f.input :mill %>
+    <%= f.input :code %>
+    <%= f.input :hangtag2 %>
+    <%= f.input :hangtag3 %>
+    <%= f.input :mainlabel %>
+    <%= f.input :carecontentlabel %>
+    <%= f.input :upcsticker %>
+    <%= f.input :glovehanger %>
+    <%= f.input :hatjhook %>
+    <%= f.input :sizelabel %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

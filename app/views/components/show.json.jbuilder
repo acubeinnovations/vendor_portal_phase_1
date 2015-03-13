@@ -1,0 +1,1 @@
+json.extract! @component, :id, :fiber, :countryoforgin, :customer, :mill, :code, :hangtag2, :hangtag3, :mainlabel, :carecontentlabel, :upcsticker, :glovehanger, :hatjhook, :sizelabel, :created_at, :updated_at

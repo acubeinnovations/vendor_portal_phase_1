@@ -1,0 +1,65 @@
+
+<%= simple_form_for(@component) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :trackingsheet_id %>
+    
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Components</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fiber</th>
+      <th>Countryoforgin</th>
+      <th>Customer</th>
+      <th>Mill</th>
+      <th>Code</th>
+      <th>Hangtag2</th>
+      <th>Hangtag3</th>
+      <th>Mainlabel</th>
+      <th>Carecontentlabel</th>
+      <th>Upcsticker</th>
+      <th>Glovehanger</th>
+      <th>Hatjhook</th>
+      <th>Sizelabel</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @components.each do |component| %>
+      <tr>
+        <td><%= component.fiber %></td>
+        <td><%= component.countryoforgin %></td>
+        <td><%= component.customer %></td>
+        <td><%= component.mill %></td>
+        <td><%= component.code %></td>
+        <td><%= component.hangtag2 %></td>
+        <td><%= component.hangtag3 %></td>
+        <td><%= component.mainlabel %></td>
+        <td><%= component.carecontentlabel %></td>
+        <td><%= component.upcsticker %></td>
+        <td><%= component.glovehanger %></td>
+        <td><%= component.hatjhook %></td>
+        <td><%= component.sizelabel %></td>
+        <td><%= link_to 'Show', component %></td>
+        <td><%= link_to 'Edit', edit_component_path(component) %></td>
+        <td><%= link_to 'Destroy', component, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Component', new_component_path %>
