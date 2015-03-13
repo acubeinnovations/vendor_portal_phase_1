@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fiber: MyString
+  countryoforgin: MyString
+  customer: MyString
+  mill: MyString
+  code: MyString
+  hangtag2: MyString
+  hangtag3: MyString
+  mainlabel: MyString
+  carecontentlabel: MyString
+  upcsticker: MyString
+  glovehanger: MyString
+  hatjhook: MyString
+  sizelabel: MyString
+
+two:
+  fiber: MyString
+  countryoforgin: MyString
+  customer: MyString
+  mill: MyString
+  code: MyString
+  hangtag2: MyString
+  hangtag3: MyString
+  mainlabel: MyString
+  carecontentlabel: MyString
+  upcsticker: MyString
+  glovehanger: MyString
+  hatjhook: MyString
+  sizelabel: MyString
