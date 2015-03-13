@@ -159,7 +159,7 @@ end
 	end
   
 	def get_comments
-			@commentlogs = Commentlog.where('trackingsheet_id'=>params[:trackingsheetid])
+			@commentlogs = Commentlog.order("id DESC").where('trackingsheet_id'=>params[:trackingsheetid])
 			render json: @commentlogs
 	end
   
