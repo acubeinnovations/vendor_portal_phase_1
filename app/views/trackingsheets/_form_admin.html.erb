@@ -106,7 +106,19 @@
 																	
 																	<tbody>
 																	<tr>
-																	<td style="text-align:center;"><%= link_to "Comments", url_for(params),:class => 'btn btn-warning btn-xs' %> <br> <%= link_to " History ", url_for(params),:class => 'btn btn-warning btn-xs' %> </td>
+																	<td style="text-align:center;">
+																	
+					<div class="comment-container">									
+				<%= link_to "Comments",'#modal-history',:class => 'btn btn-warning btn-xs comments', 'data-toggle':"modal",:trackingsheetid => trackingsheet.id %> 
+				<div class='hide-me '>
+				<div style="float:left">Add Comments &nbsp;</div>
+				<%=best_in_place  trackingsheet, :comments, :as => :textarea,:nil => "Click to add comment!", :class=>"mybest", :style=>"width:150px;"%>
+				
+				</div>
+					<div>	<br> 	
+		<%= link_to 'History','#modal-history',:class=>'btn btn-warning float-right history',:style=>'width:68px;','data-toggle':"modal", :trackingsheetid => trackingsheet.id %> 																						
+																	
+																	 </td>
 																	<td><%=trackingsheet.style.stylecode %></td>
 																	<td><%=trackingsheet.style.stylename %></td>
 																	<td><%= image_tag "/vendorportal"+trackingsheet.style.image.url(:small)  %></td>
@@ -120,6 +132,26 @@
 																	</div>
 
 																	<!-- Newly Added Ends-->
+																	
+ <!--modal starts--> 
+  
+ <div class="modal history-modal hide" id="modal-history"> 
+                                          <div class="modal-header"> 
+                                             <button type="button" id="close-modal" class="close" data-dismiss="modal">×</button> 
+                                             <h3 class="modal_head"></h3> 
+											  
+                                         </div> 
+                                         <div class="modal-body"> 
+			            					
+				             
+						                </div> 
+</div> 
+          
+     
+ <div id="overlay"></div> 
+  
+ <!-- modal ends--> 																	
+																	
 																														
 									<table class="table table-bordered tbuniformwidth"  style="margin-left: 22%; table-layout: fixed;">
 											<thead>
