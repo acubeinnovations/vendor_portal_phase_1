@@ -1,10 +1,12 @@
 class ComponentsController < ApplicationController
+	layout 'vendor_portal_null'
   before_action :set_component, only: [:show, :edit, :update, :destroy]
 
   # GET /components
   # GET /components.json
   def index
-    @components = Component.all
+    @components = Component.all('trackingsheet'=>params[:trackingsheet_id])
+		@component = Component.new
   end
 
   # GET /components/1
@@ -28,11 +30,22 @@ class ComponentsController < ApplicationController
 
     respond_to do |format|
       if @component.save
-        format.html { redirect_to @component, notice: 'Component was successfully created.' }
+        format.html { redirect_to components_path,:trackingsheet_id=>component_params[:trackingsheet], notice: 'Component was successfully created.' }
         format.json { render :show, status: :created, location: @component }
       else
         format.html { render :new }
         format.json { render json: @component.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+	def ajaxcreate_components
+    @component = Component.new(:trackingsheet=>params[:trackingsheet])
+
+    respond_to do |format|
+      if @component.save
+        format.html { redirect_to components_path+"?".to_s+"trackingsheet_id=".to_s+params[:trackingsheet], notice: 'Component was successfully created.' }
+        format.json { render :show, status: :created, location: @component }
       end
     end
   end

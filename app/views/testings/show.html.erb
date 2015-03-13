@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Requiredtests:</strong>
+  <%= @testing.requiredtests %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @testing.name %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @testing.customer %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @testing.description %>
+</p>
+
+<p>
+  <strong>Supplier:</strong>
+  <%= @testing.supplier %>
+</p>
+
+<p>
+  <strong>Supplierrefferenceno:</strong>
+  <%= @testing.supplierrefferenceno %>
+</p>
+
+<p>
+  <strong>Leadtime:</strong>
+  <%= @testing.leadtime %>
+</p>
+
+<p>
+  <strong>Testdate:</strong>
+  <%= @testing.testdate %>
+</p>
+
+<p>
+  <strong>Results:</strong>
+  <%= @testing.results %>
+</p>
+
+<p>
+  <strong>Retestdate:</strong>
+  <%= @testing.retestdate %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @testing.cost %>
+</p>
+
+<p>
+  <strong>Trackingsheet:</strong>
+  <%= @testing.trackingsheet %>
+</p>
+
+<%= link_to 'Edit', edit_testing_path(@testing) %> |
+<%= link_to 'Back', testings_path %>

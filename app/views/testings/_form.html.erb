@@ -1,0 +1,22 @@
+<%= simple_form_for(@testing) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :requiredtests %>
+    <%= f.input :name %>
+    <%= f.input :customer %>
+    <%= f.input :description %>
+    <%= f.input :supplier %>
+    <%= f.input :supplierrefferenceno %>
+    <%= f.input :leadtime %>
+    <%= f.input :testdate %>
+    <%= f.input :results %>
+    <%= f.input :retestdate %>
+    <%= f.input :cost %>
+    <%= f.input :trackingsheet %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

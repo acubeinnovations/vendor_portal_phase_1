@@ -1,12 +1,25 @@
-$("#vendor_versions").html("<%= escape_javascript(render ('vendor_versions')  || 'No Data') %>");
-$('#toggle-view li').click(function () {
-var text = $(this).children('div.panel');
-var cont=$(this).children('span').html();
-if (text.is(':hidden')) {
-text.slideDown('200');
-$(this).children('span').find('span').html('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-');	
-} else {
-text.slideUp('200');
-$(this).children('span').find('span').html('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+');	
-}
+
+$('.components').click(function(){
+
+var trackingsheetid=$(this).attr('trackingsheet_id');
+getComponents(trackingsheetid);
+
 });
+
+
+
+function getComponents(trackingsheetid){
+var trackingsheetid=trackingsheetid;
+$.get("/components", {
+    trackingsheet_id:trackingsheetid
+  },function(data){
+		$('.modal').css('width','1300');
+		$('.modal').css('left','25%');
+		$('.modal-body').html('');
+		$('.modal-body').html($(data).find('#ajax-components').html());
+		
+
+	});
+
+
+}

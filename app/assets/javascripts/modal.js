@@ -7,6 +7,8 @@ $(document).keyup(function(e) {
 	 }  
 });
 
+
+
 $(window).load(function(){
 	
 	
@@ -54,7 +56,7 @@ $(window).load(function(){
 });
 
 //added for tab-start
-$('table td span').on('keydown',function(e){
+$('.ts-table td span').on('keydown',function(e){
 
 	var keyCode = e.keyCode || e.which; 
 
@@ -97,6 +99,7 @@ scrollMeLeft();
 }
 scrollAmount=0;
 function scrollMeRight(){
+
 scrollAmount=scrollAmount+60;
 $('#handle').animate({
   scrollLeft: scrollAmount
@@ -106,6 +109,7 @@ $('#handle').animate({
 }
 
 function scrollMeLeft(){
+
 scrollAmount=scrollAmount-60;
 $('#handle').animate({
   scrollLeft: scrollAmount

@@ -122,6 +122,8 @@ class Trackingsheet
   
   has_many :trackingsheetlogs, :dependent => :destroy
 	has_many :components, :dependent => :destroy
+	has_many :hardwares, :dependent => :destroy
+	has_many :testings, :dependent => :destroy
 	#validates_presence_of :comments, :on => :update
 	
 end

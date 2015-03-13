@@ -1,0 +1,19 @@
+<%= simple_form_for(@hardware) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :description %>
+    <%= f.input :countryoforgin %>
+    <%= f.input :mill %>
+    <%= f.input :supplier %>
+    <%= f.input :supplierpart %>
+    <%= f.input :leadtime %>
+    <%= f.input :unitqty %>
+    <%= f.input :unitprice %>
+    <%= f.input :totalprice %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -1,65 +1,169 @@
+<% display='true' %>
+<div id="ajax-components">
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span12">
+						<div class="form-actions">
+									<%= link_to "Add New",'#', :class =>'btn btn-success btn-xs add-components',:trackingsheet_id=>params[:trackingsheet_id] %>
+						</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span12">
+					<div class="widget-box">
+						<div class="widget-title">
+							<span class="icon">
+								<i class="icon-file"></i>
+							</span>
+							<h5>Listing Components</h5>
+							</div>	
+					
+							<table class="table table-bordered comp-table">
+								<thead>
+									<tr>
+									<th>Fiber</th>
+									<th>Countryoforgin</th>
+									<th>Customer</th>
+									<th>Mill</th>
+									<th>Code</th>
+									<th>Hangtag2</th>
+									<th>Hangtag3</th>
+									<th>Mainlabel</th>
+									<th>Carecontentlabel</th>
+									<th>Upcsticker</th>
+									<th>Glovehanger</th>
+									<th>Hatjhook</th>
+									<th>Sizelabel</th>
+									</tr>
+									</thead>
+									<tbody>
+									<% @a=1%>
+									<% @components.each do |component|%>
+										<tr>
+											<td class="bestin" style="text-align:center;">
+												<%=best_in_place_if display,  component, :fiber, :as => :input,:nil => "Click to add content!" %>
+											</td>
+											<td class="bestin" style="text-align:center;">
+												<%=best_in_place_if display,  component, :countryoforgin, :as => :input,:nil => "Click to add content!" %>
+											</td>
+											<td class="bestin" style="text-align:center;">
+												<%=best_in_place_if display,  component, :customer, :as => :input,:nil => "Click to add content!" %>
+											</td>
+											<td class="bestin" style="text-align:center;">
+												<%=best_in_place_if display,  component, :mill, :as => :input,:nil => "Click to add content!" %>
+											</td>
+											<td class="bestin" style="text-align:center;">
+												<%=best_in_place_if display,  component, :code, :as => :input,:nil => "Click to add content!" %>
+											</td>
+											<td class="bestin" style="text-align:center;">
+												<%=best_in_place_if display,  component, :hangtag2, :as => :input,:nil => "Click to add content!" %>
+											</td>
+											<td class="bestin" style="text-align:center;">
+												<%=best_in_place_if display,  component, :hangtag3, :as => :input,:nil => "Click to add content!" %>
+											</td>
+											<td class="bestin" style="text-align:center;">
+												<%=best_in_place_if display,  component, :mainlabel, :as => :input,:nil => "Click to add content!" %>
+											</td>
+											<td class="bestin" style="text-align:center;">
+												<%=best_in_place_if display,  component, :carecontentlabel, :as => :input,:nil => "Click to add content!" %>
+											</td>
+											<td class="bestin" style="text-align:center;">
+												<%=best_in_place_if display,  component, :upcsticker, :as => :input,:nil => "Click to add content!" %>
+											</td>
+											<td class="bestin" style="text-align:center;">
+												<%=best_in_place_if display,  component, :glovehanger, :as => :input,:nil => "Click to add content!" %>
+											</td>
+											<td class="bestin" style="text-align:center;">
+												<%=best_in_place_if display,  component, :hatjhook, :as => :input,:nil => "Click to add content!" %>
+											</td>
+											<td class="bestin" style="text-align:center;">
+												<%=best_in_place_if display,  component, :sizelabel, :as => :input,:nil => "Click to add content!" %>
+											</td>	
+										</tr>
+									</tbody>
+									<% @a=@a+1%>
+									<% end %>
+								</table>
+							
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascripts">
+		
+		$('.add-components').on('click',function(){
 
-<%= simple_form_for(@component) do |f| %>
-  <%= f.error_notification %>
+		var trackingsheetid=$(this).attr('trackingsheet_id');
+		createandgetComponents(trackingsheetid);
 
-  <div class="form-inputs">
-    <%= f.input :trackingsheet_id %>
-    
-  </div>
+		});
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+		function createandgetComponents(trackingsheetid){
+		var trackingsheetid=trackingsheetid;
+		$.get("/ajaxcreate_components", {
+				trackingsheet:trackingsheetid
+			},function(data){
+				$('.modal').css('width','1200');
+				$('.modal').css('left','30%');
+				$('.modal-body').html(data);
 
-<p id="notice"><%= notice %></p>
+			});
 
-<h1>Listing Components</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Fiber</th>
-      <th>Countryoforgin</th>
-      <th>Customer</th>
-      <th>Mill</th>
-      <th>Code</th>
-      <th>Hangtag2</th>
-      <th>Hangtag3</th>
-      <th>Mainlabel</th>
-      <th>Carecontentlabel</th>
-      <th>Upcsticker</th>
-      <th>Glovehanger</th>
-      <th>Hatjhook</th>
-      <th>Sizelabel</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+		}
 
-  <tbody>
-    <% @components.each do |component| %>
-      <tr>
-        <td><%= component.fiber %></td>
-        <td><%= component.countryoforgin %></td>
-        <td><%= component.customer %></td>
-        <td><%= component.mill %></td>
-        <td><%= component.code %></td>
-        <td><%= component.hangtag2 %></td>
-        <td><%= component.hangtag3 %></td>
-        <td><%= component.mainlabel %></td>
-        <td><%= component.carecontentlabel %></td>
-        <td><%= component.upcsticker %></td>
-        <td><%= component.glovehanger %></td>
-        <td><%= component.hatjhook %></td>
-        <td><%= component.sizelabel %></td>
-        <td><%= link_to 'Show', component %></td>
-        <td><%= link_to 'Edit', edit_component_path(component) %></td>
-        <td><%= link_to 'Destroy', component, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+		
+$('.comp-table td span').on('keydown',function(e){ 
 
-<br>
+	var keyCode = e.keyCode || e.which; 
 
-<%= link_to 'New Component', new_component_path %>
+	if (e.shiftKey && keyCode == 9){
+
+			findPrevTabindexcomp($(this).parent().prev());
+			e.preventDefault(); 
+	
+	}else if (keyCode == 9) { 
+		 findNextTabindexcomp($(this).parent().next());
+			e.preventDefault(); 
+   
+  }
+});
+	
+
+
+function findNextTabindexcomp(next){
+
+if(next.children().is("span")){
+$('#'+next.find('span').attr('id')).trigger('click');
+
+}else{
+nextspan=next.next();
+findNextTabindexcomp(nextspan);
+
+}
+}
+
+function findPrevTabindexcomp(prev){
+
+if(prev.children().is("span")){
+$('#'+prev.find('span').attr('id')).trigger('click');
+
+}else{
+prevspan=prev.prev();
+findPrevTabindexcomp(prevspan);
+
+}
+}
+
+$("#close-modal").click(function(){
+$('.modal-body').html('');
+location.reload();
+});
+
+
+	</script>
+
+	<%= javascript_include_tag "application" %>
+</div>

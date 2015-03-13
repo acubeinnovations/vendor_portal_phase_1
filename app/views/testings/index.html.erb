@@ -1,0 +1,162 @@
+<% display='true' %>
+<div id="ajax-testings">
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span12">
+						<div class="form-actions">
+									<%= link_to "Add New",'#', :class =>'btn btn-success btn-xs add-testings',:trackingsheet_id=>params[:trackingsheet_id] %>
+						</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span12">
+					<div class="widget-box">
+						<div class="widget-title">
+							<span class="icon">
+								<i class="icon-file"></i>
+							</span>
+							<h5>Listing Testings</h5>
+							</div>	
+					
+							<table class="table table-bordered testing-table">
+								<thead>
+									<tr>
+											<th>Requiredtests</th>
+											<th>Name</th>
+											<th>Customer</th>
+											<th>Description</th>
+											<th>Supplier</th>
+											<th>Supplierrefferenceno</th>
+											<th>Leadtime</th>
+											<th>Testdate</th>
+											<th>Results</th>
+											<th>Retestdate</th>
+											<th>Cost</th>
+											
+      						</tr>
+									</thead>
+									<tbody>
+									<% @a=1%>
+									<% @testings.each do |testing|%>
+										<tr>
+											<td class="bestin" style="text-align:center;">
+												<%=best_in_place_if display,  testing, :requiredtests, :as => :input,:nil => "Click to add content!" %>
+											</td>
+											<td class="bestin" style="text-align:center;">
+												<%=best_in_place_if display,  testing, :name, :as => :input,:nil => "Click to add content!" %>
+											</td>
+											<td class="bestin" style="text-align:center;">
+												<%=best_in_place_if display,  testing, :customer, :as => :input,:nil => "Click to add content!" %>
+											</td>
+											<td class="bestin" style="text-align:center;">
+												<%=best_in_place_if display,  testing, :description, :as => :input,:nil => "Click to add content!" %>
+											</td>
+											<td class="bestin" style="text-align:center;">
+												<%=best_in_place_if display,  testing, :supplier, :as => :input,:nil => "Click to add content!" %>
+											</td>
+											<td class="bestin" style="text-align:center;">
+												<%=best_in_place_if display,  testing, :supplierrefferenceno, :as => :input,:nil => "Click to add content!" %>
+											</td>
+											<td class="bestin" style="text-align:center;">
+												<%=best_in_place_if display,  testing, :leadtime, :as => :input,:nil => "Click to add content!" %>
+											</td>
+											<td class="bestin" style="text-align:center;">
+												<%=best_in_place_if display,  testing, :testdate, :as => :input,:nil => "Click to add content!" %>
+											</td>
+											<td class="bestin" style="text-align:center;">
+												<%=best_in_place_if display,  testing, :results, :as => :input,:nil => "Click to add content!" %>
+											</td>
+											<td class="bestin" style="text-align:center;">
+												<%=best_in_place_if display,  testing, :retestdate, :as => :input,:nil => "Click to add content!" %>
+											</td>
+											<td class="bestin" style="text-align:center;">
+												<%=best_in_place_if display,  testing, :cost, :as => :input,:nil => "Click to add content!" %>
+											</td>
+										</tr>
+									</tbody>
+									<% @a=@a+1%>
+									<% end %>
+								</table>
+							
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascripts">
+		
+		$('.add-testings').on('click',function(){
+
+		var trackingsheetid=$(this).attr('trackingsheet_id');
+		createandgettestings(trackingsheetid);
+
+		});
+
+		function createandgettestings(trackingsheetid){
+		var trackingsheetid=trackingsheetid;
+		$.get("/ajaxcreate_testings", {
+				trackingsheet:trackingsheetid
+			},function(data){
+				$('.modal').css('width','1200');
+				$('.modal').css('left','30%');
+				$('.modal-body').html(data);
+
+			});
+
+
+		}
+
+		
+$('.testing-table td span').on('keydown',function(e){ 
+
+	var keyCode = e.keyCode || e.which; 
+
+	if (e.shiftKey && keyCode == 9){
+
+			findPrevTabindextesting($(this).parent().prev());
+			e.preventDefault(); 
+	
+	}else if (keyCode == 9) { 
+		 findNextTabindextesting($(this).parent().next());
+			e.preventDefault(); 
+   
+  }
+});
+	
+
+
+function findNextTabindextesting(next){
+
+if(next.children().is("span")){
+$('#'+next.find('span').attr('id')).trigger('click');
+
+}else{
+nextspan=next.next();
+findNextTabindextesting(nextspan);
+
+}
+}
+
+function findPrevTabindextesting(prev){
+
+if(prev.children().is("span")){
+$('#'+prev.find('span').attr('id')).trigger('click');
+
+}else{
+prevspan=prev.prev();
+findPrevTabindextesting(prevspan);
+
+}
+}
+
+$("#close-modal").click(function(){
+$('.modal-body').html('');
+location.reload();
+});
+
+
+	</script>
+
+	<%= javascript_include_tag "application" %>
+</div>
