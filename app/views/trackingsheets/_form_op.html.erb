@@ -118,7 +118,7 @@
 				<%= link_to "Comments",'#modal-history',:class => 'btn btn-warning btn-xs comments', 'data-toggle':"modal",:trackingsheetid => trackingsheet.id %> 
 				<div class='hide-me '>
 				<div style="float:left">Add Comments &nbsp;</div>
-				<%=best_in_place  trackingsheet, :comments, :as => :textarea,:nil => "Click to add content!", :class=>"mybest"%>
+				<%=best_in_place  trackingsheet, :comments, :as => :textarea,:nil => "Click to add comment!", :class=>"mybest", :style=>"width:150px; margin-bottom:40px;"%>
 				
 				</div>
 					<div>	<br> 	
@@ -160,15 +160,16 @@
   
  <!-- modal ends--> 																																										                	
 											
-														
-										<table class="table table-bordered ts-table"  style="margin-left: 22%;">
+
+										<table class="table table-bordered tbuniformwidth ts-table"  style="margin-left: 23%; table-layout: fixed;">
+
 											<thead>
 												<tr>
 												<th colspan="50"></th>
 												
-												<th colspan="7"> 1st DAF</th>
-												<th colspan="7"> 2nd DAF</th>
-												<th colspan="3"></th>
+												<th colspan="7"  style="width:1400px; !important"> 1st DAF</th>
+												<th colspan="7"  style="width:1400px; !important"> 2nd DAF</th>
+												<th colspan="3" style="width:400px; !important"></th>
 												
 												</tr>
 													 <tr>
@@ -221,7 +222,7 @@
 												<th>PRODUCT LEAD TIME</th>
 												<th>SALES PROCEEDS TO SAMPLE REQUEST DATE</th>
 												<th>PROTO DUE BACK FROM VENDOR</th>
-												<th>DAF TO VENDOR DATE</th>
+												<th style="width:400px;">DAF TO VENDOR DATE</th>
 												<th> S/0 OR S/S</th>
 												<th># OF DEV. SAMPLES NEEDED</th>
 												<th>DAF ISSUED </th>

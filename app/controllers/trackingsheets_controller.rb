@@ -154,12 +154,12 @@ end
   end
   
 	def get_history
-			@historylogs = Trackingsheetlog.where('trackingsheet_id'=>params[:trackingsheetid])
-			render json: Hash[@historylogs.map { |v| [ v[:updated_at].to_s, v[:useremail].to_s ] } ]
+			@historylogs = Trackingsheetlog.order("id DESC").where('trackingsheet_id'=>params[:trackingsheetid])
+			render json: Hash[@historylogs.map { |v| [ v[:updated_at].strftime("%m-%d-%y %H:%M"), v[:useremail].to_s ] } ]
 	end
   
 	def get_comments
-			@commentlogs = Commentlog.where('trackingsheet_id'=>params[:trackingsheetid])
+			@commentlogs = Commentlog.order("id DESC").where('trackingsheet_id'=>params[:trackingsheetid])
 			render json: @commentlogs
 	end
   
