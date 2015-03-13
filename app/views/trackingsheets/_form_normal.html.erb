@@ -117,12 +117,12 @@
 					<div class="comment-container">									
 				<%= link_to "Comments",'#modal-history',:class => 'btn btn-warning btn-xs comments', 'data-toggle':"modal",:trackingsheetid => trackingsheet.id %> 
 				<div class='hide-me '>
-				<div style="float:left">Add data &nbsp;</div>
+				<div style="float:left">Add Comments &nbsp;</div>
 				<%=best_in_place  trackingsheet, :comments, :as => :textarea,:nil => "Click to add content!", :class=>"mybest"%>
 				
 				</div>
 					<div>	<br> 	
-		<%= link_to 'History','#modal-history',:class=>'btn btn-warning float-right history','data-toggle':"modal", :trackingsheetid => trackingsheet.id %> 					
+		<%= link_to 'History','#modal-history',:class=>'btn btn-warning float-right history',:style=>'width:68px;','data-toggle':"modal", :trackingsheetid => trackingsheet.id %> 					
 							
 							 </td>
 																	<td><%=trackingsheet.style.stylecode %></td>
