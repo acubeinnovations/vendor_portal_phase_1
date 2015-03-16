@@ -24,8 +24,7 @@ class Style
   
   has_mongoid_attached_file :image,
       :url => "/system/attachments/:id/:style/:basename.:extension", 
-           :keep_old_files => true , 
-          :keep_old_files => :version_condition_met?,
+          
       :path => ":rails_root/public/system/attachments/:id/:style/:basename.:extension", 
       :styles => {
         :original => ['1920x1680>', :jpg],
