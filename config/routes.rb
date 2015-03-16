@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   
 
   
+  resources :costsheets
+
   resources :testings
 
   resources :hardwares
@@ -27,6 +29,10 @@ Rails.application.routes.draw do
 	as :trackingsheet do
 			get "get_history"=> "trackingsheets#get_history", :as => :get_history
       get "get_comments"=> "trackingsheets#get_comments", :as => :get_comments
+	end
+	as :costsheet do
+			get "ajaxcreate_costsheets"=> "costsheets#ajaxcreate_costsheets", :as => :ajaxcreate_costsheets
+     
 	end
 	as :testing do
 			get "ajaxcreate_testings"=> "testings#ajaxcreate_testings", :as => :ajaxcreate_testings

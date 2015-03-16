@@ -153,7 +153,7 @@
  <!-- modal ends--> 																	
 																	
 																														
-									<table class="table table-bordered tbuniformwidth"  style="margin-left: 23%; table-layout: fixed;">
+									<table class="table table-bordered tbuniformwidth  ts-table"  style="margin-left: 23%; table-layout: fixed;">
 											<thead>
 												<tr>
 													
@@ -325,10 +325,10 @@
 	<%=best_in_place_if colors,  trackingsheet, :colors, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td style="text-align:center;">
-	<%= link_to "Link To Tab", url_for(params),:class => 'btn btn-warning btn-xs' %> 
+	<%#= link_to "Link To Tab", url_for(params),:class => 'btn btn-warning btn-xs' %> 
 </td>
 <td style="text-align:center;">
-	<%= link_to "Link To Tab", url_for(params),:class => 'btn btn-warning btn-xs' %> 
+	<%#= link_to "Link To Tab", url_for(params),:class => 'btn btn-warning btn-xs' %> 
 </td>
 <td class="bestin" style="text-align:center;">
 	<%=best_in_place_if projectedunits,  trackingsheet, :projectedunits, :as => :input,:nil => "Click to add content!"%>

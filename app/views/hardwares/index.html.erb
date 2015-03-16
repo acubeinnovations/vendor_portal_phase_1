@@ -1,14 +1,13 @@
+<%  if current_user.userrole==VendorPortal::Application.config.operationadmin || current_user.userrole==VendorPortal::Application.config.operationuser  %>
 <% display='true' %>
+<% else if current_user.userrole==VendorPortal::Application.config.vendor %>
+<% display=false %>
+<% end %>
+<% end %>
 <div id="ajax-hardwares">
-		<div class="container-fluid">
-			<div class="row-fluid">
-				<div class="span12">
-						<div class="form-actions">
-									<%= link_to "Add New",'#', :class =>'btn btn-success btn-xs add-hardwares',:trackingsheet_id=>params[:trackingsheet_id] %>
-						</div>
-				</div>
-			</div>
-		</div>
+
+		<%= render 'index' %>
+
 		<div class="container-fluid">
 			<div class="row-fluid">
 				<div class="span12">
@@ -17,9 +16,9 @@
 							<span class="icon">
 								<i class="icon-file"></i>
 							</span>
-							<h5>Listing Hardwares</h5>
+							<h5>Listing Hardwares</h5><%  if current_user.userrole==VendorPortal::Application.config.operationadmin || current_user.userrole==VendorPortal::Application.config.operationuser  %><%= link_to "Add New",'#', :class =>'btn btn-success btn-xs add-hardwares',:trackingsheet_id=>params[:trackingsheet_id] %><%end%>
 							</div>	
-					
+							<div class="scrollable-div" style="overflow-x: scroll;">
 							<table class="table table-bordered hardware-table">
 								<thead>
 									<tr>
@@ -71,7 +70,7 @@
 									<% @a=@a+1%>
 									<% end %>
 								</table>
-							
+								</div>
 				</div>
 			</div>
 		</div>

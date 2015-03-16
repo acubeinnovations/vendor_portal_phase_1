@@ -1,0 +1,27 @@
+<%= simple_form_for(@costsheet) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :screencount %>
+    <%= f.input :firstcost %>
+    <%= f.input :duty %>
+    <%= f.input :freight %>
+    <%= f.input :insurance %>
+    <%= f.input :commision %>
+    <%= f.input :misc %>
+    <%= f.input :designcharges %>
+    <%= f.input :croquisnonduty %>
+    <%= f.input :screens %>
+    <%= f.input :soffs %>
+    <%= f.input :testing %>
+    <%= f.input :qa %>
+    <%= f.input :componentsLstring %>
+    <%= f.input :ldp %>
+    <%= f.input :retail %>
+    <%= f.input :comments %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

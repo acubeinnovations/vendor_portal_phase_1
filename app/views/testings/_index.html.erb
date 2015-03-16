@@ -1,0 +1,36 @@
+<div class="container-fluid"> 
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="widget-box">
+				<div class="widget-title">
+					<span class="icon">
+					<i class="icon-info-sign"></i>
+					</span>
+					<h5>General Data</h5>
+				</div>
+				<div class="widget-content nopadding">
+				<% trackingsheet=Trackingsheet.find(params[:trackingsheet_id])%>
+				<% @a=1%>
+					<table  class="table table-bordered">
+						<thead>
+							<tr>
+								<th>STYLE #</th>
+								<th>STYLE NAME</th>
+								<th>IMAGE</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><%=trackingsheet.style.stylecode %></td>
+								<td><%=trackingsheet.style.stylename %></td>
+								<td><%= image_tag "/vendorportal"+trackingsheet.style.image.url(:small)  %></td>
+							</tr>
+						<% @a=@a+1%>
+						</tbody>
+					</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

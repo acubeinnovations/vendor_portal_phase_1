@@ -1,14 +1,30 @@
 class ComponentsController < ApplicationController
 	layout 'vendor_portal_null'
-  before_action :set_component, only: [:show, :edit, :update, :destroy]
+	
+	#for authentication
+	before_filter :authenticate_user!
 
+	#for checking user roles
+	before_filter :allowedusers_only
+	
+  before_action :set_component, only: [:show, :edit, :update, :destroy]
+	
   # GET /components
   # GET /components.json
   def index
     @components = Component.all('trackingsheet'=>params[:trackingsheet_id])
 		@component = Component.new
   end
-
+	
+	#Allow only permitted users
+	def allowedusers_only
+ 
+		allowed_users=[VendorPortal::Application.config.operationadmin.to_s,VendorPortal::Application.config.operationuser.to_s,VendorPortal::Application.config.vendor.to_s]
+	
+    if !current_user.userrole.in?(allowed_users)
+      redirect_to root_path, :alert => "Access denied."
+    end
+  end
   # GET /components/1
   # GET /components/1.json
   def show

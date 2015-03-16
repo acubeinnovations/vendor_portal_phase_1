@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  screencount: MyString
+  firstcost: MyString
+  duty: MyString
+  freight: MyString
+  insurance: MyString
+  commision: MyString
+  misc: MyString
+  designcharges: MyString
+  croquisnonduty: MyString
+  screens: MyString
+  soffs: MyString
+  testing: MyString
+  qa: MyString
+  componentsLstring: MyString
+  ldp: MyString
+  retail: MyString
+  comments: MyString
+
+two:
+  screencount: MyString
+  firstcost: MyString
+  duty: MyString
+  freight: MyString
+  insurance: MyString
+  commision: MyString
+  misc: MyString
+  designcharges: MyString
+  croquisnonduty: MyString
+  screens: MyString
+  soffs: MyString
+  testing: MyString
+  qa: MyString
+  componentsLstring: MyString
+  ldp: MyString
+  retail: MyString
+  comments: MyString

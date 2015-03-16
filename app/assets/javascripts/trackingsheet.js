@@ -70,3 +70,28 @@ $.get("/testings", {
 	});
 
 }
+
+
+$('.costsheets').click(function(){
+
+var trackingsheetid=$(this).attr('trackingsheet_id');
+getCostsheets(trackingsheetid);
+
+});
+
+
+
+function getCostsheets(trackingsheetid){
+var trackingsheetid=trackingsheetid;
+$.get("/costsheets", {
+    trackingsheet_id:trackingsheetid
+  },function(data){
+		$('.modal').css('width','1300');
+		$('.modal').css('left','25%');
+		$('.modal-body').html('');
+		$('.modal-body').html(data);
+		
+
+	});
+
+}

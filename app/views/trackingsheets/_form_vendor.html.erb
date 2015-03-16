@@ -160,7 +160,7 @@
  <!-- modal ends--> 																									
 																														 
 														 
-						<table class="table table-bordered tbuniformwidth"  style="margin-left: 23%;  table-layout: fixed;">
+						<table class="table table-bordered tbuniformwidth  ts-table"  style="margin-left: 23%;  table-layout: fixed;">
 											<thead> 
 											<tr>
 												
@@ -327,12 +327,14 @@
 <td class="bestin" style="text-align:center;"> 
 	<%=best_in_place_if colors,  trackingsheet, :colors, :as => :input,:nil => "Click to add content!"%> 
 </td> 
-<td style="text-align:center;"> 
-	<%= link_to "Link To Tab", url_for(params),:class => 'btn btn-warning btn-xs' %>  
-</td> 
-<td style="text-align:center;"> 
-	<%= link_to "Link To Tab", url_for(params),:class => 'btn btn-warning btn-xs' %>  
-</td> 
+<td style="text-align:center;">
+													<%= link_to "Hardware",'#modal-history',:class => 'btn btn-warning btn-xs hardwares','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id %>
+													<%= link_to "Testing",'#modal-history',:class => 'btn btn-warning btn-xs testings','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id %>
+												</td>
+												<td style="text-align:center;">
+													<%= link_to "Components",'#modal-history',:class => 'btn btn-warning btn-xs components','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id %>
+													<%#= link_to "Cost Sheets",'#modal-history',:class => 'btn btn-warning btn-xs costsheets','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id %>
+												</td>
 <td class="bestin" style="text-align:center;"> 
 	<%=best_in_place_if projectedunits,  trackingsheet, :projectedunits, :as => :input,:nil => "Click to add content!"%> 
 </td> 

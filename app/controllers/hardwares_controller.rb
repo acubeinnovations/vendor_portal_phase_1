@@ -1,5 +1,12 @@
 class HardwaresController < ApplicationController
 	layout 'vendor_portal_null'
+
+	#for authentication
+	before_filter :authenticate_user!
+
+	#for checking user roles
+	before_filter :allowedusers_only 
+	
   before_action :set_hardware, only: [:show, :edit, :update, :destroy]
 
   # GET /hardwares
@@ -7,6 +14,16 @@ class HardwaresController < ApplicationController
   def index
     @hardwares = Hardware.all('trackingsheet'=>params[:trackingsheet_id])
 	  @hardware = Hardware.new
+  end
+
+	#Allow only permitted users
+	def allowedusers_only
+ 
+		allowed_users=[VendorPortal::Application.config.operationadmin.to_s,VendorPortal::Application.config.operationuser.to_s,VendorPortal::Application.config.vendor.to_s]
+	
+    if !current_user.userrole.in?(allowed_users)
+      redirect_to root_path, :alert => "Access denied."
+    end
   end
 
   # GET /hardwares/1
