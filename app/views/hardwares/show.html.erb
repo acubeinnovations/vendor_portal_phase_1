@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @hardware.description %>
+</p>
+
+<p>
+  <strong>Countryoforgin:</strong>
+  <%= @hardware.countryoforgin %>
+</p>
+
+<p>
+  <strong>Mill:</strong>
+  <%= @hardware.mill %>
+</p>
+
+<p>
+  <strong>Supplier:</strong>
+  <%= @hardware.supplier %>
+</p>
+
+<p>
+  <strong>Supplierpart:</strong>
+  <%= @hardware.supplierpart %>
+</p>
+
+<p>
+  <strong>Leadtime:</strong>
+  <%= @hardware.leadtime %>
+</p>
+
+<p>
+  <strong>Unitqty:</strong>
+  <%= @hardware.unitqty %>
+</p>
+
+<p>
+  <strong>Unitprice:</strong>
+  <%= @hardware.unitprice %>
+</p>
+
+<p>
+  <strong>Totalprice:</strong>
+  <%= @hardware.totalprice %>
+</p>
+
+<%= link_to 'Edit', edit_hardware_path(@hardware) %> |
+<%= link_to 'Back', hardwares_path %>

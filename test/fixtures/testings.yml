@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  requiredtests: MyString
+  name: MyString
+  customer: MyString
+  description: MyString
+  supplier: MyString
+  supplierrefferenceno: MyString
+  leadtime: MyString
+  testdate: MyString
+  results: MyString
+  retestdate: MyString
+  cost: MyString
+  trackingsheet: MyString
+
+two:
+  requiredtests: MyString
+  name: MyString
+  customer: MyString
+  description: MyString
+  supplier: MyString
+  supplierrefferenceno: MyString
+  leadtime: MyString
+  testdate: MyString
+  results: MyString
+  retestdate: MyString
+  cost: MyString
+  trackingsheet: MyString

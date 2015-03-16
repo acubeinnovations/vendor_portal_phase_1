@@ -1,5 +1,7 @@
 class Component
   include Mongoid::Document
+	include Mongoid::Timestamps
+
   field :fiber, type: String
   field :countryoforgin, type: String
   field :customer, type: String
