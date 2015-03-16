@@ -169,7 +169,7 @@
 												
 												<th colspan="7" style="width:1400px; !important"> 1st DAF</th>
 												<th colspan="7" style="width:1400px; !important"> 2nd DAF</th>
-												<th colspan="4" style="width:1200px; !important"> </th>
+												<th colspan="5" style="width:1200px; !important"> </th>
 												</tr>
 													 <tr>
 												<th>VENDOR</th>
@@ -297,6 +297,9 @@
 </td>
 <td class="bestin" style="text-align:center;">
 	<%=best_in_place_if projectnumber,  trackingsheet, :projectnumber, :as => :input,:nil => "Click to add content!"%>
+</td>
+<td class="bestin" style="text-align:center;">
+	REF
 </td>
 <td class="bestin" style="text-align:center;">
 	<%=best_in_place_if customerstylenumber,  trackingsheet, :customerstylenumber, :as => :input,:nil => "Click to add content!"%>

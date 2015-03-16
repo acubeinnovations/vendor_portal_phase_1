@@ -131,21 +131,23 @@ $('#handle').scroll(function(){
 $('table td span').on('keyup',function(e){
 me=$(this).children().children();
 parent=$(this);
+if(parent.attr('data-bip-attribute')=='vendor'){
 id=me.attr('id');
-$.get("/vendorportal/custom_search", {
+$.get("/custom_search", {
     term: me.val()
   },function(data){
 		vendors=data;
 		var dropdown='';
-		//dropdown="<ul class='ui-customautocomplete'>";
-		for(i=0;i<vendors.length;i++){
-		dropdown+="<li><a class='ul-link' insert-to="+id+" vendor="+vendors[i]+">"+vendors[i]+"</a></li>";
-		}
-		//dropdown+="</ul>";
+	
+		$.each(data,function(email,vname){	
+		dropdown+="<li><a class='ul-link' insert-to="+id+" vendor="+email+">"+vname+"</a></li>";
+		});
+		
 		parent.next().html(dropdown);
 		$('.ui-customautocomplete').show();
 		init();
 	});
+}
 });
 
 
