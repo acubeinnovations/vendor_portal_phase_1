@@ -53,6 +53,12 @@
 																	<%= f.text_field :season, class:"span6",placeholder:"Season" %>	
 																</td>
 														</tr>
+														<tr>
+																<td>Year</td>
+																<td>
+																	<%= f.text_field :year, class:"span6",placeholder:"Year" %>	
+																</td>
+														</tr>
 
 															<% if current_user.userrole==VendorPortal::Application.config.admin  %>
 															<tr>

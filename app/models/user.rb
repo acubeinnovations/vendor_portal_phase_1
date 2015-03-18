@@ -55,4 +55,17 @@ class User
   "#{self.lastname} #{self.firstname}"
 	end
 	
+	
+
+	def self.search(search)
+		if !search.blank?
+		  
+			any_of({firstname: /#{search}/i },{userrole: /#{search}/i })
+		else
+		  all()
+		end
+	end
+
+	
+
 end

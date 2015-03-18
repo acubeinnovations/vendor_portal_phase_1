@@ -74,7 +74,9 @@ gem 'posix-spawn'
 
 gem "jquery-ui-rails"
 
+#paginate_mongoid
 
+gem 'will_paginate_mongoid'
 
 # Newly Added ##
 

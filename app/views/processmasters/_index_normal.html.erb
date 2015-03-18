@@ -14,6 +14,7 @@
 			<td><% if !processmaster.division.blank? %><%= processmaster.division.name %><% end %></td>
 			<td><%= processmaster.try(:brand) %></td>
 			<td><%= processmaster.try(:season) %></td>
+				<td><%= processmaster.try(:year) %></td>
 			<td><%= processmaster.try(:market) %></td>
 			<td><%= processmaster.created_at %></td>
 			<td>	<%= link_to 'Tracking Sheet', trackingsheets_path(:processmaster_id => processmaster.id),class:'btn btn-warning' %></td>

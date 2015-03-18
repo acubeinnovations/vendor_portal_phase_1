@@ -118,3 +118,34 @@ ul.ui-customautocomplete {
 }
 
 
+em.current {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 3px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #333;
+    text-align: center;
+    text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.75);
+    vertical-align: middle;
+    background: none repeat scroll 0% 0% #F77825;
+		color: #FFF !important;
+		cursor: default !important;
+}
+span.previous_page.disabled,
+span.next_page.disabled{
+		display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 3px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #333;
+    text-align: center;
+    text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.75);
+    vertical-align: middle;
+    background-color: #DADADA;
+		cursor: default !important;
+}
+
+
+

@@ -35,6 +35,13 @@ class Style
       :convert_options => { :all => '-background white -flatten +matte' }
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
-
+	def self.search(search)
+		if !search.blank?
+		  
+			any_of({stylename: /#{search}/i })
+		else
+		  all()
+		end
+	end
 
 end
