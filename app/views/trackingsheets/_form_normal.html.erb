@@ -195,8 +195,8 @@
 												<th>FINISH</th>
 												<th>FINISH DETAIL</th>
 												<th>COLORS</th>
-												<th>HARDWARE / LOGO / TRIM</th>
-												<th>COMPONENT (labels / tickets)</th>
+												<th></th>
+												<th></th>
 												<th>PROJECTED UNITS</th>
 												<th>TARGET FOB</th>
 												<th>TARGET MU</th>
@@ -349,14 +349,23 @@
 </td>
 <td style="text-align:center;">
 	<%  if current_user.userrole==VendorPortal::Application.config.operationuser  %>
-													<%= link_to "Hardware",'#modal-history',:class => 'btn btn-warning btn-xs hardwares','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id %>
+													<div>
+													<%= link_to "Hardware",'#modal-history',:class => 'btn btn-warning btn-xs hardwares','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id %><br>
+													</div>
+														<br>
+													<div>
 													<%= link_to "Testing",'#modal-history',:class => 'btn btn-warning btn-xs testings','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id %>
-	<%end%>
+	<%end%>											</div>
 												</td>
 												<td style="text-align:center;">
 	<%  if current_user.userrole==VendorPortal::Application.config.operationuser  %>
+													<div>
 													<%= link_to "Components",'#modal-history',:class => 'btn btn-warning btn-xs components','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id %>
+													</div>
+													<br>
+													<div>
 													<%= link_to "Cost Sheets",'#modal-history',:class => 'btn btn-warning btn-xs costsheets','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id %>
+													</div>
 	<%end%>
 												</td>
 <td class="bestin" style="text-align:center;">
