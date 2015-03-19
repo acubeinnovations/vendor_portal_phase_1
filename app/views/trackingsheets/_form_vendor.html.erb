@@ -125,7 +125,7 @@
 		<%= link_to 'History','#modal-history',:class=>'btn btn-warning float-right history',:style=>'width:68px;','data-toggle':"modal", :trackingsheetid => trackingsheet.id %> 																	
 																	
 																	 </td> 
-																	<td><%=best_in_place_if customerstylenumber,  trackingsheet, :customerstylenumber, :as => :input,:nil => "Click to add content!"%></td> 
+																	<td><%=trackingsheet.style.stylecode %></td> 
 																	<td><%=trackingsheet.style.stylename %></td> 
 																	<td><%= image_tag "/vendorportal"+trackingsheet.style.image.url(:small)  %></td> 
 																	</tr> 
@@ -167,7 +167,7 @@
 											<th colspan="50"> </th>
 											<th colspan="7"  style="width:1400px; !important"> 1st DAF</th>
 											<th colspan="7"  style="width:1400px; !important"> 2nd DAF</th>
-											<th colspan="2" style="width:400px; !important"></th>
+											<th colspan="4" style="width:400px; !important"></th>
 											</tr>
 									<tr> 
 										<th>FACTORY</th> 
@@ -192,8 +192,8 @@
 										<th>FINISH</th> 
 										<th>FINISH DETAIL</th> 
 										<th>COLORS</th> 
-										<th>HARDWARE / LOGO / TRIM</th> 
-										<th>COMPONENT (labels / tickets)</th> 
+										<th></th> 
+										<th></th> 
 										<th>PROJECTED UNITS</th> 
 										<th>TARGET FOB</th> 
 										<th>TARGET MU</th> 
@@ -332,11 +332,13 @@
 	<%=best_in_place_if colors,  trackingsheet, :colors, :as => :input,:nil => "Click to add content!"%> 
 </td> 
 <td style="text-align:center;">
-													<%= link_to "Hardware",'#modal-history',:class => 'btn btn-warning btn-xs hardwares','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id %>
+													<%= link_to "Hardware",'#modal-history',:class => 'btn btn-warning btn-xs hardwares','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id %><br>
 													<%= link_to "Testing",'#modal-history',:class => 'btn btn-warning btn-xs testings','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id %>
 												</td>
 												<td style="text-align:center;">
+													<div>
 													<%= link_to "Components",'#modal-history',:class => 'btn btn-warning btn-xs components','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id %>
+													</div>
 													<%#= link_to "Cost Sheets",'#modal-history',:class => 'btn btn-warning btn-xs costsheets','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id %>
 												</td>
 <td class="bestin" style="text-align:center;"> 
