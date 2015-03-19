@@ -11,6 +11,11 @@ class StylesController < ApplicationController
   # GET /styles.json
   def index
     @styles = Style.search(params[:searchterm]).paginate(:page => params[:page], :per_page =>3)
+		if !params[:page].blank?
+			@slno=((params[:page].to_i - 1) * 3) + 1
+		else
+			@slno=1
+		end
   end
 
   # GET /styles/1

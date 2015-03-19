@@ -1,8 +1,7 @@
-<% @i=1 %>
 	<% @processmasters.each do |processmaster| %>
 		<tr class="gradeX">
 			<td><input type="radio" name="selectprocess"></td>
-			<td><%= @i %></td>
+			<td><%= @slno %></td>
 			<td><% if !processmaster.division.blank? %><%= processmaster.division.name %><% end %></td>
 			<td><%= processmaster.try(:brand) %></td>
 			<td><%= processmaster.try(:season) %></td>
@@ -14,7 +13,7 @@
 			<td><%= link_to 'Delete', processmaster, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td>
 
 		</tr>	
-	<% @i+=1%>
+	<% @slno+=1%>
 <% end %>	
 
 

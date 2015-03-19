@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   
 
   
+  resources :trackingsheetdocuments
+
+  resources :trackingsheetimages
+
   resources :costsheets
 
   resources :testings

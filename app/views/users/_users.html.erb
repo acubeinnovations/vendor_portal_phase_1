@@ -10,10 +10,10 @@
 		</tr>
 	</thead>
 	<tbody>
-		<% @i=1 %>
+		
 		<% @users.each do |user| %>
 		<tr class="gradeX">
-			<td class="center"> <%=@i %></td>
+			<td class="center"> <%=@slno %></td>
 			<td><%= user.lastname %> <%= user.firstname %></td>
 			<td><%= user.userrole %></td>
 			<td><%= user.email %></td>
@@ -22,7 +22,7 @@
 			<td><%= link_to 'Edit', edit_user_path(user), :class => 'btn btn-warning btn-xs' %></td>
 			<td><%= link_to 'Delete', user_path(user), :class => 'btn btn-danger btn-xs', :method => 'delete', :confirm => 'Are you sure?' %> </td>
 		</tr>
-		<% @i+=1%>
+		<% @slno+=1%>
 		<% end %>	
 	</tbody>
 </table>

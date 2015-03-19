@@ -1,7 +1,7 @@
 class Style
   include Mongoid::Document
   include Mongoid::Paperclip
-  include Mongoid::Timestamps::Created
+  include Mongoid::Timestamps
   field :stylename, type: String
   field :stylecode, type: String
   

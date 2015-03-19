@@ -95,3 +95,53 @@ $.get("/costsheets", {
 	});
 
 }
+
+
+$('.images').click(function(){
+
+var trackingsheetid=$(this).attr('trackingsheetid');
+getImages(trackingsheetid);
+
+});
+
+
+
+function getImages(trackingsheetid){
+var trackingsheetid=trackingsheetid;
+$.get("/trackingsheetimages", {
+    trackingsheetid:trackingsheetid
+  },function(data){
+		$('.modal').css('width','1300');
+		$('.modal').css('left','25%');
+		$('.modal-body').html('');
+		$('.modal-body').html(data);
+		
+	});
+
+}
+
+$('.documents').click(function(){
+
+var trackingsheetid=$(this).attr('trackingsheetid');
+var processmasterid=$(this).attr('processmasterid');
+getDocuments(trackingsheetid,processmasterid);
+
+});
+
+
+
+function getDocuments(trackingsheetid,processmasterid){
+var trackingsheetid=trackingsheetid;
+var processmasterid=processmasterid;
+$.get("/trackingsheetdocuments", {
+    trackingsheetid:trackingsheetid,
+		processmasterid:processmasterid
+  },function(data){
+		$('.modal').css('width','1300');
+		$('.modal').css('left','25%');
+		$('.modal-body').html('');
+		$('.modal-body').html(data);
+		
+	});
+
+}
