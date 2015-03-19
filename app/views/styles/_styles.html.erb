@@ -1,0 +1,23 @@
+<table class="table table-bordered data-table">
+	<thead>
+		<tr>
+			<th>Sl</th>
+			<th>Stylename</th>
+			<th>Stylecode</th>
+			<th>Users</th>
+			<th>Image</th>
+			<th colspan="2">Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% if current_user.userrole==VendorPortal::Application.config.admin %>
+		<%= render 'index_admin' %>
+		<% else if current_user.userrole==VendorPortal::Application.config.operationadmin %>
+		<%= render 'index_opadmin' %>
+		<%end%>
+		<%end%>
+	</tbody>
+</table>
+<%= ajax_will_paginate @styles %>
+
+

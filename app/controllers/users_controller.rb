@@ -6,8 +6,8 @@ before_filter :authenticate_user!
 before_filter :admin_only, :except =>  [:edit,:custom_search ] 
 layout 'vendor_portal'
   def index 
-    @users = User.all
- end
+	    @users = User.search(params[:searchterm]).paginate(:page => params[:page], :per_page =>15)
+ 	end
 
   def show
     @user = User.find(params[:id])

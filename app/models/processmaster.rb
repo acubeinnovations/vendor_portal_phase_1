@@ -6,7 +6,7 @@ class Processmaster
   field :division, type: String
 	field :brand, type: String
   field :season, type: String
-  #field :year, type: String
+  field :year, type: String
   field :market, type: String
 	#field :customername, type: String
   #field :customeraccount, type: String
@@ -38,7 +38,15 @@ class Processmaster
       :convert_options => { :all => '-background white -flatten +matte' }
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 	#validates :project, :presence => true
-
+	
+	def self.search(search)
+		if !search.blank?
+		  
+			any_of({season: /#{search}/i },{year: /#{search}/i })
+		else
+		  all()
+		end
+	end
 	
 	#after_create :create_trackingsheet
 end

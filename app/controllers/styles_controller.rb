@@ -10,7 +10,7 @@ class StylesController < ApplicationController
   # GET /styles
   # GET /styles.json
   def index
-    @styles = Style.all
+    @styles = Style.search(params[:searchterm]).paginate(:page => params[:page], :per_page =>3)
   end
 
   # GET /styles/1

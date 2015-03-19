@@ -1,28 +1,31 @@
 <div class="container-fluid">
     <div class="row-fluid">
       <div class="span12">
+				<table style="border:none;">
+					<tr>
+						<td style="border:none;">
+						</td>
+						<td style="border:none;">
+						<%= form_tag styles_path, :method => 'get',:id =>'default_search' do %>
+						 <%= text_field_tag :searchterm, params[:searchterm],:placeholder => 'Enter search term...' %>
+						<% end %>
+						</td>
+					</tr>
+				</table>
+			</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
         <div class="widget-box">
           <div class="widget-content nopadding">
-            <table class="table table-bordered data-table">
-              <thead>
-                <tr>
-                  <th>Sl</th>
-                 <th>Stylename</th>
-									<th>Stylecode</th>
-									<th>Users</th>
-									<th>Image</th>
-                  <th colspan="2">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-				 				 <% if current_user.userrole==VendorPortal::Application.config.admin %>
-									<%= render 'index_admin' %>
-								<% else if current_user.userrole==VendorPortal::Application.config.operationadmin %>
-									<%= render 'index_opadmin' %>
-								<%end%>
-								<%end%>
-             </tbody>
-            </table>
+					  <!-- Partial Starts -->
+						<div id='styles'>
+							<%= render  'styles' %>
+						</div>
+						<!-- Partails Ends-->
 				
          	</div>
        </div>
