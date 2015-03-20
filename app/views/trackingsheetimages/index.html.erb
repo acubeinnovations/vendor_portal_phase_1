@@ -52,27 +52,42 @@
 				<table>
 					
 					<tbody>
-					
+							<tr>
+								<td  colspan="4" style="border:none;">
+									<table style="border:none;width:100%;">
+										<thead>
+											<th style="border:none;width:23.4%;border-right: 1px solid #333 !important;text-align:center;">Description
+											</th>
+											<th style="border:none;width:36.5%;border-right: 1px solid #333 !important;text-align:center;">Image
+											</th>
+											<th  style="border:none;width:19%;border-right: 1px solid #333 !important;text-align:center;">Added By
+											</th>
+											<th  style="text-align:center;">Action
+											</th>
+										</thead>
+									</table>
+								</td>
+							</tr>
 						<% @trackingsheetimages.each do |trackingsheetimage| %>
 							<tr>
-							<td  colspan="4">
+							<td  colspan="4" style="border:none;">
 							<%= form_for trackingsheetimage,  :html => {:target=>"upload_frame",:multipart => true,:class => "form-horizontal" } do |f| %>
 							<table style="border:none;">
-								<tr style="border: 1px solid #333 !important;">
-									<td class="span3" style="border-right: 1px solid #333 !important;text-align:center;">
+								<tr style="border-top: 1px solid #333 !important;">
+									<td class="span3" style="border:none;border-right: 1px solid #333 !important;text-align:center;">
 										<%= f.text_field :description, class:"span10",placeholder:"description" %>
 										<%= hidden_field(:trackingsheetimage, :trackingsheet,:value =>trackingsheetimage.trackingsheet.id) %>
 									</td>
-									<td clas="span3" style="border-right: 1px solid #333 !important;text-align:center;">
+									<td clas="span3" style="border:none;border-right: 1px solid #333 !important;text-align:center;">
 										<% if trackingsheetimage.image.url!='/images/original/missing.png' %>
 										<%= image_tag trackingsheetimage.image.url(:small)  %>
 										<%	end			 %>
 										<%= f.file_field :image,class:'trackingsheetimage' %>
 									</td>
-									<td clas="span3" style="border-right: 1px solid #333 !important;text-align:center;">
+									<td clas="span3" style="border:none;border-right: 1px solid #333 !important;text-align:center;">
 										<div  class="span3"><%= trackingsheetimage.user.firstname+' '+trackingsheetimage.user.lastname.to_s %></div>
 									</td>
-									<td clas="span3" style="text-align:center;">
+									<td clas="span3" style="border:none;text-align:center;">
 										<%= f.submit 'Update', :class => 'btn btn-success btn-xs' %>
 									</td>	
 									<!--	<td><%#= link_to 'Destroy', trackingsheetimage, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
