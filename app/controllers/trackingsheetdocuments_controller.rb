@@ -2,6 +2,9 @@ class TrackingsheetdocumentsController < ApplicationController
   before_action :set_trackingsheetdocument, only: [:show, :edit, :update, :destroy]
 	layout 'vendor_portal_null'
 
+	#for authentication
+	before_filter :authenticate_user!
+
   # GET /trackingsheetdocuments
   # GET /trackingsheetdocuments.json
   def index

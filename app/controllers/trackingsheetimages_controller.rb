@@ -1,6 +1,10 @@
 class TrackingsheetimagesController < ApplicationController
   before_action :set_trackingsheetimage, only: [:show, :edit, :update, :destroy]
 	layout 'vendor_portal_null'
+
+	#for authentication
+	before_filter :authenticate_user!
+
   # GET /trackingsheetimages
   # GET /trackingsheetimages.json
   def index

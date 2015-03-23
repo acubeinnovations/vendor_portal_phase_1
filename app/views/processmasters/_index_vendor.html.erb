@@ -11,6 +11,7 @@
 			<td><input type="radio" name="selectprocess"></td>
 			<td><%= @slno %></td>
 			<td><% if !processmaster.division.blank? %><%= processmaster.division.name %><% end %></td>
+			<td><%= processmaster.try(:name) %></td>
 			<td><%= processmaster.try(:brand) %></td>
 			<td><%= processmaster.try(:season) %></td>
 			<td><%= processmaster.try(:year) %></td>
