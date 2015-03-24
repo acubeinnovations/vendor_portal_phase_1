@@ -10,7 +10,13 @@ class StylesController < ApplicationController
   # GET /styles
   # GET /styles.json
   def index
-    @styles = Style.search(params[:searchterm]).paginate(:page => params[:page], :per_page =>3)
+
+		if current_user.userrole==VendorPortal::Application.config.admin 
+		  @styles = Style.search(params[:searchterm]).paginate(:page => params[:page], :per_page =>10)
+    else if current_user.userrole==VendorPortal::Application.config.operationadmin 
+      		@styles = current_user.division.styles.search(params[:searchterm]).paginate(:page => params[:page], :per_page =>10)
+    		end
+    end
 		if !params[:page].blank?
 			@slno=((params[:page].to_i - 1) * 3) + 1
 		else
@@ -50,7 +56,7 @@ class StylesController < ApplicationController
 
     respond_to do |format|
       if @style.save
-        format.html { redirect_to styles_url, notice: 'Style was successfully created.' }
+        format.html { redirect_to new_style_path, notice: 'Style was successfully created.' }
         format.json { render :show, status: :created, location: @style }
       else
         format.html { render :new }
@@ -87,7 +93,7 @@ class StylesController < ApplicationController
   end
 	def get_styles
 		@styles = Style.where(:division_id=>params[:division_id])
-    render json: Hash[@styles.map { |v| [ v[:id].to_s, v[:stylename].to_s ] } ]
+    render json: Hash[@styles.map { |v| [ v[:id].to_s, v[:stylecode].to_s ] } ]
 	end
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -97,6 +103,6 @@ class StylesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def style_params
-      params.require(:style).permit(:stylename, :string, :stylecode,:division_id,:operationuser_id,:sales_id,:designer_id, :image, :mate, { :user_ids => [] } )
+      params.require(:style).permit(:stylename, :string,:protonumber, :stylecode,:division_id,:operationuser_id,:sales_id,:designer_id, :image, :mate, { :user_ids => [] } )
     end
 end

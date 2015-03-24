@@ -4,7 +4,7 @@ class Style
   include Mongoid::Timestamps
   field :stylename, type: String
   field :stylecode, type: String
-  
+  field :protonumber, type: String
   field :division_id, type: String
   #field :brand, type: String
   #field :market, type: String
@@ -38,10 +38,11 @@ class Style
 	def self.search(search)
 		if !search.blank?
 		  
-			any_of({stylename: /#{search}/i })
+			any_of({stylename: /#{search}/i },{protonumber: /#{search}/i },{stylecode: /#{search}/i })
 		else
 		  all()
 		end
 	end
+	
 
 end

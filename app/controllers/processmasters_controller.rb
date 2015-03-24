@@ -96,7 +96,7 @@ class ProcessmastersController < ApplicationController
 							fordelete.each do |fordeletestyle|
 							
 								@trackingsheet = Trackingsheet.where('processmaster_id'=>params[:id],"style_id"=>BSON::ObjectId.from_string(fordeletestyle.to_s))
-								@trackingsheet.delete
+								@trackingsheet.destroy
 								end	
 							end
 					else if !@old_styles.blank?
@@ -104,7 +104,7 @@ class ProcessmastersController < ApplicationController
 							#return false
 							@old_styles.each do |style|
 								@trackingsheet = Trackingsheet.where('processmaster_id'=>params[:id],"style_id"=>BSON::ObjectId.from_string(style.to_s))
-								@trackingsheet.delete
+								@trackingsheet.destroy
 							end
 					end
 				end
@@ -141,9 +141,9 @@ class ProcessmastersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def processmaster_params
-      params.require(:processmaster).permit(:name,:brand,:season,:year,:market,:division,{ :style_ids => [] })
+      params.require(:processmaster).permit(:name,:brand,:contact,:season,:submarket,:market,:division,{ :style_ids => [] })
     end
 		def processmaster_update_params
-      params.require(:processmaster).permit(:division,:brand,:season,:year,:market,:customername,:customeraccount,:project,:referencestyle,:stylename,:stylecode,:image,{ :user_ids => [] })
+      params.require(:processmaster).permit(:division,:brand,:season,:submarket,:market,:customername,:contact,:customeraccount,:project,:referencestyle,:stylename,:stylecode,:image,{ :user_ids => [] })
     end
 end

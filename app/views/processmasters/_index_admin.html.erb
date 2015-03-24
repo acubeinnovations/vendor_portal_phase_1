@@ -6,8 +6,8 @@
 			<td><%= processmaster.try(:name) %></td>
 			<td><%= processmaster.try(:brand) %></td>
 			<td><%= processmaster.try(:season) %></td>
-				<td><%= processmaster.try(:year) %></td>
 			<td><%= processmaster.try(:market) %></td>
+			<td><%= processmaster.try(:submarket) %></td>
 			<td><%= processmaster.created_at %></td>
 			<td><%= link_to 'Edit', edit_processmaster_path(processmaster),class:'btn btn-info' %></td>
 			<td><%= link_to 'Tracking Sheet', trackingsheets_path(:processmaster_id => processmaster.id),class:'btn btn-warning' %></td>

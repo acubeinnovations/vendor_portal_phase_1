@@ -1,0 +1,15 @@
+
+		<% if !@processmaster.persisted? %>
+
+			<%if current_user.userrole==VendorPortal::Application.config.operationadmin%>
+
+				<%div_id=current_user.division_id%>
+			<% else %>
+				<%div_id=@processmaster.division_id%>
+			<%end%>
+		<% else %>
+			<%div_id=@processmaster.division_id%>
+		<%end%>
+										
+															<%= f.collection_select :contact,User.where('userrole'=>VendorPortal::Application.config.designer,'division'=>div_id),:id,:name, prompt: true %>
+														

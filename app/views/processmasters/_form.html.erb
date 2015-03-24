@@ -33,34 +33,7 @@
 																
 																<td><%= f.text_field :name, class:"span3" %></td>
 															</tr>
-															<tr>
-																<td>Brand</td>
-																<td>
-																	<%= f.text_field :brand, class:"span6",placeholder:"Brand" %>
-																</td>
-															</tr>
-													
-															<tr>
-																<td>Market</td>
-																<td>
-																	<%= f.text_field :market, class:"span6",placeholder:"Market" %>
-															</td>
-															</tr>
-													
-															<tr>
-																<td>Season</td>
-																<td>
-																	<%= f.text_field :season, class:"span6",placeholder:"Season" %>	
-																</td>
-														</tr>
-														<tr>
-																<td>Year</td>
-																<td>
-																	<%= f.text_field :year, class:"span6",placeholder:"Year" %>	
-																</td>
-														</tr>
-
-															<% if current_user.userrole==VendorPortal::Application.config.admin  %>
+																	<% if current_user.userrole==VendorPortal::Application.config.admin  %>
 															<tr>
 																<td>Division</td>
 																<td>
@@ -79,12 +52,45 @@
 																</td>
 														</tr>
 															<% end %>
+															<tr>
+																<td>Brand</td>
+																<td>
+																	<%= f.text_field :brand, class:"span6",placeholder:"Brand" %>
+																</td>
+															</tr>
+														<tr>
+																<td>Season</td>
+																<td>
+																	<%= f.text_field :season, class:"span6",placeholder:"Season" %>	
+																</td>
+														</tr>
+															<tr>
+																<td>Market</td>
+																<td>
+																	<%= f.text_field :market, class:"span6",placeholder:"Market" %>
+															</td>
+															</tr>
+													
+															
+														<tr>
+																<td>Sub Market</td>
+																<td>
+																	<%= f.text_field :submarket, class:"span6",placeholder:"Sub Market" %>	
+																</td>
+														</tr>
+														<tr>
+																<td>Contact</td>
+																<td>
+																		<%= render :partial => "form_users",:object => @processmaster, :locals=>{:f=> f } %>
+																</td>
+														</tr>
+													
 															<% if !@processmaster.persisted? %><% else %>
 															<tr>
 																<td>Refer Style</td>
 																<td class="border-none"> <%#= f.collection_select :style_ids,current_user.division.styles,:id,:stylename %>
 																<% if current_user.userrole==VendorPortal::Application.config.operationadmin || current_user.userrole==VendorPortal::Application.config.admin  %>
-																<%= f.select :style_ids ,@processmaster.division.styles.collect {|s| [ s.stylename, s.id ] }, { include_blank: false },{ multiple: true } %>
+																<%= f.select :style_ids ,@processmaster.division.styles.collect {|s| [ s.stylecode, s.id ] }, { include_blank: false },{ multiple: true } %>
 																<%else%>
 
 																<% end %>

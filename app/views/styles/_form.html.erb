@@ -21,18 +21,24 @@
 															<%= f.text_field :stylecode, class:"span6",placeholder:"Style Code" %>
 													</div>
 												</div>
+												<div class="control-group">
+												<label class="control-label">Proto number</label>
+													<div class="controls">
+															<%= f.text_field :protonumber, class:"span6",placeholder:"Proto number" %>
+													</div>
+												</div>
 												<% if  current_user.userrole==VendorPortal::Application.config.admin  %>
 												
 												<div class="control-group">
 													<label class="control-label">Division</label>
 														<div class="controls">
-															<%= f.collection_select :division_id,Division.all,:id,:name, prompt: true %>
+															<%= f.collection_select :division_id,Division.all,:id,:name, {:include_blank => "Please select"} %>
 																
 														</div>
 													</div>
 														<% else %><div class="hide-me">
 																
-																		<%= f.collection_select :division_id,Division.where('id'=>current_user.division.id),:id,:name, prompt: true,:selected=>current_user.division.id %>
+																		<%= f.collection_select :division_id,Division.where('id'=>current_user.division.id),:id,:name,  {:include_blank => "Please select"},:selected=>current_user.division.id %>
 																</div>	
 															<% end %>
 													

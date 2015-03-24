@@ -6,7 +6,9 @@ class Processmaster
   field :division, type: String
 	field :brand, type: String
   field :season, type: String
-  field :year, type: String
+	field :contact, type: String
+	field :submarket, type: String
+  #field :year, type: String
   field :market, type: String
 	#field :customername, type: String
   #field :customeraccount, type: String

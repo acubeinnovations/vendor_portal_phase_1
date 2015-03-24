@@ -7,8 +7,8 @@
 		<th>Name</th>
 		<th>Brand</th>
 		<th>Season</th>
-		<th>Year</th>
 		<th>Market</th>
+		<th>Sub Market</th>
 		<th>Created Date</th>
 		
 		<th colspan="<% if current_user.userrole==VendorPortal::Application.config.admin %>3<% else if current_user.userrole==VendorPortal::Application.config.operationadmin %>3<% else if current_user.userrole!=VendorPortal::Application.config.admin || current_user.userrole!=VendorPortal::Application.config.operationadmin  %> 1<% end %><% end %><% end %>">Actions</th>
