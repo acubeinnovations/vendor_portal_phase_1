@@ -80,7 +80,7 @@
 									</td>
 									<td clas="span3" style="border:none;border-right: 1px solid #333 !important;text-align:center;">
 										<% if trackingsheetimage.image.url!='/images/original/missing.png' %>
-										<%= image_tag trackingsheetimage.image.url(:small)  %>
+										<%= image_tag '/vendorportal'+trackingsheetimage.image.url(:small).to_s  %>
 										<%	end			 %>
 										<%= f.file_field :image,class:'trackingsheetimage' %>
 									</td>

@@ -44,7 +44,7 @@ class Processmaster
 	def self.search(search)
 		if !search.blank?
 
-		   any_of({season: /#{search}/i },{year: /#{search}/i })
+		   any_of({season: /#{search}/i })
        
 		else
 		  all()

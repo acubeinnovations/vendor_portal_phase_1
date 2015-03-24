@@ -30,7 +30,7 @@
 											<div class="control-group">
 													<label class="control-label">Operations</label>
 														<div class="controls">
-															<%= f.collection_select :operationuser_id,User.where('userrole'=>VendorPortal::Application.config.operationuser,'division'=>div_id),:id,:name, {:include_blank => "Please select"},:id=>'op' %>
+															<%= f.collection_select :operationuser_id,User.where('userrole'=>VendorPortal::Application.config.operationuser,'division'=>div_id),:id,:name, {:include_blank => "Please select"} %>
 																
 														</div>
 													</div>
