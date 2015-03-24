@@ -1,7 +1,6 @@
-<% @i=1 %>
 <%  current_user.division.styles.each do |style| %>
 <tr class="gradeX">
-<td> <%=@i %></td>
+<td> <%=@slno %></td>
 <td><%=  style.stylename %></td>
 <td><%= style.stylecode %></td>
 <td><% @k=1 %><% style.users.each do |user| %><%= @k.to_s+'. '+user.email %><br><% @k+=1 %><% end %></td>
@@ -9,7 +8,7 @@
 <td><%= link_to 'Edit',  edit_style_path(style) , :class => 'btn btn-warning btn-xs' %></td>
 <td><%= link_to 'Delete', style_path(style), :class => 'btn btn-danger btn-xs', :method => 'delete', :confirm => 'Are you sure?' %> </td>
 </tr>
-<% @i+=1%>
+<% @slno+=1%>
 <% end %>	
 
 

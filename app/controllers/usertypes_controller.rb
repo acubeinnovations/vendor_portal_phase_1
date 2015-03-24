@@ -78,6 +78,6 @@ class UsertypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def usertype_params
-      params.require(:usertype).permit(:userrole, :description)
+      params.require(:usertype).permit(:userrole, :description,:_id)
     end
 end

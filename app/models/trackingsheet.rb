@@ -126,6 +126,8 @@ class Trackingsheet
 	has_many :hardwares, :dependent => :destroy
 	has_many :testings, :dependent => :destroy
 	has_many :costsheets, :dependent => :destroy
+	has_many :trackingsheetimages, :dependent => :destroy
+	has_many :trackingsheetdocuments, :dependent => :destroy
 	#validates_presence_of :comments, :on => :update
 	
 end
