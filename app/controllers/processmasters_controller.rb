@@ -10,7 +10,12 @@ class ProcessmastersController < ApplicationController
   # GET /processmasters
   # GET /processmasters.json
   def index
-    @processmasters = Processmaster.search(params[:searchterm]).paginate(:page => params[:page], :per_page =>3)
+	  if current_user.userrole!=VendorPortal::Application.config.vendor 
+		   @processmasters = Processmaster.search(params[:searchterm]).paginate(:page => params[:page], :per_page =>3)
+      else
+       @processmasters = Processmaster.searchforvendor(params[:searchterm]).paginate(:page => params[:page], :per_page =>3)
+      end
+    
   end
 
   # GET /processmasters/1

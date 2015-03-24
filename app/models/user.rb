@@ -31,7 +31,7 @@ class User
 	
 	has_and_belongs_to_many :styles
 	#has_and_belongs_to_many :processmasters
-  belongs_to :division
+ belongs_to :division
 
 	#referenced_in:uesertype
   ## Confirmable

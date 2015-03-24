@@ -41,8 +41,18 @@ class Processmaster
 	
 	def self.search(search)
 		if !search.blank?
-		  
-			any_of({season: /#{search}/i },{year: /#{search}/i })
+
+		   any_of({season: /#{search}/i },{year: /#{search}/i })
+       
+		else
+		  all()
+		end
+	end
+	def self.searchforvendor(search)
+		if !search.blank?
+		 
+          where(division_id: search)
+       
 		else
 		  all()
 		end

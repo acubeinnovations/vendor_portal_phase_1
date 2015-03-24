@@ -7,8 +7,14 @@
 						<td style="border:none;">
 						</td>
 						<td style="border:none;">
-						<%= form_tag processmasters_path, :method => 'get',:id =>'default_search' do %>
-						 <%= text_field_tag :searchterm, params[:searchterm],:placeholder => 'Enter search term...' %>
+						
+						<%= form_tag processmasters_path, :method => 'get',:id =>'default_search' do%>
+						<% if current_user.userrole!=VendorPortal::Application.config.vendor %>
+						 <%= text_field_tag :searchterm, params[:searchterm],:placeholder => 'Search by Season or year...' %>
+						 <% else %>
+						
+						 <%= select_tag "searchterm", options_from_collection_for_select(Division.all, "id", "name"), prompt: "Select divisions" %>
+						 <%end%>
 						<% end %>
 						</td>
 					</tr>
