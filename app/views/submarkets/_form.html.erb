@@ -1,11 +1,33 @@
-<%= simple_form_for(@submarket) do |f| %>
-  <%= f.error_notification %>
+<%= form_for @submarket, :html => {:class => "form-horizontal"} do |f| %>
+	 <% if @submarket.errors.any? %>
+		 <div id="error_explanation">
+		   <h2><%= pluralize(@submarket.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-  <div class="form-inputs">
-    <%= f.input :name %>
-  </div>
+		   <ul>
+		   <% @submarket.errors.full_messages.each do |message| %>
+		     <li><%= message %></li>
+		   <% end %>
+		   </ul>
+		 </div>
+	 <% end %>
+<div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+	<div class="widget-box">
+		<div class="control-group">
+		<label class="control-label">Name</label>
+			<div class="controls">
+					<%= f.text_field :name, class:"span6",placeholder:"Submarket Name" %>
+			</div>
+		</div>
+		
+	<div class="form-actions">
+		<%= f.submit 'Save', :class => 'btn btn-success btn-xs' %>
+	</div>  
+</div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+</div>
+</div>
+
+
 <% end %>

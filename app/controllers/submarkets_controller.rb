@@ -1,6 +1,6 @@
 class SubmarketsController < ApplicationController
   before_action :set_submarket, only: [:show, :edit, :update, :destroy]
-
+	layout 'vendor_portal'
   # GET /submarkets
   # GET /submarkets.json
   def index

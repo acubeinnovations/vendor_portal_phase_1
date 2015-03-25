@@ -1,6 +1,6 @@
 class MarketsController < ApplicationController
   before_action :set_market, only: [:show, :edit, :update, :destroy]
-
+	layout 'vendor_portal'
   # GET /markets
   # GET /markets.json
   def index

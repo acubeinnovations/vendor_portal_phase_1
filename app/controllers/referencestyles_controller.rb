@@ -1,6 +1,6 @@
 class ReferencestylesController < ApplicationController
   before_action :set_referencestyle, only: [:show, :edit, :update, :destroy]
-
+	layout 'vendor_portal'
   # GET /referencestyles
   # GET /referencestyles.json
   def index
