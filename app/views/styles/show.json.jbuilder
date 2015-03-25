@@ -1,1 +1,1 @@
-json.extract! @style, :id, :stylename, :string, :stylecode, :users, :image, :mate, :created_at, :updated_at
+json.extract! @style, :id, :stylename, :stylecode, :users, :image, :created_at, :updated_at

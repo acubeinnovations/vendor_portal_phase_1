@@ -1,6 +1,6 @@
 class Processmaster
   include Mongoid::Document
-	include Mongoid::Timestamps::Created
+	include Mongoid::Timestamps
 	include Mongoid::Paperclip
 
   field :division, type: String
@@ -26,7 +26,10 @@ class Processmaster
 	has_many :trackingsheets, :dependent => :destroy
 	accepts_nested_attributes_for :styles,:trackingsheets,allow_destroy: true#, reject_if: :all_blank
   belongs_to :division
-  
+	belongs_to :brand
+	belongs_to :season
+  belongs_to :market
+	belongs_to :submarket
 
 	has_mongoid_attached_file :image,
       :url => "/system/attachments/:id/:style/:basename.:extension", 

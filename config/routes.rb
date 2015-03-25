@@ -2,6 +2,18 @@ Rails.application.routes.draw do
   
 
   
+  resources :submarkets
+
+  resources :markets
+
+  resources :brands
+
+  resources :referencestyles
+
+  resources :productcategories
+
+  resources :seasons
+
   resources :trackingsheetdocuments
 
   resources :trackingsheetimages
@@ -52,6 +64,30 @@ Rails.application.routes.draw do
 	end
 	as :style do
 			get "get_styles"=> "styles#get_styles", :as => :get_styles
+	end
+	as :season do
+			get "ajaxcreate_seasons"=> "seasons#ajaxcreate_seasons", :as => :ajaxcreate_seasons
+     
+	end
+	as :productcategory do
+			get "ajaxcreate_productcategories"=> "productcategories#ajaxcreate_productcategories", :as => :ajaxcreate_productcategories
+     
+	end
+	as :referencestyle do
+			get "ajaxcreate_referencestyles"=> "referencestyles#ajaxcreate_referencestyles", :as => :ajaxcreate_referencestyles
+     
+	end
+	as :brand do
+			get "ajaxcreate_brands"=> "brands#ajaxcreate_brands", :as => :ajaxcreate_brands
+     
+	end
+	as :market do
+			get "ajaxcreate_markets"=> "markets#ajaxcreate_markets", :as => :ajaxcreate_markets
+     
+	end
+	as :submarket do
+			get "ajaxcreate_submarkets"=> "submarkets#ajaxcreate_submarkets", :as => :ajaxcreate_submarkets
+     
 	end
   as :user do
     get "/login" => "devise/sessions#new", :as => :new_user_session

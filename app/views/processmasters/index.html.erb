@@ -10,7 +10,7 @@
 						
 						<%= form_tag processmasters_path, :method => 'get',:id =>'default_search' do%>
 						<% if current_user.userrole!=VendorPortal::Application.config.vendor %>
-						 <%= text_field_tag :searchterm, params[:searchterm],:placeholder => 'Search by Season...' %>
+						 <%= text_field_tag :searchterm, params[:searchterm],:title => 'Search by Season...' %>
 						 <% else %>
 						
 						 <%= select_tag "searchterm", options_from_collection_for_select(Division.all, "id", "name"), prompt: "Select division" %>

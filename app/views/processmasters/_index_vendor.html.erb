@@ -16,6 +16,7 @@
 			<td><%= processmaster.try(:season) %></td>
 			<td><%= processmaster.try(:market) %></td>
 			<td><%= processmaster.try(:submarket) %></td>
+			<td><%= processmaster.trackingsheets.count %></td>
 			<td><%= processmaster.created_at %></td>
 			<td>	<%= link_to 'Tracking Sheet', trackingsheets_path(:processmaster_id => processmaster.id),class:'btn btn-warning' %></td>
 		</tr>	

@@ -24,9 +24,27 @@
 															</div>	
 														<% end %>
 											<div class="control-group">
-												<label class="control-label">Style Name</label>
+												<label class="control-label">Season</label>
 													<div class="controls">
-															<%= f.text_field :stylename, class:"span6",placeholder:"stylename" %>
+															<%= f.collection_select :season_id,Season.all,:id,:name,  {:include_blank => ""},:class=>'style_season add-select', :id=>"lstDropDown_A",:onKeyDown=>"fnKeyDownHandler_A(this, event);",:onKeyUp=>"fnKeyUpHandler_A(this, event); return false;",:onKeyPress => "return fnKeyPressHandler_A(this, event);" ,:onChange=>"fnChangeHandler_A(this);",:onFocus=>"fnFocusHandler_A(this);" %><i class="icon-plus-sign add-through-select" url="/ajaxcreate_seasons"></i>
+													</div>
+												</div>
+												<div class="control-group">
+												<label class="control-label">Product Category</label>
+													<div class="controls">
+															<%= f.collection_select :productcategory_id,Productcategory.all,:id,:name,  {:include_blank => ""},:class=>'style_productcategory add-select', :id=>"lstDropDown_A",:onKeyDown=>"fnKeyDownHandler_A(this, event);",:onKeyUp=>"fnKeyUpHandler_A(this, event); return false;",:onKeyPress => "return fnKeyPressHandler_A(this, event);" ,:onChange=>"fnChangeHandler_A(this);",:onFocus=>"fnFocusHandler_A(this);" %><i class="icon-plus-sign add-through-select" url="/ajaxcreate_productcategories"></i>
+													</div>
+												</div>
+												<div class="control-group">
+												<label class="control-label">Reference Style</label>
+													<div class="controls">
+															<%= f.collection_select :referencestyle_id,Referencestyle.all,:id,:name,  {:include_blank => ""},:class=>'style_referencestyle add-select', :id=>"lstDropDown_A",:onKeyDown=>"fnKeyDownHandler_A(this, event);",:onKeyUp=>"fnKeyUpHandler_A(this, event); return false;",:onKeyPress => "return fnKeyPressHandler_A(this, event);" ,:onChange=>"fnChangeHandler_A(this);",:onFocus=>"fnFocusHandler_A(this);" %><i class="icon-plus-sign add-through-select" url="/ajaxcreate_referencestyles"></i>
+													</div>
+												</div>
+												<div class="control-group">
+												<label class="control-label">Proto #/ DAF #</label>
+													<div class="controls">
+															<%= f.text_field :protonumber, class:"span6",placeholder:"Proto #/ DAF #" %>
 													</div>
 												</div>
 												<div class="control-group">
@@ -36,11 +54,12 @@
 													</div>
 												</div>
 												<div class="control-group">
-												<label class="control-label">Proto Number</label>
+												<label class="control-label">Style Name</label>
 													<div class="controls">
-															<%= f.text_field :protonumber, class:"span6",placeholder:"Proto Number" %>
+															<%= f.text_field :stylename, class:"span6",placeholder:"stylename" %>
 													</div>
 												</div>
+											
 												
 													
 													<div class="control-group">

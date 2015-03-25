@@ -44,22 +44,22 @@ class ProcessmastersController < ApplicationController
   def create
 		
     @processmaster = Processmaster.new(processmaster_params)
-		#@style = Style.find(processmaster_params['referencestyle'])
-		#@processmaster.stylename = @style.stylename
-		#@processmaster.stylecode = @style.stylecode
-    
-   	#@processmaster.division = @style.division
-   #@processmaster.brand = @style.brand
-    #@processmaster.market = @style.market
-    #@processmaster.season = @style.season
-    
-    
-		#@processmaster.image = @style.image
-		#@processmaster.user_ids = @style.user_ids
-		#@processmaster.id=@processmaster.project.to_s.parameterize+Date.today.to_time.to_i.to_s
+		
     respond_to do |format|
       if @processmaster.save
-				
+					
+					if 	!processmaster_params[:style_ids].blank?
+							
+					processmaster_params[:style_ids].each do |style|	
+						if !style.blank?
+							if Trackingsheet.where('processmaster_id'=>@processmaster.id,"style_id"=>BSON::ObjectId.from_string(style.to_s)).count== 0
+						
+								@trackingsheet = Trackingsheet.new("processmaster_id"=>@processmaster.id,"style_id"=>style)
+								@trackingsheet.save
+							end
+						end
+					end
+				end
         format.html { redirect_to processmasters_path, notice: 'Processmaster was successfully created.' }
         format.json { render :show, status: :created, location: @processmaster }
       else

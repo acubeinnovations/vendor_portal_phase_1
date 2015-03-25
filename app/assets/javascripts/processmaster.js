@@ -1,17 +1,30 @@
 
-$('#processmaster_division').change(function(){
+$('#processmaster_division,#processmaster_season_id').change(function(){
 
-var division=$(this).val();
-processStyles(division);
-processContactUser(division);
+var division=$('#processmaster_division').val();
+var season=$('#processmaster_season_id').val();
+if(division!='' && season!=''){
+processStyles(division,season);
+}else{
+$('#processmaster_style_ids').html('');
+}
+
 });
 
 
+$('#processmaster_division').change(function(){
 
-function processStyles(division){
+var division=$('#processmaster_division').val();
+processContactUser(division);
+
+});
+
+function processStyles(division,season){
 var division=division;
+var season=season;
 $.get("/get_styles", {
-    division_id:division
+    division_id:division,
+		season:season
   },function(data){
 		styles=data;
 		select_content="";
@@ -30,7 +43,7 @@ $.get("/get_styles", {
 function processContactUser(division){
 $.get("/get_users", {
     division_id:division,
-		userrole:'designer'
+		userrole:'operationuser'
   },function(data){
 		users=data;
 		

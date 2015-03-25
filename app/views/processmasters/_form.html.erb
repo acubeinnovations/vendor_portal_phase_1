@@ -53,21 +53,22 @@
 														</tr>
 															<% end %>
 															<tr>
-																<td>Brand</td>
-																<td>
-																	<%= f.text_field :brand, class:"span6",placeholder:"Brand" %>
-																</td>
-															</tr>
-														<tr>
 																<td>Season</td>
 																<td>
-																	<%= f.text_field :season, class:"span6",placeholder:"Season" %>	
+																	<%= f.collection_select :season_id,Season.all,:id,:name,  {:include_blank => "Please select"}%>
 																</td>
-														</tr>
+															</tr>
+															<tr>
+																<td>Brand</td>
+																<td>
+																	<%= f.collection_select :brand_id,Brand.all,:id,:name,  {:include_blank => ""},:class=>'processmaster_brand add-select', :id=>"lstDropDown_A",:onKeyDown=>"fnKeyDownHandler_A(this, event);",:onKeyUp=>"fnKeyUpHandler_A(this, event); return false;",:onKeyPress => "return fnKeyPressHandler_A(this, event);" ,:onChange=>"fnChangeHandler_A(this);",:onFocus=>"fnFocusHandler_A(this);" %><i class="icon-plus-sign add-through-select" url="/ajaxcreate_brands"></i>
+																</td>
+															</tr>
+														
 															<tr>
 																<td>Market</td>
 																<td>
-																	<%= f.text_field :market, class:"span6",placeholder:"Market" %>
+																	<%= f.collection_select :market_id,Market.all,:id,:name,  {:include_blank => ""},:class=>'processmaster_market add-select', :id=>"lstDropDown_A",:onKeyDown=>"fnKeyDownHandler_A(this, event);",:onKeyUp=>"fnKeyUpHandler_A(this, event); return false;",:onKeyPress => "return fnKeyPressHandler_A(this, event);" ,:onChange=>"fnChangeHandler_A(this);",:onFocus=>"fnFocusHandler_A(this);" %><i class="icon-plus-sign add-through-select" url="/ajaxcreate_markets"></i>
 															</td>
 															</tr>
 													
@@ -75,7 +76,7 @@
 														<tr>
 																<td>Sub Market</td>
 																<td>
-																	<%= f.text_field :submarket, class:"span6",placeholder:"Sub Market" %>	
+																<%= f.collection_select :submarket_id,Submarket.all,:id,:name,  {:include_blank => ""},:class=>'processmaster_submarket add-select', :id=>"lstDropDown_A",:onKeyDown=>"fnKeyDownHandler_A(this, event);",:onKeyUp=>"fnKeyUpHandler_A(this, event); return false;",:onKeyPress => "return fnKeyPressHandler_A(this, event);" ,:onChange=>"fnChangeHandler_A(this);",:onFocus=>"fnFocusHandler_A(this);" %><i class="icon-plus-sign add-through-select" url="/ajaxcreate_submarkets"></i>
 																</td>
 														</tr>
 														<tr>
@@ -85,18 +86,24 @@
 																</td>
 														</tr>
 													
-															<% if !@processmaster.persisted? %><% else %>
+															
 															<tr>
 																<td>Refer Style</td>
 																<td class="border-none"> <%#= f.collection_select :style_ids,current_user.division.styles,:id,:stylename %>
-																<% if current_user.userrole==VendorPortal::Application.config.operationadmin || current_user.userrole==VendorPortal::Application.config.admin  %>
-																<%= f.select :style_ids ,@processmaster.division.styles.collect {|s| [ s.stylecode, s.id ] }, { include_blank: false },{ multiple: true } %>
+																<% if current_user.userrole==VendorPortal::Application.config.operationadmin%>
+																<%= f.select :style_ids ,current_user.division.styles.collect {|s| [ s.stylecode, s.id ] }, { include_blank: false },{ multiple: true } %>
+																<%else if  current_user.userrole==VendorPortal::Application.config.admin  %>
+																<%	if @processmaster.persisted?%> 
+																<% @styleswithdiv=Style.where('division'=>@processmaster.division,'season'=>@processmaster.season).collect {|s| [ s.stylecode, s.id ] }%>
 																<%else%>
-
+																<% @styleswithdiv=''%>
+																<%end%>
+																	<%= f.select :style_ids ,@styleswithdiv, { include_blank: false },{ multiple: true } %>
 																<% end %>
+																	<% end %>
 															</td>
 															</tr>
-														<% end %>
+													
 															
 														</tbody>
 													</table>

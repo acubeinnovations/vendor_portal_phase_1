@@ -6,6 +6,9 @@ class Style
   field :stylecode, type: String
   field :protonumber, type: String
   field :division_id, type: String
+	field :season_id, type: String
+	field :productcategory_id, type: String
+	field :referencestyle_id, type: String
   #field :brand, type: String
   #field :market, type: String
  # field :season, type: String
@@ -21,7 +24,10 @@ class Style
 	accepts_nested_attributes_for :users, allow_destroy: true#, reject_if: :all_blank
   has_and_belongs_to_many :processmasters 
 	has_many :trackingsheets
-  
+  belongs_to :season
+	belongs_to :productcategory
+	belongs_to :referencestyle
+
   has_mongoid_attached_file :image,
       :url => "/system/attachments/:id/:style/:basename.:extension", 
           

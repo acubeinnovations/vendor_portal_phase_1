@@ -1,4 +1,5 @@
 class StylesController < ApplicationController
+	 respond_to :html, :json #newly added for in_place_edit
 	layout 'vendor_portal'
   before_action :set_style, only: [:show, :edit, :update, :destroy]
 	#for authentication
@@ -33,6 +34,7 @@ class StylesController < ApplicationController
   # GET /styles/new
   def new
     @style = Style.new
+		
   end
 
   # GET /styles/1/edit
@@ -92,7 +94,7 @@ class StylesController < ApplicationController
     end
   end
 	def get_styles
-		@styles = Style.where(:division_id=>params[:division_id])
+		@styles = Style.where(:division_id=>params[:division_id],:season=>params[:season])
     render json: Hash[@styles.map { |v| [ v[:id].to_s, v[:stylecode].to_s ] } ]
 	end
   private
@@ -103,6 +105,6 @@ class StylesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def style_params
-      params.require(:style).permit(:stylename, :string,:protonumber, :stylecode,:division_id,:operationuser_id,:sales_id,:designer_id, :image, :mate, { :user_ids => [] } )
+      params.require(:style).permit(:stylename, :string,:protonumber,:season_id,:productcategory_id,:referencestyle_id, :stylecode,:division_id,:operationuser_id,:sales_id,:designer_id, :image, :mate, { :user_ids => [] } )
     end
 end

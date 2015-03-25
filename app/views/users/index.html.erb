@@ -8,7 +8,7 @@
 						</td>
 						<td style="border:none;">
 						<%= form_tag users_path, :method => 'get',:id =>'default_search' do %>
-						 <%= text_field_tag :searchterm, params[:searchterm],:placeholder => 'Search by First Name or Userrole ...' %>
+						 <%= text_field_tag :searchterm, params[:searchterm],:title => 'Search by First Name or Userrole ...' %>
 						<% end %>
 						</td>
 					</tr>

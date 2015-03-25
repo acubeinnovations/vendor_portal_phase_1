@@ -1,4 +1,21 @@
 
+function Trim(strInput) {
+	
+    while (true) {
+        if (strInput.substring(0, 1) != " ")
+            break;
+        strInput = strInput.substring(1, strInput.length);
+    }
+    while (true) {
+        if (strInput.substring(strInput.length - 1, strInput.length) != " ")
+            break;
+        strInput = strInput.substring(0, strInput.length - 1);
+    }
+   return strInput;
+	
+}
+
+
 $('#style_division_id').change(function(){
 
 var division=$(this).val();
@@ -52,3 +69,10 @@ $.get("/get_users", {
 
 
 }
+
+$('#style_protonumber').keyup(function(){
+if($('#style_division_id option:selected').text()=='ECHO - WOMEN'){
+$('#style_stylecode').val($('#style_protonumber').val());
+
+}
+});
