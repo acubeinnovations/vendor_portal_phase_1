@@ -1,3 +1,4 @@
+function loadTrackingheet(){
 $('.components').click(function(){
 
 var trackingsheetid=$(this).attr('trackingsheet_id');
@@ -144,4 +145,5 @@ $.get("/trackingsheetdocuments", {
 		
 	});
 
+}
 }

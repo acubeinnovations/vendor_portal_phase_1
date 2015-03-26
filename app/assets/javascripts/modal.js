@@ -1,3 +1,4 @@
+function initExcelTS(){
 
 $(document).keyup(function(e) {
 
@@ -9,64 +10,18 @@ $(document).keyup(function(e) {
 
 
 
-$(window).load(function(){
-	
-	
-	
-	$('#handle').bind('mousewheel', function(event, delta) { 
-        val = this.scrollLeft - (delta * 50); 
-        jQuery(this).stop().animate({ 
-            scrollLeft: val 
-        }, 500); 
-        event.preventDefault(); 
-    }); 
-	
-
-
-
-
-	
-
-
-
-
-	
-	
-	$('#ts').find('table').find('td').each(function() {
-	if(!$(this).children().is("span")){
-		if(!$(this).children().is("a")){
-		$(this).css('background','#EFEFEF');
-		}else{
-		$(this).css('background','#FFF');
-		}
-		}else{
-		$(this).css('background','#FFF');
-		}
-	});
-
-	var max = 0;  	
-	$('#ts').find('table').find('td').each(function() {
-		max = Math.max($(this).height(), max);
-	}).height(max);
-	
-	
-
-	
-
-});
-
 //added for tab-start
-$('.ts-table td span').on('keydown',function(e){
+$('.g_C span').on('keydown',function(e){
 
 	var keyCode = e.keyCode || e.which; 
 
 	if (e.shiftKey && keyCode == 9){
 
-			findPrevTabindex($(this).parent().prev());
+			findPrevTabindex($(this).parent().parent().prev(),$(this).parent().attr('row'));
 			e.preventDefault(); 
 	
 	}else if (keyCode == 9) { 
-		 findNextTabindex($(this).parent().next());
+		 findNextTabindex($(this).parent().parent().next(),$(this).parent().attr('row'));
 			e.preventDefault(); 
    
   }
@@ -74,34 +29,39 @@ $('.ts-table td span').on('keydown',function(e){
 	
 
 
-function findNextTabindex(next){
-
-if(next.children().is("span")){
-$('#'+next.find('span').attr('id')).trigger('click');
+function findNextTabindex(next,row){
+if(row>=0){
+//alert(next.attr('class'));
+if(next.find('.g_R'+row).children().is("span")){
+$('#'+next.find('.g_R'+row).find('span').attr('id')).trigger('click');
 scrollMeRight();
 }else{
 nextspan=next.next();
-findNextTabindex(nextspan);
 scrollMeRight();
+findNextTabindex(nextspan,row);
+
+}
 }
 }
 
-function findPrevTabindex(prev){
-
-if(prev.children().is("span")){
-$('#'+prev.find('span').attr('id')).trigger('click');
+function findPrevTabindex(prev,row){
+if(row>=0){
+if(prev.find('.g_R'+row).children().is("span")){
+$('#'+prev.find('.g_R'+row).find('span').attr('id')).trigger('click');
 scrollMeLeft();
 }else{
 prevspan=prev.prev();
-findPrevTabindex(prevspan);
 scrollMeLeft();
+findPrevTabindex(prevspan,row);
+
+}
 }
 }
 scrollAmount=0;
 function scrollMeRight(){
 
-scrollAmount=scrollAmount+60;
-$('#handle').animate({
+scrollAmount=scrollAmount+170;
+$('.g_Body').animate({
   scrollLeft: scrollAmount
 }, 100);
 
@@ -110,17 +70,17 @@ $('#handle').animate({
 
 function scrollMeLeft(){
 
-scrollAmount=scrollAmount-60;
-$('#handle').animate({
+scrollAmount=scrollAmount-170;
+$('.g_Body').animate({
   scrollLeft: scrollAmount
 }, 100);
 
 
 }
 
-$('#handle').scroll(function(){
+$('.g_Body').scroll(function(){
 
-	scrollAmount=$('#handle').scrollLeft();
+	scrollAmount=$('.g_Body').scrollLeft();
 
 });
 //added for tab-end
@@ -128,7 +88,10 @@ $('#handle').scroll(function(){
 
 //autocomplte
 
-$('table td span').on('keyup',function(e){
+$('.g_C span').on('keyup',function(e){
+var keyCode = e.keyCode || e.which; 
+if(!e.shiftKey){
+	if (keyCode != 9){
 me=$(this).children().children();
 parent=$(this);
 if(parent.attr('data-bip-attribute')=='vendor'){
@@ -147,6 +110,8 @@ $.get("/custom_search", {
 		$('.ui-customautocomplete').show();
 		init();
 	});
+}
+}
 }
 });
 
@@ -167,4 +132,6 @@ $( document ).ajaxStart(function() {
 $('.ui-customautocomplete').html('');
 $('.ui-customautocomplete').hide();
 });
+
+}
 
