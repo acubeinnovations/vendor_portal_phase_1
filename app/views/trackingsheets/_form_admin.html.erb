@@ -238,7 +238,7 @@
 	<%=best_in_place_if productcategory,  trackingsheet, :productcategory, :as => :input,:nil => "Click to add content!"%>
 </td>															
 <td class="bestin" style="text-align:center;"><% if current_user.userrole==VendorPortal::Application.config.admin %>
-<%=best_in_place_if true,  trackingsheet, :vendor, :as => :input,:nil => "Click to add content!",:html_attrs =>{ "data-autocomplete_source"=>custom_search_path,:class=>'custom_search',:id=>"custom_search"+@a.to_s}%><% else if !trackingsheet.vendor.blank? %><%= trackingsheet.vendor %><%end%> <%end%>
+<%=best_in_place_if true,  trackingsheet, :vendor, :as => :input,:nil => "Click to add content!",:html_attrs =>{ "data-autocomplete_source"=>custom_search_path,:class=>'custom_search',:id=>"custom_search"}%><% else if !trackingsheet.vendor.blank? %><%= trackingsheet.vendor %><%end%> <%end%>
 <ul class='ui-customautocomplete'>
 
 </ul>

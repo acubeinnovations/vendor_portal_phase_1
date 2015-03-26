@@ -102,8 +102,9 @@
 		
 		this.generateGrid();
 		this.displayGrid();
-	
-		 //loadHistoryAndComments()
+			initExcelTS()
+			loadTrackingheet()
+		 	loadHistoryAndComments()
 	
 	};
 	
@@ -263,14 +264,20 @@
 	//////////////////////////////////////////////////////////////////////////////////
 	GridProto.convertDataItem = function(arr, rows, rowClass, cols, allowColResize) {
 		var rowIdx = rows.length, 
-		    rowDiv, row, colIdx;
+		    rowDiv, row, colIdx,background;
 		
 		while (rowIdx) {
-			rowDiv = rowClass + (--rowIdx) + "'>";
+			rowDiv = rowClass + (--rowIdx) + "' row="+rowIdx;//newly added by nijo
 			row = rows[rowIdx];
 			colIdx = cols;
+			
 			while (colIdx) {
-				arr[--colIdx][rowIdx] = rowDiv + (row[colIdx] || "&nbsp;");
+				if(row[colIdx-1].indexOf("span")=='-1'){
+					background=' style="background:#EFEFEF;"'+'>';
+				}else{
+					background=' style="background:#FFF;"'+'>';
+				}
+				arr[--colIdx][rowIdx] = rowDiv+background + (row[colIdx] || "&nbsp;");
 			}
 		}
 		if (allowColResize && (rowIdx = rows.length)) {
