@@ -1,4 +1,5 @@
-$('.history').click(function(){
+function loadHistoryAndComments(){
+	$('.history').on('click',function(){
 var trackingsheetid=$(this).attr('trackingsheetid');
 getHistory(trackingsheetid);
 });
@@ -45,3 +46,4 @@ bestinplace_comment=me.parent().find('div').html();
 $('.modal-body').append(bestinplace_comment);
 });
 }
+	}
