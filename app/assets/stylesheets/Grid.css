@@ -59,6 +59,7 @@
 	top : 0px;
 	left : 0px;
 	overflow : hidden;
+	border-bottom: 1px solid #CCC;
 }
 .g_Body {
 	/* Base body container */

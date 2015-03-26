@@ -75,77 +75,7 @@
 									
 																					   
 																				</div>	
-								<div style="width:100%; !important;height:500px;overflow:scroll" id="handle">
-
-
-
-
-
-
 	
-								                 <!-- Indicators -->         
-
-													 <div class="item active">
-														
-								                 <div id='ts'>
-																	<div style="position: absolute;width: 200px;">
-																	<% model_class='trackingsheet' %>
-																	<% @a=1%>
-																	<table  class="table table-bordered" style="width:20%;">
-																	<thead>
-																	<tr>
-																	<th colspan="4" style="height:21px;"></th>
-																	
-																	</tr>
-																	<tr>
-																	<th>ACTIONS</th>
-																	<th>STYLE #</th>
-																	<th>SDESIGN NAME / DESCRIPTION</th>
-																	<th>IMAGE</th>
-																	</tr>
-																	</thead>
-																	<% trackingsheets.each do |trackingsheet|%>
-																	<% 	if trackingsheet.style.division==current_user.division %>
-																	<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
-																	
-																	<tbody>
-																	<tr>
-
-
-																	<td style="text-align:center;">
-																		
-					<div class="comment-container">									
-				<%= link_to "Comments",'#modal-history',:class => 'btn btn-warning btn-xs comments', 'data-toggle':"modal",:trackingsheetid => trackingsheet.id %> 
-				<div class='hide-me '>
-				<div style="float:left">Add Comments &nbsp;</div>
-				<%=best_in_place  trackingsheet, :comments, :as => :textarea,:nil => "Click to add comment!", :class=>"mybest", :style=>"width:150px; margin-bottom:40px;"%>
-				
-				</div>
-					<div>	<br> 	
-		<%= link_to 'History','#modal-history',:class=>'btn btn-warning float-right history',:style=>'width:68px;','data-toggle':"modal", :trackingsheetid => trackingsheet.id %> 	</div>
-					<div><br>	
-		
-		<%= link_to "Documents",'#modal-history',:class => 'btn btn-warning btn-xs documents', 'data-toggle':"modal",:style=>"width:75px; margin-bottom:20px;",:trackingsheetid => trackingsheet.id,:processmasterid=>BSON::ObjectId.from_string(request.GET.first.second.to_s) %> 																			</div>						
-
-
-
-
-
-																	<td><%=trackingsheet.style.stylecode %></td>
-																	<td><%=trackingsheet.style.stylename %></td>
-																	<td><%= image_tag "/vendorportal"+trackingsheet.style.image.url(:small)  %>
-																	<%= link_to "More Images",'#modal-history',:class => 'btn btn-warning btn-xs images', 'data-toggle':"modal",:trackingsheetid => trackingsheet.id,:style=>"width:75px; margin-bottom:20px;" %>
-																</td>
-																	</tr>
-																	<% @a=@a+1%>
-																	<% end %>
-																	<% end %>	
-																	<% end %>
-																	</tbody>
-																	</table>
-																	</div>
-
-																	<!-- Newly Added Ends-->
  <!--modal starts--> 
   
  <div class="modal history-modal hide" id="modal-history"> 
@@ -163,22 +93,25 @@
      
  <div id="overlay"></div> 
   
- <!-- modal ends--> 																																										                	
+ <!-- modal ends--> 																																		
+<table id="demoTable" class="table table-bordered tbuniformwidth  ts-table"  style="table-layout: fixed;">
+		<colgroup><col id="demoTableCol1"></colgroup>
+
+
+	<colgroup><col id="demoTableCol1"></colgroup>
+			<thead>								                	
 											
 
 
-										<table class="table table-bordered tbuniformwidth ts-table"  style="margin-left: 23%; table-layout: fixed;">
 
 											<thead>
 												<tr>
-												<th colspan="50"></th>
-												
-												<th colspan="7"  style="width:1400px; !important"> 1st DAF</th>
-												<th colspan="7"  style="width:1400px; !important"> 2nd DAF</th>
-												<th colspan="4" style="width:400px; !important"></th>
-												
-												</tr>
-													 <tr>
+												<th>ACTIONS</th>
+												<th>STYLE #</th>
+												<th>SDESIGN NAME / DESCRIPTION</th>
+												<th>IMAGE</th>
+												<th>PROTO # / DAF #</th>
+												<th>PRODUCT CATEGORY</th>
 												<th>VENDOR</th>
 												<th>FACTORY</th>
 												<th>SUBCONTRACTOR</th>
@@ -188,10 +121,10 @@
 												<th>PROJECT #</th>
 												<th>REFERENCE STYLE</th>
 												<th>CUSTOMER STYLE #</th>
-												<th>PROTO # / DAF #</th>
+												
 												<th>DESIGNER</th>
 												<th>GROUP NAME</th>
-												<th>PRODUCT CATEGORY</th>
+												
 												<th>DESIGN NAME / DESCRIPTION</th>
 												<th>SHAPE (level code 4)</th>
 												<th>SIZE (level code 6)</th>
@@ -228,7 +161,7 @@
 												<th>PRODUCT LEAD TIME</th>
 												<th>SALES PROCEEDS TO SAMPLE REQUEST DATE</th>
 												<th>PROTO DUE BACK FROM VENDOR</th>
-												<th style="width:400px;">DAF TO VENDOR DATE</th>
+												<th>DAF TO VENDOR DATE</th>
 												<th> S/0 OR S/S</th>
 												<th># OF DEV. SAMPLES NEEDED</th>
 												<th>DAF ISSUED </th>
@@ -256,6 +189,39 @@
 												<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %>
 												
 												<tbody>
+													
+								<td style="text-align:center;">
+																		
+														<div class="comment-container">									
+													<%= link_to "Comments",'#modal-history',:class => 'btn btn-warning btn-xs comments', 'data-toggle':"modal",:trackingsheetid => trackingsheet.id %> 
+													<div class='hide-me '>
+													<div style="float:left">Add Comments &nbsp;</div>
+													<%=best_in_place  trackingsheet, :comments, :as => :textarea,:nil => "Click to add comment!", :class=>"mybest", :style=>"width:150px; margin-bottom:40px;"%>
+				
+													</div>
+														<div>	<br> 	
+											<%= link_to 'History','#modal-history',:class=>'btn btn-warning float-right history',:style=>'width:68px;','data-toggle':"modal", :trackingsheetid => trackingsheet.id %> 	</div>
+														<div><br>	
+		
+											<%= link_to "Documents",'#modal-history',:class => 'btn btn-warning btn-xs documents', 'data-toggle':"modal",:style=>"width:75px; margin-bottom:20px;",:trackingsheetid => trackingsheet.id,:processmasterid=>BSON::ObjectId.from_string(request.GET.first.second.to_s) %> 																			</div>						
+</td>
+
+
+
+
+						<td><%=trackingsheet.style.stylecode %></td>
+						<td><%=trackingsheet.style.stylename %></td>
+						<td><%= image_tag "/vendorportal"+trackingsheet.style.image.url(:small)  %>
+		<%= link_to "More Images",'#modal-history',:class => 'btn btn-warning btn-xs images', 'data-toggle':"modal",:trackingsheetid => trackingsheet.id,:style=>"width:75px; margin-bottom:20px;" %>
+						</td>		
+												<td class="bestin" style="text-align:center;">
+													<%=best_in_place_if proto_daf_number,  trackingsheet, :proto_daf_number, :as => :input,:nil => "Click to add content!"%>
+												</td>						
+													
+												<td class="bestin" style="text-align:center;">
+													<%=best_in_place_if productcategory,  trackingsheet, :productcategory, :as => :input,:nil => "Click to add content!"%>
+												</td>													
+													
 
 												<td class="bestin" style="text-align:center;"><% if current_user.userrole==VendorPortal::Application.config.operationadmin %>
 <%=best_in_place_if true,  trackingsheet, :vendor, :as => :input,:nil => "Click to add content!",:html_attrs =>{ "data-autocomplete_source"=>custom_search_path,:class=>'custom_search',:id=>"custom_search"}%><% else if !trackingsheet.vendor.blank? %><%= trackingsheet.vendor %><%end%> <%end%>
@@ -306,9 +272,7 @@
 												<td class="bestin" style="text-align:center;">
 													<%=best_in_place_if customerstylenumber,  trackingsheet, :customerstylenumber, :as => :input,:nil => "Click to add content!"%>
 												</td>
-												<td class="bestin" style="text-align:center;">
-													<%=best_in_place_if proto_daf_number,  trackingsheet, :proto_daf_number, :as => :input,:nil => "Click to add content!"%>
-												</td>
+
 												<td style="text-align:center;">
 													<%=trackingsheet.style.stylecode %>
 												</td>
@@ -316,9 +280,7 @@
 												<td class="bestin" style="text-align:center;">
 													<%=best_in_place_if groupname,  trackingsheet, :groupname, :as => :input,:nil => "Click to add content!"%>
 												</td>
-												<td class="bestin" style="text-align:center;">
-													<%=best_in_place_if productcategory,  trackingsheet, :productcategory, :as => :input,:nil => "Click to add content!"%>
-												</td>
+												
 												<td class="bestin" style="text-align:center;">
 													<%=best_in_place_if designname,  trackingsheet, :designname, :as => :input,:nil => "Click to add content!"%>
 												</td>

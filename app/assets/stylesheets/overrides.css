@@ -125,3 +125,21 @@ table{
 .mybest{
 	float:left !important;
 }
+
+.g_BodyFixed2 .g_Cl{
+  width:120px !important;;
+  margin: 0 auto;
+}
+.g_HeadFixed .g_Cl{
+  width:120px !important;;
+  font-size:10px;
+  
+}
+.g_HeadFixed .g_C{
+	width:120px !important;
+  
+}
+.g_BodyFixed .g_C{
+	width:109px !important;
+  
+}

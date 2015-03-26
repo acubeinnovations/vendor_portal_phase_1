@@ -121,8 +121,10 @@
 									<tr>
 										<th>ACTIONS</th>
 										<th>STYLE #</th>
-										<th>DESIGN NAME / DESCRIPTION</th>
+										<th>DESIGN NAME /<br> DESCRIPTION</th>
 										<th>IMAGE</th>
+										<th>PROTO # / DAF #</th>
+										<th>PRODUCT CATEGORY</th>
 										<th>VENDOR</th>
 										<th>FACTORY</th>
 										<th>SUBCONTRACTOR</th>
@@ -132,10 +134,10 @@
 										<th>PROJECT #</th>
 										<th>REFERENCE STYLE</th>
 										<th>CUSTOMER STYLE #</th>
-										<th>PROTO # / DAF #</th>
+										
 										<th>DESIGNER</th>
 										<th>GROUP NAME</th>
-										<th>PRODUCT CATEGORY</th>
+										
 										<th>DESIGN NAME / DESCRIPTION</th>
 										<th>SHAPE (level code 4)</th>
 										<th>SIZE (level code 6)</th>
@@ -229,6 +231,12 @@
 																 	
 																	
 																	</td>
+<td class="bestin" style="text-align:center;">
+	<%=best_in_place_if proto_daf_number,  trackingsheet, :proto_daf_number, :as => :input,:nil => "Click to add content!"%>
+</td>		
+<td class="bestin" style="text-align:center;">
+	<%=best_in_place_if productcategory,  trackingsheet, :productcategory, :as => :input,:nil => "Click to add content!"%>
+</td>															
 <td class="bestin" style="text-align:center;"><% if current_user.userrole==VendorPortal::Application.config.admin %>
 <%=best_in_place_if true,  trackingsheet, :vendor, :as => :input,:nil => "Click to add content!",:html_attrs =>{ "data-autocomplete_source"=>custom_search_path,:class=>'custom_search',:id=>"custom_search"+@a.to_s}%><% else if !trackingsheet.vendor.blank? %><%= trackingsheet.vendor %><%end%> <%end%>
 <ul class='ui-customautocomplete'>
@@ -272,9 +280,7 @@
 <td class="bestin" style="text-align:center;">
 	<%=best_in_place_if customerstylenumber,  trackingsheet, :customerstylenumber, :as => :input,:nil => "Click to add content!"%>
 </td>
-<td class="bestin" style="text-align:center;">
-	<%=best_in_place_if proto_daf_number,  trackingsheet, :proto_daf_number, :as => :input,:nil => "Click to add content!"%>
-</td>
+
 <td style="text-align:center;">
 	<%=trackingsheet.style.stylecode %>
 </td>
@@ -282,9 +288,7 @@
 <td class="bestin" style="text-align:center;">
 	<%=best_in_place_if groupname,  trackingsheet, :groupname, :as => :input,:nil => "Click to add content!"%>
 </td>
-<td class="bestin" style="text-align:center;">
-	<%=best_in_place_if productcategory,  trackingsheet, :productcategory, :as => :input,:nil => "Click to add content!"%>
-</td>
+
 <td class="bestin" style="text-align:center;">
 	<%=best_in_place_if designname,  trackingsheet, :designname, :as => :input,:nil => "Click to add content!"%>
 </td>	
