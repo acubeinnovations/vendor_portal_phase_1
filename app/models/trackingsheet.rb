@@ -82,26 +82,26 @@ class Trackingsheet
   field :orderduedateviaair, type: String
   
   #1st DAF/STYLE Sample tab values
-  field :soss, type: String
-  field :nmbrofdefsmplneeded, type: String
-  field :dafissued, type: String
-  field :sampleduedate, type: String
+  #field :soss, type: String
+  #field :nmbrofdefsmplneeded, type: String
+  #field :dafissued, type: String
+  #field :sampleduedate, type: String
   
   
-  field :xmill, type: String #new
-  field :received, type: String #new
-  field :approved, type: String #new
+  #field :xmill, type: String #new
+ 	#field :received, type: String #new
+  #field :approved, type: String #new
   
   #2nd DAF/STYLE Sample tab values
-  field :daf2soss, type: String
-  field :daf2nmbrofdefsmplneeded, type: String
-  field :daf2dafissued, type: String
-  field :daf2sampleduedate, type: String
+ 	#field :daf2soss, type: String
+  #field :daf2nmbrofdefsmplneeded, type: String
+  #field :daf2dafissued, type: String
+  #field :daf2sampleduedate, type: String
   
   
-  field :daf2xmill, type: String #new
-  field :daf2received, type: String #new
-  field :daf2approved, type: String #new
+  #field :daf2xmill, type: String #new
+  #field :daf2received, type: String #new
+  #field :daf2approved, type: String #new
   
   
   
@@ -128,6 +128,7 @@ class Trackingsheet
 	has_many :costsheets, :dependent => :destroy
 	has_many :trackingsheetimages, :dependent => :destroy
 	has_many :trackingsheetdocuments, :dependent => :destroy
+	has_many :samples, :dependent => :destroy
 	#validates_presence_of :comments, :on => :update
 	
 end

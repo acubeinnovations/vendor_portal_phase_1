@@ -146,4 +146,31 @@ $.get("/trackingsheetdocuments", {
 	});
 
 }
+
+
+$('.samples').click(function(){
+
+var trackingsheetid=$(this).attr('trackingsheetid');
+getSamples(trackingsheetid);
+
+});
+
+
+
+function getSamples(trackingsheetid){
+var trackingsheetid=trackingsheetid;
+$.get("/samples", {
+    trackingsheet_id:trackingsheetid
+  },function(data){
+		$('.modal').css('width','1300');
+		$('.modal').css('left','25%');
+		$('.modal-body').html('');
+		$('.modal-body').html(data);
+		
+	});
+
+}
+
+
+
 }

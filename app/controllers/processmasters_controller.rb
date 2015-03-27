@@ -141,9 +141,9 @@ class ProcessmastersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def processmaster_params
-      params.require(:processmaster).permit(:name,:brand,:contact,:season,:submarket,:market,:division,{ :style_ids => [] })
+      params.require(:processmaster).permit(:name,:brand_id,:contact,:season_id,:submarket_id,:market_id,:division,{ :style_ids => [] })
     end
 		def processmaster_update_params
-      params.require(:processmaster).permit(:division,:brand,:season,:submarket,:market,:customername,:contact,:customeraccount,:project,:referencestyle,:stylename,:stylecode,:image,{ :user_ids => [] })
+      params.require(:processmaster).permit(:division,:brand_id,:season_id,:submarket_id,:market_id,:customername,:contact,:customeraccount,:project,:referencestyle,:stylename,:stylecode,:image,{ :user_ids => [] })
     end
 end

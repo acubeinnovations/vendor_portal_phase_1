@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  soss: MyString
+  nmbrofdefsmplneeded: MyString
+  dafissued: MyString
+  sampleduedate: MyString
+  xmill: MyString
+  received: MyString
+  approved: MyString
+
+two:
+  soss: MyString
+  nmbrofdefsmplneeded: MyString
+  dafissued: MyString
+  sampleduedate: MyString
+  xmill: MyString
+  received: MyString
+  approved: MyString

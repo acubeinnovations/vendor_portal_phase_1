@@ -4,12 +4,12 @@ class Processmaster
 	include Mongoid::Paperclip
 
   field :division, type: String
-	field :brand, type: String
-  field :season, type: String
+	field :brand_id, type: String
+  field :season_id, type: String
 	field :contact, type: String
-	field :submarket, type: String
+	field :submarket_id, type: String
   #field :year, type: String
-  field :market, type: String
+  field :market_id, type: String
 	#field :customername, type: String
   #field :customeraccount, type: String
   #field :project, type: String

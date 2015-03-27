@@ -13,10 +13,10 @@
 			<td><%= @slno %></td>
 			<td><% if !processmaster.division.blank? %><%= processmaster.division.name %><% end %></td>
 			<td><%= processmaster.try(:name) %></td>
-			<td><%= processmaster.try(:brand).name %></td>
-			<td><%= processmaster.try(:season).name %></td>
-			<td><%= processmaster.try(:market).name %></td>
-			<td><%= processmaster.try(:submarket).name %></td>
+			<td><%= processmaster.try(:brand).try(:name) %></td>
+			<td><%= processmaster.try(:season).try(:name) %></td>
+			<td><%= processmaster.try(:market).try(:name) %></td>
+			<td><%= processmaster.try(:submarket).try(:name) %></td>
 			<td><%= processmaster.created_at %></td>
 			<td><%= processmaster.trackingsheets.count %></td>
 			<td>	<%= link_to 'Tracking Sheet', trackingsheets_path(:processmaster_id => processmaster.id),class:'btn btn-warning' %></td>

@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   
 
   
+  resources :samples
+
   resources :submarkets
 
   resources :markets
@@ -60,6 +62,10 @@ Rails.application.routes.draw do
 	end
 	as :component do
 			get "ajaxcreate_components"=> "components#ajaxcreate_components", :as => :ajaxcreate_components
+     
+	end
+	as :sample do
+			get "ajaxcreate_samples"=> "samples#ajaxcreate_samples", :as => :ajaxcreate_samples
      
 	end
 	as :style do

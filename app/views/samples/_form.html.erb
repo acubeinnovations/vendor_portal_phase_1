@@ -1,0 +1,17 @@
+<%= simple_form_for(@sample) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :soss %>
+    <%= f.input :nmbrofdefsmplneeded %>
+    <%= f.input :dafissued %>
+    <%= f.input :sampleduedate %>
+    <%= f.input :xmill %>
+    <%= f.input :received %>
+    <%= f.input :approved %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

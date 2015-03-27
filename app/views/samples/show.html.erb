@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Soss:</strong>
+  <%= @sample.soss %>
+</p>
+
+<p>
+  <strong>Nmbrofdefsmplneeded:</strong>
+  <%= @sample.nmbrofdefsmplneeded %>
+</p>
+
+<p>
+  <strong>Dafissued:</strong>
+  <%= @sample.dafissued %>
+</p>
+
+<p>
+  <strong>Sampleduedate:</strong>
+  <%= @sample.sampleduedate %>
+</p>
+
+<p>
+  <strong>Xmill:</strong>
+  <%= @sample.xmill %>
+</p>
+
+<p>
+  <strong>Received:</strong>
+  <%= @sample.received %>
+</p>
+
+<p>
+  <strong>Approved:</strong>
+  <%= @sample.approved %>
+</p>
+
+<%= link_to 'Edit', edit_sample_path(@sample) %> |
+<%= link_to 'Back', samples_path %>
