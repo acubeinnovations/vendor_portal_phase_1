@@ -187,7 +187,7 @@ module TrackingsheetsHelper
 							if current_user.userrole==VendorPortal::Application.config.admin
 							return true  
 							else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
-							return false     
+							return true     
 							else if current_user.userrole==VendorPortal::Application.config.sales
 							return true  
 							else if current_user.userrole==VendorPortal::Application.config.designer
@@ -589,9 +589,9 @@ module TrackingsheetsHelper
               if current_user.userrole==VendorPortal::Application.config.admin
                return true     
               else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
-              return false 
+              return true 
               else if current_user.userrole==VendorPortal::Application.config.sales
-               return true    
+               return false    
               else if current_user.userrole==VendorPortal::Application.config.designer
               return false  
               else if current_user.userrole==VendorPortal::Application.config.vendor
@@ -609,9 +609,9 @@ module TrackingsheetsHelper
                if current_user.userrole==VendorPortal::Application.config.admin
                 return true    
                else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
-              return false
+              return true
                else if current_user.userrole==VendorPortal::Application.config.sales
-                return true    
+                return false    
                else if current_user.userrole==VendorPortal::Application.config.designer
                return false  
                else if current_user.userrole==VendorPortal::Application.config.vendor
@@ -1124,11 +1124,11 @@ module TrackingsheetsHelper
 							   if current_user.userrole==VendorPortal::Application.config.admin
 		              return true     
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
-		             return true
+		             return false
 		             else if current_user.userrole==VendorPortal::Application.config.sales
 		             return false    
 		             else if current_user.userrole==VendorPortal::Application.config.designer
-		             return false   
+		             return true   
 		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return false
 		             end #vendors
@@ -1179,11 +1179,11 @@ module TrackingsheetsHelper
 	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
-		             return true 
+		             return false 
 		             else if current_user.userrole==VendorPortal::Application.config.sales
 		             return false    
 		             else if current_user.userrole==VendorPortal::Application.config.designer
-		             return false 
+		             return true 
 		             else if current_user.userrole==VendorPortal::Application.config.vendor
 		             return false
 		             end #vendors
@@ -1262,11 +1262,11 @@ module TrackingsheetsHelper
       	 							 if current_user.userrole==VendorPortal::Application.config.admin
       		              return true    
       		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
-      		             return true
+      		             return false
       		             else if current_user.userrole==VendorPortal::Application.config.sales
       		             return false    
       		             else if current_user.userrole==VendorPortal::Application.config.designer
-      		             return false
+      		             return true
       		             else if current_user.userrole==VendorPortal::Application.config.vendor
       		             return false
       		             end #vendors
@@ -1319,11 +1319,11 @@ module TrackingsheetsHelper
                   	 							 if current_user.userrole==VendorPortal::Application.config.admin
                   		              return true    
                   		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
-                  		             return true
+                  		             return false
                   		             else if current_user.userrole==VendorPortal::Application.config.sales
                   		             return false    
                   		             else if current_user.userrole==VendorPortal::Application.config.designer
-                  		             return false
+                  		             return true
                   		             else if current_user.userrole==VendorPortal::Application.config.vendor
                   		             return false
                   		             end #vendors
@@ -1339,11 +1339,11 @@ module TrackingsheetsHelper
                       	 							 if current_user.userrole==VendorPortal::Application.config.admin
                       		              return true    
                       		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
-                      		             return true
+                      		             return false
                       		             else if current_user.userrole==VendorPortal::Application.config.sales
                       		             return false    
                       		             else if current_user.userrole==VendorPortal::Application.config.designer
-                      		             return false
+                      		             return true
                       		             else if current_user.userrole==VendorPortal::Application.config.vendor
                       		             return false
                       		             end #vendors
@@ -1396,11 +1396,11 @@ module TrackingsheetsHelper
                                   	 							 if current_user.userrole==VendorPortal::Application.config.admin
                                   		              return true    
                                   		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
-                                  		             return true
+                                  		             return false
                                   		             else if current_user.userrole==VendorPortal::Application.config.sales
                                   		             return false    
                                   		             else if current_user.userrole==VendorPortal::Application.config.designer
-                                  		             return false
+                                  		             return true
                                   		             else if current_user.userrole==VendorPortal::Application.config.vendor
                                   		             return false
                                   		             end #vendors
