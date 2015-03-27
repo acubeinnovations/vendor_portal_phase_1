@@ -1,162 +1,160 @@
 <%= form_for @processmaster, :html => { :multipart => true,:class => "form-horizontal submit-me" }  do |f| %>
-	 <% if @processmaster.errors.any? %>
-		 <div id="error_explanation">
-		   <h2><%= pluralize(@processmaster.errors.count, "error") %> prohibited this post from being saved:</h2>
+     <% if @processmaster.errors.any? %>
+         <div id="error_explanation">
+           <h2><%= pluralize(@processmaster.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-		   <ul>
-		   <% @processmaster.errors.full_messages.each do |message| %>
-		     <li><%= message %></li>
-		   <% end %>
-		   </ul>
-		 </div>
-	 <% end %>
-	
+           <ul>
+           <% @processmaster.errors.full_messages.each do |message| %>
+             <li><%= message %></li>
+           <% end %>
+           </ul>
+         </div>
+     <% end %>
+    
 <div class="container-fluid">
      <div class="row-fluid">
-					<div class="span12">
-						<div class="widget-box  border-bottom">
-							<div class="widget-title">
-								<span class="icon">
-									<i class="icon-info-sign"></i>
-								</span>
-								<h5>Process Master</h5>
-							</div>
-							<div class="widget-content nopadding">
-									<table class="table table-bordered">
-										<tbody>
-											<tr>
-												<td style="<% if !@processmaster.persisted?  %><%= 'width:100%;'.to_s %><% else %><%= 'width:40%;'.to_s %><% end %>">
-													<table class="table table-bordered border-left-0px">
-														<tbody>
-																<tr>
-																<td>Name</td>
-																
-																<td><%= f.text_field :name, class:"span3" %></td>
-															</tr>
-																	<% if current_user.userrole==VendorPortal::Application.config.admin  %>
-															<tr>
-																<td>Division</td>
-																<td>
-																		<%if !@processmaster.division.blank? %>
-																		<% div_id=@processmaster.division.id %>
-																		<%else%>
-																		<% div_id=''%>
-																		<%end%>
-																		<%= f.collection_select :division,Division.all,:id,:name, prompt: true,:selected=>div_id %>
-																</td>
-														</tr>
-														<% else %><tr class="hide-me">
-																<td>Division</td>
-																<td>
-																		<%= f.collection_select :division,Division.where('id'=>current_user.division.id),:id,:name, prompt: true,:selected=>current_user.division.id %>
-																</td>
-														</tr>
-															<% end %>
-															<tr>
-																<td>Season</td>
-																<td>
-																	<%= f.collection_select :season_id,Season.all,:id,:name,  {:include_blank => "Please select"}%>
-																</td>
-															</tr>
-															<tr>
-																<td>Brand</td>
-																<td>
-																	<%= f.collection_select :brand_id,Brand.all,:id,:name,  {:include_blank => ""},:class=>'processmaster_brand add-select', :id=>"lstDropDown_A",:onKeyDown=>"fnKeyDownHandler_A(this, event);",:onKeyUp=>"fnKeyUpHandler_A(this, event); return false;",:onKeyPress => "return fnKeyPressHandler_A(this, event);" ,:onChange=>"fnChangeHandler_A(this);",:onFocus=>"fnFocusHandler_A(this);" %><i class="icon-plus-sign add-through-select" url="/ajaxcreate_brands"></i>
-																</td>
-															</tr>
-														
-															<tr>
-																<td>Market</td>
-																<td>
-																	<%= f.collection_select :market_id,Market.all,:id,:name,  {:include_blank => ""},:class=>'processmaster_market add-select', :id=>"lstDropDown_A",:onKeyDown=>"fnKeyDownHandler_A(this, event);",:onKeyUp=>"fnKeyUpHandler_A(this, event); return false;",:onKeyPress => "return fnKeyPressHandler_A(this, event);" ,:onChange=>"fnChangeHandler_A(this);",:onFocus=>"fnFocusHandler_A(this);" %><i class="icon-plus-sign add-through-select" url="/ajaxcreate_markets"></i>
-															</td>
-															</tr>
-													
-															
-														<tr>
-																<td>Sub Market</td>
-																<td>
-																<%= f.collection_select :submarket_id,Submarket.all,:id,:name,  {:include_blank => ""},:class=>'processmaster_submarket add-select', :id=>"lstDropDown_A",:onKeyDown=>"fnKeyDownHandler_A(this, event);",:onKeyUp=>"fnKeyUpHandler_A(this, event); return false;",:onKeyPress => "return fnKeyPressHandler_A(this, event);" ,:onChange=>"fnChangeHandler_A(this);",:onFocus=>"fnFocusHandler_A(this);" %><i class="icon-plus-sign add-through-select" url="/ajaxcreate_submarkets"></i>
-																</td>
-														</tr>
-														<tr>
-																<td>Contact</td>
-																<td>
-																		<%= render :partial => "form_users",:object => @processmaster, :locals=>{:f=> f } %>
-																</td>
-														</tr>
-													
-															
-															<tr>
-																<td>Refer Style<span style=" font-style: italic;">&nbsp;( press 'Ctrl' for select styles )</span></td>
-																<td class="border-none"> <%#= f.collection_select :style_ids,current_user.division.styles,:id,:stylename %>
-																<% if current_user.userrole==VendorPortal::Application.config.operationadmin%>
-																<%div=current_user.division %>
-																<%else if  current_user.userrole==VendorPortal::Application.config.admin  %>
-																<% div=@processmaster.division %>
-																<%end%>
-																<%end%>
-																<%	if @processmaster.persisted?%> 
-																
-																<% @forselectstyleswithdiv=Style.where('division'=>div,'season'=>@processmaster.season)%>
-																<%else%>
-															
-																<% @forselectstyleswithdiv=''%>
-																<%end%>
-																
-																<div>
-																<div style="width: 30%;float: left;">
-																	<%options=''%>
-																<%	if !@forselectstyleswithdiv.blank?%>
-																<% @forselectstyleswithdiv.each do |st| %>
-																<% if !@processmaster.style_ids.blank? %>
-																<%if !st.id.in?(@processmaster.style_ids)%>
-																<% options+='<option value='+st.id+' stylenumber='+st.stylecode+' protonumber='+st.protonumber+'>'+st.stylecode+'</option>' %>	
-																<%end%>
-																<%else%>
-																<% options+='<option value='+st.id+' stylenumber='+st.stylecode+' protonumber='+st.protonumber+'>'+st.stylecode+'</option>' %>	
-																<%end%>
-																<%end%>
-																<%end%>
-
-																<%=	select_tag 'styles',options.html_safe,:id=>'processmaster_styles',:multiple=>true %>
-																	
-																</div>
-																<div style="width: 25%;float: left;">
-																	<%=check_box_tag 'protonumber', '',false,:class=>'process_protonumber'%>&nbsp;&nbsp;Select By Proto #/ DAF #
-
-																</div>
-																<div style="width: 15%;float: left;">
-																	<%= link_to 'ADD >> ','#',:class=>'style-add-to-multiselect btn btn-success btn-xs ',:style=>'width: 80px;'%><br><%= link_to '<< REMOVE ','#',:class=>'style-remove-from-multiselect btn btn-danger btn-xs '%>
-																	</div>
-																	<div style="width: 30%;float: left;">
-																		<%optionsstyle=''%>
-																		<%	@processmaster.styles.each do |st_ids| %>
-																		<% optionsstyle+='<option value='+st_ids.id+' stylenumber='+st_ids.stylecode+' protonumber='+st_ids.protonumber+'>'+st_ids.protonumber+'--------'+st_ids.stylecode+'</option>' %>
-																		<%end%>
-																		<%=	select_tag 'processmaster[style_ids][]',optionsstyle.html_safe,:id=>'processmaster_style_ids',:multiple=>true %>
-																		<%#= f.select :style_ids ,@styleswithdiv, { include_blank: false },{ multiple: true } %>
-																	</div>	
-																</div>
-																
-															</td>
-															</tr>
-													
-															
-														</tbody>
-													</table>
-												</td>
-												
-											</tr>
-										</tbody>
-									</table>
-							</div>
-							<div style="text-align:right" class="form-actions">
-											<%= link_to 'Save','#',:class=>'save-style btn btn-success btn-xs ',:style=>'width: 80px;'%>
- 									<div class="hide-me">	<%= f.submit 'Save', :class => 'btn btn-success  btn-xs style-form-submit' %></div>
- 							</div>
-						</div>
-					</div>
-		</div>
+                    <div class="span12">
+                        <div class="widget-box  border-bottom">
+                            <div class="widget-title">
+                                <span class="icon">
+                                    <i class="icon-info-sign"></i>
+                                </span>
+                                <h5>Process Master</h5>
+                            </div>
+                            <div class="widget-content nopadding">
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                            <tr>
+                                                <td style="<% if !@processmaster.persisted?  %><%= 'width:100%;'.to_s %><% else %><%= 'width:40%;'.to_s %><% end %>">
+                                                    <table class="table table-bordered border-left-0px">
+                                                        <tbody>
+                                                                <tr>
+                                                                <td>Name</td>
+                                                                
+                                                                <td><%= f.text_field :name, class:"span3" %></td>
+                                                            </tr>
+                                                                    <% if current_user.userrole==VendorPortal::Application.config.admin  %>
+                                                            <tr>
+                                                                <td>Division</td>
+                                                                <td>
+                                                                        <%if !@processmaster.division.blank? %>
+                                                                        <% div_id=@processmaster.division.id %>
+                                                                        <%else%>
+                                                                        <% div_id=''%>
+                                                                        <%end%>
+                                                                        <%= f.collection_select :division,Division.all,:id,:name, prompt: true,:selected=>div_id %>
+                                                                </td>
+                                                        </tr>
+                                                        <% else %><tr class="hide-me">
+                                                                <td>Division</td>
+                                                                <td>
+                                                                        <%= f.collection_select :division,Division.where('id'=>current_user.division.id),:id,:name, prompt: true,:selected=>current_user.division.id %>
+                                                                </td>
+                                                        </tr>
+                                                            <% end %>
+                                                            <tr>
+                                                                <td>Season</td>
+                                                                <td>
+                                                                    <%= f.collection_select :season_id,Season.all,:id,:name,  {:include_blank => "Please select"}%>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Brand</td>
+                                                                <td>
+                                                                    <%= f.collection_select :brand_id,Brand.all,:id,:name,  {:include_blank => ""},:class=>'processmaster_brand add-select', :id=>"lstDropDown_A",:onKeyDown=>"fnKeyDownHandler_A(this, event);",:onKeyUp=>"fnKeyUpHandler_A(this, event); return false;",:onKeyPress => "return fnKeyPressHandler_A(this, event);" ,:onChange=>"fnChangeHandler_A(this);",:onFocus=>"fnFocusHandler_A(this);" %><i class="icon-plus-sign add-through-select" url="/ajaxcreate_brands"></i>
+                                                                </td>
+                                                            </tr>
+                                                        
+                                                            <tr>
+                                                                <td>Market</td>
+                                                                <td>
+                                                                    <%= f.collection_select :market_id,Market.all,:id,:name,  {:include_blank => ""},:class=>'processmaster_market add-select', :id=>"lstDropDown_A",:onKeyDown=>"fnKeyDownHandler_A(this, event);",:onKeyUp=>"fnKeyUpHandler_A(this, event); return false;",:onKeyPress => "return fnKeyPressHandler_A(this, event);" ,:onChange=>"fnChangeHandler_A(this);",:onFocus=>"fnFocusHandler_A(this);" %><i class="icon-plus-sign add-through-select" url="/ajaxcreate_markets"></i>
+                                                            </td>
+                                                            </tr>
+                                                    
+                                                            
+                                                        <tr>
+                                                                <td>Sub Market</td>
+                                                                <td>
+                                                                <%= f.collection_select :submarket_id,Submarket.all,:id,:name,  {:include_blank => ""},:class=>'processmaster_submarket add-select', :id=>"lstDropDown_A",:onKeyDown=>"fnKeyDownHandler_A(this, event);",:onKeyUp=>"fnKeyUpHandler_A(this, event); return false;",:onKeyPress => "return fnKeyPressHandler_A(this, event);" ,:onChange=>"fnChangeHandler_A(this);",:onFocus=>"fnFocusHandler_A(this);" %><i class="icon-plus-sign add-through-select" url="/ajaxcreate_submarkets"></i>
+                                                                </td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td>Contact</td>
+                                                                <td>
+                                                                        <%= render :partial => "form_users",:object => @processmaster, :locals=>{:f=> f } %>
+                                                                </td>
+                                                        </tr>
+                                                    
+                                                            
+                                                            <tr>
+                                                                <td>Refer Style<span style=" font-style: italic;">&nbsp;( press 'Ctrl' for select styles )</span></td>
+                                                                <td class="border-none"> <%#= f.collection_select :style_ids,current_user.division.styles,:id,:stylename %>
+                                                                <% if current_user.userrole==VendorPortal::Application.config.operationadmin%>
+                                                                <%div=current_user.division %>
+                                                                <%else if  current_user.userrole==VendorPortal::Application.config.admin  %>
+                                                                <% div=@processmaster.division %>
+                                                                <%end%>
+                                                                <%end%>
+                                                                <%    if @processmaster.persisted?%> 
+                                                                
+                                                                <% @forselectstyleswithdiv=Style.where('division'=>div,'season'=>@processmaster.season)%>
+                                                                <%else%>
+                                                            
+                                                                <% @forselectstyleswithdiv=''%>
+                                                                <%end%>
+                                                                
+                                                                <div>
+                                                                <div style="width: 40%;float: left;">
+                                                                    <%options=''%>
+                                                                <%    if !@forselectstyleswithdiv.blank?%>
+                                                                <% @forselectstyleswithdiv.each do |st| %>
+                                                                <% if !@processmaster.style_ids.blank? %>
+                                                                <%if !st.id.in?(@processmaster.style_ids)%>
+                                                                <% options+='<option value='+st.id+' stylenumber='+st.stylecode+' protonumber='+st.protonumber+'>'+st.stylecode+'</option>' %>    
+                                                                <%end%>
+                                                                <%else%>
+                                                                <% options+='<option value='+st.id+' stylenumber='+st.stylecode+' protonumber='+st.protonumber+'>'+st.stylecode+'</option>' %>    
+                                                                <%end%>
+                                                                <%end%>
+                                                                <%end%>
+                                                                <%=check_box_tag 'protonumber', '',false,:class=>'process_protonumber'%>&nbsp;&nbsp;Select By Proto #/ DAF #
+                                                                <%=    select_tag 'styles',options.html_safe,:id=>'processmaster_styles',:multiple=>true,:style=>"height: 200px;" %>
+                                                                    
+                                                                </div>
+                                                                
+                                                                <div style="width: 25%;float: left;"><br>
+                                                                    <%= link_to 'ADD >> ','#',:class=>'style-add-to-multiselect btn btn-success btn-xs ',:style=>'width: 80px;'%><br><%= link_to '<< REMOVE ','#',:class=>'style-remove-from-multiselect btn btn-danger btn-xs '%>
+                                                                    </div>
+                                                                    <div style="width: 30%;float: left;">
+                                                                        <%optionsstyle=''%>
+                                                                        <%    @processmaster.styles.each do |st_ids| %>
+                                                                        <% optionsstyle+='<option value='+st_ids.id+' stylenumber='+st_ids.stylecode+' protonumber='+st_ids.protonumber+'>'+st_ids.protonumber+'      /    '+st_ids.stylecode+'</option>' %>
+                                                                        <%end%>
+                                                                        <span>Proto Number</span>&nbsp;/&nbsp;<span>Style Number</span>
+                                                                        <%=    select_tag 'processmaster[style_ids][]',optionsstyle.html_safe,:id=>'processmaster_style_ids',:multiple=>true,:style=>"height: 200px;" %>
+                                                                        <%#= f.select :style_ids ,@styleswithdiv, { include_blank: false },{ multiple: true } %>
+                                                                    </div>    
+                                                                </div>
+                                                                
+                                                            </td>
+                                                            </tr>
+                                                    
+                                                            
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div style="text-align:right" class="form-actions">
+                                            <%= link_to 'Save','#',:class=>'save-style btn btn-success btn-xs ',:style=>'width: 80px;'%>
+                                     <div class="hide-me">    <%= f.submit 'Save', :class => 'btn btn-success  btn-xs style-form-submit' %></div>
+                             </div>
+                        </div>
+                    </div>
+        </div>
 </div>
 <% end %>

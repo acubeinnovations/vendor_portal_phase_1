@@ -221,7 +221,7 @@
 																	<td class="bestin" style="text-align:center;">
 																	<%if !trackingsheet.style.productcategory.blank?%>	<%=trackingsheet.style.productcategory.try(:name)%><%end%>
 																	</td>	
-																	<td><%= image_tag "/vendorportal"+trackingsheet.style.image.url(:small)  %>
+																	<td><%= image_tag "/vendorportal"+trackingsheet.style.image.url(:small)  %><br><br>
 																	<%= link_to "More Images",'#modal-history',:class => 'btn btn-warning btn-xs images', 'data-toggle':"modal",:trackingsheetid => trackingsheet.id,:style=>"width:90px; margin-bottom:20px;" %>
 																</td>	
 				
