@@ -49,7 +49,16 @@
 												<%=best_in_place_if received,  sample, :received, :as => :input,:nil => "Click to add content!"%>
 											</td>
 											<td class="bestin" style="text-align:center;">
-												<%=best_in_place_if approved,  sample, :approved, :as => :input,:nil => "Click to add content!"%>
+												
+												<%#=best_in_place_if approved,  sample, :approved, :as => :input,:nil => "Click to add content!"%>
+												<%if sample.approved=='yes'%>
+												<%options="<option value=''>Please Select</option><option value='yes' selected>YES</option><option value='no'>NO</option>" %>
+												<%else if sample.approved=='no' %>
+												<%options="<option value=''>Please Select</option><option value='yes' >YES</option><option value='no' selected >NO</option>" %>							
+												<%else%>
+												<%options="<option value=''>Please Select</option><option value='yes' >YES</option><option value='no'>NO</option>" %>												<%end %>
+												<%end %>
+												<%= select_tag 'approved',options.html_safe,:class=>'yesorno',:sample_id=>sample.id,:trackingsheet_id=>params[:trackingsheet_id] %>
 											</td>
 										</tr>
 									</tbody>
@@ -63,17 +72,23 @@
 	</div>
 	<script type="text/javascripts">
 		
-		$('.add-samples').on('click',function(){
-
+		$('.yesorno').on('change',function(){
 		var trackingsheetid=$(this).attr('trackingsheet_id');
-		createandgetSamples(trackingsheetid);
-
+		var sampleid=$(this).attr('sample_id');
+		var approved=$(this).val();
+		if(approved!=''){
+		createandgetSamples(trackingsheetid,sampleid,approved);
+		}
 		});
 
-		function createandgetSamples(trackingsheetid){
+		function createandgetSamples(trackingsheetid,sampleid,approved){
 		var trackingsheetid=trackingsheetid;
+		var sampleid=sampleid;
+		var approved=approved;
 		$.get("/ajaxcreate_samples", {
-				trackingsheet:trackingsheetid
+				trackingsheet:trackingsheetid,
+					sampleid:sampleid,
+					approved:approved
 			},function(data){
 				$('.modal').css('width','1200');
 				$('.modal').css('left','30%');

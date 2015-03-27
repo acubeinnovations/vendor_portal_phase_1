@@ -52,8 +52,23 @@ class SamplesController < ApplicationController
     end
   end
 	def ajaxcreate_samples
-    @sample = Sample.new(:trackingsheet=>params[:trackingsheet])
+    
+		if params.has_key?('sampleid')
+			if 	params[:approved]=='yes'
+					@sample=Sample.find(params[:sampleid])
+					@sample.update(:approved=>params[:approved])	
+			else
+				
+				@sample=Sample.find(params[:sampleid])
+				@sample.update(:approved=>params[:approved])	
+				@sample = Sample.new(:trackingsheet=>params[:trackingsheet])
 
+			end
+		else
+		
+		@sample = Sample.new(:trackingsheet=>params[:trackingsheet])
+
+		end
     respond_to do |format|
       if @sample.save
         format.html { redirect_to samples_path+"?".to_s+"trackingsheet_id=".to_s+params[:trackingsheet], notice: 'Sample was successfully created.' }

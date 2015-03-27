@@ -56,6 +56,10 @@ class ProcessmastersController < ApplicationController
 						
 								@trackingsheet = Trackingsheet.new("processmaster_id"=>@processmaster.id,"style_id"=>style)
 								@trackingsheet.save
+									
+								@sample=Sample.new("trackingsheet"=>@trackingsheet.id)
+								@sample.save
+
 							end
 						end
 					end
