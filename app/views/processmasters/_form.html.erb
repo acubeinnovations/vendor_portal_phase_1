@@ -88,7 +88,7 @@
 													
 															
 															<tr>
-																<td>Refer Style</td>
+																<td>Refer Style<span style=" font-style: italic;">&nbsp;( press 'Ctrl' for select styles )</span></td>
 																<td class="border-none"> <%#= f.collection_select :style_ids,current_user.division.styles,:id,:stylename %>
 																<% if current_user.userrole==VendorPortal::Application.config.operationadmin%>
 																<%div=current_user.division %>
