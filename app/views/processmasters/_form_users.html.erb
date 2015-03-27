@@ -11,5 +11,5 @@
 			<%div_id=@processmaster.division_id%>
 		<%end%>
 										
-															<%= f.collection_select :contact,User.where('userrole'=>VendorPortal::Application.config.designer,'division'=>div_id),:id,:name, prompt: true %>
+															<%= f.collection_select :contact,User.where('userrole'=>VendorPortal::Application.config.operationuser,'division'=>div_id),:id,:name, prompt: true %>
 														

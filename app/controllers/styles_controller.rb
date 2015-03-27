@@ -95,7 +95,8 @@ class StylesController < ApplicationController
   end
 	def get_styles
 		@styles = Style.where(:division_id=>params[:division_id],:season=>params[:season])
-    render json: Hash[@styles.map { |v| [ v[:id].to_s, v[:stylecode].to_s ] } ]
+    #render json: Hash[@styles.map { |v| [ v[:id].to_s, v[:stylecode].to_s ] } ]
+		render json: @styles
 	end
   private
     # Use callbacks to share common setup or constraints between actions.
