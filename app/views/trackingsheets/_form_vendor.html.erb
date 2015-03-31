@@ -261,9 +261,7 @@
 </td> 
 
 <td style="text-align:center;"> 
-	<%if !trackingsheet.style.protonumber.blank?%>	<%=trackingsheet.style.try(:protonumber)%><%end%>
-																	
-		<%=best_in_place_if true,  trackingsheet.style, :stylecode, :as => :input,:nil => "Click to add content!",:html_attrs => {:tabindex => 2,:class=>'bs-tab'}%>
+	<%=best_in_place_if designname,  trackingsheet, :designname, :as => :input,:nil => "Click to add content!"%>
 </td> 
 
 <td class="bestin" style="text-align:center;"> 
