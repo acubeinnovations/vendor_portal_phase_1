@@ -2,6 +2,14 @@ class Style
   include Mongoid::Document
   include Mongoid::Paperclip
   include Mongoid::Timestamps
+  
+  
+  field :stylename, :type => String
+  validates_presence_of :stylename
+  field :stylenumber, :type => String
+  validates_presence_of :stylenumber
+  
+  
   field :stylename, type: String
   field :stylecode, type: String
   field :protonumber, type: String
@@ -18,7 +26,7 @@ class Style
   field :designer_id, type: String
   field :operationuser_id, type: String
  
-
+  
   belongs_to :division
 	has_and_belongs_to_many :users 
 	accepts_nested_attributes_for :users, allow_destroy: true#, reject_if: :all_blank

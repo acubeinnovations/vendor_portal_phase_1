@@ -36,7 +36,12 @@ $.get('/vendorportal/get_comments',{
  content='<div id="modal_history">';
  
  for(i=0;i<data.length;i++){
-content+='<div style="float:left;"> <i class="icon-stop"></i>  Added by '+data[i].useremail+', at '+data[i].updated_at+'</div> <br> <div style="float:left;padding-left:15px;"> '+data[i].comments+' </div><br> <hr>';
+//content+='<div style="float:left;"> <i class="icon-stop"></i>  Added by '+data[i].useremail+', at '+data[i].updated_at+'</div> <br> <div style="float:left;padding-left:15px;"> '+data[i].comments+' </div><br> <hr>';
+	date = new Date(data[i].updated_at);
+	updated_date = (date.getMonth() + 1) + '-' + date.getDate() + '-' +  date.getFullYear() +  '  '  + date.getHours() + ':' + date.getMinutes();
+	content+='<div style="float:left"> <i class="icon-stop"></i>  Added by '+data[i].useremail+', at '+updated_date+'</div> <br> <div style="float:left;padding-left:15px;"> '+data[i].comments+' </div><br> <hr>';
+ 	  		
+
  	
  	}
 content+='</div>';

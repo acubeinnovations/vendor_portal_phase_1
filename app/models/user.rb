@@ -1,6 +1,8 @@
 class User
   include Mongoid::Document
 	include Mongoid::Timestamps::Created
+  
+    validates_presence_of :firstname
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,

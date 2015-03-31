@@ -1,5 +1,18 @@
 
 <%= form_for @style,  :html => { :multipart => true,:class => "form-horizontal" } do |f| %>
+
+	 <% if @style.errors.any? %>
+		 <div id="error_explanation">
+		   <!--<h2><%= pluralize(@style.errors.count, "error") %> prohibited this post from being saved:</h2>-->
+	  <br>
+	  <div class="alert fade in alert-danger "><button class="close" data-dismiss="alert">×</button>
+      <ul>
+		   <% @style.errors.full_messages.each do |message| %>
+		     <li><%= message %></li>
+		   <% end %>
+		   </ul>
+		 </div>
+	<%end%>	 
  <div class="container-fluid">
   <div class="row-fluid">
   <div class="widget-box">

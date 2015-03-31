@@ -1,10 +1,11 @@
 <%= form_for @division, :html => {:class => "form-horizontal"} do |f| %>
 	 <% if @division.errors.any? %>
 		 <div id="error_explanation">
-		   <h2><%= pluralize(@division.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-		   <ul>
-		   <% @usertype.errors.full_messages.each do |message| %>
+		   <!-- <h2><%= pluralize(@division.errors.count, "error") %> prohibited this post from being saved:</h2>-->
+	  <br>
+	  <div class="alert fade in alert-danger "><button class="close" data-dismiss="alert">×</button>
+      <ul>
+		   <% @division.errors.full_messages.each do |message| %>
 		     <li><%= message %></li>
 		   <% end %>
 		   </ul>
