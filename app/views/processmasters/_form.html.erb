@@ -62,16 +62,13 @@
                                                                 <td>Brand</td>
                                                                 <td>
 <div  class="dropdown">																		
-                                                                    <%= f.collection_select :brand_id,Brand.all,:id,:name,  {:include_blank => ""},:class=>'processmaster_brand add-select' %><i class="icon-plus-sign add-through-select"></i>
+                                                                    <%= f.collection_select :brand_id,Brand.all,:id,:name,  {:include_blank => "Please Select"},:class=>'processmaster_brand add-select' %><i class="icon-plus-sign add-through-select"></i>
 																	
 </div>																	
 <div style="display:none;" class="text">	
 	<%= f.text_field :brand, class:"span3 textfield",:url=>"/ajaxcreate_brands" %>																
 </div>																	
 																	
-																	
-																	
-																	<i>  Select blank and type to add </i>
                                                                 </td>
                                                             </tr>
                                                         
