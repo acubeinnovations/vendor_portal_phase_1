@@ -1,13 +1,24 @@
 
 $('.add-through-select').click(function(){
 
-if($(this).parent().find('.add-select option:selected').val()=='' && $(this).parent().find('.add-select option:selected').text()!=''){
-addData($(this).parent().find('.add-select option:selected').text(),$(this));
-}
+
+
+
+        $(this).parent().next().show();
+   		$(this).parent().hide();
+		alert($(this).parent().attr('class'));
+
 });
 
 
-
+ $(".textfield").on('keyup',function (e){ 
+ 
+ 	if (e.keyCode == 13) { addData($(this).val(),$(this));
+	 return false; }
+ 
+ 	
+	
+ });
 function addData(field,me){
 var field=field;
 var me=me;
@@ -20,6 +31,9 @@ $.get(url, {
 		$.each(data,function(k,v){
 		select_content+='<option value="'+k+'">'+v+'</option>'
 		});
-		me.parent().find('.add-select').html(select_content);
+		me.parent().parent().find('dropdown').find('.add-select').html(select_content);
+		
+		me.parent().parent().find('dropdown').show();
+   		me.parent().hide();
 	});
 }

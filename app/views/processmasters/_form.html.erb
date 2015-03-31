@@ -61,7 +61,16 @@
                                                             <tr>
                                                                 <td>Brand</td>
                                                                 <td>
-                                                                    <%= f.collection_select :brand_id,Brand.all,:id,:name,  {:include_blank => ""},:class=>'processmaster_brand add-select', :id=>"lstDropDown_A",:onKeyDown=>"fnKeyDownHandler_A(this, event);",:onKeyUp=>"fnKeyUpHandler_A(this, event); return false;",:onKeyPress => "return fnKeyPressHandler_A(this, event);" ,:onChange=>"fnChangeHandler_A(this);",:onFocus=>"fnFocusHandler_A(this);" %><i class="icon-plus-sign add-through-select" url="/ajaxcreate_brands"></i>
+<div  class="dropdown">																		
+                                                                    <%= f.collection_select :brand_id,Brand.all,:id,:name,  {:include_blank => ""},:class=>'processmaster_brand add-select' %><i class="icon-plus-sign add-through-select"></i>
+																	
+</div>																	
+<div style="display:none;" class="text">	
+	<%= f.text_field :brand, class:"span3 textfield",:url=>"/ajaxcreate_brands" %>																
+</div>																	
+																	
+																	
+																	
 																	<i>  Select blank and type to add </i>
                                                                 </td>
                                                             </tr>
