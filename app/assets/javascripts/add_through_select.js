@@ -1,11 +1,8 @@
 
 $('.add-through-select').click(function(){
-
-
-
-
-        $(this).parent().next().show();
-   		$(this).parent().hide();
+				$(this).parent().next().find('input').val('');
+				$(this).parent().next().show();
+   			$(this).parent().hide();
 		
 
 });
@@ -18,11 +15,15 @@ $('.add-through-select').click(function(){
 		e.preventDefault();
 	 return false;
 
+	}	if (e.keyCode == 27) {
+
+			$(this).parent().prev().show();
+   		$(this).parent().hide();
 	}
  
  });
 
-	$('.submit-me').on("keyup keypress", function(e) {
+	$('.submit-me,.style-form-submit').on("keyup keypress", function(e) {
 		var code = e.keyCode || e.which; 
 		if (code  == 13) {               
 		  e.preventDefault();

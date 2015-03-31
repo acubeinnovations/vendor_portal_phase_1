@@ -1,5 +1,5 @@
 
-<%= form_for @style,  :html => { :multipart => true,:class => "form-horizontal" } do |f| %>
+<%= form_for @style,  :html => { :multipart => true,:class => "form-horizontal style-form-submit" } do |f| %>
 
 	 <% if @style.errors.any? %>
 		 <div id="error_explanation">
@@ -39,19 +39,35 @@
 											<div class="control-group">
 												<label class="control-label">Season</label>
 													<div class="controls">
-															<%= f.collection_select :season_id,Season.all,:id,:name,  {:include_blank => ""},:class=>'style_season add-select', :id=>"lstDropDown_A",:onKeyDown=>"fnKeyDownHandler_A(this, event);",:onKeyUp=>"fnKeyUpHandler_A(this, event); return false;",:onKeyPress => "return fnKeyPressHandler_A(this, event);" ,:onChange=>"fnChangeHandler_A(this);",:onFocus=>"fnFocusHandler_A(this);" %><i class="icon-plus-sign add-through-select" url="/ajaxcreate_seasons"></i>
+                                                               
+	<div  class="dropdown">	
+															<%= f.collection_select :season_id,Season.all,:id,:name,  {:include_blank => "Please select"},:class=>'style_season add-select' %><i class="icon-plus-sign add-through-select" url="/ajaxcreate_seasons"></i>
+</div>	
+<div style="display:none;" class="text">	
+	<%= f.text_field :season, class:"span10 textfield",:url=>"/ajaxcreate_seasons" %>																
+</div>
 													</div>
 												</div>
 												<div class="control-group">
 												<label class="control-label">Product Category</label>
 													<div class="controls">
-															<%= f.collection_select :productcategory_id,Productcategory.all,:id,:name,  {:include_blank => ""},:class=>'style_productcategory add-select', :id=>"lstDropDown_A",:onKeyDown=>"fnKeyDownHandler_A(this, event);",:onKeyUp=>"fnKeyUpHandler_A(this, event); return false;",:onKeyPress => "return fnKeyPressHandler_A(this, event);" ,:onChange=>"fnChangeHandler_A(this);",:onFocus=>"fnFocusHandler_A(this);" %><i class="icon-plus-sign add-through-select" url="/ajaxcreate_productcategories"></i>
+	<div  class="dropdown">	
+															<%= f.collection_select :productcategory_id,Productcategory.all,:id,:name,  {:include_blank => "Please select"},:class=>'style_productcategory add-select' %><i class="icon-plus-sign add-through-select" url="/ajaxcreate_productcategories"></i>
+</div>	
+<div style="display:none;" class="text">	
+	<%= f.text_field :productcategory, class:"span10 textfield",:url=>"/ajaxcreate_productcategories" %>																
+</div>
 													</div>
 												</div>
 												<div class="control-group">
 												<label class="control-label">Reference Style</label>
 													<div class="controls">
-															<%= f.collection_select :referencestyle_id,Referencestyle.all,:id,:name,  {:include_blank => ""},:class=>'style_referencestyle add-select', :id=>"lstDropDown_A",:onKeyDown=>"fnKeyDownHandler_A(this, event);",:onKeyUp=>"fnKeyUpHandler_A(this, event); return false;",:onKeyPress => "return fnKeyPressHandler_A(this, event);" ,:onChange=>"fnChangeHandler_A(this);",:onFocus=>"fnFocusHandler_A(this);" %><i class="icon-plus-sign add-through-select" url="/ajaxcreate_referencestyles"></i>
+	<div  class="dropdown">	
+															<%= f.collection_select :referencestyle_id,Referencestyle.all,:id,:name,  {:include_blank => "Please select"},:class=>'style_referencestyle add-select' %><i class="icon-plus-sign add-through-select" url="/ajaxcreate_referencestyles"></i>
+</div>	
+<div style="display:none;" class="text">	
+	<%= f.text_field :referencestyle, class:"span10 textfield",:url=>"/ajaxcreate_referencestyles" %>																
+</div>
 													</div>
 												</div>
 												<div class="control-group">
