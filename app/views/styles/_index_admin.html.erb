@@ -1,15 +1,17 @@
 <%  @styles.each do |style| %>
+<%if !style.blank? %>
 <tr class="gradeX">
 <td> <%=@slno %></td>
-<td><%=  style.stylename %></td>
-<td><%= style.stylecode %></td>
-<td><%= style.protonumber %></td>
-<td><%= style.division.name %></td>
+<td><%=  style.try(:stylename) %></td>
+<td><%= style.try(:stylecode) %></td>
+<td><%= style.try(:protonumber) %></td>
+<td><%= style.try(:division).try(:name) %></td>
 <td><% @k=1 %><% if !style.designer_id.blank? %><%= @k.to_s+'. '+User.find(style.designer_id).email %><br><% @k+=1 %><% end %><% if !style.sales_id.blank? %><%= @k.to_s+'. '+User.find(style.sales_id).email %><br><% @k+=1 %><% end %><% if !style.operationuser_id.blank? %><%= @k.to_s+'. '+User.find(style.operationuser_id).email %><br><% @k+=1 %><% end %></td>
 <td><%= image_tag "/vendorportal"+style.image.url(:small)  %></td>
 <td><%= link_to 'Edit',  edit_style_path(style) , :class => 'btn btn-warning btn-xs' %></td>
 <td><%= link_to 'Delete', style_path(style), :class => 'btn btn-danger btn-xs', :method => 'delete', :confirm => 'Are you sure?' %> </td>
 </tr>
+<%end%>
 <% @slno+=1%>
 <% end %>	
             
