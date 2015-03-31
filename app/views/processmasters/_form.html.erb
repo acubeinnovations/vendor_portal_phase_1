@@ -75,7 +75,12 @@
                                                             <tr>
                                                                 <td>Market</td>
                                                                 <td>
-                                                                    <%= f.collection_select :market_id,Market.all,:id,:name,  {:include_blank => ""},:class=>'processmaster_market add-select', :id=>"lstDropDown_A",:onKeyDown=>"fnKeyDownHandler_A(this, event);",:onKeyUp=>"fnKeyUpHandler_A(this, event); return false;",:onKeyPress => "return fnKeyPressHandler_A(this, event);" ,:onChange=>"fnChangeHandler_A(this);",:onFocus=>"fnFocusHandler_A(this);" %><i class="icon-plus-sign add-through-select" url="/ajaxcreate_markets"></i>
+<div  class="dropdown">	
+ <%= f.collection_select :market_id,Market.all,:id,:name,  {:include_blank => "Please Select"},:class=>'processmaster_market add-select'%><i class="icon-plus-sign add-through-select"></i>
+</div>	
+<div style="display:none;" class="text">	
+	<%= f.text_field :market, class:"span3 textfield",:url=>"/ajaxcreate_markets" %>																
+</div>
                                                             </td>
                                                             </tr>
                                                     
@@ -83,7 +88,12 @@
                                                         <tr>
                                                                 <td>Sub Market</td>
                                                                 <td>
-                                                                <%= f.collection_select :submarket_id,Submarket.all,:id,:name,  {:include_blank => ""},:class=>'processmaster_submarket add-select', :id=>"lstDropDown_A",:onKeyDown=>"fnKeyDownHandler_A(this, event);",:onKeyUp=>"fnKeyUpHandler_A(this, event); return false;",:onKeyPress => "return fnKeyPressHandler_A(this, event);" ,:onChange=>"fnChangeHandler_A(this);",:onFocus=>"fnFocusHandler_A(this);" %><i class="icon-plus-sign add-through-select" url="/ajaxcreate_submarkets"></i>
+	<div  class="dropdown">	
+                                                                <%= f.collection_select :submarket_id,Submarket.all,:id,:name,  {:include_blank => "Please Select"},:class=>'processmaster_submarket add-select' %><i class="icon-plus-sign add-through-select" ></i>
+</div>	
+<div style="display:none;" class="text">	
+	<%= f.text_field :submarket, class:"span3 textfield",:url=>"/ajaxcreate_submarkets" %>																
+</div>
                                                                 </td>
                                                         </tr>
                                                         <tr>
