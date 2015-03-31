@@ -334,13 +334,13 @@ module TrackingsheetsHelper
               if current_user.userrole==VendorPortal::Application.config.admin
                return false      
               else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
-            return false
+            return true
               else if current_user.userrole==VendorPortal::Application.config.sales
                 return true      
               else if current_user.userrole==VendorPortal::Application.config.designer
-              return false   
+              return true   
               else if current_user.userrole==VendorPortal::Application.config.vendor
-              return false
+              return true
               end #vendors
               end #designers
               end #sales

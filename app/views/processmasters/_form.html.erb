@@ -62,6 +62,7 @@
                                                                 <td>Brand</td>
                                                                 <td>
                                                                     <%= f.collection_select :brand_id,Brand.all,:id,:name,  {:include_blank => ""},:class=>'processmaster_brand add-select', :id=>"lstDropDown_A",:onKeyDown=>"fnKeyDownHandler_A(this, event);",:onKeyUp=>"fnKeyUpHandler_A(this, event); return false;",:onKeyPress => "return fnKeyPressHandler_A(this, event);" ,:onChange=>"fnChangeHandler_A(this);",:onFocus=>"fnFocusHandler_A(this);" %><i class="icon-plus-sign add-through-select" url="/ajaxcreate_brands"></i>
+																	<i>  Select blank and type to add </i>
                                                                 </td>
                                                             </tr>
                                                         
@@ -114,7 +115,7 @@
                                                                 <% options+='<option value='+st.id+' stylenumber='+st.stylecode+' protonumber='+st.protonumber+'>'+st.stylecode+'</option>' %>    
                                                                 <%end%>
                                                                 <%else%>
-                                                                <% options+='<option value='+st.id+' stylenumber='+st.stylecode+' protonumber='+st.protonumber+'>'+st.stylecode+'</option>' %>    
+                                                                <% options+='<option value='+st.id.to_s+' stylenumber='+st.stylecode.to_s+' protonumber='+st.protonumber.to_s+'>'+st.stylecode.to_s+'</option>' %>    
                                                                 <%end%>
                                                                 <%end%>
                                                                 <%end%>
@@ -129,7 +130,7 @@
                                                                     <div style="width: 30%;float: left;">
                                                                         <%optionsstyle=''%>
                                                                         <%    @processmaster.styles.each do |st_ids| %>
-                                                                        <% optionsstyle+='<option value='+st_ids.id+' stylenumber='+st_ids.stylecode+' protonumber='+st_ids.protonumber+'>'+st_ids.protonumber+'      /    '+st_ids.stylecode+'</option>' %>
+                                                                        <% optionsstyle+='<option value='+st_ids.id.to_s+' stylenumber='+st_ids.stylecode.to_s+' protonumber='+st_ids.protonumber.to_s+'>'+st_ids.protonumber.to_s+'      /    '+st_ids.stylecode.to_s+'</option>' %>
                                                                         <%end%>
                                                                         <span>Proto Number</span>&nbsp;/&nbsp;<span>Style Number</span>
                                                                         <%=    select_tag 'processmaster[style_ids][]',optionsstyle.html_safe,:id=>'processmaster_style_ids',:multiple=>true,:style=>"height: 200px;" %>

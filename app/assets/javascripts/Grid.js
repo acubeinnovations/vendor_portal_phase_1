@@ -60,7 +60,7 @@
 			fixedSelectedBgColor : "#dce7f0", 
 			colAlign : [], // "left", "center", "right"
 			colBGColors : [], 
-			colSortTypes : [], // "string", "number", "date", "custom", "none"
+			//colSortTypes : [], // "string", "number", "date", "custom", "none"
 			customSortCleaner : null
 		};
 		

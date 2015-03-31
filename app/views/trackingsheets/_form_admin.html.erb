@@ -143,14 +143,14 @@
 										<th>SHAPE (level code 4)</th>
 										<th>SIZE (level code 6)</th>
 										<th>FIBER (level code 2)</th>
-										<th>CONSTRUCTION (level code 1)</th>
+										<th>CONSTRUCTION</th>
 										<th>FABRIC TYPE (level code 3)</th>
 										<th>GAUGE / END</th>
 										<th>FINISH</th>
 										<th>FINISH DETAIL</th>
 										<th>COLORS</th>
-										<th>HARDWARE / LOGO / TRIM</th>
-										<th>COMPONENT (labels / tickets)</th>
+										<th></th>
+										<th></th>
 										<th>PROJECTED UNITS</th>
 										<th>TARGET FOB</th>
 										<th>TARGET MU</th>
@@ -323,10 +323,22 @@
 	<%=best_in_place_if colors,  trackingsheet, :colors, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td style="text-align:center;">
-	<%#= link_to "Link To Tab", url_for(params),:class => 'btn btn-warning btn-xs' %> 
+		<div>
+		<%= link_to "Hardware",'#modal-history',:class => 'btn btn-warning btn-xs hardwares','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id,:style=>'width:78px;' %>
+		</div>
+			<br>
+		<div>	
+		<%= link_to "Testing",'#modal-history',:class => 'btn btn-warning btn-xs testings','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id,:style=>'width:78px;' %>
+	</div>
 </td>
 <td style="text-align:center;">
-	<%#= link_to "Link To Tab", url_for(params),:class => 'btn btn-warning btn-xs' %> 
+		<div>
+		<%= link_to "Components",'#modal-history',:class => 'btn btn-warning btn-xs components','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id,:style=>'width:78px;' %>
+		</div>
+		<br>
+		<div>
+		<%= link_to "Cost Sheets",'#modal-history',:class => 'btn btn-warning btn-xs costsheets','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id,:style=>'width:78px;' %>
+	</div>
 </td>
 <td class="bestin" style="text-align:center;">
 	<%=best_in_place_if projectedunits,  trackingsheet, :projectedunits, :as => :input,:nil => "Click to add content!"%>

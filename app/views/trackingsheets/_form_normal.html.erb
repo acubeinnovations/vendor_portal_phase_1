@@ -144,7 +144,7 @@
 												<th>SHAPE (level code 4)</th>
 												<th>SIZE (level code 6)</th>
 												<th>FIBER (level code 2)</th>
-												<th>CONSTRUCTION (level code 1)</th>
+												<th>CONSTRUCTION</th>
 												<th>FABRIC TYPE (level code 3)</th>
 												<th>GAUGE / END</th>
 												<th>FINISH</th>
@@ -216,7 +216,7 @@
 							 </td>							<td class="bestin" style="text-align:center;">
 																	<%if !trackingsheet.style.protonumber.blank?%>	<%=trackingsheet.style.try(:protonumber)%><%end%>
 																	</td>	
-																	<td><%=trackingsheet.style.try(:stylecode) %></td>
+																	<td ><%=best_in_place_if true,  trackingsheet.style, :stylecode, :as => :input,:nil => "Click to add content!",:html_attrs => {:tabindex => 2,:class=>'bs-tab'}%></td>
 																	<td><%=trackingsheet.style.try(:stylename)%></td>
 																	<td class="bestin" style="text-align:center;">
 																	<%if !trackingsheet.style.productcategory.blank?%>	<%=trackingsheet.style.productcategory.try(:name)%><%end%>
