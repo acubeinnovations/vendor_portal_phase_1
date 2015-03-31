@@ -35,7 +35,7 @@ function addData(field,me){
 var field=field;
 var me=me;
 var url=me.attr('url');
-$.get(url, {
+$.get('/vendorportal'+url, {
     field:field
 	
   },function(data){
