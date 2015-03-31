@@ -332,15 +332,15 @@ module TrackingsheetsHelper
 
             def targetfob()
               if current_user.userrole==VendorPortal::Application.config.admin
-               return false      
+               return true      
               else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
-            return true
+            return false
               else if current_user.userrole==VendorPortal::Application.config.sales
                 return true      
               else if current_user.userrole==VendorPortal::Application.config.designer
-              return true   
+              return false   
               else if current_user.userrole==VendorPortal::Application.config.vendor
-              return true
+              return false
               end #vendors
               end #designers
               end #sales

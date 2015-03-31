@@ -143,7 +143,7 @@
 										<th>SHAPE (level code 4)</th> 
 										<th>SIZE (level code 6)</th> 
 										<th>FIBER (level code 2)</th> 
-										<th>CONSTRUCTION</th> 
+										<th>CONSTRUCTION<br>level code1</th>
 										<th>FABRIC TYPE (level code 3)</th> 
 										<th>GAUGE / END</th> 
 										<th>FINISH</th> 
@@ -159,7 +159,7 @@
 										<th>TARGET RETAIL CAN $</th> 
 										<th>PER COLOR</th> 
 										<th>INCO TERMS</th> 
-										<th>PRICE BASED UPON PROJECTION</th> 
+										<th>PRICE BASED <br>UPON PROJECTION</th>
 										<th>ADDITIONAL SURCHARGE</th> 
 										<th>MOQ</th> 
 										<th>1000 - 5000 PCS</th> 
@@ -170,11 +170,11 @@
 										<th>LDP AIR</th> 
 										<th>X MILL DATE</th> 
 										<th>START SHIP DATE</th> 
-										<th>ORDER DUE DATE VIA BOAT</th> 
-										<th>ORDER DUE DATE VIA AIR</th> 
+										<th>ORDER DUE <br>DATE VIA BOAT</th>
+										<th>ORDER DUE <br>DATE VIA AIR</th>
 										<th>PRODUCT LEAD TIME</th> 
-										<th>PROCEEDS TO SAMPLE REQUEST DATE</th> 
-										<th>PROTO DUE BACK FROM VENDOR</th> 
+										<th>PROCEEDS TO <br>SAMPLE REQUEST DATE</th>
+										<th>PROTO DUE BACK <br>FROM VENDOR</th>
 										<th>DAF TO VENDOR DATE</th>
 										 
 										<th> STYLE SAMPLE</th>
@@ -261,7 +261,9 @@
 </td> 
 
 <td style="text-align:center;"> 
-	<%=trackingsheet.style.stylecode %> 
+	<%if !trackingsheet.style.protonumber.blank?%>	<%=trackingsheet.style.try(:protonumber)%><%end%>
+																	
+		<%=best_in_place_if true,  trackingsheet.style, :stylecode, :as => :input,:nil => "Click to add content!",:html_attrs => {:tabindex => 2,:class=>'bs-tab'}%>
 </td> 
 
 <td class="bestin" style="text-align:center;"> 
