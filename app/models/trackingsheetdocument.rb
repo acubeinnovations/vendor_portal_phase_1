@@ -15,6 +15,6 @@ class Trackingsheetdocument
       :url => "/system/attachments/:id/:basename.:extension", 
           
       :path => ":rails_root/public/system/attachments/:id/:basename.:extension"
-
-  validates_attachment_content_type :document, :content_type => [ 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ]
+      
+  do_not_validate_attachment_file_type :document, :content_type => [ 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ]
 end

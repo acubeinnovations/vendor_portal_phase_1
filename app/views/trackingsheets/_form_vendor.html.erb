@@ -35,8 +35,8 @@
 																		<% @a=1%> 
 																		<% trackingsheets.each do |trackingsheet|%> 
 																			<% break if exist==true %> 
-																				<% if !trackingsheet.vendor.blank? %> 
-																			<% 	if current_user.email==trackingsheet.vendor %> 
+																				<% if !trackingsheet.vendorfulldata.blank? %> 
+						<%if current_user.email.eql?trackingsheet.vendorfulldata[trackingsheet.vendorfulldata.index('(')+1..-2] %> 
 																			<% exist=true%> 
 																		<tbody> 
 																			<td style="text-align:center;"><%=trackingsheet.style.division.name%></td> 
@@ -187,10 +187,11 @@
 										</thead> 
 										 
 	<% model_class='trackingsheet' %> 
+	<%= trackingsheets.count%>
 	<% @a=1%> 
-	<% trackingsheets.each do |trackingsheet|%> 
-	<% if !trackingsheet.vendor.blank? %> 
-	<% 	if current_user.email==trackingsheet.vendor %> 
+	<% trackingsheets.each do |trackingsheet|%>
+	<% if !trackingsheet.vendorfulldata.blank? %> 
+	<%if current_user.email.eql?trackingsheet.vendorfulldata[trackingsheet.vendorfulldata.index('(')+1..-2] %>
 	<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %> 
 														 
 <tbody>			 

@@ -4,8 +4,7 @@
 		<% processmaster.styles.each do |style| %>
 		<% break if exist==true %>
 		<% style.trackingsheets.each do |ts| %>
-		<% if !ts.vendor.blank? %>
-		<% if current_user.email==ts.try(:vendor) %>
+		<%if current_user.email.eql?"vendor1@vendor.com" %>
 		<% exist=true %>
 		<tr class="gradeX">
 			<td><input type="radio" name="selectprocess"></td>
@@ -22,7 +21,6 @@
 			<td>	<%= link_to 'Tracking Sheet', trackingsheets_path(:processmaster_id => processmaster.id),class:'btn btn-warning' %></td>
 		</tr>	
 	<% @slno+=1%>
-	<% end %>	
 	<% end %>	
 	<% end %>	
 
