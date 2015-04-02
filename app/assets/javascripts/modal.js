@@ -94,7 +94,7 @@ if(!e.shiftKey){
 	if (keyCode != 9){
 me=$(this).children().children();
 parent=$(this);
-if(parent.attr('data-bip-attribute')=='vendor'){
+if(parent.attr('data-bip-attribute')=='vendorfulldata'){
 id=me.attr('id');
 $.get("/custom_search", {
     term: me.val()
@@ -103,7 +103,7 @@ $.get("/custom_search", {
 		var dropdown='';
 	
 		$.each(data,function(email,vname){	
-		dropdown+="<li><a class='ul-link' insert-to="+id+" vendor="+email+">"+vname+"</a></li>";
+		dropdown+="<li><a class='ul-link' insert-to="+id+" vendor="+vname+">"+vname+"</a></li>";
 		});
 		
 		parent.next().html(dropdown);

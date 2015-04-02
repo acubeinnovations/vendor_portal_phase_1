@@ -49,10 +49,16 @@ layout 'vendor_portal'
       render :action => 'edit'
     end
   end
-  def custom_search
-	 	@vendors = User.any_of({email: /#{params[:term]}/i },{firstname: /#{params[:term]}/i }).where(:userrole=>"vendor")
-     render json: Hash[@vendors.map { |v| [v[:email].to_s ,v[:lastname]+' '+v[:firstname].to_s+'( '+v[:email]+' )'.to_s ] }]
-	end
+  #def custom_search
+	 #	@vendors = User.any_of({email: /#{params[:term]}/i },{firstname: /#{params[:term]}/i }).where(:userrole=>"vendor")
+    # render json: Hash[@vendors.map { |v| [v[:email].to_s ,v[:lastname]+' '+v[:firstname].to_s+'( '+v[:email]+' )'.to_s ] }]
+    #end
+    def custom_search
+  	 	@vendors = User.any_of({email: /#{params[:term]}/i },{firstname: /#{params[:term]}/i }).where(:userrole=>"vendor")
+       
+      render json: Hash[@vendors.map { |v| [v[:email].to_s ,v[:lastname]+''+v[:firstname].to_s+' '+'('+v[:email]+')'.to_s ] }]
+        #render json: Hash[@vendors.map { |v| [v[:email].to_s ,v[:lastname]+''+v[:firstname].to_s] }]
+  	end
 	def get_users
 		@users = User.where(:division_id=>params[:division_id],:userrole=>params[:userrole])
     render json: Hash[@users.map { |v| [ v[:id].to_s, v[:lastname]+' '+v[:firstname].to_s ] } ]

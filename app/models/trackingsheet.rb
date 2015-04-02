@@ -81,6 +81,9 @@ class Trackingsheet
   field :orderduedateviaboat, type: String
   field :orderduedateviaair, type: String
   
+  
+  field :vendorfulldata, type: String
+  
   #1st DAF/STYLE Sample tab values
   #field :soss, type: String
   #field :nmbrofdefsmplneeded, type: String

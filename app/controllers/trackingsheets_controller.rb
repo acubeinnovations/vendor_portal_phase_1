@@ -76,9 +76,9 @@ class TrackingsheetsController < ApplicationController
   
   
   def update
-		if trackingsheet_params.has_key?("vendor")
-				if !trackingsheet_params[:vendor].blank?
-					@vendor=User.find_by(:email=>trackingsheet_params[:vendor])
+		if trackingsheet_params.has_key?("vendorfulldata")
+				if !trackingsheet_params[:vendorfulldata].blank?
+					@vendor=User.find_by(:vendorfulldata=>trackingsheet_params[:vendor])
 				end
 		end
     @trackingsheet = Trackingsheet.find(params[:id]) #newly added for in_place_edit #newly added for in_place_edit
@@ -200,7 +200,7 @@ end
     # Never trust parameters from the scary internet, only allow the white list through.
     def trackingsheet_params
       params.require(:trackingsheet).permit(:images,:factory,:subcontractor,:xmilldate, :productionleadtime,:salesproceedtosamplerequest, :protoduebackfromvendor,
-      :daftovendordate, :rtlmu, :mkup, :projectedunits, :targetfob, :targetmu, :targetws, :percolor, :perstyle, :incoterms, :moq,
+      :daftovendordate, :rtlmu, :mkup, :projectedunits, :targetfob, :targetmu, :targetws, :percolor, :perstyle, :incoterms, :moq,:vendorfulldata,
       :thousandtofivethousandPCS, :fivethousandtotenthousandPCS, :ldpboat, :ldpair, :startshipdate, :orderduedateviaboat, :orderduedateviaair,
       :soss, :nmbrofdefsmplneeded, :dafissued, :sampleduedate, :daf2soss, :daf2nmbrofdefsmplneeded, :daf2dafissued, :daf2sampleduedate,:processmaster_id,:comments,
       :useremail, :vendor, :brand, :customername, :customeraccountnumber, :projectnumber, :customerstylenumber, :groupname, :productcategory, :designname,
