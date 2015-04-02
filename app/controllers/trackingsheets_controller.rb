@@ -9,6 +9,26 @@ class TrackingsheetsController < ApplicationController
   # GET /trackingsheets
   # GET /trackingsheets.json
   def index
+
+	if !params[:processmaster_id].blank?
+    @processmaster_id=params[:processmaster_id]
+  else
+    @processmaster_id=BSON::ObjectId.from_string(request.GET.first.second.to_s)
+  end
+		  @trackingsheets = Trackingsheet.search(params[:searchterm]).where('processmaster_id'=>BSON::ObjectId.from_string(@processmaster_id)).paginate(:page => params[:page], :per_page =>10)
+      
+		if !params[:page].blank?
+			@slno=((params[:page].to_i - 1) * 3) + 1
+		else
+			@slno=1
+		end
+    
+ 
+  
+  
+  
+      
+    
     if request.GET.length==0
       redirect_to processmasters_path
     end
