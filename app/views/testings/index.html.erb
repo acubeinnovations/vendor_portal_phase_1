@@ -16,7 +16,7 @@
 							<span class="icon">
 								<i class="icon-file"></i>
 							</span>
-							<h5>Listing Testings</h5><%  if current_user.userrole==VendorPortal::Application.config.operationadmin || current_user.userrole==VendorPortal::Application.config.operationuser  %> <%= link_to "Add New",'#', :class =>'btn btn-success btn-xs add-testings',:trackingsheet_id=>params[:trackingsheet_id] %> <%end%>
+							<h5>Listing Testings</h5><%  if current_user.userrole==VendorPortal::Application.config.admin || current_user.userrole==VendorPortal::Application.config.operationadmin || current_user.userrole==VendorPortal::Application.config.operationuser  %> <%= link_to "Add New",'#', :class =>'btn btn-success btn-xs add-testings',:trackingsheet_id=>params[:trackingsheet_id] %> <%end%>
 							</div>	
 							<div class="scrollable-div" style="overflow-x: scroll;">
 							<table class="table table-bordered testing-table">
