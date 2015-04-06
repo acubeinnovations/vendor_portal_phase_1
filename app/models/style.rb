@@ -7,7 +7,7 @@ class Style
   field :stylename, :type => String
   validates_presence_of :stylename
   field :stylenumber, :type => String
-  validates_presence_of :stylenumber
+  #validates_presence_of :stylenumber
   
   
   field :stylename, type: String
