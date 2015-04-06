@@ -59,13 +59,12 @@ findPrevTabindex(prevspan,row);
 }
 scrollAmount=0;
 function scrollMeRight(){
-
-scrollAmount=scrollAmount+170;
-$('.g_Body').animate({
-  scrollLeft: scrollAmount
-}, 100);
-
-
+	if(scrollAmount<=8336){}
+	scrollAmount=scrollAmount+170;
+	$('.g_Body').animate({
+	  scrollLeft: scrollAmount
+	}, 100);
+	}
 }
 
 function scrollMeLeft(){
