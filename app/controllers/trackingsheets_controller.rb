@@ -15,10 +15,10 @@ class TrackingsheetsController < ApplicationController
   else
     @processmaster_id=BSON::ObjectId.from_string(request.GET.first.second.to_s)
   end
-		  @trackingsheets = Trackingsheet.search(params[:searchterm]).where('processmaster_id'=>BSON::ObjectId.from_string(@processmaster_id)).order('id desc').paginate(:page => params[:page], :per_page =>10)
+		  @trackingsheets = Trackingsheet.search(params[:searchterm]).where('processmaster_id'=>BSON::ObjectId.from_string(@processmaster_id)).order('id desc').paginate(:page => params[:page], :per_page =>20)
       
 		if !params[:page].blank?
-			@slno=((params[:page].to_i - 1) * 3) + 1
+			@slno=((params[:page].to_i - 1) * 20) + 1
 		else
 			@slno=1
 		end
