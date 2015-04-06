@@ -151,4 +151,3 @@ class ProcessmastersController < ApplicationController
       params.require(:processmaster).permit(:division,:brand_id,:season_id,:submarket_id,:market_id,:customername,:contact,:customeraccount,:project,:referencestyle,:stylename,:stylecode,:image,{ :user_ids => [] })
     end
 end
-end
