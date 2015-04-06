@@ -189,8 +189,10 @@
 	<%= trackingsheets.count%>
 	<% @a=1%> 
 	<% trackingsheets.each do |trackingsheet|%>
-	<% if !trackingsheet.vendorfulldata.blank? %> 
-	<%if current_user.email.eql?trackingsheet.vendorfulldata[trackingsheet.vendorfulldata.index('(')+1..-2] %>
+	<% if !trackingsheet.vendorfulldata.blank? %>
+	<% email = trackingsheet.vendorfulldata.to_s %>
+	<% index = email.index('(') %>
+	<%if current_user.email.eql?email[index.to_i+1..-2] %>
 	<%= form_for trackingsheet, :html => {:class => "form-horizontal trackingsheet_form"} do |f| %> 
 														 
 <tbody>			 

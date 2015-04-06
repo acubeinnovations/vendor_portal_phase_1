@@ -14,7 +14,7 @@ $.get("/components", {
     trackingsheet_id:trackingsheetid
   },function(data){
 		$('.modal').css('width','1300');
-		$('.modal').css('left','25%');
+		$('.modal').css('left','23%');
 		$('.modal-body').html('');
 		$('.modal-body').html(data);
 		
@@ -39,7 +39,7 @@ $.get("/hardwares", {
     trackingsheet_id:trackingsheetid
   },function(data){
 		$('.modal').css('width','1300');
-		$('.modal').css('left','25%');
+		$('.modal').css('left','23%');
 		$('.modal-body').html('');
 		$('.modal-body').html(data);
 		
@@ -63,7 +63,7 @@ $.get("/testings", {
     trackingsheet_id:trackingsheetid
   },function(data){
 		$('.modal').css('width','1300');
-		$('.modal').css('left','25%');
+		$('.modal').css('left','23%');
 		$('.modal-body').html('');
 		$('.modal-body').html(data);
 		
@@ -88,7 +88,7 @@ $.get("/costsheets", {
     trackingsheet_id:trackingsheetid
   },function(data){
 		$('.modal').css('width','1300');
-		$('.modal').css('left','25%');
+		$('.modal').css('left','23%');
 		$('.modal-body').html('');
 		$('.modal-body').html(data);
 		
@@ -113,7 +113,7 @@ $.get("/trackingsheetimages", {
     trackingsheetid:trackingsheetid
   },function(data){
 		$('.modal').css('width','1300');
-		$('.modal').css('left','25%');
+		$('.modal').css('left','23%');
 		$('.modal-body').html('');
 		$('.modal-body').html(data);
 		
@@ -139,7 +139,7 @@ $.get("/trackingsheetdocuments", {
 		processmasterid:processmasterid
   },function(data){
 		$('.modal').css('width','1300');
-		$('.modal').css('left','25%');
+		$('.modal').css('left','23%');
 		$('.modal-body').html('');
 		$('.modal-body').html(data);
 		
@@ -163,7 +163,7 @@ $.get("/samples", {
     trackingsheet_id:trackingsheetid
   },function(data){
 		$('.modal').css('width','1300');
-		$('.modal').css('left','25%');
+		$('.modal').css('left','23%');
 		$('.modal-body').html('');
 		$('.modal-body').html(data);
 		

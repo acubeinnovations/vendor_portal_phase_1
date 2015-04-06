@@ -4,7 +4,9 @@
 		<% processmaster.styles.each do |style| %>
 		<% break if exist==true %>
 		<% style.trackingsheets.each do |ts| %>
-		<%if current_user.email.eql?"vendor1@vendor.com" %>
+		<% email = ts.vendorfulldata.to_s %>
+		<% index = email.index('(') %>
+		<%if current_user.email.eql?email[index.to_i+1..-2] %>
 		<% exist=true %>
 		<tr class="gradeX">
 			<td><input type="radio" name="selectprocess"></td>
