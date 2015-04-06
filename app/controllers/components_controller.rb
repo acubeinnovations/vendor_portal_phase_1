@@ -5,7 +5,7 @@ class ComponentsController < ApplicationController
 	before_filter :authenticate_user!
 
 	#for checking user roles
-	before_filter :allowedusers_only
+	#before_filter :allowedusers_only
 	
   before_action :set_component, only: [:show, :edit, :update, :destroy]
 	

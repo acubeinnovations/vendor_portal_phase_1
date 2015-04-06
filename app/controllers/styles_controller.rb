@@ -19,7 +19,7 @@ class StylesController < ApplicationController
     		end
     end
 		if !params[:page].blank?
-			@slno=((params[:page].to_i - 1) * 3) + 1
+			@slno=((params[:page].to_i - 1) * 10) + 1
 		else
 			@slno=1
 		end

@@ -11,7 +11,7 @@
  
 								%> 
  
-								<div class="container-fluid">  
+								<!--<div class="container-fluid">  
 							           	<div class="row-fluid"> 
  
 													<div class="span12"> 
@@ -30,32 +30,32 @@
 																	<th>Contact</th> 
 																	<th>Market</th> 
 																	<th>Sub-Market</th> 
-																	<% model_class='trackingsheet' %> 
-																		<% exist=false%> 
-																		<% @a=1%> 
-																		<% trackingsheets.each do |trackingsheet|%> 
-																			<% break if exist==true %> 
-																				<% if !trackingsheet.vendorfulldata.blank? %> 
-						<%if current_user.email.eql?trackingsheet.vendorfulldata[trackingsheet.vendorfulldata.index('(')+1..-2] %> 
-																			<% exist=true%> 
+																	<%# model_class='trackingsheet' %> 
+																		<%# exist=false%> 
+																		<%# @a=1%> 
+																		<%# trackingsheets.each do |trackingsheet|%> 
+																			<%# break if exist==true %> 
+																				<%# if !trackingsheet.vendorfulldata.blank? %> 
+						<%#if current_user.email.eql?trackingsheet.vendorfulldata[trackingsheet.vendorfulldata.index('(')+1..-2] %> 
+																			<%# exist=true%> 
 																		<tbody> 
-																			<td style="text-align:center;"><%=trackingsheet.style.division.name%></td> 
-																			<td style="text-align:center;"><%=processmaster.try(:season).try(:name)%></td> 
-																			<td style="text-align:center;"><% if !processmaster.contact.blank? %><% contact=User.find(processmaster.contact) %><%=contact.try(:lastname).to_s+' '+contact.try(:firstname)+'( '+contact.try(:email)+')'.to_s%><%end%></td>
-																			<td style="text-align:center;"><%=processmaster.try(:market).try(:name)%></td> 
-																			<td style="text-align:center;"><%=processmaster.try(:submarket).try(:name)%></td> 
+																			<td style="text-align:center;"><%#=trackingsheet.style.division.name%></td> 
+																			<td style="text-align:center;"><%#=processmaster.try(:season).try(:name)%></td> 
+																			<td style="text-align:center;"><%# if !processmaster.contact.blank? %><%# contact=User.find(processmaster.contact) %><%#=contact.try(:lastname).to_s+' '+contact.try(:firstname)+'( '+contact.try(:email)+')'.to_s%><%#end%></td>
+																			<td style="text-align:center;"><%#=processmaster.try(:market).try(:name)%></td> 
+																			<td style="text-align:center;"><%#=processmaster.try(:submarket).try(:name)%></td> 
 																	 </tbody> 
-																	<% @a=@a+1%>
-																	<% @brand=processmaster.try(:brand).try(:name)%>	
-																	<% end %> 
-																	<% end %>		 
-																		<% end %>			 
+																	<%# @a=@a+1%>
+																	<%# @brand=processmaster.try(:brand).try(:name)%>	
+																	<%# end %> 
+																	<%# end %>		 
+																		<%# end %>			 
 																</table> 
 															</div> 
 														</div> 
 													</div> 
 								</div> 
-								</div> 
+								</div>--> 
  
 								<div class="container-fluid"> 
  
@@ -123,12 +123,11 @@
 									<tr> 
 										
 										<th>ACTIONS</th>
+										<th>IMAGE</th>
 										<th>PROTO # / DAF #</th>
 										<th>STYLE #</th>
 										<th>DESIGN NAME /<br> DESCRIPTION</th>
 										<th>PRODUCT CATEGORY</th>
-										<th>IMAGE</th>
-
 										<th>FACTORY</th> 
 										<th>SUBCONTRACTOR</th> 
 										<th>BRAND OR CUSTOMER NAME</th> 
@@ -213,6 +212,9 @@
 		<%= link_to "Documents",'#modal-history',:class => 'btn btn-warning btn-xs documents', 'data-toggle':"modal",:style=>"width:75px; margin-bottom:20px;",:trackingsheetid => trackingsheet.id,:processmasterid=>BSON::ObjectId.from_string(request.GET.first.second.to_s) %> 																			</div>																	
 																	
 																	 </td> 
+				<td><%= image_tag "/vendorportal"+trackingsheet.style.image.url(:small)  %><br><br>
+																	<%= link_to "More Images",'#modal-history',:class => 'btn btn-warning btn-xs images', 'data-toggle':"modal",:trackingsheetid => trackingsheet.id,:style=>"width:80px; margin-bottom:20px;" %>
+																</td> 
 																	<td class="bestin" style="text-align:center;">
 																	<%if !trackingsheet.style.protonumber.blank?%>	<%=trackingsheet.style.try(:protonumber)%><%end%>
 																	</td>	
@@ -220,11 +222,7 @@
 																	<td><%=trackingsheet.style.stylename %></td>
 																	<td class="bestin" style="text-align:center;">
 						<%if !trackingsheet.style.productcategory.blank?%>	<%=trackingsheet.style.productcategory.try(:name)%><%end%>
-						</td>	 
-																	<td><%= image_tag "/vendorportal"+trackingsheet.style.image.url(:small)  %><br><br>
-																	<%= link_to "More Images",'#modal-history',:class => 'btn btn-warning btn-xs images', 'data-toggle':"modal",:trackingsheetid => trackingsheet.id,:style=>"width:90px; margin-bottom:20px;" %>
-																</td> 	
-													
+						</td>													
 <td class="bestin" style="text-align:center;"> 
 	<% if	!trackingsheet.vendor.blank? %> 
 				<% if current_user.userrole==VendorPortal::Application.config.vendor  %> 

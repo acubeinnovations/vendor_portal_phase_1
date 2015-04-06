@@ -5,7 +5,7 @@ class HardwaresController < ApplicationController
 	before_filter :authenticate_user!
 
 	#for checking user roles
-	before_filter :allowedusers_only 
+	#before_filter :allowedusers_only 
 	
   before_action :set_hardware, only: [:show, :edit, :update, :destroy]
 

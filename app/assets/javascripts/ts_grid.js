@@ -38,6 +38,6 @@
 				    	colAlign : gridColAlign, 
 				    	colBGColors : ["#fafafa"], 
 				    	colSortTypes : gridColSortTypes, 
-				    	fixedCols : 6
+				    	fixedCols : 4
 				    });
 			})(this, this.document);

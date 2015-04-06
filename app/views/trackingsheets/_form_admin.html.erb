@@ -10,7 +10,7 @@
 								%>
 								
 <!-- newly added for search-->
-		<div class="container-fluid">
+		<!--<div class="container-fluid">
 		    <div class="row-fluid">
 		      <div class="span12">
 						<table style="border:none;">
@@ -18,21 +18,21 @@
 								<td style="border:none;">
 								</td>
 								<td style="border:none;">
-								<%= form_tag trackingsheets_path, :method => 'get',:id =>'default_search' do %>
-								 <%= text_field_tag :searchterm, params[:searchterm],:title => 'Search by Stylename,Stylenumber',:placeholder=>'Search Here....' %>
+								<%#= form_tag trackingsheets_path, :method => 'get',:id =>'default_search' do %>
+								 <%#= text_field_tag :searchterm, params[:searchterm],:title => 'Search by Stylename,Stylenumber',:placeholder=>'Search Here....' %>
 								 <div class="hide-me">
-								  <%= text_field_tag :processmaster_id, params[:processmaster_id],:value=>request.GET.first.second %>
+								  <%#= text_field_tag :processmaster_id, params[:processmaster_id],:value=>request.GET.first.second %>
 								 </div>
-								<% end %>
+								<%# end %>
 								</td>
 							</tr>
 						</table>
 					</div>
 			</div>
-		</div>						
+		</div>	-->					
 <!-- newly added for search-->																
 								
-								<div class="container-fluid"> 
+								<!-- <div class="container-fluid"> 
 							           	<div class="row-fluid">
 
 													<div class="span12">
@@ -51,31 +51,31 @@
 																	<th>Contact</th>
 																	<th>Market</th>
 																	<th>Sub-Market</th> 
-																	<% model_class='trackingsheet' %>
-																		<% exist=false%>
-																		<% @a=1%>
-																		<% @trackingsheets.each do |trackingsheet|%>
-																			<% break if exist==true %>
-																		<% 	if current_user.userrole==VendorPortal::Application.config.admin %>
-																			<% exist=true%>
+																	<%# model_class='trackingsheet' %>
+																		<%# exist=false%>
+																		<%# @a=1%>
+																		<%# @trackingsheets.each do |trackingsheet|%>
+																			<%# break if exist==true %>
+																		<%# if current_user.userrole==VendorPortal::Application.config.admin %>
+																			<%# exist=true%>
 																		<tbody>
-																			<td style="text-align:center;"><%=trackingsheet.try(:style).try(:division).try(:name)%></td>
-																			<td style="text-align:center;"><%=processmaster.try(:season).try(:name)%></td>
-																			<td style="text-align:center;"><% if !processmaster.contact.blank? %><% contact=User.find(processmaster.contact) %><%=contact.try(:lastname).to_s+' '+contact.try(:firstname)+' ('+contact.try(:email)+')'.to_s%><%end%></td>
-																			<td style="text-align:center;"><%=processmaster.try(:market).try(:name)%></td>
-																			<td style="text-align:center;"><%=processmaster.try(:submarket).try(:name)%></td> 
+																			<td style="text-align:center;"><%#=trackingsheet.try(:style).try(:division).try(:name)%></td>
+																			<td style="text-align:center;"><%#=processmaster.try(:season).try(:name)%></td>
+																			<td style="text-align:center;"><%#if !processmaster.contact.blank? %><%# contact=User.find(processmaster.contact) %><%#=contact.try(:lastname).to_s+' '+contact.try(:firstname)+' ('+contact.try(:email)+')'.to_s%><%#end%></td>
+																			<td style="text-align:center;"><%#=processmaster.try(:market).try(:name)%></td>
+																			<td style="text-align:center;"><%#=processmaster.try(:submarket).try(:name)%></td> 
 																	 </tbody>
-																	<% @a=@a+1%>
-																		<% @brand=processmaster.try(:brand).try(:name)%>
-																	<% end %>
-																	<% end %>		
+																	<% #@a=@a+1%>
+																		<% #@brand=processmaster.try(:brand).try(:name)%>
+																	<% #end %>
+																	<% #end %>
 																					
 																</table>
 															</div>
 														</div>
 													</div>
 								</div>
-								</div>
+								</div>-->
 
 
 								<div class="container-fluid">

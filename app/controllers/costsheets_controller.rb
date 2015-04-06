@@ -5,7 +5,7 @@ class CostsheetsController < ApplicationController
 	before_filter :authenticate_user!
 
 	#for checking user permisions
-	before_filter :allowedusers_only
+	#before_filter :allowedusers_only
  
   before_action :set_costsheet, only: [:show, :edit, :update, :destroy]
 
