@@ -1,4 +1,4 @@
-<%  if current_user.userrole==VendorPortal::Application.config.operationadmin || current_user.userrole==VendorPortal::Application.config.operationuser  %>
+<%  if current_user.userrole==VendorPortal::Application.config.admin || current_user.userrole==VendorPortal::Application.config.operationadmin || current_user.userrole==VendorPortal::Application.config.operationuser  %>
 <% display='true' %>
 <% else if current_user.userrole==VendorPortal::Application.config.vendor %>
 <% display=true %>
