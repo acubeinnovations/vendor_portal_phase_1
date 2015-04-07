@@ -6,7 +6,7 @@ before_filter :authenticate_user!
 before_filter :admin_only, :except =>  [:edit,:custom_search ] 
 layout 'vendor_portal'
   def index 
-	    @users = User.search(params[:searchterm]).paginate(:page => params[:page], :per_page =>15)
+	    @users = User.search(params[:searchterm]).order('id asc').paginate(:page => params[:page], :per_page =>15)
 			if !params[:page].blank?
 			@slno=((params[:page].to_i - 1) * 15) + 1
 		else
