@@ -12,10 +12,8 @@ module TrackingsheetsHelper
 					return true  
 				else if current_user.userrole==VendorPortal::Application.config.operationadmin 
 					return true
-				else if current_user.userrole==VendorPortal::Application.config.sales ||  current_user.userrole==VendorPortal::Application.config.operationuser
-					return false
-        else if current_user.userrole==VendorPortal::Application.config.sales
-          return false
+				else if current_user.userrole==VendorPortal::Application.config.sales || current_user.userrole==VendorPortal::Application.config.operationuser
+					return false       
 				else if current_user.userrole==VendorPortal::Application.config.designer
 					return true
 				else if current_user.userrole==VendorPortal::Application.config.vendor
