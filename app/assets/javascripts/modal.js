@@ -87,10 +87,15 @@ $('.g_Body').scroll(function(){
 
 //autocomplte
 
-$('.g_C span').on('keyup',function(e){
-var keyCode = e.keyCode || e.which; 
+$('.g_C span').on('keydown',function(e){
+var keyCode = e.keyCode || e.which;
 if(!e.shiftKey){
-	if (keyCode != 9){
+if (keyCode == 27){
+
+$('.ui-customautocomplete').html('');
+$('.ui-customautocomplete').hide();
+
+}else if (keyCode != 9){
 me=$(this).children().children();
 parent=$(this);
 if(parent.attr('data-bip-attribute')=='vendorfulldata'){
@@ -124,13 +129,28 @@ $('#'+selected_id).val(selected_vendor);
 
 });
   
-  
+ $(window).ajaxStart(function() {//alert('g');
+
+});
+
+$('.ul-link').on('mousedown',function() {
+
+	$('.ui-customautocomplete').html('');
+	$('.ui-customautocomplete').hide();
+
+ });
+
+ 
 }
 
-$( document ).ajaxStart(function() {
-$('.ui-customautocomplete').html('');
-$('.ui-customautocomplete').hide();
-});
+
+ $(window).on('click',function() {
+
+	$('.ui-customautocomplete').html('');
+	$('.ui-customautocomplete').hide();
+
+ });
+
 
 }
 

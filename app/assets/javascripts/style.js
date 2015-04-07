@@ -71,7 +71,7 @@ $.get("/get_users", {
 }
 
 $('#style_protonumber').keyup(function(){
-if($('#style_division_id option:selected').text()=='ECHO - WOMEN'){
+if($('#style_division_id option:selected').text().indexOf('ECHO') > -1){
 $('#style_stylecode').val($('#style_protonumber').val());
 
 }
