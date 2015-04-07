@@ -165,19 +165,7 @@ $(this).find('span').html($(this).find('span').text().replace("(", "<br> ("));
  
  
  
- //newly added starts
- i=0;
- $('.g_Cl > .g_C').each(function(){
-	 if(i!=0){
-alert($(this).find('span').html($(this).find('span').text.substring(10, text.length)));
 
-
-
-
-
- }i+=1;
- });
- //newly added ends
  
  
  
