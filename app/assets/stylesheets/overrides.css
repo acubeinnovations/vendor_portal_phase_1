@@ -146,3 +146,7 @@ table{
 .g_Base {
 	height:80vh !important; 
 }
+span .best_in_place{
+  word-wrap: break-word;
+  white-space: normal;
+}
