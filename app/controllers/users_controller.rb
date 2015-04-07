@@ -56,7 +56,7 @@ layout 'vendor_portal'
     def custom_search
   	 	@vendors = User.any_of({email: /#{params[:term]}/i },{firstname: /#{params[:term]}/i },{lastname: /#{params[:term]}/i }).where(:userrole=>"vendor")
        
-      render json: Hash[@vendors.map { |v| [v[:email].to_s ,v[:firstname]+','+v[:lastname].to_s+'('+v[:email]+')'.to_s ] }]
+      render json: Hash[@vendors.map { |v| [v[:email].to_s ,v[:firstname].gsub!(/\s/,'&nbsp;')+','+v[:lastname].to_s+'('+v[:email]+')'.to_s ] }]
         #render json: Hash[@vendors.map { |v| [v[:email].to_s ,v[:lastname]+''+v[:firstname].to_s] }]
   	end
 	def get_users
