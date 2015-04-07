@@ -68,12 +68,13 @@ function scrollMeRight(){
 }
 
 function scrollMeLeft(){
-
+	//alert(scrollAmount);
+	if(scrollAmount>=186){
 scrollAmount=scrollAmount-170;
 $('.g_Body').animate({
   scrollLeft: scrollAmount
 }, 100);
-
+}
 
 }
 
