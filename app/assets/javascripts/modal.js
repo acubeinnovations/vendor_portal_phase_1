@@ -169,9 +169,6 @@ $(this).find('span').html($(this).find('span').text().replace("(", "<br> ("));
  
  
  
- 
- 
- $('.ui-customautocomplete').prev('.g_C .clearFix').find('.g_C').text('something else');
 
 
 }

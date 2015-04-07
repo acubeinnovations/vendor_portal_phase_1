@@ -89,16 +89,19 @@
 										<%= f.file_field :document,class:'trackingsheetdocument' %>
 									</td>
 									<td width="10%" style="text-align:center;">
-									<div><%= link_to 'View', trackingsheetdocument.document.url, :class => 'btn btn-success btn-xs' %></div>
+									<div><%= link_to 'View', trackingsheetdocument.document.url, :class => 'btn btn-success btn-xs' %>
+		<%= link_to 'Delete', trackingsheetdocument, method: :delete, data: { confirm: 'Are you sure?' },:class => 'btn btn-danger btn-xs'  %>							
+									</div>
 								</td>
 									<td style= "width:11.1%;text-align:center;">
 										
 										<div><%= trackingsheetdocument.user.try(:firstname)+' '+trackingsheetdocument.user.try(:lastname).to_s %></div>
 									</td>
 									<td style= "width:11.2%;text-align:center;">
-										<div>
+										
+											
 										<%= f.submit 'Update', :class => 'btn btn-success btn-xs' %>
-									</div>
+									
 									</td>	
 									<!--<td><%#= link_to 'Destroy', trackingsheetdocument, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
 								</tr>
