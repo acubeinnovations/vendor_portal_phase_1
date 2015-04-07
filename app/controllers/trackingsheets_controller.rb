@@ -76,12 +76,17 @@ class TrackingsheetsController < ApplicationController
   
   
   def update
-		if trackingsheet_params.has_key?("vendorfulldata")
-				if !trackingsheet_params[:vendorfulldata].blank?
-					@vendor=User.find_by(:vendorfulldata=>trackingsheet_params[:vendor])
-				end
-		end
-    @trackingsheet = Trackingsheet.find(params[:id]) #newly added for in_place_edit #newly added for in_place_edit
+		@trackingsheet = Trackingsheet.find(params[:id])
+        if trackingsheet_params.has_key?("vendorfulldata")
+          if !trackingsheet_params[:vendorfulldata].blank?
+
+            email = trackingsheet_params[:vendorfulldata].to_s
+            index = email.index('(')
+            @trackingsheet.vendor = email[index.to_i+1..-2]
+      
+          end
+        end
+
     @trackingsheet.update_attributes(trackingsheet_params) #newly added for in_place_edit #newly added for in_place_edit
     
    @trackingsheetlog=Trackingsheetlog.where('trackingsheet_id'=>params[:id],"sessionid"=>session[:session_id]) 

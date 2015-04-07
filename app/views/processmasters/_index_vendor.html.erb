@@ -1,6 +1,6 @@
 
 	<% @processmasters.each do |processmaster| %>
-		<%if processmaster.trackingsheets.where(:vendorfulldata=>current_user.firstname.to_s+','+current_user.lastname.to_s+'('+current_user.email.to_s+')').count > 0 %>		
+		<%if processmaster.trackingsheets.where(:vendor=>current_user.email).count > 0 %>		
 			<tr class="gradeX">
 				<td><input type="radio" name="selectprocess"></td>
 				<td><%= @slno %></td>
@@ -12,7 +12,7 @@
 				<td><%= processmaster.try(:submarket).try(:name)  %></td>
 				
 				<td><%= processmaster.created_at %></td>
-				<td><%= processmaster.trackingsheets.where(:vendorfulldata=>current_user.firstname.to_s+','+current_user.lastname.to_s+'('+current_user.email.to_s+')').count %></td>
+				<td><%= processmaster.trackingsheets.where(:vendor=>current_user.email).count %></td>
 				<td>	<%= link_to 'Tracking Sheet', trackingsheets_path(:processmaster_id => processmaster.id),class:'btn btn-warning' %></td>
 			</tr>	
 			<% @slno+=1%>
