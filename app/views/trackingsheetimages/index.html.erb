@@ -88,7 +88,14 @@
 										<div  class="span3"><%= trackingsheetimage.user.firstname+' '+trackingsheetimage.user.lastname.to_s %></div>
 									</td>
 									<td clas="span3" style="border:none;text-align:center;">
+						<%= link_to 'Delete', trackingsheetimage, method: :delete, data: { confirm: 'Are you sure?' },:class => 'btn btn-danger btn-xs'  %>
+				
+						
+				
+				
+						
 										<%= f.submit 'Update', :class => 'btn btn-success btn-xs' %>
+										
 									</td>	
 									<!--	<td><%#= link_to 'Destroy', trackingsheetimage, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
 								</tr>
@@ -103,5 +110,15 @@
 		</div>
 	</div>
 </div>
-<iframe id="upload_frame" name="upload_frame" style="display: none"></iframe>
+<iframe id="upload_frame" name="upload_frame" style="display: none">
+</iframe>
+<script type="text/javascripts">
+
+$('#upload_frame').load(function(){
+alert('Successfully Uploaded');
+location.reload();
+});
+
+
+</script>
 

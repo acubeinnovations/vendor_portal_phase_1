@@ -59,9 +59,10 @@ class TrackingsheetimagesController < ApplicationController
   # DELETE /trackingsheetimages/1
   # DELETE /trackingsheetimages/1.json
   def destroy
+    @processmaster_id=@trackingsheetimage.trackingsheet.processmaster.id
     @trackingsheetimage.destroy
     respond_to do |format|
-      format.html { redirect_to trackingsheetimages_url, notice: 'Trackingsheetimage was successfully destroyed.' }
+      format.html { redirect_to trackingsheets_url+"?processmaster_id="+@processmaster_id, notice: 'Image was successfully deleted.' }
       format.json { head :no_content }
     end
   end

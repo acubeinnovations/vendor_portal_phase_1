@@ -133,20 +133,10 @@
 
 </ul>
 
-</td><td class="bestin" style="text-align:center;">
-	<% if	!trackingsheet.vendor.blank? %>
-				<% if current_user.userrole==VendorPortal::Application.config.vendor  %>
- 					<%=best_in_place_if factory,  trackingsheet, :factory, :as => :input,:nil => "Click to add content!",:html_attrs => {:tabindex => 1,:class=>'bs-tab'}%>
- 				<% else  %>
- 					<%=best_in_place_if false,  trackingsheet, :factory, :as => :input,:nil => "Click to add content!",:html_attrs => {:tabindex => 1,:class=>'bs-tab'} %>
- 				<% end %>
- 	<% else %>
- 				<% if current_user.userrole!=VendorPortal::Application.config.vendor %>
- 					<%=best_in_place_if factory,  trackingsheet, :factory, :as => :input,:nil => "Click to add content!",:html_attrs => {:tabindex => 1,:class=>'bs-tab'} %>
- 													
- 	<% end %>
- 	<% end %>
+</td><td class="bestin" style="text-align:center;">	
+ 	<%=best_in_place_if factory,  trackingsheet, :factory, :as => :input,:nil => "Click to add content!",:html_attrs => {:tabindex => 1,:class=>'bs-tab'} %>
 </td>
+
 <td class="bestin" style="text-align:center;">
 	<%=best_in_place_if subcontractor,  trackingsheet, :subcontractor, :as => :input,:nil => "Click to add content!",:html_attrs => {:tabindex => 2,:class=>'bs-tab'}%>
 </td>

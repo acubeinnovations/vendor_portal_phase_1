@@ -12,9 +12,9 @@ class ProcessmastersController < ApplicationController
   def index
 
 	  if current_user.userrole!=VendorPortal::Application.config.vendor 
-		   @processmasters = Processmaster.search(params[:searchterm]).paginate(:page => params[:page], :per_page =>10)
+		   @processmasters = Processmaster.search(params[:searchterm]).order('id asc').paginate(:page => params[:page], :per_page =>10)
     else
-       @processmasters = Processmaster.searchforvendor(params[:searchterm]).paginate(:page => params[:page], :per_page =>10)
+       @processmasters = Processmaster.searchforvendor(params[:searchterm]).order('id asc').paginate(:page => params[:page], :per_page =>10)
     end
 		if !params[:page].blank?
 			@slno=((params[:page].to_i - 1) * 3) + 1

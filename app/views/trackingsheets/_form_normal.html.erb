@@ -1,6 +1,7 @@
 
 <% trackingsheets=Trackingsheet.where('processmaster_id'=>BSON::ObjectId.from_string(request.GET.first.second.to_s))%> 	
-<% processmaster=Processmaster.find(request.GET.first.second)%> 	
+<% processmaster=Processmaster.find(request.GET.first.second)%> 
+<% @brand=processmaster.try(:brand).try(:name)%>	
 
 				<%
 									#data=[]
@@ -131,7 +132,7 @@
 												<th>VENDOR</th>
 												<th>FACTORY</th>
 												<th>SUBCONTRACTOR</th>
-												<th>BRAND OR CUSTOMER NAME</th>
+												<th>BRAND /<br> CUSTOMER NAME</th>
 												<th>CUSTOMER ACCOUNT #</th>
 												<th>PROJECT #</th>
 												<th>REFERENCE STYLE</th>
@@ -235,23 +236,11 @@
 </td>
 
 <td class="bestin" style="text-align:center;">
-									<% if	!trackingsheet.vendor.blank? %>
- 											<%  if current_user.userrole==VendorPortal::Application.config.vendor  %>
- 													
- 															<%=best_in_place_if factory,  trackingsheet, :factory, :as => :input,:nil => "Click to add content!"%>
- 															
- 												<% else  %>
- 													
- 															<%=best_in_place_if false,  trackingsheet, :factory, :as => :input,:nil => "Click to add content!"%>
- 													
- 											<% end %>
- 									 	<% else %>
- 											<% if current_user.userrole!=VendorPortal::Application.config.vendor %>
- 												
- 														<%=best_in_place_if factory,  trackingsheet, :factory, :as => :input,:nil => "Click to add content!"%>
- 													
- 											<% end %>
- 										<% end %>
+					<% if !trackingsheet.vendor.blank? %> 												
+ 						<%=best_in_place_if false,  trackingsheet, :factory, :as => :input,:nil => "Click to add content!"%>
+ 					<% else %>								
+ 						<%=best_in_place_if factory,  trackingsheet, :factory, :as => :input,:nil => "Click to add content!"%>
+ 					<% end %>
 </td>
 <td class="bestin" style="text-align:center;">
 	<%=best_in_place_if subcontractor,  trackingsheet, :subcontractor, :as => :input,:nil => "Click to add content!"%>

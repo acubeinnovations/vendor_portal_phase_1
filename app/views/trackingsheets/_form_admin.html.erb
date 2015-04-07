@@ -1,5 +1,6 @@
 <% #trackingsheets=Trackingsheet.where('processmaster_id'=>BSON::ObjectId.from_string(request.GET.first.second.to_s))%> 
-<% processmaster=Processmaster.find(request.GET.first.second)%> 
+<% processmaster=Processmaster.find(request.GET.first.second)%>
+<% @brand=processmaster.try(:brand).try(:name)%>
 
 								<%
 									#data=[]
@@ -76,6 +77,7 @@
 													</div>
 								</div>
 								</div>-->
+
 
 
 								<div class="container-fluid">

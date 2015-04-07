@@ -68,12 +68,13 @@ function scrollMeRight(){
 }
 
 function scrollMeLeft(){
-
+	//alert(scrollAmount);
+	if(scrollAmount>=186){
 scrollAmount=scrollAmount-170;
 $('.g_Body').animate({
   scrollLeft: scrollAmount
 }, 100);
-
+}
 
 }
 
@@ -167,6 +168,24 @@ $('.ui-customautocomplete').css('height','auto');
 	$('.ui-customautocomplete').hide();
 
  });
+ 
+
+ 
+ //newly added starts
+ i=0;
+ $('.g_Cl6 > .g_C').each(function(){
+	 if(i!=0){
+$(this).find('span').html($(this).find('span').text().replace("(", "<br> ("));
+ }i+=1;
+ });
+ //newly added ends
+ 
+ 
+ 
+
+ 
+ 
+ 
 
 
 }

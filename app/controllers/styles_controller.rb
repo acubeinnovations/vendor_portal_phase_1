@@ -13,9 +13,9 @@ class StylesController < ApplicationController
   def index
 
 		if current_user.userrole==VendorPortal::Application.config.admin 
-		  @styles = Style.search(params[:searchterm]).paginate(:page => params[:page], :per_page =>10)
+		  @styles = Style.search(params[:searchterm]).order('id asc').paginate(:page => params[:page], :per_page =>10)
     else if current_user.userrole==VendorPortal::Application.config.operationadmin 
-      		@styles = current_user.division.styles.search(params[:searchterm]).paginate(:page => params[:page], :per_page =>10)
+      		@styles = current_user.division.styles.search(params[:searchterm]).order('id asc').paginate(:page => params[:page], :per_page =>10)
     		end
     end
 		if !params[:page].blank?
