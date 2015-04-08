@@ -1,4 +1,4 @@
-$('.pagination a').live('click', function(event) { 
+$('.pagination a').on('click', function(event) { 
 	
 	//alert("clicked");
 	 event.preventDefault();  
