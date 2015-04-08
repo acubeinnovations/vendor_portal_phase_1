@@ -4,6 +4,9 @@ class Trackingsheet
 	include Mongoid::Timestamps
 	#include Mongoid::Delorean::Trackable
 
+	#for lock ts
+	field :lock, type: String
+
   #general tab values
   field :images, type: String
   field :factory, type: String

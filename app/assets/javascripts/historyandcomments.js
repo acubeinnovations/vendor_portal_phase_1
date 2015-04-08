@@ -1,13 +1,21 @@
 function loadHistoryAndComments(){
 	$('.history').on('click',function(){
+if(islocked($(this))){
 var trackingsheetid=$(this).attr('trackingsheetid');
 getHistory(trackingsheetid);
+}else{
+return false;
+}
 });
 
 $('.comments').click(function(){
+if(islocked($(this))){
 var me=$(this);
 var trackingsheetid=$(this).attr('trackingsheetid');
 getComments(trackingsheetid,me);
+}else{
+return false;
+}
 });
 
 
@@ -51,4 +59,15 @@ bestinplace_comment=me.parent().find('div').html();
 $('.modal-body').append(bestinplace_comment);
 });
 }
+
+
+function islocked(me){
+
+if(me.attr('locked')=='true'){
+return false;
+}else{
+return true;
+}
+}
+
 	}

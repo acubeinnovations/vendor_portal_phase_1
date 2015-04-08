@@ -186,7 +186,7 @@
 												</tr>
 												</thead>
 
-
+	
 												<% model_class='trackingsheet' %>
 												<% @a=1%>
 												<% trackingsheets.each do |trackingsheet|%>
@@ -197,30 +197,36 @@
 <div class="widget-content nopadding">
 
 																						<tbody>
-																							
+	<% if trackingsheet.lock=='true' %> 
+	
+	<% 	locked='true' %>
+	<% else %>
+	<% 	locked='false' %>
+	
+	<% end %>
 																	<td style="text-align:center;">
 																		
 					<div class="comment-container">									
-				<%= link_to "Comments",'#modal-history',:class => 'btn btn-warning btn-xs comments', 'data-toggle':"modal",:trackingsheetid => trackingsheet.id %> 
+				<%= link_to "Comments",'#modal-history',:class => 'btn btn-warning btn-xs comments', 'data-toggle':"modal",:trackingsheetid => trackingsheet.id,:locked=>locked %> 
 				<div class='hide-me '>
 				<div style="float:left">Add Comments &nbsp;</div>
 				<%=best_in_place  trackingsheet, :comments, :as => :textarea,:nil => "Click to add comment!", :class=>"mybest", :style=>"width:150px; margin-bottom:40px;"%>
 				
 				</div>
 					<div>	<br> 	
-		<%= link_to 'History','#modal-history',:class=>'btn btn-warning float-right history',:style=>'width:68px;','data-toggle':"modal", :trackingsheetid => trackingsheet.id %> </div>
+		<%= link_to 'History','#modal-history',:class=>'btn btn-warning float-right history',:style=>'width:68px;','data-toggle':"modal", :trackingsheetid => trackingsheet.id,:locked=>locked %> </div>
 					<div><br>	
 		
-		<%= link_to "Documents",'#modal-history',:class => 'btn btn-warning btn-xs documents', 'data-toggle':"modal",:style=>"width:75px; margin-bottom:20px;",:trackingsheetid => trackingsheet.id,:processmasterid=>BSON::ObjectId.from_string(request.GET.first.second.to_s) %> 																			</div>							
+		<%= link_to "Documents",'#modal-history',:class => 'btn btn-warning btn-xs documents', 'data-toggle':"modal",:style=>"width:75px; margin-bottom:20px;",:trackingsheetid => trackingsheet.id,:processmasterid=>BSON::ObjectId.from_string(request.GET.first.second.to_s),:locked=>locked %> 																			</div>							
 							
 							 </td>							
 							 		<td><%= image_tag "/vendorportal"+trackingsheet.style.image.url(:small)  %><br><br>
-																	<%= link_to "More Images",'#modal-history',:class => 'btn btn-warning btn-xs images', 'data-toggle':"modal",:trackingsheetid => trackingsheet.id,:style=>"width:80px; margin-bottom:20px;" %>
+																	<%= link_to "More Images",'#modal-history',:class => 'btn btn-warning btn-xs images', 'data-toggle':"modal",:trackingsheetid => trackingsheet.id,:style=>"width:80px; margin-bottom:20px;",:locked=>locked %>
 																</td>
 							 								<td class="bestin" style="text-align:center;">
 																	<%if !trackingsheet.style.protonumber.blank?%>	<%=trackingsheet.style.try(:protonumber)%><%end%>
 																	</td>	
-																	<td ><%=best_in_place_if true,  trackingsheet.style, :stylecode, :as => :input,:nil => "Click to add content!",:html_attrs => {:tabindex => 2,:class=>'bs-tab'}%></td>
+																	<td ><%=best_in_place_if style(trackingsheet),  trackingsheet.style, :stylecode, :as => :input,:nil => "Click to add content!",:html_attrs => {:tabindex => 2,:class=>'bs-tab'}%></td>
 																	<td><%=trackingsheet.style.try(:stylename)%></td>
 																	<td class="bestin" style="text-align:center;">
 																	<%if !trackingsheet.style.productcategory.blank?%>	<%=trackingsheet.style.productcategory.try(:name)%><%end%>
@@ -228,7 +234,7 @@
 				
 												
 <td class="bestin" style="text-align:center;"><% if current_user.userrole==VendorPortal::Application.config.designer %>
-<%=best_in_place_if true,  trackingsheet, :vendor, :as => :input,:nil => "Click to add content!",:html_attrs =>{ "data-autocomplete_source"=>custom_search_path,:class=>'custom_search',:id=>"custom_search"+@a.to_s}%><% else if !trackingsheet.vendor.blank? %><%= trackingsheet.vendor %><%end%> <%end%>
+<%=best_in_place_if vendor(trackingsheet),  trackingsheet, :vendorfulldata, :as => :input,:nil => "Click to add content!",:html_attrs =>{ "data-autocomplete_source"=>custom_search_path,:class=>'custom_search',:id=>"custom_search"+@a.to_s}%><% else if !trackingsheet.vendor.blank? %><%= trackingsheet.vendorfulldata %><%end%> <%end%>
 <ul class='ui-customautocomplete'>
 
 </ul>
@@ -239,176 +245,176 @@
 					<% if !trackingsheet.vendor.blank? %> 												
  						<%=best_in_place_if false,  trackingsheet, :factory, :as => :input,:nil => "Click to add content!"%>
  					<% else %>								
- 						<%=best_in_place_if factory,  trackingsheet, :factory, :as => :input,:nil => "Click to add content!"%>
+ 						<%=best_in_place_if factory(trackingsheet),  trackingsheet, :factory, :as => :input,:nil => "Click to add content!"%>
  					<% end %>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if subcontractor,  trackingsheet, :subcontractor, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if subcontractor(trackingsheet),  trackingsheet, :subcontractor, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;"> 
 	<%=@brand%> 
 </td> 
 
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if customeraccountnumber,  trackingsheet, :customeraccountnumber, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if customeraccountnumber(trackingsheet),  trackingsheet, :customeraccountnumber, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if projectnumber,  trackingsheet, :projectnumber, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if projectnumber(trackingsheet),  trackingsheet, :projectnumber, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
 <%= trackingsheet.style.try(:referencestyle).try(:name)%>
 </td>
 
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if customerstylenumber,  trackingsheet, :customerstylenumber, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if customerstylenumber(trackingsheet),  trackingsheet, :customerstylenumber, :as => :input,:nil => "Click to add content!"%>
 </td>
 
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if designname,  trackingsheet, :designname, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if designname(trackingsheet),  trackingsheet, :designname, :as => :input,:nil => "Click to add content!"%>
 </td>
 
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if groupname,  trackingsheet, :groupname, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if groupname(trackingsheet),  trackingsheet, :groupname, :as => :input,:nil => "Click to add content!"%>
 </td>
 
 
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if shape,  trackingsheet, :shape, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if shape(trackingsheet),  trackingsheet, :shape, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if size,  trackingsheet, :size, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if size(trackingsheet),  trackingsheet, :size, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if fiber,  trackingsheet, :fiber, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if fiber(trackingsheet),  trackingsheet, :fiber, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if construction,  trackingsheet, :construction, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if construction(trackingsheet),  trackingsheet, :construction, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if fabrictype,  trackingsheet, :fabrictype, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if fabrictype(trackingsheet),  trackingsheet, :fabrictype, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if gauge_end,  trackingsheet, :gauge_end, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if gauge_end(trackingsheet),  trackingsheet, :gauge_end, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if finish,  trackingsheet, :finish, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if finish(trackingsheet),  trackingsheet, :finish, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if finishdetails,  trackingsheet, :finishdetails, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if finishdetails(trackingsheet),  trackingsheet, :finishdetails, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if colors,  trackingsheet, :colors, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if colors(trackingsheet),  trackingsheet, :colors, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td style="text-align:center;">
 	<%  if current_user.userrole==VendorPortal::Application.config.operationuser  %>
 													<div>
-													<%= link_to "Hardware",'#modal-history',:class => 'btn btn-warning btn-xs hardwares','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id %><br>
+													<%= link_to "Hardware",'#modal-history',:class => 'btn btn-warning btn-xs hardwares','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id,:locked=>locked %><br>
 													</div>
 														<br>
 													<div>
-													<%= link_to "Testing",'#modal-history',:class => 'btn btn-warning btn-xs testings','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id %>
+													<%= link_to "Testing",'#modal-history',:class => 'btn btn-warning btn-xs testings','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id,:locked=>locked %>
 	<%end%>											</div>
 												</td>
 												<td style="text-align:center;">
 	<%  if current_user.userrole==VendorPortal::Application.config.operationuser  %>
 													<div>
-													<%= link_to "Components",'#modal-history',:class => 'btn btn-warning btn-xs components','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id %>
+													<%= link_to "Components",'#modal-history',:class => 'btn btn-warning btn-xs components','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id,:locked=>locked %>
 													</div>
 													<br>
 													<div>
-													<%= link_to "Cost Sheets",'#modal-history',:class => 'btn btn-warning btn-xs costsheets','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id %>
+													<%= link_to "Cost Sheets",'#modal-history',:class => 'btn btn-warning btn-xs costsheets','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id,:locked=>locked %>
 													</div>
 	<%end%>
 												</td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if projectedunits,  trackingsheet, :projectedunits, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if projectedunits(trackingsheet),  trackingsheet, :projectedunits, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if targetfob,  trackingsheet, :targetfob, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if targetfob(trackingsheet),  trackingsheet, :targetfob, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if targetmu,  trackingsheet, :targetmu, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if targetmu(trackingsheet),  trackingsheet, :targetmu, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if targetws,  trackingsheet, :targetws, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if targetws(trackingsheet),  trackingsheet, :targetws, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if targetretailus,  trackingsheet, :targetretailus, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if targetretailus(trackingsheet),  trackingsheet, :targetretailus, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if targetretailcan,  trackingsheet, :targetretailcan, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if targetretailcan(trackingsheet),  trackingsheet, :targetretailcan, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if percolor,  trackingsheet, :percolor, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if percolor(trackingsheet),  trackingsheet, :percolor, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if incoterms,  trackingsheet, :incoterms, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if incoterms(trackingsheet),  trackingsheet, :incoterms, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if pricebasedonprojection,  trackingsheet, :pricebasedonprojection, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if pricebasedonprojection(trackingsheet),  trackingsheet, :pricebasedonprojection, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if additionalsurcharge,  trackingsheet, :additionalsurcharge, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if additionalsurcharge(trackingsheet),  trackingsheet, :additionalsurcharge, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if moq,  trackingsheet, :moq, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if moq(trackingsheet),  trackingsheet, :moq, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if thousandtofivethousandPCS,  trackingsheet, :thousandtofivethousandPCS, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if thousandtofivethousandPCS(trackingsheet),  trackingsheet, :thousandtofivethousandPCS, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if fivethousandtotenthousandPCS,  trackingsheet, :fivethousandtotenthousandPCS, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if fivethousandtotenthousandPCS(trackingsheet),  trackingsheet, :fivethousandtotenthousandPCS, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if tenthousandtotwentythousandPCS,  trackingsheet, :tenthousandtotwentythousandPCS, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if tenthousandtotwentythousandPCS(trackingsheet),  trackingsheet, :tenthousandtotwentythousandPCS, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if twentythousandplusPCS,  trackingsheet, :twentythousandplusPCS, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if twentythousandplusPCS(trackingsheet),  trackingsheet, :twentythousandplusPCS, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if ldpboat,  trackingsheet, :ldpboat, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if ldpboat(trackingsheet),  trackingsheet, :ldpboat, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if ldpair,  trackingsheet, :ldpair, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if ldpair(trackingsheet),  trackingsheet, :ldpair, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if xmilldate,  trackingsheet, :xmilldate, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if xmilldate(trackingsheet),  trackingsheet, :xmilldate, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if startshipdate,  trackingsheet, :startshipdate, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if startshipdate(trackingsheet),  trackingsheet, :startshipdate, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if orderduedateviaboat,  trackingsheet, :orderduedateviaboat, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if orderduedateviaboat(trackingsheet),  trackingsheet, :orderduedateviaboat, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if orderduedateviaair,  trackingsheet, :orderduedateviaair, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if orderduedateviaair(trackingsheet),  trackingsheet, :orderduedateviaair, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if productionleadtime,  trackingsheet, :productionleadtime, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if productionleadtime(trackingsheet),  trackingsheet, :productionleadtime, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if salesproceedtosamplerequest,  trackingsheet, :salesproceedtosamplerequest, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if salesproceedtosamplerequest(trackingsheet),  trackingsheet, :salesproceedtosamplerequest, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if protoduebackfromvendor,  trackingsheet, :protoduebackfromvendor, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if protoduebackfromvendor(trackingsheet),  trackingsheet, :protoduebackfromvendor, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if daftovendordate,  trackingsheet, :daftovendordate, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if daftovendordate(trackingsheet),  trackingsheet, :daftovendordate, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%= link_to "Samples",'#modal-history',:class => 'btn btn-warning btn-xs samples', 'data-toggle':"modal",:trackingsheetid => trackingsheet.id,:style=>"width:75px; margin-bottom:20px;" %>
+	<%= link_to "Samples",'#modal-history',:class => 'btn btn-warning btn-xs samples', 'data-toggle':"modal",:trackingsheetid => trackingsheet.id,:style=>"width:75px; margin-bottom:20px;",:locked=>locked %>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if vsdsreceived,  trackingsheet, :vsdsreceived, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if vsdsreceived(trackingsheet),  trackingsheet, :vsdsreceived, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if vsdsapproved,  trackingsheet, :vsdsapproved, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if vsdsapproved(trackingsheet),  trackingsheet, :vsdsapproved, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if rtlmu,  trackingsheet, :rtlmu, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if rtlmu(trackingsheet),  trackingsheet, :rtlmu, :as => :input,:nil => "Click to add content!"%>
 </td>
 <td class="bestin" style="text-align:center;">
-	<%=best_in_place_if mkup,  trackingsheet, :mkup, :as => :input,:nil => "Click to add content!"%>
+	<%=best_in_place_if mkup(trackingsheet),  trackingsheet, :mkup, :as => :input,:nil => "Click to add content!"%>
 </td>	
 			
 																						</tbody>
