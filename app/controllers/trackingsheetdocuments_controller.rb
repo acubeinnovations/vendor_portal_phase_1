@@ -33,11 +33,11 @@ class TrackingsheetdocumentsController < ApplicationController
 
     respond_to do |format|
       if @trackingsheetdocument.save
-        format.html { redirect_to @trackingsheetdocument, notice: 'Trackingsheetdocument was successfully created.' }
-        format.json { render :show, status: :created, location: @trackingsheetdocument }
+       # format.html { redirect_to @trackingsheetdocument, notice: 'Trackingsheetdocument was successfully created.' }
+        #format.json { render :show, status: :created, location: @trackingsheetdocument }
       else
-        format.html { render :new }
-        format.json { render json: @trackingsheetdocument.errors, status: :unprocessable_entity }
+        #format.html { render :new }
+       # format.json { render json: @trackingsheetdocument.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -47,11 +47,11 @@ class TrackingsheetdocumentsController < ApplicationController
   def update
     respond_to do |format|
       if @trackingsheetdocument.update(trackingsheetdocument_params)
-        format.html { redirect_to @trackingsheetdocument, notice: 'Trackingsheetdocument was successfully updated.' }
-        format.json { render :show, status: :ok, location: @trackingsheetdocument }
+        #format.html { redirect_to @trackingsheetdocument, notice: 'Trackingsheetdocument was successfully updated.' }
+        #format.json { render :show, status: :ok, location: @trackingsheetdocument }
       else
-        format.html { render :edit }
-        format.json { render json: @trackingsheetdocument.errors, status: :unprocessable_entity }
+        #format.html { render :edit }
+        #format.json { render json: @trackingsheetdocument.errors, status: :unprocessable_entity }
       end
     end
   end

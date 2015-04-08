@@ -1,3 +1,6 @@
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
 <%  if current_user.userrole==VendorPortal::Application.config.admin || current_user.userrole==VendorPortal::Application.config.operationadmin || current_user.userrole==VendorPortal::Application.config.operationuser  %>
 <% display='true' %>
 <% else if current_user.userrole==VendorPortal::Application.config.vendor %>
@@ -76,7 +79,7 @@
 		</div>
 	</div>
 	<script type="text/javascripts">
-		
+	
 		$('.add-hardwares').on('click',function(){
 
 		var trackingsheetid=$(this).attr('trackingsheet_id');
@@ -143,11 +146,20 @@ findPrevTabindexhardware(prevspan);
 
 $("#close-modal").click(function(){
 $('.modal-body').html('');
-location.reload();
+//location.reload();
+});
+
+
+$('.bestin').find('.best_in_place').each(function(){
+
+if(!$(this).is('[data-bip-original-content]')){
+$(this).html($(this).attr('data-bip-placeholder'));
+}
+
 });
 
 
 	</script>
 
-	<%= javascript_include_tag "application" %>
+	<%#= javascript_include_tag "application" %>
 </div>

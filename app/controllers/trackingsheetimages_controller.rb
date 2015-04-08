@@ -33,11 +33,11 @@ class TrackingsheetimagesController < ApplicationController
 
     respond_to do |format|
       if @trackingsheetimage.save
-        format.html { redirect_to @trackingsheetimage, notice: 'Trackingsheetimage was successfully created.' }
-        format.json { render :show, status: :created, location: @trackingsheetimage }
+        #format.html { redirect_to @trackingsheetimage, notice: 'Trackingsheetimage was successfully created.' }
+        #format.json { render :show, status: :created, location: @trackingsheetimage }
       else
-        format.html { render :new }
-        format.json { render json: @trackingsheetimage.errors, status: :unprocessable_entity }
+        #format.html { render :new }
+        #format.json { render json: @trackingsheetimage.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -47,11 +47,11 @@ class TrackingsheetimagesController < ApplicationController
   def update
     respond_to do |format|
       if @trackingsheetimage.update(trackingsheetimage_params)
-        format.html { redirect_to @trackingsheetimage, notice: 'Trackingsheetimage was successfully updated.' }
-        format.json { render :show, status: :ok, location: @trackingsheetimage }
+        #format.html { redirect_to @trackingsheetimage, notice: 'Trackingsheetimage was successfully updated.' }
+       # format.json { render :show, status: :ok, location: @trackingsheetimage }
       else
-        format.html { render :edit }
-        format.json { render json: @trackingsheetimage.errors, status: :unprocessable_entity }
+       # format.html { render :edit }
+       # format.json { render json: @trackingsheetimage.errors, status: :unprocessable_entity }
       end
     end
   end
