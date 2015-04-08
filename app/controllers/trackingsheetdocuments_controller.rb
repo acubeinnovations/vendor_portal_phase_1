@@ -61,11 +61,17 @@ class TrackingsheetdocumentsController < ApplicationController
   def destroy
     @processmaster_id=@trackingsheetdocument.trackingsheet.processmaster.id
     @trackingsheetdocument.destroy
-    respond_to do |format|
+   respond_to do |format|
       format.html { redirect_to trackingsheets_url+"?processmaster_id="+@processmaster_id, notice: 'Document was successfully deleted.' }
       #format.html { redirect_to trackingsheetdocuments_url, notice: 'Trackingsheetdocument was successfully destroyed.' }
       format.json { head :no_content }
-    end
+   end
+  end
+  
+  def deletetsdoc
+    @trackingsheetdocument = Trackingsheetdocument.find(params[:tsdocid])
+    @trackingsheetdocument.destroy
+    render :text=>true
   end
 
   private
