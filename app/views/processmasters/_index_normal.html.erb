@@ -10,14 +10,46 @@
 		
 		<tr class="gradeX">
 			<td><input type="radio" name="selectprocess"></td>
-			<td><%= @slno %></td>
-			<td><% if !processmaster.division.blank? %><%= processmaster.division.name %><% end %></td>
-			<td><%= processmaster.try(:name) %></td>
-			<td><%= processmaster.try(:brand).try(:name) %></td>
-			<td><%= processmaster.try(:season).try(:name) %></td>
-			<td><%= processmaster.try(:market).try(:name) %></td>
-			<td><%= processmaster.try(:submarket).try(:name) %></td>
-			<td><%= processmaster.created_at %></td>
+			<td>
+				<div style="text-align:center !important;">
+				<%= @slno %>
+				</div>
+			</td>
+			<td>
+				<div style="text-align:center !important;">
+				<% if !processmaster.division.blank? %><%= processmaster.division.name %><% end %>
+				</div>
+			</td>
+			<td>
+				<div style="text-align:center !important;">
+				<%= processmaster.try(:name) %>
+				</div>
+			</td>
+			<td>
+				<div style="text-align:center !important;">
+				<%= processmaster.try(:brand).try(:name) %>
+				</div>
+			</td>
+			<td>
+				<div style="text-align:center !important;">
+				<%= processmaster.try(:season).try(:name) %>
+				</div>
+			</td>
+			<td>
+				<div style="text-align:center !important;">
+				<%= processmaster.try(:market).try(:name) %>
+				</div>
+			</td>
+			<td>
+				<div style="text-align:center !important;">
+				<%= processmaster.try(:submarket).try(:name) %>
+				</div>
+			</td>
+			<td>
+				<div style="text-align:center !important;">
+				<%= processmaster.created_at.strftime("%d %b %Y,%T") %>
+				</div>
+			</td>
 			<td>
 			<div style="text-align:center !important;">
 				<%  if current_user.userrole==VendorPortal::Application.config.designer  %>
