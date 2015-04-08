@@ -27,7 +27,8 @@
 									
 							</td>
 							<td class="span4" style="text-align:center;">
-										<%= f.submit 'Upload', :class => 'btn btn-success btn-xs' %>
+											<%=link_to 'Upload','#',:class=>'add-img btn btn-success btn-xs'  %>
+									<div class='hide-me'>	<%= f.submit 'Upload', :class => 'submit-ts-img btn btn-success btn-xs' %></div>
 							</td>	
 						</tr>
 					</tbody>
@@ -80,7 +81,7 @@
 									</td>
 									<td clas="span3" style="border:none;border-right: 1px solid #333 !important;text-align:center;">
 										<% if trackingsheetimage.image.url!='/images/original/missing.png' %>
-										<%= image_tag '/vendorportal'+trackingsheetimage.image.url(:small).to_s  %>
+										<%= image_tag trackingsheetimage.image.url(:small).to_s  %>
 										<%	end			 %>
 										<%= f.file_field :image,class:'trackingsheetimage' %>
 									</td>
@@ -94,7 +95,8 @@
 				
 				
 						
-										<%= f.submit 'Update', :class => 'btn btn-success btn-xs' %>
+									<%=link_to 'Update','#',:class=>'add-img btn btn-success btn-xs'  %>
+									<div class='hide-me'>	<%= f.submit 'Update', :class => 'submit-ts-img btn btn-success btn-xs' %></div>
 										
 									</td>	
 									<!--	<td><%#= link_to 'Destroy', trackingsheetimage, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
@@ -110,15 +112,30 @@
 		</div>
 	</div>
 </div>
-<iframe id="upload_frame" name="upload_frame" style="display: none">
+<iframe id="upload_frame" name="upload_frame" style="display: none" loaded='true'>
 </iframe>
 <script type="text/javascripts">
-
-$('#upload_frame').load(function(){
-alert('Successfully Uploaded');
-location.reload();
+$('.add-img').on('click',function(){
+$('#upload_frame').attr('loaded','false');
+$(this).next().find('.submit-ts-img').trigger('click');
 });
 
+$('#upload_frame').load(function(){
+if($(this).attr('loaded')!='true'){
+
+$.get("/trackingsheetimages", {
+    trackingsheetid:$('#trackingsheetimage_trackingsheet').val()
+  },function(data){
+		$('.modal').css('width','1300');
+		$('.modal').css('left','23%');
+		$('.modal-body').html('');
+		$('.modal-body').html(data);
+		
+	});
+
+$('#upload_frame').attr('loaded','true');
+}
+});
 
 </script>
 

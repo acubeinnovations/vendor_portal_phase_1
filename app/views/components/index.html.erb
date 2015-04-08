@@ -158,11 +158,19 @@ findPrevTabindexcomp(prevspan);
 
 $("#close-modal").click(function(){
 $('.modal-body').html('');
-location.reload();
+//location.reload();
 });
 
 
+$('.bestin').find('.best_in_place').each(function(){
+
+if(!$(this).is('[data-bip-original-content]')){
+$(this).html($(this).attr('data-bip-placeholder'));
+}
+
+});
+
 	</script>
 
-	<%= javascript_include_tag "application" %>
+	<%#= javascript_include_tag "application" %>
 </div>

@@ -28,7 +28,8 @@
 									
 							</td>
 							<td class="span4" style="text-align:center;">
-										<%= f.submit 'Upload', :class => 'btn btn-success btn-xs' %>
+										<%=link_to 'Upload','#',:class=>'add-doc btn btn-success btn-xs'  %>
+									<div class='hide-me'>	<%= f.submit 'Upload', :class => 'submit-ts-doc btn btn-success btn-xs' %></div>
 							</td>	
 						</tr>
 					</tbody>
@@ -79,29 +80,29 @@
 							<%= form_for trackingsheetdocument,  :html => {:target=>"upload_frame",:multipart => true,:class => "form-horizontal" } do |f| %>
 							<table style="border:none;">
 								<tr style="border-top: 1px solid #333 !important;">
-									<td style= "width:22.1%;text-align: center;">
+									<td style= "width:22.1%;text-align: center;border-right: 1px solid #333 !important;">
 										<%= f.text_field :description, class:"span10",placeholder:"description" %>
 										<%= hidden_field(:trackingsheetdocument, :trackingsheet,:value =>trackingsheetdocument.trackingsheet.id) %>
 										<%= hidden_field(:trackingsheetdocument, :processmaster, :value =>trackingsheetdocument.processmaster.id) %>
 									</td>
-									<td style= "width:44.7%; text-align: left;">
+									<td style= "width:44.7%; text-align: left;border-right: 1px solid #333 !important;">
 										<%= link_to trackingsheetdocument.document_file_name,trackingsheetdocument.document.url.to_s  %>
 										<%= f.file_field :document,class:'trackingsheetdocument' %>
 									</td>
-									<td width="10%" style="text-align:center;">
+									<td width="10%" style="text-align:center;border-right: 1px solid #333 !important;">
 									<div><%= link_to 'View', trackingsheetdocument.document.url, :class => 'btn btn-success btn-xs' %>
 		<%= link_to 'Delete', trackingsheetdocument, method: :delete, data: { confirm: 'Are you sure?' },:class => 'btn btn-danger btn-xs'  %>							
 									</div>
 								</td>
-									<td style= "width:11.1%;text-align:center;">
+									<td style= "width:11.1%;text-align:center;border-right: 1px solid #333 !important;">
 										
 										<div><%= trackingsheetdocument.user.try(:firstname)+' '+trackingsheetdocument.user.try(:lastname).to_s %></div>
 									</td>
 									<td style= "width:11.2%;text-align:center;">
 										
-											
-										<%= f.submit 'Update', :class => 'btn btn-success btn-xs' %>
-									
+													<%=link_to 'Update','#',:class=>'add-doc btn btn-success btn-xs'  %>
+									<div class='hide-me'>	<%= f.submit 'Update', :class => 'submit-ts-doc btn btn-success btn-xs' %></div>
+																			
 									</td>	
 									<!--<td><%#= link_to 'Destroy', trackingsheetdocument, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
 								</tr>
@@ -117,12 +118,30 @@
 	</div>
 
 </div>
-<iframe id="upload_frame" name="upload_frame" style="display: none"></iframe>
+<iframe id="upload_frame" name="upload_frame" style="display: none" loaded='true'></iframe>
 <script type="text/javascripts">
 
+$('.add-doc').on('click',function(){
+$('#upload_frame').attr('loaded','false');
+$(this).next().find('.submit-ts-doc').trigger('click');
+});
+
 $('#upload_frame').load(function(){
-alert('Successfully Uploaded');
-location.reload();
+if($(this).attr('loaded')!='true'){
+
+$.get("/trackingsheetdocuments", {
+    trackingsheetid:$('#trackingsheetdocument_trackingsheet').val(),
+		processmasterid:$('#trackingsheetdocument_processmaster').val()
+  },function(data){
+		$('.modal').css('width','1300');
+		$('.modal').css('left','23%');
+		$('.modal-body').html('');
+		$('.modal-body').html(data);
+		
+	});
+
+$('#upload_frame').attr('loaded','true');
+}
 });
 
 

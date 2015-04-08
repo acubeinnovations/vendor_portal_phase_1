@@ -81,8 +81,9 @@ $('.g_Body').animate({
 $('.g_Body').scroll(function(){
 
 	scrollAmount=$('.g_Body').scrollLeft();
-
+	if ($(".open")[0]){
 	$('.open').offset({ top: $('.open').prev().offset().top+10 });
+	}
 	//$('.open').css('margin-top',$('.open').prev().offset().top-$('.open').parent().offset().top-29);
 });
 //added for tab-end
