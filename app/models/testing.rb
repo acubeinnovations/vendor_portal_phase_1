@@ -12,6 +12,7 @@ class Testing
   field :testdate, type: String
   field :results, type: String
   field :retestdate, type: String
+  field :reresults, type: String
   field :cost, type: String
   field :trackingsheet, type: String
 

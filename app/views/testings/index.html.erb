@@ -42,11 +42,12 @@
 											<th>CUSTOMER</th>
 											<th>DESCRIPTION</th>
 											<th>SUPLLIER</th>
-											<th>SUPPLIER REFRENCE NUMBER</th>
+											<th>SUPPLIER REFERENCE NO.</th>
 											<th>LEAD TIME</th>
 											<th>TEST DATE</th>
 											<th>RESULTS</th>
-											<th>RETEST DATE</th>
+											<th>RE-TEST DATE</th>
+											<th>RESULTS</th>
 											<th>COST</th>
 											<th>ACTION</th>
 											
@@ -85,6 +86,9 @@
 											</td>
 											<td class="bestin" style="text-align:center;">
 												<%=best_in_place_if display,  testing, :retestdate, :as => :input,:nil => "Click to add content!" %>
+											</td>
+											<td class="bestin" style="text-align:center;">
+												<%=best_in_place_if display,  testing, :reresults, :as => :input,:nil => "Click to add content!" %>
 											</td>
 											<td class="bestin" style="text-align:center;">
 												<%=best_in_place_if display,  testing, :cost, :as => :input,:nil => "Click to add content!" %>

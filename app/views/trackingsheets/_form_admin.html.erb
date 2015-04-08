@@ -1,4 +1,4 @@
-<% #trackingsheets=Trackingsheet.where('processmaster_id'=>BSON::ObjectId.from_string(request.GET.first.second.to_s))%> 
+<% trackingsheets=Trackingsheet.where('processmaster_id'=>BSON::ObjectId.from_string(request.GET.first.second.to_s)).order('id asc')%> 
 <% processmaster=Processmaster.find(request.GET.first.second)%>
 <% @brand=processmaster.try(:brand).try(:name)%>
 
