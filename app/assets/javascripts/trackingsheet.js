@@ -1,9 +1,11 @@
 function loadTrackingheet(){
 $('.components').click(function(){
-
+if(islocked($(this))){
 var trackingsheetid=$(this).attr('trackingsheet_id');
 getComponents(trackingsheetid);
-
+}else{
+return false;
+}
 });
 
 
@@ -25,10 +27,12 @@ $.get("/components", {
 
 
 $('.hardwares').click(function(){
-
+if(islocked($(this))){
 var trackingsheetid=$(this).attr('trackingsheet_id');
 getHardwares(trackingsheetid);
-
+}else{
+return false;
+}
 });
 
 
@@ -49,10 +53,12 @@ $.get("/hardwares", {
 }
 
 $('.testings').click(function(){
-
+if(islocked($(this))){
 var trackingsheetid=$(this).attr('trackingsheet_id');
 getTestings(trackingsheetid);
-
+}else{
+return false;
+}
 });
 
 
@@ -74,10 +80,12 @@ $.get("/testings", {
 
 
 $('.costsheets').click(function(){
-
+if(islocked($(this))){
 var trackingsheetid=$(this).attr('trackingsheet_id');
 getCostsheets(trackingsheetid);
-
+}else{
+return false;
+}
 });
 
 
@@ -99,10 +107,12 @@ $.get("/costsheets", {
 
 
 $('.images').click(function(){
-
+if(islocked($(this))){
 var trackingsheetid=$(this).attr('trackingsheetid');
 getImages(trackingsheetid);
-
+}else{
+return false;
+}
 });
 
 
@@ -122,10 +132,13 @@ $.get("/trackingsheetimages", {
 }
 
 $('.documents').click(function(){
-
+if(islocked($(this))){
 var trackingsheetid=$(this).attr('trackingsheetid');
 var processmasterid=$(this).attr('processmasterid');
 getDocuments(trackingsheetid,processmasterid);
+}else{
+return false;
+}
 
 });
 
@@ -149,10 +162,12 @@ $.get("/trackingsheetdocuments", {
 
 
 $('.samples').click(function(){
-
+if(islocked($(this))){
 var trackingsheetid=$(this).attr('trackingsheetid');
 getSamples(trackingsheetid);
-
+}else{
+return false;
+}
 });
 
 
@@ -171,6 +186,33 @@ $.get("/samples", {
 
 }
 
+
+$('.lockme').on('click',function(){
+
+if(this.checked){
+lock='true';
+}else{
+lock='false';
+}
+$.get("/lockme",{
+
+ trackingsheet_id:$(this).attr('trackingsheet_id'),
+ lock:lock
+
+  },function(data){
+		 location.reload();
+	});
+});
+
+//for checking locking condition
+function islocked(me){
+
+if(me.attr('locked')=='true'){
+return false;
+}else{
+return true;
+}
+}
 
 
 }

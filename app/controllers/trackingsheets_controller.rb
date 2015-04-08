@@ -168,7 +168,15 @@ end
 #    end
   end
 
-  # DELETE /trackingsheets/1
+  
+	def lockme
+	
+    @trackingsheet = Trackingsheet.find(params[:trackingsheet_id])
+
+		@trackingsheet.update_attributes(:lock=>params[:lock])
+		render :text => true
+  end
+	# DELETE /trackingsheets/1
   # DELETE /trackingsheets/1.json
   def destroy
     @trackingsheet.destroy
@@ -204,7 +212,7 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trackingsheet_params
-      params.require(:trackingsheet).permit(:images,:factory,:subcontractor,:xmilldate, :productionleadtime,:salesproceedtosamplerequest, :protoduebackfromvendor,
+      params.require(:trackingsheet).permit(:lock,:images,:factory,:subcontractor,:xmilldate, :productionleadtime,:salesproceedtosamplerequest, :protoduebackfromvendor,
       :daftovendordate, :rtlmu, :mkup, :projectedunits, :targetfob, :targetmu, :targetws, :percolor, :perstyle, :incoterms, :moq,:vendorfulldata,
       :thousandtofivethousandPCS, :fivethousandtotenthousandPCS, :ldpboat, :ldpair, :startshipdate, :orderduedateviaboat, :orderduedateviaair,
       :soss, :nmbrofdefsmplneeded, :dafissued, :sampleduedate, :daf2soss, :daf2nmbrofdefsmplneeded, :daf2dafissued, :daf2sampleduedate,:processmaster_id,:comments,

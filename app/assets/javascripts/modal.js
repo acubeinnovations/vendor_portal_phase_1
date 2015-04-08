@@ -4,10 +4,14 @@ $(document).keyup(function(e) {
 
   if (e.keyCode == 27) { 
 	$("#close-modal").trigger('click');
-
+	$('.modal-backdrop').css('display','none');
+	
 	 }  
+	 
 });
-
+$("#close-modal").on('click',function (){
+	$('.modal-backdrop').css('display','none');
+});
 
 
 //added for tab-start
@@ -81,8 +85,9 @@ $('.g_Body').animate({
 $('.g_Body').scroll(function(){
 
 	scrollAmount=$('.g_Body').scrollLeft();
-
+	if ($(".open")[0]){
 	$('.open').offset({ top: $('.open').prev().offset().top+10 });
+	}
 	//$('.open').css('margin-top',$('.open').prev().offset().top-$('.open').parent().offset().top-29);
 });
 //added for tab-end

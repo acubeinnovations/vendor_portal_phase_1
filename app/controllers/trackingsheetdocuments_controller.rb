@@ -33,11 +33,11 @@ class TrackingsheetdocumentsController < ApplicationController
 
     respond_to do |format|
       if @trackingsheetdocument.save
-        format.html { redirect_to @trackingsheetdocument, notice: 'Trackingsheetdocument was successfully created.' }
-        format.json { render :show, status: :created, location: @trackingsheetdocument }
+       # format.html { redirect_to @trackingsheetdocument, notice: 'Trackingsheetdocument was successfully created.' }
+        #format.json { render :show, status: :created, location: @trackingsheetdocument }
       else
-        format.html { render :new }
-        format.json { render json: @trackingsheetdocument.errors, status: :unprocessable_entity }
+        #format.html { render :new }
+       # format.json { render json: @trackingsheetdocument.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -47,11 +47,11 @@ class TrackingsheetdocumentsController < ApplicationController
   def update
     respond_to do |format|
       if @trackingsheetdocument.update(trackingsheetdocument_params)
-        format.html { redirect_to @trackingsheetdocument, notice: 'Trackingsheetdocument was successfully updated.' }
-        format.json { render :show, status: :ok, location: @trackingsheetdocument }
+        #format.html { redirect_to @trackingsheetdocument, notice: 'Trackingsheetdocument was successfully updated.' }
+        #format.json { render :show, status: :ok, location: @trackingsheetdocument }
       else
-        format.html { render :edit }
-        format.json { render json: @trackingsheetdocument.errors, status: :unprocessable_entity }
+        #format.html { render :edit }
+        #format.json { render json: @trackingsheetdocument.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -61,11 +61,17 @@ class TrackingsheetdocumentsController < ApplicationController
   def destroy
     @processmaster_id=@trackingsheetdocument.trackingsheet.processmaster.id
     @trackingsheetdocument.destroy
-    respond_to do |format|
+   respond_to do |format|
       format.html { redirect_to trackingsheets_url+"?processmaster_id="+@processmaster_id, notice: 'Document was successfully deleted.' }
       #format.html { redirect_to trackingsheetdocuments_url, notice: 'Trackingsheetdocument was successfully destroyed.' }
       format.json { head :no_content }
-    end
+   end
+  end
+  
+  def deletetsdoc
+    @trackingsheetdocument = Trackingsheetdocument.find(params[:tsdocid])
+    @trackingsheetdocument.destroy
+    render :text=>true
   end
 
   private
