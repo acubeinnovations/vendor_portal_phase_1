@@ -8,8 +8,12 @@
 			<td><%= processmaster.try(:season).try(:name) %></td>
 			<td><%= processmaster.try(:market).try(:name) %></td>
 			<td><%= processmaster.try(:submarket).try(:name)  %></td>
-			<td><%= processmaster.created_at %></td>
-			<td><%= processmaster.trackingsheets.count %></td>
+			<td><%= processmaster.created_at.strftime("%d %b %Y,%T") %></td>
+			<td>
+				<div style="text-align:center !important;">
+				<%= processmaster.trackingsheets.count %>
+				</div>
+			</td>
 			<td>
 				<div style="text-align:center !important;">
 				<%= link_to 'Edit', edit_processmaster_path(processmaster),class:'btn btn-info' %>

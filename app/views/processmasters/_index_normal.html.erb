@@ -18,15 +18,19 @@
 			<td><%= processmaster.try(:market).try(:name) %></td>
 			<td><%= processmaster.try(:submarket).try(:name) %></td>
 			<td><%= processmaster.created_at %></td>
-			<%  if current_user.userrole==VendorPortal::Application.config.designer  %>
-				<td><%= processmaster.styles.where(:designer_id=>current_user.id).count %></td>
-			<%  else if current_user.userrole==VendorPortal::Application.config.operationuser  %>
-				<td><%= processmaster.styles.where(:operationuser_id=>current_user.id).count %></td>			
-			<%  else if current_user.userrole==VendorPortal::Application.config.sales  %>
-				<td><%= processmaster.styles.where(:sales_id=>current_user.id).count %></td>
-			<% end %>	
-			<% end %>
-			<% end %>	
+			<td>
+			<div style="text-align:center !important;">
+				<%  if current_user.userrole==VendorPortal::Application.config.designer  %>
+					<%= processmaster.styles.where(:designer_id=>current_user.id).count %>
+				<%  else if current_user.userrole==VendorPortal::Application.config.operationuser  %>
+					<%= processmaster.styles.where(:operationuser_id=>current_user.id).count %>			
+				<%  else if current_user.userrole==VendorPortal::Application.config.sales  %>
+					<%= processmaster.styles.where(:sales_id=>current_user.id).count %>
+				<% end %>	
+				<% end %>
+				<% end %>
+			</div>
+			</td>	
 			<td>	
 				<div style="text-align:center !important;">
 				<%= link_to 'Tracking Sheet', trackingsheets_path(:processmaster_id => processmaster.id),class:'btn btn-warning' %>
