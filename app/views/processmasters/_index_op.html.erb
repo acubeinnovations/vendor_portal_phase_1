@@ -15,9 +15,21 @@
 				<td><%= processmaster.try(:submarket).try(:name)  %></td>
 				<td><%= processmaster.created_at %></td>
 				<td><%= processmaster.trackingsheets.count %></td>
-				<td><%= link_to 'Edit', edit_processmaster_path(processmaster),class:'btn btn-info' %></td>
-				<td><%= link_to 'Tracking Sheet', trackingsheets_path(:processmaster_id => processmaster.id),class:'btn btn-warning' %></td>
-				<td><%= link_to 'Delete', processmaster, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td>
+				<td>
+				<div style="text-align:center !important;">
+					<%= link_to 'Edit', edit_processmaster_path(processmaster),class:'btn btn-info' %>
+				</div>
+				</td>
+				<td>
+					<div style="text-align:center !important;">
+					<%= link_to 'Tracking Sheet', trackingsheets_path(:processmaster_id => processmaster.id),class:'btn btn-warning' %>
+					</div>
+				</td>
+				<td>
+					<div style="text-align:center !important;">
+					<%= link_to 'Delete', processmaster, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %>
+					</div>
+				</td>
 		</tr>	
 	<% @slno+=1%>
 

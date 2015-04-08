@@ -27,7 +27,11 @@
 			<% end %>	
 			<% end %>
 			<% end %>	
-			<td>	<%= link_to 'Tracking Sheet', trackingsheets_path(:processmaster_id => processmaster.id),class:'btn btn-warning' %></td>
+			<td>	
+				<div style="text-align:center !important;">
+				<%= link_to 'Tracking Sheet', trackingsheets_path(:processmaster_id => processmaster.id),class:'btn btn-warning' %>
+				</div>
+			</td>
 		</tr>	
 	<% @slno+=1%>
 	<% end %>	
