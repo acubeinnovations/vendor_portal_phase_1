@@ -47,6 +47,7 @@ Rails.application.routes.draw do
 	as :trackingsheet do
 			get "get_history"=> "trackingsheets#get_history", :as => :get_history
       get "get_comments"=> "trackingsheets#get_comments", :as => :get_comments
+			get "lockme"=> "trackingsheets#lockme", :as => :lockme
 	end
 	as :costsheet do
 			get "ajaxcreate_costsheets"=> "costsheets#ajaxcreate_costsheets", :as => :ajaxcreate_costsheets
