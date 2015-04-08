@@ -11,7 +11,7 @@
 			<td><%= processmaster.created_at %></td>
 			<td><%= processmaster.trackingsheets.count %></td>
 			<td><%= link_to 'Edit', edit_processmaster_path(processmaster),class:'btn btn-info' %></td>
-			<td><%= link_to 'Tracking Sheet', trackingsheets_path(:processmaster_id => processmaster.id),class:'btn btn-warning' %></td>
+			<td><%= link_to 'Tracking Sheet', trackingsheets_path(:processmaster_id => processmaster.id),style:"width:97px;",class:'btn btn-warning' %></td>
 			<td><%= link_to 'Delete', processmaster, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td>
 
 		</tr>	
