@@ -66,6 +66,12 @@ class HardwaresController < ApplicationController
       end
     end
   end
+  
+  def deletetshrd
+    @hardware = Hardware.find(params[:tshrdid])
+    @hardware.destroy
+    render :text=>true
+  end
 
   # PATCH/PUT /hardwares/1
   # PATCH/PUT /hardwares/1.json

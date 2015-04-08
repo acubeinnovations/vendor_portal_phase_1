@@ -66,6 +66,12 @@ class TestingsController < ApplicationController
       end
     end
   end
+  
+  def deletetstst
+    @testing = Testing.find(params[:tststid])
+    @testing.destroy
+    render :text=>true
+  end
 	
   # PATCH/PUT /testings/1
   # PATCH/PUT /testings/1.json

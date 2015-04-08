@@ -65,6 +65,13 @@ class ComponentsController < ApplicationController
       end
     end
   end
+  
+  
+  def deletetscmp
+    @component = Component.find(params[:tscmpid])
+    @component.destroy
+    render :text=>true
+  end
 
   # PATCH/PUT /components/1
   # PATCH/PUT /components/1.json

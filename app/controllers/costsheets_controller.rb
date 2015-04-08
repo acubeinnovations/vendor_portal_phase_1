@@ -65,6 +65,12 @@ class CostsheetsController < ApplicationController
       end
     end
   end
+  
+  def deletetscst
+    @costsheet = Costsheet.find(params[:tscstid])
+    @costsheet.destroy
+    render :text=>true
+  end
 
 
   # PATCH/PUT /costsheets/1

@@ -61,18 +61,23 @@ Rails.application.routes.draw do
 	end
 	as :costsheet do
 			get "ajaxcreate_costsheets"=> "costsheets#ajaxcreate_costsheets", :as => :ajaxcreate_costsheets
+      get "deletetscst"=> "costsheets#deletetscst", :as => :deletetscst
      
 	end
 	as :testing do
 			get "ajaxcreate_testings"=> "testings#ajaxcreate_testings", :as => :ajaxcreate_testings
+      get "deletetstst"=> "testings#deletetstst", :as => :deletetstst
      
 	end
 	as :hardware do
 			get "ajaxcreate_hardwares"=> "hardwares#ajaxcreate_hardwares", :as => :ajaxcreate_hardwares
+      get "deletetshrd"=> "hardwares#deletetshrd", :as => :deletetshrd
+      
      
 	end
 	as :component do
 			get "ajaxcreate_components"=> "components#ajaxcreate_components", :as => :ajaxcreate_components
+      get "deletetscmp"=> "components#deletetscmp", :as => :deletetscmp
      
 	end
 	as :sample do
