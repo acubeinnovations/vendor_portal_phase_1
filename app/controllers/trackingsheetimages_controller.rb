@@ -66,6 +66,13 @@ class TrackingsheetimagesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  
+  def deletetsimg
+    @trackingsheetimage = Trackingsheetimage.find(params[:tsimgid])
+    @trackingsheetimage.destroy
+    render :text=>true
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

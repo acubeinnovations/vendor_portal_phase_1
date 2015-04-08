@@ -47,6 +47,14 @@ Rails.application.routes.draw do
 			get "deletetsdoc"=> "trackingsheetdocuments#deletetsdoc", :as => :deletetsdoc
       
 	end
+  
+	as :trackingsheetimage do
+			get "deletetsimg"=> "trackingsheetimages#deletetsimg", :as => :deletetsimg
+      
+	end
+  
+  
+  
 	as :trackingsheet do
 			get "get_history"=> "trackingsheets#get_history", :as => :get_history
       get "get_comments"=> "trackingsheets#get_comments", :as => :get_comments
