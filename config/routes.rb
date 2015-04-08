@@ -43,7 +43,10 @@ Rails.application.routes.draw do
   resources :users
 
   devise_for :users, :skip => [:registrations, :sessions]
-  
+	as :trackingsheetdocument do
+			get "deletetsdoc"=> "trackingsheetdocuments#deletetsdoc", :as => :deletetsdoc
+      
+	end
 	as :trackingsheet do
 			get "get_history"=> "trackingsheets#get_history", :as => :get_history
       get "get_comments"=> "trackingsheets#get_comments", :as => :get_comments

@@ -78,6 +78,23 @@
 							<tr>
 							<td  colspan="4" style="border:none;">
 							<%= form_for trackingsheetdocument,  :html => {:target=>"upload_frame",:multipart => true,:class => "form-horizontal" } do |f| %>
+							
+							
+<!-- newly added for modal starts-->
+<div class="modal fade myclosemodal" id="delete-confirm">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Are you sure you want to delete this document?</h3>
+  </div>
+ 
+  <div class="delete-modal-footer">
+	
+    
+   
+  </div>
+</div>
+<!-- newly added for modal ends-->		
+							
 							<table style="border:none;">
 								<tr style="border-top: 1px solid #333 !important;">
 									<td style= "width:22.1%;text-align: center;border-right: 1px solid #333 !important;">
@@ -91,7 +108,7 @@
 									</td>
 									<td width="10%" style="text-align:center;border-right: 1px solid #333 !important;">
 									<div><%= link_to 'View', trackingsheetdocument.document.url, :class => 'btn btn-success btn-xs' %>
-		<%= link_to 'Delete', trackingsheetdocument, method: :delete, data: { confirm: 'Are you sure?' },:class => 'btn btn-danger btn-xs'  %>							
+		<a href="#delete-confirm" data-id="<%= trackingsheetdocument.id %>" class="delete-confirm btn btn-danger">Delete.</a>						
 									</div>
 								</td>
 									<td style= "width:11.1%;text-align:center;border-right: 1px solid #333 !important;">
@@ -129,20 +146,58 @@ $(this).next().find('.submit-ts-doc').trigger('click');
 $('#upload_frame').load(function(){
 if($(this).attr('loaded')!='true'){
 
-$.get("/trackingsheetdocuments", {
-    trackingsheetid:$('#trackingsheetdocument_trackingsheet').val(),
-		processmasterid:$('#trackingsheetdocument_processmaster').val()
-  },function(data){
-		$('.modal').css('width','1300');
-		$('.modal').css('left','23%');
-		$('.modal-body').html('');
-		$('.modal-body').html(data);
-		
-	});
+getdocuments();
 
 $('#upload_frame').attr('loaded','true');
 }
 });
 
 
+//newly added
+$('#delete-confirm').on('show', function() {
+  var $submit = $(this).find('.btn-danger'),
+      href = $submit.attr('href');
+  $submit.attr('href', href.replace('pony', $(this).data('id')));
+});
+
+//delete prompt 
+ $('.delete-confirm').on('click',function(e) {
+ //alert("you clicked");
+  e.preventDefault();
+  var content='<a href="#"  class="btn btn-danger delete-confirmed" document_id='+$(this).attr('data-id')+'>Delete</a> <a href="#"  class="btn btn-info btnclose">Cancel</a>';
+  $('.delete-modal-footer').html(content);
+  deleteinit();
+  $('#delete-confirm').data('id', $(this).data('id')).modal('show');
+});
+
+function deleteinit(){
+	$('.delete-confirmed').on('click',function(e) {
+		var me=$(this);
+		$.get('/deletetsdoc',{
+			tsdocid:me.attr('document_id')
+		},function(){
+			getdocuments();
+		});
+	
+	});
+   //for cancel button in delete modal
+    $('.btnclose').on('click',function(e) {
+   	 $(".myclosemodal").modal("hide");
+    });
+	
+}
+
+
+ function getdocuments(){
+	 $.get("/trackingsheetdocuments", {
+	     trackingsheetid:$('#trackingsheetdocument_trackingsheet').val(),
+	 		processmasterid:$('#trackingsheetdocument_processmaster').val()
+	   },function(data){
+	 		$('.modal').css('width','1300');
+	 		$('.modal').css('left','23%');
+	 		$('.modal-body').html('');
+	 		$('.modal-body').html(data);
+		
+	 });
+}
 </script>

@@ -4,10 +4,14 @@ $(document).keyup(function(e) {
 
   if (e.keyCode == 27) { 
 	$("#close-modal").trigger('click');
-
+	$('.modal-backdrop').css('display','none');
+	
 	 }  
+	 
 });
-
+$("#close-modal").on('click',function (){
+	$('.modal-backdrop').css('display','none');
+});
 
 
 //added for tab-start
