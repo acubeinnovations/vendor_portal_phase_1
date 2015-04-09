@@ -54,6 +54,7 @@ class HardwaresController < ApplicationController
         format.json { render json: @hardware.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
 	def ajaxcreate_hardwares
