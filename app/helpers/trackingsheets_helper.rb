@@ -1543,9 +1543,9 @@ module TrackingsheetsHelper
 
 
  			 	###---------------------------------------xmill----------------------------------------------### 
-							def	xmill(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+							def	xmill
+		 	#if !trackingsheet.lock.blank?
+			# if trackingsheet.lock=='false'
 	 						   if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1561,17 +1561,17 @@ module TrackingsheetsHelper
 		             end #sales
 		             end #operations 
 		             end#admin
-		else
-			return false 
-		end
-		else
-			return true 
-		end
+			#else
+			#	return false 
+			#end
+			#else
+			#	return true 
+			#end
 							end
  			 	###---------------------------------------received----------------------------------------------### 
-							def	received(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+							def	received
+			# if !trackingsheet.lock.blank?
+		 	#if trackingsheet.lock=='false'
 	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		             return true    
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1587,12 +1587,12 @@ module TrackingsheetsHelper
 		             end #sales
 		             end #operations 
 		             end#admin
-		else
-			return false 
-		end
-		else
-			return true 
-		end
+			#else
+				#return false 
+			#end
+			#else
+			#	return true 
+			#end
 							end
 			 	 ###---------------------------------------approved----------------------------------------------### 
 							def	approved(trackingsheet)
@@ -1789,9 +1789,9 @@ module TrackingsheetsHelper
   							end
                 
       				  ###---------------------------------------FIRST DAF SOSS----------------------------------------------### 
-      							def	soss(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+      							def	soss
+		 #if !trackingsheet.lock.blank?
+		# if trackingsheet.lock=='false'
       	 							 if current_user.userrole==VendorPortal::Application.config.admin
       		              return true    
       		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1807,18 +1807,18 @@ module TrackingsheetsHelper
       		             end #sales
       		             end #operations 
       		             end#admin
-		else
-			return false 
-		end
-		else
-			return true 
-		end
+		#else
+			#return false 
+		#end
+		#else
+			#return true 
+		#end
       							end  
                     
           				  ###---------------------------------------Development Samples----------------------------------------------### 
-          							def	nmbrofdefsmplneeded(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+          							def	nmbrofdefsmplneeded
+		 #if !trackingsheet.lock.blank?
+		 #if trackingsheet.lock=='false'
           	 							 if current_user.userrole==VendorPortal::Application.config.admin
           		              return true    
           		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1834,18 +1834,18 @@ module TrackingsheetsHelper
           		             end #sales
           		             end #operations 
           		             end#admin
-		else
-			return false 
-		end
-		else
-			return true 
-		end
+		#else
+			#return false 
+		#end
+		#else
+			#return true 
+		#end
           							end     
                         
               				  ###-----------------------------Daf Issued----------------------------------------------### 
-              							def	dafissued(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+              							def	dafissued
+		# if !trackingsheet.lock.blank?
+		# if trackingsheet.lock=='false'
               	 							 if current_user.userrole==VendorPortal::Application.config.admin
               		              return true    
               		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1861,18 +1861,18 @@ module TrackingsheetsHelper
               		             end #sales
               		             end #operations 
               		             end#admin
-		else
-			return false 
-		end
-		else
-			return true 
-		end
+		#else
+		#	return false 
+		#end
+		#else
+		#	return true 
+		#end
               							end       
                             
                   				  ###-----------------------------Sample Due Date----------------------------------------------### 
-                  							def	sampleduedate(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+                  							def	sampleduedate
+		 #if !trackingsheet.lock.blank?
+		 #if trackingsheet.lock=='false'
                   	 							 if current_user.userrole==VendorPortal::Application.config.admin
                   		              return true    
                   		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1888,12 +1888,12 @@ module TrackingsheetsHelper
                   		             end #sales
                   		             end #operations 
                   		             end#admin
-		else
-			return false 
-		end
-		else
-			return true 
-		end
+		#else
+		#	return false 
+		#end
+		#else
+		#	return true 
+		#end
                   							end      
                                 
                                 
