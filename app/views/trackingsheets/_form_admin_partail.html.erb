@@ -7,7 +7,7 @@
 																					
 											
 									<tr>
-										<th>LOCK</th>
+										<th>EXPORT/LOCK</th>
 										<th>ACTIONS</th>
 										<th>IMAGE</th>
 										<th>PROTO # / DAF #</th>
@@ -97,14 +97,14 @@
 <tbody>			
 <tr><td style="text-align:center;">
 	<% if trackingsheet.lock=='true' %> 
-	
+	<% 	checked='checked="checked"' %>
 	<% 	locked='true' %>
 	<% else %>
 	<% 	locked='false' %>
-	
+	<% 	checked='' %>
 
 	<% end %>
-	<input name="lockme" class="lockme" value="<%= trackingsheet.lock %>" trackingsheet_id="<%=trackingsheet.id%>" type="checkbox">
+	<input name="lockme" class="lockme" <%= checked %> value="<%= trackingsheet.lock %>" trackingsheet_id="<%=trackingsheet.id%>" type="checkbox">
 
 </td>
 <td style="text-align:center;">
