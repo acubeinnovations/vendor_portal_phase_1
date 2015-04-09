@@ -35,11 +35,31 @@ class TrackingsheetdocumentsController < ApplicationController
       if @trackingsheetdocument.save
        # format.html { redirect_to @trackingsheetdocument, notice: 'Trackingsheetdocument was successfully created.' }
         #format.json { render :show, status: :created, location: @trackingsheetdocument }
+        ###### new starts
+        @trackingsheetlog=Trackingsheetlog.where('trackingsheet_id'=>trackingsheetdocument_params[:trackingsheet],"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.documents) 
+   
+   
+     if @trackingsheetlog.count== 0
+       @trackingsheetlog = Trackingsheetlog.new("trackingsheet_id"=>trackingsheetdocument_params[:trackingsheet],"useremail"=>current_user.email,"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.documents)
+      @trackingsheetlog.save
+    else
+     @trackingsheetlog.each do |tslog|
+     @trackingsheetlogobj=Trackingsheetlog.find(tslog.id)
+     @trackingsheetlogobj.update_attributes(:trackingsheet_id=>trackingsheetdocument_params[:trackingsheet],:useremail=>current_user.email,:sessionid=>session[:session_id],:updated_at=>DateTime.now,:tabname=>VendorPortal::Application.config.documents)
+    break
+       end    
+      
+     end     
+    
+        ##### new ends
       else
         #format.html { render :new }
        # format.json { render json: @trackingsheetdocument.errors, status: :unprocessable_entity }
       end
+      render :text=>true
+      return false
     end
+    
   end
 
   # PATCH/PUT /trackingsheetdocuments/1
@@ -49,11 +69,32 @@ class TrackingsheetdocumentsController < ApplicationController
       if @trackingsheetdocument.update(trackingsheetdocument_params)
         #format.html { redirect_to @trackingsheetdocument, notice: 'Trackingsheetdocument was successfully updated.' }
         #format.json { render :show, status: :ok, location: @trackingsheetdocument }
+        ###### new starts
+        @trackingsheetlog=Trackingsheetlog.where('trackingsheet_id'=>@trackingsheetdocument.trackingsheet.id,"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.documents) 
+   
+   
+     if @trackingsheetlog.count== 0
+       @trackingsheetlog = Trackingsheetlog.new("trackingsheet_id"=>@trackingsheetdocument.trackingsheet.id,"useremail"=>current_user.email,"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.documents)
+      @trackingsheetlog.save
+    else
+     @trackingsheetlog.each do |tslog|
+     @trackingsheetlogobj=Trackingsheetlog.find(tslog.id)
+     @trackingsheetlogobj.update_attributes(:trackingsheet_id=>@trackingsheetdocument.trackingsheet.id,:useremail=>current_user.email,:sessionid=>session[:session_id],:updated_at=>DateTime.now,:tabname=>VendorPortal::Application.config.documents)
+    break
+       end    
+      
+     end     
+    
+        ##### new ends 
       else
         #format.html { render :edit }
         #format.json { render json: @trackingsheetdocument.errors, status: :unprocessable_entity }
       end
+      render :text=>true
+      return false
     end
+    
+      
   end
 
   # DELETE /trackingsheetdocuments/1
@@ -70,7 +111,25 @@ class TrackingsheetdocumentsController < ApplicationController
   
   def deletetsdoc
     @trackingsheetdocument = Trackingsheetdocument.find(params[:tsdocid])
+    @tsid=@trackingsheetdocument.trackingsheet.id
     @trackingsheetdocument.destroy
+    ###### new starts
+    @trackingsheetlog=Trackingsheetlog.where('trackingsheet_id'=> @tsid,"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.documents) 
+   
+   
+ if @trackingsheetlog.count== 0
+   @trackingsheetlog = Trackingsheetlog.new("trackingsheet_id"=> @tsid,"useremail"=>current_user.email,"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.documents)
+  @trackingsheetlog.save
+else
+ @trackingsheetlog.each do |tslog|
+ @trackingsheetlogobj=Trackingsheetlog.find(tslog.id)
+ @trackingsheetlogobj.update_attributes(:trackingsheet_id=> @tsid,:useremail=>current_user.email,:sessionid=>session[:session_id],:updated_at=>DateTime.now,:tabname=>VendorPortal::Application.config.documents)
+break
+   end    
+      
+ end     
+    
+    ##### new ends  
     render :text=>true
   end
 
@@ -78,6 +137,7 @@ class TrackingsheetdocumentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_trackingsheetdocument
       @trackingsheetdocument = Trackingsheetdocument.find(params[:id])
+      
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

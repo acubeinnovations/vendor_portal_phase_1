@@ -26,16 +26,18 @@ $.get('/vendorportal/get_history',{
     trackingsheetid:trackingsheetid
   },function(data){
  content='<div id="modal_history" style="float:left;">';
-$.each(data,function(updated,email){
-content+='<div style="float:left;"><i class="icon-stop"></i> Updated by '+email+', at '+updated+'</div> <br> <hr>';
-});
+for(i=0;i<data.length;i++){
+	date = new Date(data[i].updated_at);
+	updated_date = (date.getMonth() + 1) + '-' + date.getDate() + '-' +  date.getFullYear() +  '  '  + date.getHours() + ':' + date.getMinutes();
+content+='<div style="float:left;"><i class="icon-stop"></i> '+data[i].tabname+' Tab   Updated by '+data[i].useremail+', at '+updated_date+'</div> <br> <hr>';
+}
 content+='</div>';
 $('.modal-body').html(content);
 $('.modal_head').html('History &nbsp;');
 });
 }
 
-function getComments(trackingsheetid,me){
+function getComments(trackingsheetid,me){ 
 var trackingsheetid=trackingsheetid;
 me=me;
 $.get('/vendorportal/get_comments',{

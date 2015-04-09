@@ -30,7 +30,7 @@ layout 'vendor_portal'
 
     respond_to do |format|
       if @season.save
-        format.html { redirect_to @season, notice: 'Season was successfully created.' }
+        format.html { redirect_to seasons_url, notice: 'Season was successfully updated.' }
         format.json { render :show, status: :created, location: @season }
       else
         format.html { render :new }
@@ -53,7 +53,7 @@ layout 'vendor_portal'
   def update
     respond_to do |format|
       if @season.update(season_params)
-        format.html { redirect_to @season, notice: 'Season was successfully updated.' }
+        format.html { redirect_to seasons_url, notice: 'Season was successfully updated.' }
         format.json { render :show, status: :ok, location: @season }
       else
         format.html { render :edit }

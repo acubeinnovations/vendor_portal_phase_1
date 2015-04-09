@@ -34,6 +34,17 @@ module VendorPortal
 		Application.config.sales = "sales"
 		Application.config.operationadmin = "operationadmin"
 		Application.config.operationuser = "operationuser"
+    
+    
+    Application.config.documents = "Documents"
+    Application.config.main = "Main"
+    Application.config.image = "Image"
+    Application.config.hardware = "Hardware"
+    Application.config.testing = "Testing"
+    Application.config.components = "Components"
+    Application.config.costsheets = "Cost Sheets"
+    Application.config.samples = "Samples"
+    
 
   end
 end

@@ -11,8 +11,24 @@
 							<span class="icon">
 								<i class="icon-file"></i>
 							</span>
-							<h5>Listing Samples</h5><%  if current_user.userrole==VendorPortal::Application.config.designer %><%= link_to "Add New",'#', :class =>'btn btn-success btn-xs add-samples',:trackingsheet_id=>params[:trackingsheet_id] %> <%end%>
+							<h5>Listing Samples</h5><div class='hide-me ts_id' trackingsheet_id="<%=params[:trackingsheet_id] %>"></div>
 							</div>	
+							
+							
+<!-- newly added for modal starts-->
+<div class="modal fade myclosemodal" id="delete-confirm">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Are you sure you want to delete this item?</h3>
+  </div>
+ 
+  <div class="delete-modal-footer">
+	
+    
+   
+  </div>
+</div>
+<!-- newly added for modal ends-->							
 							<div class="scrollable-div" style="overflow-x: scroll;">
 							<table class="table table-bordered comp-table">
 								<thead>
@@ -24,6 +40,7 @@
 										<th>X-MILL</th>
 										<th>RECEIVED </th>
 										<th>APPROVED </th>
+										<th>ACTION </th>
 									</tr>
 									</thead>
 									<tbody>
@@ -50,7 +67,8 @@
 											</td>
 											<td class="bestin" style="text-align:center;">
 												
-												<%#=best_in_place_if approved,  sample, :approved, :as => :input,:nil => "Click to add content!"%>
+												
+												<%  if current_user.userrole==VendorPortal::Application.config.designer || current_user.userrole==VendorPortal::Application.config.admin || current_user.userrole==VendorPortal::Application.config.operationadmin  %>
 												<%if sample.approved=='yes'%>
 												<%options="<option value=''>Please Select</option><option value='yes' selected>YES</option><option value='no'>NO</option>" %>
 												<%else if sample.approved=='no' %>
@@ -59,6 +77,14 @@
 												<%options="<option value=''>Please Select</option><option value='yes' >YES</option><option value='no'>NO</option>" %>												<%end %>
 												<%end %>
 												<%= select_tag 'approved',options.html_safe,:class=>'yesorno',:sample_id=>sample.id,:trackingsheet_id=>params[:trackingsheet_id] %>
+												<%else%>
+												<%=sample.try(:approved)%>
+											
+												<%end%>
+											</td>
+											<td>
+						<a href="#delete-confirm" data-id="<%= sample.id %>" class="delete-confirm btn btn-danger">Delete</a>
+											
 											</td>
 										</tr>
 									</tbody>
@@ -90,8 +116,8 @@
 					sampleid:sampleid,
 					approved:approved
 			},function(data){
-				$('.modal').css('width','1200');
-				$('.modal').css('left','30%');
+				$('.modal').css('width','1300');
+				$('.modal').css('left','23%');
 				$('.modal-body').html(data);
 
 			});
@@ -155,6 +181,60 @@ $(this).html($(this).attr('data-bip-placeholder'));
 }
 
 });
+
+
+
+//newly added
+$('#delete-confirm').on('show', function() {
+  var $submit = $(this).find('.btn-danger'),
+      href = $submit.attr('href');
+  $submit.attr('href', href.replace('pony', $(this).data('id')));
+});
+
+//delete prompt 
+ $('.delete-confirm').on('click',function(e) {
+ //alert("you clicked");
+  e.preventDefault();
+  var content='<a href="#"  class="btn btn-danger delete-confirmed" sample_id='+$(this).attr('data-id')+'>Delete</a> <a href="#"  class="btn btn-info btnclose">Cancel</a>';
+  $('.delete-modal-footer').html(content);
+  deleteinit();
+  $('#delete-confirm').data('id', $(this).data('id')).modal('show');
+});
+
+function deleteinit(){
+	$('.delete-confirmed').on('click',function(e) {
+		var me=$(this);
+		$.get('/deletetssmp',{
+			tssmpid:me.attr('sample_id')
+			
+		},function(){
+			getsamples();
+		});
+	
+	});
+   //for cancel button in delete modal
+    $('.btnclose').on('click',function(e) {
+   	 $(".myclosemodal").modal("hide");
+    });
+	
+}
+
+
+
+ function getsamples(){ 
+	 $.get("/samples", {
+		 
+	     trackingsheet_id:$('.ts_id').attr('trackingsheet_id')
+		 
+	   },function(data){
+	 		$('.modal').css('width','1300');
+	 		$('.modal').css('left','23%');
+	 		$('.modal-body').html('');
+	 		$('.modal-body').html(data);
+		
+	 });
+}
+//newly added ends
 
 
 	</script>

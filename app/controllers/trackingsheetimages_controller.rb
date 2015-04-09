@@ -33,9 +33,31 @@ class TrackingsheetimagesController < ApplicationController
 
     respond_to do |format|
       if @trackingsheetimage.save
+        ###### new starts
+        @trackingsheetlog=Trackingsheetlog.where('trackingsheet_id'=>trackingsheetimage_params[:trackingsheet],"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.image) 
+   
+   
+     if @trackingsheetlog.count== 0
+       @trackingsheetlog = Trackingsheetlog.new("trackingsheet_id"=>trackingsheetimage_params[:trackingsheet],"useremail"=>current_user.email,"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.image)
+      @trackingsheetlog.save
+    else
+     @trackingsheetlog.each do |tslog|
+     @trackingsheetlogobj=Trackingsheetlog.find(tslog.id)
+     @trackingsheetlogobj.update_attributes(:trackingsheet_id=>trackingsheetimage_params[:trackingsheet],:useremail=>current_user.email,:sessionid=>session[:session_id],:updated_at=>DateTime.now,:tabname=>VendorPortal::Application.config.image)
+    break
+       end    
+      
+     end     
+    
+        ##### new ends
+    
+        render :text => true
+        return false
         #format.html { redirect_to @trackingsheetimage, notice: 'Trackingsheetimage was successfully created.' }
         #format.json { render :show, status: :created, location: @trackingsheetimage }
       else
+        render :text => true
+        return false
         #format.html { render :new }
         #format.json { render json: @trackingsheetimage.errors, status: :unprocessable_entity }
       end
@@ -54,6 +76,29 @@ class TrackingsheetimagesController < ApplicationController
        # format.json { render json: @trackingsheetimage.errors, status: :unprocessable_entity }
       end
     end
+    
+    
+    
+    ###### new starts
+    @trackingsheetlog=Trackingsheetlog.where('trackingsheet_id'=>trackingsheetimage_params[:id],"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.image) 
+   
+   
+ if @trackingsheetlog.count== 0
+   @trackingsheetlog = Trackingsheetlog.new("trackingsheet_id"=>trackingsheetimage_params[:id],"useremail"=>current_user.email,"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.image)
+  @trackingsheetlog.save
+else
+ @trackingsheetlog.each do |tslog|
+ @trackingsheetlogobj=Trackingsheetlog.find(tslog.id)
+ @trackingsheetlogobj.update_attributes(:trackingsheet_id=>trackingsheetimage_params[:id],:useremail=>current_user.email,:sessionid=>session[:session_id],:updated_at=>DateTime.now,:tabname=>VendorPortal::Application.config.image)
+break
+   end    
+      
+ end     
+    
+    ##### new ends
+    
+    
+    
   end
 
   # DELETE /trackingsheetimages/1
@@ -70,7 +115,25 @@ class TrackingsheetimagesController < ApplicationController
   
   def deletetsimg
     @trackingsheetimage = Trackingsheetimage.find(params[:tsimgid])
+    @tsid=@trackingsheetimage.trackingsheet.id
     @trackingsheetimage.destroy
+    ###### new starts
+    @trackingsheetlog=Trackingsheetlog.where('trackingsheet_id'=>@tsid,"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.image) 
+
+
+ if @trackingsheetlog.count== 0
+   @trackingsheetlog = Trackingsheetlog.new("trackingsheet_id"=>@tsid,"useremail"=>current_user.email,"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.image)
+  @trackingsheetlog.save
+else
+ @trackingsheetlog.each do |tslog|
+ @trackingsheetlogobj=Trackingsheetlog.find(tslog.id)
+ @trackingsheetlogobj.update_attributes(:trackingsheet_id=>@tsid,:useremail=>current_user.email,:sessionid=>session[:session_id],:updated_at=>DateTime.now,:tabname=>VendorPortal::Application.config.image)
+break
+   end    
+  
+ end     
+
+    ##### new ends
     render :text=>true
   end
 
