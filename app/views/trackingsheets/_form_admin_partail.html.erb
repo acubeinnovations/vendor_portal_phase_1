@@ -97,14 +97,14 @@
 <tbody>			
 <tr><td style="text-align:center;">
 	<% if trackingsheet.lock=='true' %> 
-	<% 	checked='checked="checked"' %>
+	
 	<% 	locked='true' %>
 	<% else %>
 	<% 	locked='false' %>
-	<% 	checked='' %>
+	
 
 	<% end %>
-	<input name="lockme" class="lockme" <%= checked %> value="<%= trackingsheet.lock %>" trackingsheet_id="<%=trackingsheet.id%>" type="checkbox">
+	<input name="lockme" class="lockme" value="<%= trackingsheet.lock %>" trackingsheet_id="<%=trackingsheet.id%>" type="checkbox">
 
 </td>
 <td style="text-align:center;">

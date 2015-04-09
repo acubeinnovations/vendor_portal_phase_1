@@ -187,8 +187,10 @@ $.get("/samples", {
 }
 
 
-$('.lockme').on('click',function(){
 
+$('.lock').on('click',function(){
+i=1;
+$('.lockme').each(function(){
 if(this.checked){
 lock='true';
 }else{
@@ -199,9 +201,29 @@ $.get("/lockme",{
  trackingsheet_id:$(this).attr('trackingsheet_id'),
  lock:lock
 
-  },function(data){
-		 location.reload();
+  },function(){
+	if($('.lockme').length==i){
+			location.reload();
+	}
+	i+=1;
 	});
+
+});
+   
+});
+
+
+//$('.exportme').on('click',function(){
+$('.exportme').on('click',function(){
+
+$('.lockme').each(function(){
+if(this.checked){
+
+id=$(this).attr('trackingsheet_id');
+window.open('/tocsv.csv?id='+id, '_blank');
+
+}
+});
 });
 
 //for checking locking condition
