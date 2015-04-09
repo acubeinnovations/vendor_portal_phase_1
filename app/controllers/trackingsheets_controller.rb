@@ -73,8 +73,6 @@ class TrackingsheetsController < ApplicationController
   
   
   
-  
-  
   def update
 		@trackingsheet = Trackingsheet.find(params[:id])
         if trackingsheet_params.has_key?("vendorfulldata")
@@ -173,9 +171,24 @@ end
 #    end
   end
 
-  
-	def lockme
+	# xls convertion
 	
+	def tocsv
+		
+		
+		@trackingsheets = Trackingsheet.where(:id=>request.GET.first.second)
+    #respond_to do |format|
+      #format.html
+      #format.csv { send_data @trackingsheets.to_csv }
+      #format.xlsx { send_data @trackingsheets.to_csv(col_sep: "\t") }
+    #end
+	end
+  
+    
+
+
+	def lockme
+		
     @trackingsheet = Trackingsheet.find(params[:trackingsheet_id])
 
 		@trackingsheet.update_attributes(:lock=>params[:lock])
