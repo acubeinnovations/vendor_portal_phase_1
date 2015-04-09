@@ -76,6 +76,14 @@ class SamplesController < ApplicationController
       end
     end
   end
+  
+  
+  def deletetssmp
+    @sample = Sample.find(params[:tssmpid])
+    @sample.destroy
+    render :text=>true
+  end
+  
   # PATCH/PUT /samples/1
   # PATCH/PUT /samples/1.json
   def update

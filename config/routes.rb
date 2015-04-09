@@ -83,6 +83,7 @@ Rails.application.routes.draw do
 	end
 	as :sample do
 			get "ajaxcreate_samples"=> "samples#ajaxcreate_samples", :as => :ajaxcreate_samples
+      get "deletetssmp"=> "samples#deletetssmp", :as => :deletetssmp
      
 	end
 	as :style do
