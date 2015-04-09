@@ -1,9 +1,6 @@
-$('.pagination a').on('click', function(event) { 
-	
-	//alert("clicked");
-	 event.preventDefault();  
-  //$('.pagination').html('Data is loading...');  
-   $.get(this.href, null, null, 'script');  
+$('.pagination').delegate('.pagination a','click', function(event) { 
+	event.preventDefault();  
+ $.get(this.href, null, null, 'script');  
    return false;  
  }); 
 
