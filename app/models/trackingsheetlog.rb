@@ -8,7 +8,7 @@ class Trackingsheetlog
   field :sessionid, type: String
   field :date, type: String
   field :useremail, type: String
- # field :value, type: String
+  field :tabname, type: String
 	
  	
  

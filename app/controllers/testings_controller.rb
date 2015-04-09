@@ -65,11 +65,46 @@ class TestingsController < ApplicationController
         format.json { render :show, status: :created, location: @testing }
       end
     end
+    ###### new starts
+    @trackingsheetlog=Trackingsheetlog.where('trackingsheet_id'=>params[:id],"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.testing) 
+   
+   
+ if @trackingsheetlog.count== 0
+   @trackingsheetlog = Trackingsheetlog.new("trackingsheet_id"=>params[:id],"useremail"=>current_user.email,"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.testing)
+  @trackingsheetlog.save
+else
+ @trackingsheetlog.each do |tslog|
+ @trackingsheetlogobj=Trackingsheetlog.find(tslog.id)
+ @trackingsheetlogobj.update_attributes(:trackingsheet_id=>params[:id],:useremail=>current_user.email,:sessionid=>session[:session_id],:updated_at=>DateTime.now,:tabname=>VendorPortal::Application.config.testing)
+break
+   end    
+      
+ end     
+    
+    ##### new ends
   end
   
   def deletetstst
     @testing = Testing.find(params[:tststid])
+    @tsid=@testing.trackingsheet.id
     @testing.destroy
+    ###### new starts
+    @trackingsheetlog=Trackingsheetlog.where('trackingsheet_id'=>@tsid,"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.testing) 
+   
+   
+ if @trackingsheetlog.count== 0
+   @trackingsheetlog = Trackingsheetlog.new("trackingsheet_id"=>@tsid,"useremail"=>current_user.email,"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.testing)
+  @trackingsheetlog.save
+else
+ @trackingsheetlog.each do |tslog|
+ @trackingsheetlogobj=Trackingsheetlog.find(tslog.id)
+ @trackingsheetlogobj.update_attributes(:trackingsheet_id=>@tsid,:useremail=>current_user.email,:sessionid=>session[:session_id],:updated_at=>DateTime.now,:tabname=>VendorPortal::Application.config.testing)
+break
+   end    
+      
+ end     
+    
+    ##### new ends
     render :text=>true
   end
 	
@@ -78,13 +113,33 @@ class TestingsController < ApplicationController
   def update
     respond_to do |format|
       if @testing.update(testing_params)
-        format.html { redirect_to @testing, notice: 'Testing was successfully updated.' }
-        format.json { render :show, status: :ok, location: @testing }
+       # format.html { redirect_to @testing, notice: 'Testing was successfully updated.' }
+        #format.json { render :show, status: :ok, location: @testing }
+        @trackingsheetlog=Trackingsheetlog.where('trackingsheet_id'=>@testing.trackingsheet.id,"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.testing) 
+   
+
+              if @trackingsheetlog.count== 0
+              @trackingsheetlog = Trackingsheetlog.new("trackingsheet_id"=>@testing.trackingsheet.id,"useremail"=>current_user.email,"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.testing)
+              @trackingsheetlog.save
+              else
+              @trackingsheetlog.each do |tslog|
+              @trackingsheetlogobj=Trackingsheetlog.find(tslog.id)
+              @trackingsheetlogobj.update_attributes(:trackingsheet_id=>@testing.trackingsheet.id,:useremail=>current_user.email,:sessionid=>session[:session_id],:updated_at=>DateTime.now,:tabname=>VendorPortal::Application.config.testing)
+              break
+              end    
+
+              end     
+    
+        ##### new ends
+        render :text => true
+        return false
       else
-        format.html { render :edit }
-        format.json { render json: @testing.errors, status: :unprocessable_entity }
+       # format.html { render :edit }
+        #format.json { render json: @testing.errors, status: :unprocessable_entity }
       end
     end
+    ###### new starts
+    
   end
 
   # DELETE /testings/1

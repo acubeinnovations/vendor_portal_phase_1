@@ -86,17 +86,22 @@ class TrackingsheetsController < ApplicationController
       
           end
         end
-
-    @trackingsheet.update_attributes(trackingsheet_params) #newly added for in_place_edit #newly added for in_place_edit
+        
+        
+       
+        
+        
+        
+        @trackingsheet.update_attributes(trackingsheet_params) #newly added for in_place_edit #newly added for in_place_edit
     
-   @trackingsheetlog=Trackingsheetlog.where('trackingsheet_id'=>params[:id],"sessionid"=>session[:session_id]) 
-   @commentlog=Commentlog.where('trackingsheet_id'=>params[:id],"sessionid"=>session[:session_id]) 
+   @trackingsheetlog=Trackingsheetlog.where('trackingsheet_id'=>params[:id],"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.main) 
+   @commentlog=Commentlog.where('trackingsheet_id'=>params[:id],"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.main) 
    
 if    @trackingsheetlog.count== 0
   
   
      
-      @trackingsheetlog = Trackingsheetlog.new("trackingsheet_id"=>params[:id],"useremail"=>current_user.email,"sessionid"=>session[:session_id])
+      @trackingsheetlog = Trackingsheetlog.new("trackingsheet_id"=>params[:id],"useremail"=>current_user.email,"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.main)
        @trackingsheetlog.save
        
        
@@ -109,7 +114,7 @@ else
  @trackingsheetlog.each do |tslog|
   
       @trackingsheetlogobj=Trackingsheetlog.find(tslog.id)
-      @trackingsheetlogobj.update_attributes(:trackingsheet_id=>params[:id],:useremail=>current_user.email,:sessionid=>session[:session_id],:updated_at=>DateTime.now)
+      @trackingsheetlogobj.update_attributes(:trackingsheet_id=>params[:id],:useremail=>current_user.email,:sessionid=>session[:session_id],:updated_at=>DateTime.now,:tabname=>VendorPortal::Application.config.main)
       break
   end    
       
@@ -188,7 +193,8 @@ end
   
 	def get_history
 			@historylogs = Trackingsheetlog.order("id DESC").where('trackingsheet_id'=>params[:trackingsheetid])
-			render json: Hash[@historylogs.map { |v| [ v[:updated_at].strftime("%m-%d-%y %H:%M"), v[:useremail].to_s ] } ]
+			#render json: Hash[@historylogs.map { |v| [ v[:updated_at].strftime("%m-%d-%y %H:%M"), v[:useremail].to_s ], v[:tabname].to_s ] } ]
+      render json: @historylogs
 	end
   
 	def get_comments
@@ -213,7 +219,7 @@ end
     # Never trust parameters from the scary internet, only allow the white list through.
     def trackingsheet_params
       params.require(:trackingsheet).permit(:lock,:images,:factory,:subcontractor,:xmilldate, :productionleadtime,:salesproceedtosamplerequest, :protoduebackfromvendor,
-      :daftovendordate, :rtlmu, :mkup, :projectedunits, :targetfob, :targetmu, :targetws, :percolor, :perstyle, :incoterms, :moq,:vendorfulldata,
+      :daftovendordate, :rtlmu, :mkup, :projectedunits, :targetfob, :targetmu, :targetws, :percolor, :perstyle, :incoterms, :moq,:vendorfulldata,:tabname,
       :thousandtofivethousandPCS, :fivethousandtotenthousandPCS, :ldpboat, :ldpair, :startshipdate, :orderduedateviaboat, :orderduedateviaair,
       :soss, :nmbrofdefsmplneeded, :dafissued, :sampleduedate, :daf2soss, :daf2nmbrofdefsmplneeded, :daf2dafissued, :daf2sampleduedate,:processmaster_id,:comments,
       :useremail, :vendor, :brand, :customername, :customeraccountnumber, :projectnumber, :customerstylenumber, :groupname, :productcategory, :designname,

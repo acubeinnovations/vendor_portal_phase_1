@@ -64,12 +64,48 @@ class ComponentsController < ApplicationController
         format.json { render :show, status: :created, location: @component }
       end
     end
+    ###### new starts
+    @trackingsheetlog=Trackingsheetlog.where('trackingsheet_id'=>params[:trackingsheet],"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.components) 
+   
+   
+ if @trackingsheetlog.count== 0
+   @trackingsheetlog = Trackingsheetlog.new("trackingsheet_id"=>params[:trackingsheet],"useremail"=>current_user.email,"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.components)
+  @trackingsheetlog.save
+else
+ @trackingsheetlog.each do |tslog|
+ @trackingsheetlogobj=Trackingsheetlog.find(tslog.id)
+ @trackingsheetlogobj.update_attributes(:trackingsheet_id=>params[:trackingsheet],:useremail=>current_user.email,:sessionid=>session[:session_id],:updated_at=>DateTime.now,:tabname=>VendorPortal::Application.config.components)
+break
+   end    
+      
+ end     
+    
+    ##### new ends 
   end
   
   
   def deletetscmp
+    
     @component = Component.find(params[:tscmpid])
+    @tsid = @component.trackingsheet.id
     @component.destroy
+    ###### new starts
+    @trackingsheetlog=Trackingsheetlog.where('trackingsheet_id'=>@tsid,"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.components) 
+   
+   
+ if @trackingsheetlog.count== 0
+   @trackingsheetlog = Trackingsheetlog.new("trackingsheet_id"=>@tsid,"useremail"=>current_user.email,"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.components)
+  @trackingsheetlog.save
+else
+ @trackingsheetlog.each do |tslog|
+ @trackingsheetlogobj=Trackingsheetlog.find(tslog.id)
+ @trackingsheetlogobj.update_attributes(:trackingsheet_id=>@tsid,:useremail=>current_user.email,:sessionid=>session[:session_id],:updated_at=>DateTime.now,:tabname=>VendorPortal::Application.config.components)
+break
+   end    
+      
+ end     
+    
+    ##### new ends     
     render :text=>true
   end
 
@@ -85,6 +121,24 @@ class ComponentsController < ApplicationController
         format.json { render json: @component.errors, status: :unprocessable_entity }
       end
     end
+    ###### new starts
+    @trackingsheetlog=Trackingsheetlog.where('trackingsheet_id'=>@component.trackingsheet.id,"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.components) 
+   
+   
+ if @trackingsheetlog.count== 0
+   @trackingsheetlog = Trackingsheetlog.new("trackingsheet_id"=>@component.trackingsheet.id,"useremail"=>current_user.email,"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.components)
+  @trackingsheetlog.save
+else
+ @trackingsheetlog.each do |tslog|
+ @trackingsheetlogobj=Trackingsheetlog.find(tslog.id)
+ @trackingsheetlogobj.update_attributes(:trackingsheet_id=>@component.trackingsheet.id,:useremail=>current_user.email,:sessionid=>session[:session_id],:updated_at=>DateTime.now,:tabname=>VendorPortal::Application.config.components)
+break
+   end    
+      
+ end     
+    
+    ##### new ends    
+    
   end
 
   # DELETE /components/1

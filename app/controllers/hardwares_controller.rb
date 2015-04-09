@@ -65,11 +65,53 @@ class HardwaresController < ApplicationController
         format.json { render :show, status: :created, location: @hardware }
       end
     end
+    
+    ###### new starts
+    @trackingsheetlog=Trackingsheetlog.where('trackingsheet_id'=>params[:id],"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.hardware) 
+   
+   
+ if @trackingsheetlog.count== 0
+   @trackingsheetlog = Trackingsheetlog.new("trackingsheet_id"=>params[:id],"useremail"=>current_user.email,"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.hardware)
+  @trackingsheetlog.save
+else
+ @trackingsheetlog.each do |tslog|
+ @trackingsheetlogobj=Trackingsheetlog.find(tslog.id)
+ @trackingsheetlogobj.update_attributes(:trackingsheet_id=>params[:id],:useremail=>current_user.email,:sessionid=>session[:session_id],:updated_at=>DateTime.now,:tabname=>VendorPortal::Application.config.hardware)
+break
+   end    
+      
+ end     
+    
+    ##### new ends
+    
+    
+    
   end
   
   def deletetshrd
     @hardware = Hardware.find(params[:tshrdid])
+    @tsid=@hardware.trackingsheet.id
     @hardware.destroy
+    
+    ###### new starts
+    @trackingsheetlog=Trackingsheetlog.where('trackingsheet_id'=>@tsid,"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.hardware) 
+   
+   
+ if @trackingsheetlog.count== 0
+   @trackingsheetlog = Trackingsheetlog.new("trackingsheet_id"=>@tsid,"useremail"=>current_user.email,"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.hardware)
+  @trackingsheetlog.save
+else
+ @trackingsheetlog.each do |tslog|
+ @trackingsheetlogobj=Trackingsheetlog.find(tslog.id)
+ @trackingsheetlogobj.update_attributes(:trackingsheet_id=>@tsid,:useremail=>current_user.email,:sessionid=>session[:session_id],:updated_at=>DateTime.now,:tabname=>VendorPortal::Application.config.hardware)
+break
+   end    
+      
+ end     
+    
+    ##### new ends   
+    
+    
     render :text=>true
   end
 
@@ -85,6 +127,28 @@ class HardwaresController < ApplicationController
         format.json { render json: @hardware.errors, status: :unprocessable_entity }
       end
     end
+    
+    
+    ###### new starts
+    @trackingsheetlog=Trackingsheetlog.where('trackingsheet_id'=>@hardware.trackingsheet.id,"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.hardware) 
+   
+   
+ if @trackingsheetlog.count== 0
+   @trackingsheetlog = Trackingsheetlog.new("trackingsheet_id"=>@hardware.trackingsheet.id,"useremail"=>current_user.email,"sessionid"=>session[:session_id],"tabname"=>VendorPortal::Application.config.hardware)
+  @trackingsheetlog.save
+else
+ @trackingsheetlog.each do |tslog|
+ @trackingsheetlogobj=Trackingsheetlog.find(tslog.id)
+ @trackingsheetlogobj.update_attributes(:trackingsheet_id=>@hardware.trackingsheet.id,:useremail=>current_user.email,:sessionid=>session[:session_id],:updated_at=>DateTime.now,:tabname=>VendorPortal::Application.config.hardware)
+break
+   end    
+      
+ end     
+    
+    ##### new ends
+    
+    
+    
   end
 
   # DELETE /hardwares/1
