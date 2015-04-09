@@ -1,0 +1,7 @@
+<% filename=Trackingsheet.find(params[:id]).style.stylename+'.csv'.to_s%>
+<% headers["Content-Disposition"] = "attachment; filename=\"#{filename}\"" %>
+ID,Vendor,Created,Style
+<% @trackingsheets.each do |trackingsheet| %>
+<%= trackingsheet.id %>,<%= trackingsheet.try(:vendorfulldata) %>,<%= trackingsheet.try(:created_at) %>,<%= trackingsheet.style.try(:stylecode) %>
+<% end %>
+   
