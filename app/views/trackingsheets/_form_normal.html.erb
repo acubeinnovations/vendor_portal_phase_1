@@ -221,7 +221,7 @@
 							
 							 </td>							
 							 		<td><%= image_tag "/vendorportal"+trackingsheet.style.image.url(:small)  %><br>
-																	<%= link_to "More Images",'#modal-history',:class => 'btn btn-warning btn-xs images', 'data-toggle':"modal",:trackingsheetid => trackingsheet.id,:style=>"width:80px; margin-top:14px;",:locked=>locked %>
+																	<%= link_to "More Images",'#modal-history',:class => 'btn btn-warning btn-xs images', 'data-toggle':"modal",:trackingsheetid => trackingsheet.id,:style=>"width:80px; margin-bottom:20px;",:locked=>locked %>
 																</td>
 							 								<td class="bestin" style="text-align:center;">
 																	<%if !trackingsheet.style.protonumber.blank?%>	<%=trackingsheet.style.try(:protonumber)%><%end%>
