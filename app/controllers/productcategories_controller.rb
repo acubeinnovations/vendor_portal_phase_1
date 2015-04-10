@@ -1,4 +1,5 @@
 class ProductcategoriesController < ApplicationController
+  layout 'vendor_portal'
   before_action :set_productcategory, only: [:show, :edit, :update, :destroy]
 
   # GET /productcategories
@@ -28,7 +29,7 @@ class ProductcategoriesController < ApplicationController
 
     respond_to do |format|
       if @productcategory.save
-        format.html { redirect_to @productcategory, notice: 'Productcategory was successfully created.' }
+        format.html { redirect_to productcategories_url, notice: 'Productcategory was successfully created.' }
         format.json { render :show, status: :created, location: @productcategory }
       else
         format.html { render :new }
@@ -51,7 +52,7 @@ class ProductcategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @productcategory.update(productcategory_params)
-        format.html { redirect_to @productcategory, notice: 'Productcategory was successfully updated.' }
+        format.html { redirect_to productcategories_url, notice: 'Productcategory was successfully updated.' }
         format.json { render :show, status: :ok, location: @productcategory }
       else
         format.html { render :edit }
@@ -65,7 +66,7 @@ class ProductcategoriesController < ApplicationController
   def destroy
     @productcategory.destroy
     respond_to do |format|
-      format.html { redirect_to productcategories_url, notice: 'Productcategory was successfully destroyed.' }
+      format.html { redirect_to productcategories_url, notice: 'Productcategory was successfully deleted.' }
       format.json { head :no_content }
     end
   end

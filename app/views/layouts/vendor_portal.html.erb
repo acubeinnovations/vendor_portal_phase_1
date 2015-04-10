@@ -83,7 +83,17 @@
     <li> <a href="<%= users_path %>"><i class="icon-user"></i> <span>Users</span></a> </li>
     <li> <a href="<%= styles_path %>"><i class="icon-cog"></i> <span>Styles</span></a> </li>
 	<li> <a href="<%= divisions_path %>"><i class="icon-align-justify"></i> <span>Divisions</span></a> </li>
-
+	<li> <a href="<%= seasons_path %>"><i class="icon-star-empty"></i> <span>Seasons</span></a> </li>
+	<li> <a href="<%= productcategories_path %>"><i class="icon-align-center"></i> <span>Product Category</span></a> </li>
+	<li> <a href="<%= brands_path %>"><i class="icon-certificate"></i> <span>Brands</span></a> </li>
+	<li class="submenu"> <a href="#"> <a href="<%= markets_path %>"><i class="icon-hdd"></i> <span>Markets</span></a>  <span class="label">1</span></a>
+	      <ul>
+	        <li><a href="<%= submarkets_path %>"><i class="icon-bookmark"></i> <span>Submarkets</span></a></li>
+	        
+	      </ul>
+	    </li>
+		
+		
 		<%end%>
 		<% if  current_user.userrole==VendorPortal::Application.config.operationadmin %>
 		<li> <a href="<%= styles_path %>"><i class="icon-cog"></i> <span>Styles</span></a> </li>

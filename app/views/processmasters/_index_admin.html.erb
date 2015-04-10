@@ -1,6 +1,6 @@
 	<% @processmasters.each do |processmaster| %>
 		<tr class="gradeX">
-			<td><input type="radio" name="selectprocess"></td>
+			
 			<td>
 				<div style="text-align:center !important;">
 				<%= @slno %>
@@ -58,7 +58,7 @@
 			</td>
 			<td>
 				<div style="text-align:center !important;">
-				<%= link_to 'Delete', processmaster, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %>
+				<%= link_to 'Delete', processmaster, method: :delete, data: { header:"Process Master",confirm:(processmaster.name)},class:'btn btn-danger' %>
 				</div>
 			</td>
 

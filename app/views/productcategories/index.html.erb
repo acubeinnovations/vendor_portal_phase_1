@@ -20,8 +20,11 @@
 										<td><%= productcategory.name %></td>
 										<td><%= productcategory.created_at %></td>
 										
-										<td><%= link_to 'Edit', edit_productcategory_path(productcategory),class:'btn btn-info' %></td>
-										<td><%= link_to 'Delete', productcategory, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td>
+										<td><div style="text-align:center;"><%= link_to 'Edit', edit_productcategory_path(productcategory),class:'btn btn-warning' %></div></td>
+										<td><div style="text-align:center;">
+
+<%= link_to 'Delete', productcategory, method: :delete, data: { header:"Product Category",confirm:(productcategory.name)+' ?' },class:'btn btn-danger' %>
+</div></td>
 									</tr>
 									<% @i+=1%>
 								<% end %>	

@@ -2,7 +2,7 @@
 	<% @processmasters.each do |processmaster| %>
 		<%if processmaster.trackingsheets.where(:vendor=>current_user.email).count > 0 %>		
 			<tr class="gradeX">
-				<td><input type="radio" name="selectprocess"></td>
+				
 				<td>
 					<div style="text-align:center !important;">
 					<%= @slno %>

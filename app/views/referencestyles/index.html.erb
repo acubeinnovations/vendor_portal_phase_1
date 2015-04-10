@@ -19,8 +19,8 @@
 										<td><%= @i %></td>
 										<td><%= referencestyle.name %></td>
 										<td><%= referencestyle.created_at %></td>
-										<td><%= link_to 'Edit', edit_referencestyle_path(referencestyle),class:'btn btn-info' %></td>
-										<td><%= link_to 'Delete', referencestyle, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td>
+										<td><div style="text-align:center;"><%= link_to 'Edit', edit_referencestyle_path(referencestyle),class:'btn btn-warning' %></div></td>
+										<td><div style="text-align:center;"><%= link_to 'Delete', referencestyle, method: :delete, data: { confirm: 'Are you sure you want to delete Reference Style?' },class:'btn btn-danger' %></div></td>
 									</tr>
 									<% @i+=1%>
 								<% end %>	

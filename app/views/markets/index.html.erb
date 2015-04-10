@@ -18,9 +18,9 @@
 									<tr class="gradeX">
 										<td><%= @i %></td>
 										<td><%= market.name %></td>
-										<td><%= market.created_at %></td>
-										<td><%= link_to 'Edit', edit_market_path(market),class:'btn btn-info' %></td>
-										<td><%= link_to 'Delete', market, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td>
+										<td><%= market.created_at.strftime("%d %b %Y,%T") %></td>
+										<td><div style="text-align:center;"><%= link_to 'Edit', edit_market_path(market),class:'btn btn-warning' %></div></td>
+										<td><div style="text-align:center;"><%= link_to 'Delete', market, method: :delete, data: { header:"Market",confirm:(market.name)+' ?'},class:'btn btn-danger' %></div></td>
 									</tr>
 									<% @i+=1%>
 								<% end %>	
@@ -30,6 +30,6 @@
          	</div>
        </div>
    </div>
-			<%= link_to 'New Mmarket', new_market_path ,class:'btn btn-success' %>
+			<%= link_to 'New Market', new_market_path ,class:'btn btn-success' %>
 </div>
 

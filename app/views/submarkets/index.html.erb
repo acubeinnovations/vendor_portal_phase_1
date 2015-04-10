@@ -18,9 +18,9 @@
 									<tr class="gradeX">
 										<td><%= @i %></td>
 										<td><%= submarket.name %></td>
-										<td><%= submarket.created_at %></td>
-										<td><%= link_to 'Edit', edit_submarket_path(submarket),class:'btn btn-info' %></td>
-										<td><%= link_to 'Delete', submarket, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td>
+										<td><%= submarket.created_at.strftime("%d %b %Y,%T") %></td>
+										<td><div style="text-align:center;"><%= link_to 'Edit', edit_submarket_path(submarket),class:'btn btn-warning' %></div></td>
+										<td><div style="text-align:center;"><%= link_to 'Delete', submarket, method: :delete, data: { header:"Sub Market",confirm:(submarket.name)+' ?'},class:'btn btn-danger' %></div></td>
 									</tr>
 									<% @i+=1%>
 								<% end %>	

@@ -28,7 +28,7 @@ class SubmarketsController < ApplicationController
 
     respond_to do |format|
       if @submarket.save
-        format.html { redirect_to @submarket, notice: 'Submarket was successfully created.' }
+        format.html { redirect_to submarkets_url, notice: 'Submarket was successfully created.' }
         format.json { render :show, status: :created, location: @submarket }
       else
         format.html { render :new }
@@ -51,7 +51,7 @@ class SubmarketsController < ApplicationController
   def update
     respond_to do |format|
       if @submarket.update(submarket_params)
-        format.html { redirect_to @submarket, notice: 'Submarket was successfully updated.' }
+        format.html { redirect_to submarkets_url, notice: 'Submarket was successfully updated.' }
         format.json { render :show, status: :ok, location: @submarket }
       else
         format.html { render :edit }

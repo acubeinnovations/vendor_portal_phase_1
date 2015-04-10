@@ -30,7 +30,9 @@ $('.g_C span').on('keydown',function(e){
    
   }
 });
-	
+
+
+
 
 
 function findNextTabindex(next,row){
