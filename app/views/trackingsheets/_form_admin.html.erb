@@ -99,12 +99,16 @@
 										<i class="icon-file"></i>
 									</span>
 	
-
-									<h5>Tracking Sheet</h5> <%= link_to "Export to CSV","#",:class=>'btn btn-info exportme' %>
-									<%= link_to "Lock","#",:class=>'btn btn-info lock' %>
- 									
-
-									   
+								
+									<h5>Tracking Sheet</h5>
+							 <select id="ts-actions">
+								<option value="none">No Action</option>
+								<option value="lock">Lock</option>
+								<option value="unlock">Un Lock</option>
+								<option value="export">Export to CSV</option>
+								</select>
+								<%= link_to "DONE","#",:class=>'btn btn-info done' %>
+																   
 								</div>	
 							
 	
