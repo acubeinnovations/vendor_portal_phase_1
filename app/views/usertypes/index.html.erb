@@ -20,10 +20,12 @@
 										<td><%= @i %></td>
 										<td><%= usertype.userrole %></td>
 										<td><%= usertype.description %></td>
-										<td><%= usertype.created_at %></td>
+										<td>
+<%= usertype.created_at.present? ? usertype.created_at.strftime("%d %b %Y,%T") : usertype.created_at%>							
+										</td>
 										<!--<td><%= link_to 'Show', usertype,class:'btn btn-success' %></td>-->
-										<td><%= link_to 'Edit', edit_usertype_path(usertype),class:'btn btn-info' %></td>
-										<td><%= link_to 'Delete', usertype, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td>
+										<td><div style="text-align:center;"><%= link_to 'Edit', edit_usertype_path(usertype),class:'btn btn-warning' %></div></td>
+										<td><div style="text-align:center;"><%= link_to 'Delete', usertype, method: :delete, data: { header:"Usertype",confirm:(usertype.userrole)+' ?' },class:'btn btn-danger' %></div></td>
 									</tr>
 									<% @i+=1%>
 								<% end %>	

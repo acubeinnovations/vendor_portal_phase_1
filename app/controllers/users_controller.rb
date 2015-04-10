@@ -3,16 +3,55 @@ class UsersController < ApplicationController
 before_filter :authenticate_user!
 
 #for checking user roles
-before_filter :admin_only, :except =>  [:edit,:custom_search ] 
+#before_filter :admin_only, :except =>  [:edit,:custom_search ] 
+#before_filter :filter_users, :except =>  [:edit] 
+
 layout 'vendor_portal'
   def index 
-	    @users = User.search(params[:searchterm]).order('id asc').paginate(:page => params[:page], :per_page =>15)
-			if !params[:page].blank?
-			@slno=((params[:page].to_i - 1) * 15) + 1
-		else
-			@slno=1
-		end
+    
+    
+    #@user = User.find(params[:id])
+    userslisting()
+    
+	    
  	end
+  
+  
+  
+##########################
+def userslisting
+if current_user.userrole==VendorPortal::Application.config.admin
+    
+  @users = User.search(params[:searchterm]).order('id asc').paginate(:page => params[:page], :per_page =>15)
+if !params[:page].blank?
+	@slno=((params[:page].to_i - 1) * 15) + 1
+else
+	@slno=1
+end
+
+else 
+  redirect_to root_path
+end
+end
+##########################  
+  
+##########################
+def filter_users
+   if current_user.userrole!=VendorPortal::Application.config.sales
+     redirect_to root_path, :alert=>"access denied"
+   end
+end
+##########################  
+
+
+##########################
+def admin_only
+   if current_user.userrole==VendorPortal::Application.config.admin
+     redirect_to users_path
+   end
+end
+##########################  
+  
 
   def show
     @user = User.find(params[:id])
@@ -63,11 +102,11 @@ layout 'vendor_portal'
 		@users = User.where(:division_id=>params[:division_id],:userrole=>params[:userrole])
     render json: Hash[@users.map { |v| [ v[:id].to_s, v[:lastname]+' '+v[:firstname].to_s ] } ]
 	end
- def admin_only
-    if current_user.userrole!=VendorPortal::Application.config.admin
-      redirect_to root_path, :alert => "Access denied."
-    end
-  end
+# def admin_only
+ #   if current_user.userrole!=VendorPortal::Application.config.admin
+  #    redirect_to root_path, :alert => "Access denied."
+  #  end
+  #end
 	def user_params
       params.require(:user).permit(:username, :email, :password, :password_confirmation,:firstname,:lastname,:userrole,:division_id)
   end

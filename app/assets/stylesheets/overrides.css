@@ -156,3 +156,6 @@ span .best_in_place{
   word-wrap: break-word;
   white-space: normal;
 }
+a .delete_data{
+	background-color:red !important;
+}

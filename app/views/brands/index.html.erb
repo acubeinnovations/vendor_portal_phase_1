@@ -18,9 +18,9 @@
 									<tr class="gradeX">
 										<td><%= @i %></td>
 										<td><%= brand.name %></td>
-										<td><%= brand.created_at %></td>
-										<td><%= link_to 'Edit', edit_brand_path(brand),class:'btn btn-info' %></td>
-										<td><%= link_to 'Delete', brand, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td>
+										<td><%= brand.created_at.strftime("%d %b %Y,%T") %></td>
+										<td><div style="text-align:center;"><%= link_to 'Edit', edit_brand_path(brand),class:'btn btn-warning' %></div></td>
+										<td><div style="text-align:center;"><%= link_to 'Delete', brand, method: :delete, data: { header:"Brand",confirm:(brand.name)},class:'btn btn-danger' %></div></td>
 									</tr>
 									<% @i+=1%>
 								<% end %>	

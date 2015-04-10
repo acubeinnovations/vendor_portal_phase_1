@@ -146,7 +146,6 @@
 												<th>FINISH DETAIL</th>
 												<th>COLORS</th>
 												<th></th>
-												<th></th>
 												<th>PROJECTED UNITS</th>
 												<th>TARGET FOB</th>
 												<th>TARGET MU</th>
@@ -305,16 +304,12 @@
 													<div>	
 													<%= link_to "Testing",'#modal-history',:class => 'btn btn-warning btn-xs testings','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id,:style=>'width:81px;',:locked=>locked %>
 												</div>
+												<br>
+<div>													
+<%= link_to "Components",'#modal-history',:class => 'btn btn-warning btn-xs components','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id,:style=>'width:81px;',:locked=>locked %>		
+</div>											
 												</td>
-												<td style="text-align:center;">
-													<div>
-													<%= link_to "Components",'#modal-history',:class => 'btn btn-warning btn-xs components','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id,:style=>'width:81px;',:locked=>locked %>
-													</div>
-													<br>
-													<div>
-													<%= link_to "Cost Sheets",'#modal-history',:class => 'btn btn-warning btn-xs costsheets','data-toggle':"modal",:trackingsheet_id=>trackingsheet.id,:style=>'width:81px;',:locked=>locked %>
-												</div>
-												</td>
+
 												<td class="bestin" style="text-align:center;">
 													<%=best_in_place_if projectedunits(trackingsheet),  trackingsheet, :projectedunits, :as => :input,:nil => "Click to add content!"%>
 												</td>

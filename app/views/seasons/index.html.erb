@@ -18,9 +18,13 @@
 									<tr class="gradeX">
 										<td><%= @i %></td>
 										<td><%= season.name %></td>
-										<td><%= season.created_at %></td>
-										<td><%= link_to 'Edit', edit_season_path(season),class:'btn btn-info' %></td>
-										<td><%= link_to 'Delete', season, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td>
+										<td><%= season.created_at.strftime("%d %b %Y,%T") %></td>
+										<td><div style="text-align:center;"><%= link_to 'Edit', edit_season_path(season),class:'btn btn-warning' %></div></td>
+										<td><div style="text-align:center;"><%= link_to 'Delete', season, method: :delete, data: { header:"Season",confirm:(season.name)+' ?'},class:'btn btn-danger' %>
+									
+										
+										
+										</div></td>
 									</tr>
 									<% @i+=1%>
 								<% end %>	
