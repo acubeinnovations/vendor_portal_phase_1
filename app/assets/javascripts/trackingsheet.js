@@ -186,35 +186,96 @@ $.get("/samples", {
 
 }
 
+$('.done').on('click',function(){
 
-
-$('.lock').on('click',function(){
-i=1;
-$('.lockme').each(function(){
-if(this.checked){
-lock='true';
-}else{
-lock='false';
+var action=$( "#ts-actions option:selected" ).val();
+if(action=='none'){
+return false;
+}else if(action=='lock'){
+lockme();
+}else if(action=='unlock'){
+unlockme();
+}else if(action=='export'){
+exportme();
 }
+
+
+
+});
+
+
+function unlockme(){
+i=1;
+$('.lockme').each(function(index){
+if(this.checked){
+lock='false';
+
 $.get("/lockme",{
 
  trackingsheet_id:$(this).attr('trackingsheet_id'),
  lock:lock
 
   },function(){
-	if($('.lockme').length==i){
-			location.reload();
-	}
-	i+=1;
+	
 	});
 
+}
+if($('.lockme').length-1==index){
+		
+	setInterval(function(){
+    location.reload();
+    },2000);
+			
+	}
+
+
+i+=1;
+});
+ 
+}
+
+$('.selectall').on('click',function(){
+if(this.checked){
+$('.lockme').prop('checked','checked');
+}else{
+$('.lockme').removeAttr('checked','checked');
+}
+
+});
+
+function lockme(){
+i=1;
+$('.lockme').each(function(index){
+if(this.checked){
+lock='true';
+
+$.get("/lockme",{
+
+ trackingsheet_id:$(this).attr('trackingsheet_id'),
+ lock:lock
+
+  },function(){
+	
+
+	});
+}
+	if($('.lockme').length-1==index){
+		
+	setInterval(function(){
+    location.reload();
+    },2000);
+			
+	}
+
+	i+=1;
+	
 });
    
-});
+}
 
 
 //$('.exportme').on('click',function(){
-$('.exportme').on('click',function(){
+function exportme(){
 
 $('.lockme').each(function(){
 if(this.checked){
@@ -224,7 +285,8 @@ window.open('/tocsv.csv?id='+id, '_blank');
 
 }
 });
-});
+
+}
 
 //for checking locking condition
 function islocked(me){
