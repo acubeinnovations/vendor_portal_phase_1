@@ -1,6 +1,7 @@
+
 function initExcelTS(){
 
-$(document).keyup(function(e) {
+$(document).keyup(function(e) {parents
 
   if (e.keyCode == 27) { 
 	$("#close-modal").trigger('click');
@@ -21,11 +22,11 @@ $('.g_C span').on('keydown',function(e){
 
 	if (e.shiftKey && keyCode == 9){
 
-			findPrevTabindex($(this).parent().parent().prev(),$(this).parent().attr('row'));
+			findPrevTabindex($(this).parents().parents().prev(),$(this).parents().attr('row'));
 			e.preventDefault(); 
 	
 	}else if (keyCode == 9) { 
-		 findNextTabindex($(this).parent().parent().next(),$(this).parent().attr('row'));
+		 findNextTabindex($(this).parents().parents().next(),$(this).parents().attr('row'));
 			e.preventDefault(); 
    
   }
@@ -90,7 +91,7 @@ $('.g_Body').scroll(function(){
 	if ($(".open")[0]){
 	$('.open').offset({ top: $('.open').prev().offset().top+10 });
 	}
-	//$('.open').css('margin-top',$('.open').prev().offset().top-$('.open').parent().offset().top-29);
+	//$('.open').css('margin-top',$('.open').prev().offset().top-$('.open').parents().offset().top-29);
 });
 //added for tab-end
 
@@ -110,8 +111,8 @@ $('.ui-customautocomplete').hide();
 
 }else if (keyCode != 9){
 me=$(this).children().children();
-parent=$(this);
-if(parent.attr('data-bip-attribute')=='vendorfulldata'){
+parents=$(this);
+if(parents.attr('data-bip-attribute')=='vendorfulldata'){
 id=me.attr('id');
 $.get("/custom_search", {
     term: me.val()
@@ -123,13 +124,13 @@ $.get("/custom_search", {
 		dropdown+="<li><a class='ul-link' insert-to="+id+" vendor="+vname+">"+vname+"</a></li>";
 		});
 		//parent.next().css('margin-top',parent.offset().top-parent.parent().offset().top-29);
-		parent.next().addClass('open');
-		parent.next().css('height','130');
-		parent.next().css('overflow-y','scroll');
-		parent.next().css('overflow-x','hidden');
-		parent.next().offset({ top: parent.offset().top+10 });
-		parent.next().html(dropdown);
-		parent.next().show();
+		parents.next().addClass('open');
+		parents.next().css('height','130');
+		parents.next().css('overflow-y','scroll');
+		parents.next().css('overflow-x','hidden');
+		parents.next().offset({ top: parents.offset().top+10 });
+		parents.next().html(dropdown);
+		parents.next().show();
 		
 		init();
 	});

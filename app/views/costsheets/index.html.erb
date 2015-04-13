@@ -250,7 +250,7 @@ function deleteinit(){
 	 $.get("/costsheets", {
 	     trackingsheet_id:$('.add-costsheets').attr('trackingsheet_id')
 	   },function(data){
-	 		$('.modal').css('width','1300');
+	 		$('.modal').css('width','100%');
 	 		$('.modal').css('left','23%');
 	 		$('.modal-body').html('');
 	 		$('.modal-body').html(data);

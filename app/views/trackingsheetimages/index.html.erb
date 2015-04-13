@@ -145,8 +145,9 @@ if($(this).attr('loaded')!='true'){
 $.get("/trackingsheetimages", {
     trackingsheetid:$('#trackingsheetimage_trackingsheet').val()
   },function(data){
-		$('.modal').css('width','1300');
-		$('.modal').css('left','23%');
+		$('.modal').css('width','80%');
+		$('.modal').css('left','10%');
+		$('.modal').css('top','13%');
 		$('.modal-body').html('');
 		$('.modal-body').html(data);
 		
@@ -196,8 +197,9 @@ function deleteinit(){
 	     trackingsheetid:$('#trackingsheetimage_trackingsheet').val(),
 	 		processmasterid:$('#trackingsheetimage_processmaster').val()
 	   },function(data){
-	 		$('.modal').css('width','1300');
-	 		$('.modal').css('left','23%');
+	   		$('.modal').css('width','80%');
+	   		$('.modal').css('left','10%');
+	   		$('.modal').css('top','13%');
 	 		$('.modal-body').html('');
 	 		$('.modal-body').html(data);
 		

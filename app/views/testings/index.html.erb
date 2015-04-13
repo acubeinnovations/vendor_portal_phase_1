@@ -120,8 +120,9 @@
 		$.get("/ajaxcreate_testings", {
 				trackingsheet:trackingsheetid
 			},function(data){
-				$('.modal').css('width','1200');
-				$('.modal').css('left','30%');
+				$('.modal').css('width','80%');
+				$('.modal').css('left','10%');
+				$('.modal').css('top','13%');
 				$('.modal-body').html(data);
 
 			});
@@ -227,8 +228,9 @@ function deleteinit(){
 	 $.get("/testings", {
 	     trackingsheet_id:$('.add-testings').attr('trackingsheet_id')
 	   },function(data){
-	 		$('.modal').css('width','1300');
-	 		$('.modal').css('left','23%');
+	   		$('.modal').css('width','80%');
+	   		$('.modal').css('left','10%');
+	   		$('.modal').css('top','13%');
 	 		$('.modal-body').html('');
 	 		$('.modal-body').html(data);
 		

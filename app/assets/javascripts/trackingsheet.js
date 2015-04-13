@@ -15,8 +15,9 @@ var trackingsheetid=trackingsheetid;
 $.get("/components", {
     trackingsheet_id:trackingsheetid
   },function(data){
-		$('.modal').css('width','1300');
-		$('.modal').css('left','23%');
+		$('.modal').css('width','80%');
+		$('.modal').css('left','10%');
+		$('.modal').css('top','13%');
 		$('.modal-body').html('');
 		$('.modal-body').html(data);
 		
@@ -42,8 +43,9 @@ var trackingsheetid=trackingsheetid;
 $.get("/hardwares", {
     trackingsheet_id:trackingsheetid
   },function(data){
-		$('.modal').css('width','1300');
-		$('.modal').css('left','23%');
+		$('.modal').css('width','80%');
+		$('.modal').css('left','11%');
+		$('.modal').css('top','13%');
 		$('.modal-body').html('');
 		$('.modal-body').html(data);
 		
@@ -68,8 +70,9 @@ var trackingsheetid=trackingsheetid;
 $.get("/testings", {
     trackingsheet_id:trackingsheetid
   },function(data){
-		$('.modal').css('width','1300');
-		$('.modal').css('left','23%');
+		$('.modal').css('width','80%');
+		$('.modal').css('left','10%');
+		$('.modal').css('top','13%');
 		$('.modal-body').html('');
 		$('.modal-body').html(data);
 		
@@ -95,8 +98,9 @@ var trackingsheetid=trackingsheetid;
 $.get("/costsheets", {
     trackingsheet_id:trackingsheetid
   },function(data){
-		$('.modal').css('width','1300');
-		$('.modal').css('left','23%');
+		$('.modal').css('width','80%');
+		$('.modal').css('left','10%');
+		$('.modal').css('top','13%');
 		$('.modal-body').html('');
 		$('.modal-body').html(data);
 		
@@ -122,8 +126,9 @@ var trackingsheetid=trackingsheetid;
 $.get("/trackingsheetimages", {
     trackingsheetid:trackingsheetid
   },function(data){
-		$('.modal').css('width','1300');
-		$('.modal').css('left','23%');
+		$('.modal').css('width','80%');
+		$('.modal').css('left','10%');
+		$('.modal').css('top','13%');
 		$('.modal-body').html('');
 		$('.modal-body').html(data);
 		
@@ -146,13 +151,14 @@ return false;
 
 function getDocuments(trackingsheetid,processmasterid){
 var trackingsheetid=trackingsheetid;
-var processmasterid=processmasterid;
+var processmasterid=processmasterid;100%
 $.get("/trackingsheetdocuments", {
     trackingsheetid:trackingsheetid,
 		processmasterid:processmasterid
   },function(data){
-		$('.modal').css('width','1300');
-		$('.modal').css('left','23%');
+		$('.modal').css('width','80%');
+		$('.modal').css('left','10%');
+		$('.modal').css('top','13%');
 		$('.modal-body').html('');
 		$('.modal-body').html(data);
 		
@@ -177,8 +183,9 @@ var trackingsheetid=trackingsheetid;
 $.get("/samples", {
     trackingsheet_id:trackingsheetid
   },function(data){
-		$('.modal').css('width','1300');
-		$('.modal').css('left','23%');
+		$('.modal').css('width','80%');
+		$('.modal').css('left','10%');
+		$('.modal').css('top','13%');
 		$('.modal-body').html('');
 		$('.modal-body').html(data);
 		
