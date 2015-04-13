@@ -220,7 +220,7 @@
 		<%= link_to "Documents",'#modal-history',:class => 'btn btn-warning btn-xs documents', 'data-toggle':"modal",:style=>"width:75px; margin-bottom:20px;",:trackingsheetid => trackingsheet.id,:processmasterid=>BSON::ObjectId.from_string(request.GET.first.second.to_s),:locked=>locked %> 																			</div>							
 							
 							 </td>							
-							 		<td><%= image_tag "/vendorportal"+trackingsheet.style.image.url(:small)  %><br><br>
+							 		<td><%= image_tag "/vendorportal"+trackingsheet.style.image.url(:small)  %><br>
 																	<%= link_to "More Images",'#modal-history',:class => 'btn btn-warning btn-xs images', 'data-toggle':"modal",:trackingsheetid => trackingsheet.id,:style=>"width:80px; margin-bottom:20px;",:locked=>locked %>
 																</td>
 							 								<td class="bestin" style="text-align:center;">
