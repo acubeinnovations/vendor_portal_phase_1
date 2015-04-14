@@ -173,3 +173,10 @@ a .delete_data{
 .lock_select{
 	margin-top:3px;
 }
+
+.my_history{
+	width:80%;
+	left:10%;
+	top: 13px !important;
+	
+}
