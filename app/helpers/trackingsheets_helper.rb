@@ -7,8 +7,8 @@ module TrackingsheetsHelper
   ###---------------------------------------Factory----------------------------------------------### 
    
    def factory(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 				if current_user.userrole==VendorPortal::Application.config.admin
 					return true  
 				else if current_user.userrole==VendorPortal::Application.config.operationadmin 
@@ -27,9 +27,7 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 		
 		
    end   
@@ -37,8 +35,8 @@ module TrackingsheetsHelper
    ###---------------------------------------Subcontarctor----------------------------------------------### 
    
     def subcontractor(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 				if current_user.userrole==VendorPortal::Application.config.admin
 					return true   
 				else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -57,9 +55,7 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 		
 			
     end    
@@ -67,8 +63,8 @@ module TrackingsheetsHelper
     ###---------------------------------------Customername----------------------------------------------### 
    
      def customername(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 			
 				 if current_user.userrole==VendorPortal::Application.config.admin
 		     		return true   
@@ -88,9 +84,6 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
 		
 			
      end     
@@ -98,8 +91,8 @@ module TrackingsheetsHelper
      ###---------------------------------------Customeraccount----------------------------------------------### 
    
       def customeraccount(trackingsheet)
-		 	if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 				
 						if current_user.userrole==VendorPortal::Application.config.admin
 				    		return true  
@@ -119,17 +112,15 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 				
       end   
       
       ###---------------------------------------Project----------------------------------------------### 
    
        def project(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 				
 						 if current_user.userrole==VendorPortal::Application.config.admin
 				     return true   
@@ -149,46 +140,39 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 			
 				
        end             
 	###--------------------------------------- Style----------------------------------------------### 
 			 def style(trackingsheet)
-			 	 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+			 	 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 						 return true   
 		     else
 						return false 
 				 end
-		else
-			return true 
-		end
+		
 			
 				end  
 
 	###--------------------------------------- vendor----------------------------------------------### 
 			 def vendor(trackingsheet)
-			 	 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+			 	 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 						 return true   
 		     else
 						return false 
 				 end
-			
-		else
-			return true 
-		end
+		
 			
 				end         
        ###---------------------------------------Reference Style----------------------------------------------### 
    
         def referncestyle(trackingsheet)
 		
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 					
 						if current_user.userrole==VendorPortal::Application.config.admin
 		         return true   
@@ -208,17 +192,15 @@ module TrackingsheetsHelper
 				else
 					return false 
 				end
-				else
-				return true 
-				end
+				
 					
         end    
         
         ###---------------------------------------X Mill Date----------------------------------------------### 
    
          def xmilldate(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 					
 							if current_user.userrole==VendorPortal::Application.config.admin
 							return true 
@@ -238,16 +220,14 @@ module TrackingsheetsHelper
 				else
 					return false 
 				end
-				else
-					return true 
-				end
+				
          end           
          
          ###---------------------------------------Production Lead Time----------------------------------------------### 
    
           def productionleadtime(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 					
 								if current_user.userrole==VendorPortal::Application.config.admin
 				        return true  
@@ -267,16 +247,14 @@ module TrackingsheetsHelper
 				else
 					return false 
 				end
-				else
-					return true 
-				end
+				
           end      
           
           ###---------------------------------------Sales Proceeds to Sample Request--------------------------------------------### 
    
            def salesproceedtosamplerequest(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 						
 							if current_user.userrole==VendorPortal::Application.config.admin
 							return true  
@@ -296,16 +274,14 @@ module TrackingsheetsHelper
 				else
 					return false 
 				end
-				else
-				return true 
-				end
+				
            end                         
 
          ###---------------------------------------Proto Due Back From Vendor--------------------------------------------### 
  
           def protoduebackfromvendor(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 							if current_user.userrole==VendorPortal::Application.config.admin
 							return true  
 							else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -324,16 +300,14 @@ module TrackingsheetsHelper
 				else
 					return false 
 				end
-				else
-				return true 
-				end
+				
 					end   
           
         ###---------------------------------------DAF to Vendor Date--------------------------------------------### 
 
          def daftovendordate(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 					if current_user.userrole==VendorPortal::Application.config.admin
            return true    
            else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -352,16 +326,14 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 				end                        
    
          ###---------------------------------------Comments--------------------------------------------### 
 
           def comments(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
             if current_user.userrole=='admin'
             return true
             else if current_user.userrole=='operations'
@@ -380,16 +352,14 @@ module TrackingsheetsHelper
 				else
 					return false 
 				end
-				else
-				return true 
-				end
+				
           end   
 
         ###---------------------------------------RTL MU--------------------------------------------### 
 
          def rtlmu(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
            if current_user.userrole==VendorPortal::Application.config.admin
            return true
            else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -408,16 +378,14 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
          end     
          
          ###---------------------------------------MK UP--------------------------------------------### 
 
           def mkup(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
             if current_user.userrole==VendorPortal::Application.config.admin
             return true    
             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -436,9 +404,7 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
           end            
    
           ####### General Tab Ends ######
@@ -450,8 +416,8 @@ module TrackingsheetsHelper
           ###---------------------------------------Projected Units--------------------------------------------### 
 
            def projectedunits(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
              if current_user.userrole==VendorPortal::Application.config.admin
               return true     
              else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -470,16 +436,14 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
            end   
            
            ###---------------------------------------Target FOB--------------------------------------------### 
 
             def targetfob(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
               if current_user.userrole==VendorPortal::Application.config.admin
                return true      
               else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -498,16 +462,14 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
             end
             
             ###---------------------------------------Target MU--------------------------------------------### 
 
              def targetmu(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
                if current_user.userrole==VendorPortal::Application.config.admin
                 return true     
                else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -526,16 +488,14 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
              end   
              
              ###---------------------------------------Target WS--------------------------------------------### 
 
               def targetws(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
                 if current_user.userrole==VendorPortal::Application.config.admin
                  return true    
                 else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -554,9 +514,7 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
               end  
           
           
@@ -566,8 +524,8 @@ module TrackingsheetsHelper
           ###---------------------------------------Per Color--------------------------------------------### 
 
            def percolor(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
              if current_user.userrole==VendorPortal::Application.config.admin
               return true      
              else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -586,16 +544,14 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
            end
            
            ###---------------------------------------Per Style--------------------------------------------### 
 
             def perstyle(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
               if current_user.userrole==VendorPortal::Application.config.admin
                return true      
               else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -614,16 +570,14 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
             end
             
             ###---------------------------------------Incoterms--------------------------------------------### 
 
              def incoterms(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
                if current_user.userrole==VendorPortal::Application.config.admin
                 return true      
                else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -642,9 +596,7 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
              end    
               
           ####### Minimum MOQ Tab Ends ######
@@ -653,8 +605,8 @@ module TrackingsheetsHelper
           ###---------------------------------------MOQ--------------------------------------------### 
 
            def moq(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
              if current_user.userrole==VendorPortal::Application.config.admin
               return true      
              else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -673,16 +625,14 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
            end 
            
            ###---------------------------------------1000 - 5000 PCS--------------------------------------------### 
 
             def thousandtofivethousandPCS(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
               if current_user.userrole==VendorPortal::Application.config.admin
                return true    
               else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -701,16 +651,14 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
             end 
             
             ###---------------------------------------5000 - 10,000 PCS--------------------------------------------### 
 
              def fivethousandtotenthousandPCS(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
                if current_user.userrole==VendorPortal::Application.config.admin
                 return true    
                else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -729,9 +677,7 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
              end   
           
           ####### First Cost Per Style Tab Starts ######
@@ -741,8 +687,8 @@ module TrackingsheetsHelper
           ###---------------------------------------LDP Boat--------------------------------------------### 
 
            def ldpboat(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
              if current_user.userrole==VendorPortal::Application.config.admin
               return true    
              else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -761,16 +707,14 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
            end  
            
            ###---------------------------------------LDP Air--------------------------------------------### 
 
             def ldpair(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
               if current_user.userrole==VendorPortal::Application.config.admin
               return true     
               else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -789,9 +733,7 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
             end  
           
           ####### LDP Boat Tab Starts ######
@@ -801,8 +743,8 @@ module TrackingsheetsHelper
           ###---------------------------------------Start Ship Date--------------------------------------------### 
 
            def startshipdate(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
              if current_user.userrole==VendorPortal::Application.config.admin
               return true      
              else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -821,16 +763,14 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
            end
            
            ###---------------------------------------Order Due Date Via Boat--------------------------------------------### 
 
             def orderduedateviaboat(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
               if current_user.userrole==VendorPortal::Application.config.admin
                return true     
               else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -849,16 +789,14 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
             end 
             
             ###-----------------------------------------------------------------------------------### 
 
              def orderduedateviaair(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
                if current_user.userrole==VendorPortal::Application.config.admin
                 return true    
                else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -877,17 +815,15 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
              end    
                	
 
 					 ###---------------------------------------Brand----------------------------------------------### 					
 
 						  def	brand(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 								 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -906,14 +842,12 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 							end
 			 	 ###---------------------------------------Customername----------------------------------------------### 
 							def	customername(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 	 							if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -932,14 +866,12 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 							end
  			 	###---------------------------------------Customeraccountnumber----------------------------------------------### 
 							def	customeraccountnumber(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || rackingsheet.lock.blank?
 	 							if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -958,14 +890,12 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 							end
 			 	 ###---------------------------------------Projectnumber----------------------------------------------### 
 							def	projectnumber(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 	 							if current_user.userrole==VendorPortal::Application.config.admin
 		             return true    
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -984,14 +914,12 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 							end
  			 	###---------------------------------------Customerstylenumber----------------------------------------------### 
 							def	customerstylenumber(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 	 							if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1010,14 +938,12 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 							end
  			 	###---------------------------------------Groupname----------------------------------------------### 
 							def	groupname(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 								 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1036,14 +962,12 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 							end
 			 	 ###--------------------------------------Productcategory----------------------------------------------### 
 							def	productcategory(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1062,14 +986,12 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+	
 							end
  			 	###---------------------------------------Designname----------------------------------------------### 
 							def	designname(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1088,14 +1010,12 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 							end
  			 	###---------------------------------------Shape----------------------------------------------### 
 							def	shape(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1114,14 +1034,12 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 							end
 			 	 ###---------------------------------------Size----------------------------------------------### 
 							def	size(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1140,14 +1058,12 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 							end
  			 	###---------------------------------------Fiber----------------------------------------------### 
 							def	fiber(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 								 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1166,14 +1082,12 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 							end
 			 	 ###---------------------------------------Construction----------------------------------------------### 
 							def	construction(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		             return true    
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1192,14 +1106,12 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 							end
  			 	###---------------------------------------Fabrictype----------------------------------------------### 
 							def	fabrictype(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1218,14 +1130,12 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 							end
  			 	###---------------------------------------Gauge End----------------------------------------------### 
 							def	gauge_end(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1244,14 +1154,12 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 							end
 			 	 ###---------------------------------------Finish----------------------------------------------### 
 							def	finish(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 	 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1270,14 +1178,12 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 							end
 			 	 ###---------------------------------------finishdetails----------------------------------------------### 
 							def	finishdetails(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true     
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1296,14 +1202,12 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 							end
  			 	###---------------------------------------colors----------------------------------------------### 
 							def	colors(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 								 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true     
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1322,14 +1226,12 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 							end
 			 	 ###---------------------------------------hw_logo_trim----------------------------------------------### 
 							def	hw_logo_trim(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1348,14 +1250,12 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 							end
 			 	 ###---------------------------------------components----------------------------------------------### 
 							def	components(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true     
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1374,16 +1274,14 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+	
 							end
 
 
 			 	 ###---------------------------------------targetretailus----------------------------------------------### 
 							def	targetretailus(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1402,14 +1300,12 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 							end
 			 	 ###---------------------------------------targetretailcan----------------------------------------------### 
 							def	targetretailcan(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true      
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1428,16 +1324,14 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 							end
 
 
 			 	 ###---------------------------------------pricebasedonprojection----------------------------------------------### 
 							def	pricebasedonprojection(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 								 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true      
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1456,14 +1350,12 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 							end
  			 	###---------------------------------------additionalsurcharge----------------------------------------------### 
 							def	additionalsurcharge(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 								 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true      
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1482,16 +1374,14 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 							end
 
 
 			 	 ###---------------------------------------tenthousandtotwentythousandPCS----------------------------------------------### 
 							def	tenthousandtotwentythousandPCS(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1510,14 +1400,12 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 							end
 			 	 ###---------------------------------------twentythousandplusPCS----------------------------------------------### 
 							def	twentythousandplusPCS(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		             return true    
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1536,9 +1424,7 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 							end
 
 
@@ -1596,8 +1482,8 @@ module TrackingsheetsHelper
 							end
 			 	 ###---------------------------------------approved----------------------------------------------### 
 							def	approved(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 							   if current_user.userrole==VendorPortal::Application.config.admin
 		              return true     
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1616,15 +1502,13 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 							end
 
 			 	 ###---------------------------------------daf2xmill----------------------------------------------### 
 							def	daf2xmill(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1643,14 +1527,12 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 							end
 			 	 ###---------------------------------------daf2received----------------------------------------------### 
 							def	daf2received(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1669,14 +1551,12 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 							end
 			 	 ###---------------------------------------daf2approved----------------------------------------------### 
 							def	daf2approved(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1695,9 +1575,7 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+	
 							end
 
 
@@ -1709,8 +1587,8 @@ module TrackingsheetsHelper
 							#VS DS tab values #new
 			 	###---------------------------------------sdsreceived----------------------------------------------### 
 							def	vsdsreceived(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1729,15 +1607,13 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 							end
 
 				  ###---------------------------------------vsdsapproved----------------------------------------------### 
 							def	vsdsapproved(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 	 							 if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1756,15 +1632,13 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
 							end
               
   				  ###---------------------------------------proto_daf_number----------------------------------------------### 
   							def	proto_daf_number(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
   	 							 if current_user.userrole==VendorPortal::Application.config.admin
   		              return true    
   		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1783,9 +1657,7 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
   							end
                 
       				  ###---------------------------------------FIRST DAF SOSS----------------------------------------------### 
@@ -1899,8 +1771,8 @@ module TrackingsheetsHelper
                                 
                       				  ###-----------------------------Daf2 SOSS----------------------------------------------### 
                       							def	daf2soss(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
                       	 							 if current_user.userrole==VendorPortal::Application.config.admin
                       		              return true    
                       		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1919,15 +1791,13 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
                       							end     
                                     
                           				  ###------------------------Development Samples----------------------------------------------### 
                           							def	daf2nmbrofdefsmplneeded(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
                           	 							 if current_user.userrole==VendorPortal::Application.config.admin
                           		              return true    
                           		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1946,15 +1816,13 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
                           							end          
                                         
                               				  ###-----------------Development Samples----------------------------------------------### 
                               							def	daf2dafissued(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+		 
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
                               	 							 if current_user.userrole==VendorPortal::Application.config.admin
                               		              return true    
                               		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -1973,15 +1841,13 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+	
                               							end       
                                             
                                   				  ###-----------------Development Samples----------------------------------------------### 
                                   							def	daf2sampleduedate(trackingsheet)
-		 if !trackingsheet.lock.blank?
-		 if trackingsheet.lock=='false'
+	
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
                                   	 							 if current_user.userrole==VendorPortal::Application.config.admin
                                   		              return true    
                                   		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
@@ -2000,9 +1866,7 @@ module TrackingsheetsHelper
 		else
 			return false 
 		end
-		else
-			return true 
-		end
+		
                                   							end                                        
                                             
                                             
