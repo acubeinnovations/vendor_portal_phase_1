@@ -40,7 +40,9 @@
 										<th>X-MILL</th>
 										<th>RECEIVED </th>
 										<th>APPROVED </th>
+										<%  if current_user.userrole==VendorPortal::Application.config.designer || current_user.userrole==VendorPortal::Application.config.admin || current_user.userrole==VendorPortal::Application.config.operationadmin  %>	
 										<th>ACTION </th>
+										<%end%>
 									</tr>
 									</thead>
 									<tbody>
@@ -82,10 +84,13 @@
 											
 												<%end%>
 											</td>
+			<%  if current_user.userrole==VendorPortal::Application.config.designer || current_user.userrole==VendorPortal::Application.config.admin || current_user.userrole==VendorPortal::Application.config.operationadmin  %>								
 											<td>
+												
 						<a href="#delete-confirm" data-id="<%= sample.id %>" class="delete-confirm btn btn-danger">Delete</a>
 											
 											</td>
+						<%end%>					
 										</tr>
 									</tbody>
 									<% @a=@a+1%>
