@@ -212,6 +212,12 @@ exportme();
 
 
 function unlockme(){
+
+/* newly added for check atleast one ts */
+var countchecked = $("input[type=checkbox]:checked").length;
+if(countchecked >= 1) 
+{
+/* newly added for check atleast one ts */
 i=1;
 $('.lockme').each(function(index){
 if(this.checked){
@@ -239,6 +245,9 @@ if($('.lockme').length-1==index){
 i+=1;
 });
  
+}else{
+	alert("Please select a trackingsheet");
+}
 }
 
 $('.selectall').on('click',function(){
@@ -251,6 +260,10 @@ $('.lockme').removeAttr('checked','checked');
 });
 
 function lockme(){
+	var countchecked = $("input[type=checkbox]:checked").length;
+	if(countchecked >= 1) 
+	{
+	
 i=1;
 $('.lockme').each(function(index){
 if(this.checked){
@@ -266,6 +279,7 @@ $.get("/lockme",{
 
 	});
 }
+
 	if($('.lockme').length-1==index){
 		
 	setInterval(function(){
@@ -278,11 +292,21 @@ $.get("/lockme",{
 	
 });
    
+} else{
+	
+	alert("Please select a trackingsheet");
+}
+
 }
 
 
 //$('.exportme').on('click',function(){
 function exportme(){
+/* newly added for check atleast one ts */
+var countchecked = $("input[type=checkbox]:checked").length;
+if(countchecked >= 1) 
+{
+/* newly added for check atleast one ts */	
 
 $('.lockme').each(function(){
 if(this.checked){
@@ -293,6 +317,9 @@ window.open('/tocsv.csv?id='+id, '_blank');
 }
 });
 
+}else {
+	alert("Please select a trackingsheet");
+}
 }
 
 //for checking locking condition

@@ -1,7 +1,7 @@
 
 function initExcelTS(){
 
-$(document).keyup(function(e) {parents
+$(document).keyup(function(e) {
 
   if (e.keyCode == 27) { 
 	$("#close-modal").trigger('click');

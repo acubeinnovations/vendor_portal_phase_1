@@ -104,7 +104,15 @@
 	
 
 	<% end %>
-	<input name="lockme" class="lockme" value="<%= trackingsheet.lock %>" trackingsheet_id="<%=trackingsheet.id%>" type="checkbox">
+	<input name="lockme" class="lockme" value="<%= trackingsheet.lock %>" trackingsheet_id="<%=trackingsheet.id%>" type="checkbox" id="confirm">
+	<!--<script>
+	$('#reset').click(function () {
+	    if (!$('#confirm').is(':checked')) {
+	        alert('not checked');
+	        return false;
+	    }
+	});
+	</script>-->
 
 </td>
 <td style="text-align:center;">
