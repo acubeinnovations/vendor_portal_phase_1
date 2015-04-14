@@ -170,3 +170,6 @@ a .delete_data{
 .modal {
 	margin: 0 0 -280px !important;
 }
+.lock_select{
+	margin-top:3px;
+}

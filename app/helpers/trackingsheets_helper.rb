@@ -871,7 +871,7 @@ module TrackingsheetsHelper
  			 	###---------------------------------------Customeraccountnumber----------------------------------------------### 
 							def	customeraccountnumber(trackingsheet)
 		
-		 if trackingsheet.lock=='false' || rackingsheet.lock.blank?
+		 if trackingsheet.lock=='false' || trackingsheet.lock.blank?
 	 							if current_user.userrole==VendorPortal::Application.config.admin
 		              return true    
 		             else if current_user.userrole==VendorPortal::Application.config.operationadmin ||  current_user.userrole==VendorPortal::Application.config.operationuser
