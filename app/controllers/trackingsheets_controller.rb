@@ -79,7 +79,7 @@ class TrackingsheetsController < ApplicationController
           if !trackingsheet_params[:vendorfulldata].blank?
 
             email = trackingsheet_params[:vendorfulldata].to_s
-            index = email.index('(')
+            index = email.rindex('(')
             @trackingsheet.vendor = email[index.to_i+1..-2]
       
           end
