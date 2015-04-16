@@ -38,10 +38,14 @@
 </div>
 <!-- newly added for modal ends-->							
 							<div class="scrollable-div" style="overflow-x: scroll;">
+						
+						
+								
 							<table class="table table-bordered hardware-table">
 								<thead>
 									<tr>
 										<th>DESCRIPTION</th>
+										<th>IMAGE</th>
 										<th>COUNTRY OF ORIGIN</th>
 										<th>MILL</th>
 										<th>SUPPLIER</th>
@@ -59,6 +63,23 @@
 										<tr>
 											<td class="bestin" style="text-align:center;">
 												<%=best_in_place_if display,  hardware, :description, :as => :input,:nil => "Click to add content!" %>
+											</td>
+											<td class="bestin" style="text-align:center;">
+								
+					<%= form_for hardware,  :html => {:target=>"upload_frame", :multipart => true,:class => "form-horizontal" } do |f| %>	 <!--start form -->							
+												
+					<!-- -->
+					<%= hidden_field(:hardware, :trackingsheet,:value =>hardware.trackingsheet.id) %>
+					
+					
+					<% if hardware.hardwareimage.url!='/images/original/missing.png' %>
+					<%= image_tag hardware.hardwareimage.url(:small).to_s  %>	
+					<%	end			 %>
+					<%= f.file_field :hardwareimage,class:'trackingsheetimage' %>					
+					<!-- -->
+					<%= f.submit 'Upload', :class => 'btn btn-warning btn-xs' %>						
+					
+					<% end %> <!--end form -->												
 											</td>
 											<td class="bestin" style="text-align:center;">
 												<%=best_in_place_if display,  hardware, :countryoforgin, :as => :input,:nil => "Click to add content!" %>
@@ -85,7 +106,11 @@
 												<%=best_in_place_if display,  hardware, :totalprice, :as => :input,:nil => "Click to add content!" %>
 											</td>
 											<td class="bestin" style="text-align:center;">
-					<a href="#delete-confirm" data-id="<%= hardware.id %>" class="delete-confirm btn btn-danger">Delete</a>
+
+<a href="#delete-confirm" data-id="<%= hardware.id %>" class="delete-confirm btn btn-danger">Delete</a>
+		
+							
+					
 											</td>
 											
 										</tr>
@@ -93,12 +118,42 @@
 									<% @a=@a+1%>
 									<% end %>
 								</table>
+								
 								</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<script type="text/javascripts">
+	
+<iframe id="upload_frame" name="upload_frame" style="display: none" loaded='true'>
+</iframe>
+
+<script type="text/javascripts">
+$('.add-img').on('click',function(){ alert(trackingsheet_id);
+$('#upload_frame').attr('loaded','false');
+$(this).next().find('.submit-ts-img').trigger('click');
+});
+
+$('#upload_frame').load(function(){
+if($(this).attr('loaded')!='true'){
+
+ $.get("/hardwares", {
+     trackingsheet_id:$('.add-hardwares').attr('trackingsheet_id')
+   },function(data){
+ 		$('.modal').css('width','80%');
+ 		$('.modal').css('left','11%');
+		$('.modal').css('left','13%');
+ 		$('.modal-body').html('');
+ 		$('.modal-body').html(data);
+		
+	});
+
+$('#upload_frame').attr('loaded','true');
+}
+});	
+	
+	
+	
 	
 		$('.add-hardwares').on('click',function(){
 
@@ -242,3 +297,6 @@ function deleteinit(){
 
 	<%#= javascript_include_tag "application" %>
 </div>
+
+
+

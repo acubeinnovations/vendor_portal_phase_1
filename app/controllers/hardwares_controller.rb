@@ -170,6 +170,6 @@ break
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hardware_params
-      params.require(:hardware).permit(:description,:trackingsheet, :countryoforgin, :mill, :supplier, :supplierpart, :leadtime, :unitqty, :unitprice, :totalprice)
+      params.require(:hardware).permit(:description,:hardwareimage,:trackingsheet, :countryoforgin, :mill, :supplier, :supplierpart, :leadtime, :unitqty, :unitprice, :totalprice)
     end
 end
